@@ -4,6 +4,15 @@ import { GraphQLServer } from "graphql-yoga";
 const typeDefs = `
   type Query {
     hello: String!
+    game: Game!
+  }
+
+  type Game {
+    id: ID!
+    title: String!
+    releaseYear: Int!
+    platform: String!
+    rating: Float
   }
  `;
 
@@ -12,6 +21,15 @@ const resolvers = {
   Query: {
     hello() {
       return `This is my first query!`;
+    },
+    game() {
+      return {
+        id: "001",
+        title: "Pong",
+        releaseYear: 1975,
+        platform: "Atari",
+        rating: 5.0,
+      };
     },
   },
 };
