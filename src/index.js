@@ -1,6 +1,7 @@
 import { GraphQLServer } from "graphql-yoga";
 import { games } from "../db/games.js";
 import { users } from "../db/users.js";
+import { reviews } from "../db/reviews.js";
 
 // typeDefs (schema)
 const typeDefs = `
@@ -11,6 +12,7 @@ const typeDefs = `
     games: [Game!]!
     user: User!
     users: [User!]!
+    reviews: [Review!]!
   }
 
   type Game {
@@ -20,7 +22,15 @@ const typeDefs = `
     platform: String!
     rating: Float
     src: String
+    reviews: [Review!]!
 
+  }
+
+  type Review {
+    id: ID!
+    review: String!
+    game: Game!
+    author: User!
   }
 
    type User {
@@ -71,6 +81,19 @@ const resolvers = {
             filtered.push(game);
           }
         });
+        return filtered;
+      }, []);
+    },
+  },
+  Game: {
+    reviews(parent, args, ctx, info) {
+      return parent.reviews.reduce((filtered, id) => {
+        reviews.filter((review) => {
+          if (review.id === id) {
+            filtered.push(review);
+          }
+        });
+
         return filtered;
       }, []);
     },
