@@ -38,6 +38,7 @@ const typeDefs = `
     name: String!
     email: String
     collection: [Game!]!
+    reviews: [Review]!
   }
  `;
 
@@ -84,7 +85,22 @@ const resolvers = {
         return filtered;
       }, []);
     },
+
+    // TODO
+    // Doesn't return the reviews under users query
+    reviews(parent, args, ctx, info) {
+      return parent.reviews.reduce((filtered, id) => {
+        reviews.filter((review) => {
+          if (review.author === id) {
+            filtered.push(review);
+          }
+        });
+
+        return filtered;
+      }, []);
+    },
   },
+  // Working
   Game: {
     reviews(parent, args, ctx, info) {
       return parent.reviews.reduce((filtered, id) => {
