@@ -6,6 +6,7 @@ function App() {
   return (
     <div className="App">
       Project Metroid
+      {/* Example component below, can be removed! */}
       <HelloWorld />
     </div>
   );
