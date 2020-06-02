@@ -1,3 +1,7 @@
+/* Add global style imports here */
+
+@import "./styles/vendors/normalize.css";
+
 /* override default outline styling */
 
 *:focus {
