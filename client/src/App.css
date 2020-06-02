@@ -32,7 +32,7 @@ body {
 .nav__link {
     text-transform: uppercase;
     text-decoration: none;
-    color: #fff !important;
+    color: #fff;
 }
 
 .search-bar__container {
