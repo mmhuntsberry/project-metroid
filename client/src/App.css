@@ -1,24 +1,8 @@
-* {
-    box-sizing: border-box;
-    border: 0;
-}
-
-
 /* override default outline styling */
 
 *:focus {
     outline: 0;
     box-shadow: 0 0 4px 1px #28c7b7;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    margin: 0;
-    padding: 0;
 }
 
 html {
@@ -32,7 +16,7 @@ body {
     background-color: #171824;
 }
 
-#nav {
+.nav {
     height: 64px;
     letter-spacing: 0.31px;
     font-weight: 600;
@@ -41,17 +25,17 @@ body {
     justify-content: space-evenly;
 }
 
-#nav a {
+.nav__link {
     text-transform: uppercase;
     text-decoration: none;
-    color: #fff;
+    color: #fff !important;
 }
 
-.search-bar-container {
+.search-bar__container {
     position: relative;
 }
 
-.search-icon {
+.search-bar__icon {
     color: #a8b6c6;
     position: absolute;
     left: 0.7em;
