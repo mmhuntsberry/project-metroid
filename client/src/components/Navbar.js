@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 
 const Button = styled.button`
   background: linear-gradient(90deg, #1fee7e -64.29%, #2386bd 166.07%), #c4c4c4;
+  border: 0;
   border-radius: 5px;
   padding: 0.625em 1.4375em;
   text-transform: uppercase;
@@ -23,6 +24,7 @@ const Title = styled.h2`
 const SearchBar = styled.input`
   width: 100%;
   height: 32px;
+  border: 0;
   border-radius: 5px;
   background-color: #323649;
   color: #a8b6c6;
@@ -33,10 +35,10 @@ const SearchBar = styled.input`
 
 export const Navbar = () => {
   return (
-    <nav id="nav">
+    <nav className="nav">
       <Title>Project Metroid</Title>
-      <div className="search-bar-container">
-        <i class="search-icon fas fa-search"></i>
+      <div className="search-bar__container">
+        <i class="search-bar__icon fas fa-search"></i>
         <SearchBar
           type="search"
           name="Search"
@@ -45,11 +47,17 @@ export const Navbar = () => {
         />
       </div>
 
-      <a href="#">Discover</a>
-      <a href="#">Browse</a>
+      <a className="nav__link" href="#">
+        Discover
+      </a>
+      <a className="nav__link" href="#">
+        Browse
+      </a>
       <div className="login-links">
         <Button className="sign-up">Sign Up</Button>
-        <a href="#">Log In</a>
+        <a className="nav__link" href="#">
+          Log In
+        </a>
       </div>
     </nav>
   );
