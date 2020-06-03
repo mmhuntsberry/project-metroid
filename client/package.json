@@ -15,6 +15,7 @@
     "eslint-plugin-react-hooks": "^4.0.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "stylelint": "^13.5.0",
     "stylelint-config-property-sort-order-smacss": "^6.3.0",
