@@ -18,7 +18,7 @@ const Button = styled.button`
 
 const Title = styled.h2`
   font-weight: normal;
-  font-size: 1.25em;
+  font-size: 1.1em;
   color: #28c7b7;
 `;
 
@@ -35,20 +35,45 @@ const SearchBar = styled.input`
 `;
 
 export const Navbar = () => {
+  const toggleMobileSearch = () => {
+    const searchContainer = document.querySelector(".search-bar__container");
+    const hamburgerMenu = document.querySelector(".nav__link__container");
+    if (hamburgerMenu.classList.contains("active")) {
+      hamburgerMenu.classList.remove("active");
+    }
+    searchContainer.classList.toggle("active");
+  };
+
+  const toggleHamburgerMenu = () => {
+    console.log("Hamburger clicked");
+    const hamburgerMenu = document.querySelector(".nav__link__container");
+    const searchContainer = document.querySelector(".search-bar__container");
+    if (searchContainer.classList.contains("active")) {
+      searchContainer.classList.remove("active");
+    }
+    hamburgerMenu.classList.toggle("active");
+  };
+
   return (
     <nav className="nav">
       <Title className="title">Project Metroid</Title>
-      <button className="mobile-search-toggle nav__mobile--link">
-        <i class="fas fa-search"></i>
+      <button
+        className="mobile-search-toggle nav__mobile--link"
+        onClick={toggleMobileSearch}
+      >
+        <i className="fas fa-search"></i>
       </button>
       <button className="mobile-user-profile nav__mobile--link">
-        <i class="fas fa-user-circle"></i>
+        <i className="fas fa-user-circle"></i>
       </button>
-      <button className="mobile-hamburger-menu nav__mobile--link">
-        <i class="fas fa-bars"></i>
+      <button
+        className="mobile-hamburger-menu nav__mobile--link"
+        onClick={toggleHamburgerMenu}
+      >
+        <i className="fas fa-bars"></i>
       </button>
       <div className="search-bar__container">
-        <i class="search-bar__icon fas fa-search"></i>
+        <i className="search-bar__icon fas fa-search"></i>
         <SearchBar
           type="search"
           name="Search"
