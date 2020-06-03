@@ -1,6 +1,7 @@
 import React from "react";
 import "./navbar.css";
 import styled from "@emotion/styled";
+import { Link } from "react-router-dom";
 
 const Button = styled.button`
   min-width: fit-content;
@@ -34,16 +35,7 @@ const SearchBar = styled.input`
   font-weight: 400;
 `;
 
-export const Navbar = () => {
-  const toggleMobileSearch = () => {
-    const searchContainer = document.querySelector(".search-bar__container");
-    const hamburgerMenu = document.querySelector(".nav__link__container");
-    if (hamburgerMenu.classList.contains("active")) {
-      hamburgerMenu.classList.remove("active");
-    }
-    searchContainer.classList.toggle("active");
-  };
-
+const Navbar = () => {
   const toggleHamburgerMenu = () => {
     console.log("Hamburger clicked");
     const hamburgerMenu = document.querySelector(".nav__link__container");
@@ -54,26 +46,35 @@ export const Navbar = () => {
     hamburgerMenu.classList.toggle("active");
   };
 
+  const toggleMobileSearch = () => {
+    const searchContainer = document.querySelector(".search-bar__container");
+    const hamburgerMenu = document.querySelector(".nav__link__container");
+    if (hamburgerMenu.classList.contains("active")) {
+      hamburgerMenu.classList.remove("active");
+    }
+    searchContainer.classList.toggle("active");
+  };
+
   return (
     <nav className="nav">
-      <Title className="title">Project Metroid</Title>
+      <Title className="title"> Project Metroid </Title>
       <button
         className="mobile-search-toggle nav__mobile--link"
         onClick={toggleMobileSearch}
       >
-        <i className="fas fa-search"></i>
+        <i className="fas fa-search"> </i>
       </button>
       <button className="mobile-user-profile nav__mobile--link">
-        <i className="fas fa-user-circle"></i>
+        <i className="fas fa-user-circle"> </i>
       </button>
       <button
         className="mobile-hamburger-menu nav__mobile--link"
         onClick={toggleHamburgerMenu}
       >
-        <i className="fas fa-bars"></i>
+        <i className="fas fa-bars"> </i>
       </button>
       <div className="search-bar__container">
-        <i className="search-bar__icon fas fa-search"></i>
+        <i className="search-bar__icon fas fa-search"> </i>
         <SearchBar
           type="search"
           name="Search"
@@ -82,15 +83,15 @@ export const Navbar = () => {
         />
       </div>
       <div className="nav__link__container">
-        <a className="nav__link" href="#">
+        <Link className="nav__link" to="/discover">
           Discover
-        </a>
-        <a className="nav__link" href="#">
+        </Link>
+        <Link className="nav__link" to="/browse">
           Browse
-        </a>
+        </Link>
       </div>
       <div className="login-links">
-        <Button className="sign-up">Sign Up</Button>
+        <Button className="sign-up"> Sign Up </Button>
         <a className="nav__link" href="#">
           Log In
         </a>
@@ -98,3 +99,5 @@ export const Navbar = () => {
     </nav>
   );
 };
+
+export default Navbar;
