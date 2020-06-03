@@ -1,7 +1,9 @@
 import React from "react";
+import "./navbar.css";
 import styled from "@emotion/styled";
 
 const Button = styled.button`
+  min-width: fit-content;
   background: linear-gradient(90deg, #1fee7e -64.29%, #2386bd 166.07%), #c4c4c4;
   border: 0;
   border-radius: 5px;
@@ -12,7 +14,6 @@ const Button = styled.button`
   text-shadow: 1px 1px 1px #0000001a;
   font-size: 1.03em;
   letter-spacing: 1px;
-  margin-right: 2em;
 `;
 
 const Title = styled.h2`
@@ -36,23 +37,33 @@ const SearchBar = styled.input`
 export const Navbar = () => {
   return (
     <nav className="nav">
-      <Title>Project Metroid</Title>
+      <Title className="title">Project Metroid</Title>
+      <button className="mobile-search-toggle nav__mobile--link">
+        <i class="fas fa-search"></i>
+      </button>
+      <button className="mobile-user-profile nav__mobile--link">
+        <i class="fas fa-user-circle"></i>
+      </button>
+      <button className="mobile-hamburger-menu nav__mobile--link">
+        <i class="fas fa-bars"></i>
+      </button>
       <div className="search-bar__container">
         <i class="search-bar__icon fas fa-search"></i>
         <SearchBar
           type="search"
           name="Search"
-          id="search-bar"
+          className="search-bar"
           placeholder="Search"
         />
       </div>
-
-      <a className="nav__link" href="#">
-        Discover
-      </a>
-      <a className="nav__link" href="#">
-        Browse
-      </a>
+      <div className="nav__link__container">
+        <a className="nav__link" href="#">
+          Discover
+        </a>
+        <a className="nav__link" href="#">
+          Browse
+        </a>
+      </div>
       <div className="login-links">
         <Button className="sign-up">Sign Up</Button>
         <a className="nav__link" href="#">
