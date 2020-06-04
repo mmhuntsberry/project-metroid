@@ -120,7 +120,6 @@ const resolvers = {
   Review: {
     user(parent, args, ctx, info) {
       const filtered = users.filter((user) => user.id === parent.user);
-      console.log("filtered", filtered[0]);
 
       return filtered[0];
     },
