@@ -30,12 +30,12 @@ const typeDefs = `
     id: ID!
     review: String!
     game: Game!
-    author: User!
+    user: User!
   }
 
    type User {
     id: ID!
-    name: String!
+    name: String
     email: String
     collection: [Game!]!
     reviews: [Review]!
@@ -73,6 +73,9 @@ const resolvers = {
     users() {
       return users;
     },
+    reviews() {
+      return reviews;
+    },
   },
   User: {
     collection({ collection }, args, ctx, info) {
@@ -109,9 +112,17 @@ const resolvers = {
             filtered.push(review);
           }
         });
-
         return filtered;
       }, []);
+    },
+  },
+
+  Review: {
+    user(parent, args, ctx, info) {
+      const filtered = users.filter((user) => user.id === parent.user);
+      console.log("filtered", filtered[0]);
+
+      return filtered[0];
     },
   },
 };
