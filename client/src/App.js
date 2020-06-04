@@ -1,5 +1,4 @@
 import React from "react";
-import HelloWorld from "./components/HelloWorld";
 import Navbar from "./components/Navbar";
 import Dashboard from "./components/Dashboard";
 import Browse from "./components/Browse";
