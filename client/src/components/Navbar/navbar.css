@@ -5,6 +5,7 @@
     display: grid;
     grid-template-columns: 64px auto 64px 64px;
     align-items: center;
+    background-color: #121216;
 }
 
 .title {
@@ -19,6 +20,8 @@
     top: 64px;
     flex-direction: column;
     width: 100%;
+    background-color: #171823;
+    z-index: 10;
 }
 
 .nav__link {
@@ -66,6 +69,8 @@
 .login-links {
     display: none;
     align-items: center;
+    width: calc(100% - 2em);
+    margin-right: 1em;
 }
 
 .active {
@@ -76,6 +81,8 @@
     .nav {
         /* background-color: #2c2e4b; */
         grid-template-columns: max-content minmax(min-content, 400px) max-content 1fr;
+        background-color: #171823;
+        width: calc(100% - 3.3em);
     }
     .nav__mobile--link {
         display: none;
