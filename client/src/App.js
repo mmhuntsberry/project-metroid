@@ -1,13 +1,23 @@
 import React from "react";
-import HelloWorld from "./components/HelloWorld";
+import Navbar from "./components/Navbar";
+import Dashboard from "./components/Dashboard";
+import Browse from "./components/Browse";
+import Discover from "./components/Discover";
 import "./App.css";
-import { Navbar } from "./components/Navbar";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <Navbar />
-    </div>
+    <Router>
+      <div className="App">
+        <Navbar />
+        <Switch>
+          <Route exact path="/" component={Dashboard} />
+          <Route exact path="/discover" component={Discover} />
+          <Route exact path="/browse" component={Browse} />
+        </Switch>
+      </div>
+    </Router>
   );
 }
 

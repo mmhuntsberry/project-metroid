@@ -1,0 +1,119 @@
+.nav {
+    height: 64px;
+    letter-spacing: 0.31px;
+    font-weight: 600;
+    display: grid;
+    grid-template-columns: 64px auto 64px 64px;
+    align-items: center;
+    background-color: #121216;
+}
+
+.app-title {
+    grid-column: 2 / span 1;
+    text-align: center;
+    margin: 0 1em;
+}
+
+.nav__link-container {
+    display: none;
+    position: absolute;
+    top: 64px;
+    flex-direction: column;
+    width: 100%;
+    background-color: #171823;
+    z-index: 10;
+}
+
+.nav__link {
+    min-width: fit-content;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #e2e2e4;
+    padding: 1.5em 2em;
+    border-bottom: 1px solid #7777;
+}
+
+.nav__button {
+    border: 0;
+    background-color: transparent;
+    color: #a8b6c6;
+    font-size: 1.5em;
+}
+
+.nav__link:hover,
+.nav__button:hover {
+    color: #28c7b7;
+}
+
+.nav__button--search-toggle {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.search-bar__container {
+    position: relative;
+    display: none;
+    position: absolute;
+    padding: 1em;
+    top: 64px;
+    background-color: #171823;
+}
+
+.search-bar__icon {
+    display: none;
+    color: #a8b6c6;
+    position: absolute;
+    left: 0.7em;
+    top: 0.5em;
+}
+
+.login__links-container {
+    display: none;
+    align-items: center;
+    margin-right: 1em;
+}
+
+.is-visible {
+    display: flex;
+}
+
+@media screen and (min-width: 768px) {
+    .nav {
+        grid-template-columns: max-content minmax(min-content, 400px) max-content auto;
+        background-color: #171823;
+    }
+    .nav__button {
+        display: none;
+    }
+    .app-title {
+        grid-column: 1;
+        font-size: 1.25em;
+    }
+    .search-bar__container {
+        display: flex;
+        position: relative;
+        padding: 0;
+        margin: 0 1em;
+        top: unset;
+    }
+    .search-bar__icon {
+        display: block;
+    }
+    .nav__link-container {
+        top: unset;
+        width: unset;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        position: relative;
+    }
+    .nav__link {
+        margin: 0 1em;
+        border: 0;
+        padding: 0;
+    }
+    .login__links-container {
+        display: flex;
+        margin-left: auto;
+    }
+}

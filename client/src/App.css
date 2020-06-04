@@ -4,6 +4,10 @@
 
 /* override default outline styling */
 
+* {
+    box-sizing: border-box;
+}
+
 *:focus {
     outline: 0;
     box-shadow: 0 0 4px 1px #28c7b7;
@@ -20,33 +24,6 @@ body {
     background-color: #171824;
 }
 
-.nav {
-    height: 64px;
-    letter-spacing: 0.31px;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-}
-
-.nav__link {
-    text-transform: uppercase;
-    text-decoration: none;
-    color: #fff;
-}
-
-.search-bar__container {
-    position: relative;
-}
-
-.search-bar__icon {
-    color: #a8b6c6;
-    position: absolute;
-    left: 0.7em;
-    top: 0.5em;
-}
-
-.login-links {
-    display: flex;
-    align-items: center;
+button {
+    cursor: pointer;
 }
