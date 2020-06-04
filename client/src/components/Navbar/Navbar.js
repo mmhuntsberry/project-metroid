@@ -3,7 +3,7 @@ import "./navbar.css";
 import styled from "@emotion/styled";
 import { Link } from "react-router-dom";
 
-const Button = styled.button`
+const SignUpButton = styled.button`
   min-width: fit-content;
   background: linear-gradient(90deg, #1fee7e -64.29%, #2386bd 166.07%), #c4c4c4;
   border: 0;
@@ -17,7 +17,7 @@ const Button = styled.button`
   letter-spacing: 1px;
 `;
 
-const Title = styled.h2`
+const AppTitle = styled.h2`
   font-weight: normal;
   font-size: 1.1em;
   color: #28c7b7;
@@ -36,41 +36,39 @@ const SearchBar = styled.input`
 `;
 
 const Navbar = () => {
-  const toggleHamburgerMenu = () => {
-    console.log("Hamburger clicked");
-    const hamburgerMenu = document.querySelector(".nav__link__container");
+  // function to run when hamburger menu is clicked
+  const handleMenuToggle = () => {
+    const hamburgerMenu = document.querySelector(".nav__link-container");
     const searchContainer = document.querySelector(".search-bar__container");
-    if (searchContainer.classList.contains("active")) {
-      searchContainer.classList.remove("active");
+    if (searchContainer.classList.contains("is-visible")) {
+      searchContainer.classList.remove("is-visible");
     }
-    hamburgerMenu.classList.toggle("active");
+    hamburgerMenu.classList.toggle("is-visible");
   };
 
-  const toggleMobileSearch = () => {
+  // function to run when search icon is clicked
+  const handleSearchToggle = () => {
     const searchContainer = document.querySelector(".search-bar__container");
-    const hamburgerMenu = document.querySelector(".nav__link__container");
-    if (hamburgerMenu.classList.contains("active")) {
-      hamburgerMenu.classList.remove("active");
+    const hamburgerMenu = document.querySelector(".nav__link-container");
+    if (hamburgerMenu.classList.contains("is-visible")) {
+      hamburgerMenu.classList.remove("is-visible");
     }
-    searchContainer.classList.toggle("active");
+    searchContainer.classList.toggle("is-visible");
   };
 
   return (
     <nav className="nav">
-      <Title className="title"> Project Metroid </Title>
+      <AppTitle className="app-title"> Project Metroid </AppTitle>
       <button
-        className="mobile-search-toggle nav__mobile--link"
-        onClick={toggleMobileSearch}
+        className="nav__button nav__button--search-toggle"
+        onClick={handleSearchToggle}
       >
         <i className="fas fa-search"> </i>
       </button>
-      <button className="mobile-user-profile nav__mobile--link">
+      <button className="nav__button">
         <i className="fas fa-user-circle"> </i>
       </button>
-      <button
-        className="mobile-hamburger-menu nav__mobile--link"
-        onClick={toggleHamburgerMenu}
-      >
+      <button className="nav__button" onClick={handleMenuToggle}>
         <i className="fas fa-bars"> </i>
       </button>
       <div className="search-bar__container">
@@ -82,7 +80,7 @@ const Navbar = () => {
           placeholder="Search"
         />
       </div>
-      <div className="nav__link__container">
+      <div className="nav__link-container">
         <Link className="nav__link" to="/discover">
           Discover
         </Link>
@@ -90,11 +88,9 @@ const Navbar = () => {
           Browse
         </Link>
       </div>
-      <div className="login-links">
-        <Button className="sign-up"> Sign Up </Button>
-        <a className="nav__link" href="#">
-          Log In
-        </a>
+      <div className="login__links-container">
+        <SignUpButton className="sign-up">Sign Up</SignUpButton>
+        <a className="nav__link">Log In</a>
       </div>
     </nav>
   );

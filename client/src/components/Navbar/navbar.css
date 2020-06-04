@@ -8,13 +8,13 @@
     background-color: #121216;
 }
 
-.title {
+.app-title {
     grid-column: 2 / span 1;
     text-align: center;
     margin: 0 1em;
 }
 
-.nav__link__container {
+.nav__link-container {
     display: none;
     position: absolute;
     top: 64px;
@@ -33,7 +33,7 @@
     border-bottom: 1px solid #7777;
 }
 
-.nav__mobile--link {
+.nav__button {
     border: 0;
     background-color: transparent;
     color: #a8b6c6;
@@ -41,11 +41,11 @@
 }
 
 .nav__link:hover,
-.nav__mobile--link:hover {
+.nav__button:hover {
     color: #28c7b7;
 }
 
-.mobile-search-toggle {
+.nav__button--search-toggle {
     grid-column: 1;
     grid-row: 1;
 }
@@ -54,49 +54,52 @@
     position: relative;
     display: none;
     position: absolute;
-    width: calc(100% - 2em);
-    margin: 0 1em;
+    padding: 1em;
     top: 64px;
+    background-color: #171823;
 }
 
 .search-bar__icon {
+    display: none;
     color: #a8b6c6;
     position: absolute;
     left: 0.7em;
     top: 0.5em;
 }
 
-.login-links {
+.login__links-container {
     display: none;
     align-items: center;
-    width: calc(100% - 2em);
     margin-right: 1em;
 }
 
-.active {
+.is-visible {
     display: flex;
 }
 
 @media screen and (min-width: 768px) {
     .nav {
-        /* background-color: #2c2e4b; */
-        grid-template-columns: max-content minmax(min-content, 400px) max-content 1fr;
+        grid-template-columns: max-content minmax(min-content, 400px) max-content auto;
         background-color: #171823;
-        width: calc(100% - 3.3em);
     }
-    .nav__mobile--link {
+    .nav__button {
         display: none;
     }
-    .title {
+    .app-title {
         grid-column: 1;
         font-size: 1.25em;
     }
     .search-bar__container {
         display: flex;
         position: relative;
+        padding: 0;
+        margin: 0 1em;
         top: unset;
     }
-    .nav__link__container {
+    .search-bar__icon {
+        display: block;
+    }
+    .nav__link-container {
         top: unset;
         width: unset;
         display: flex;
@@ -109,7 +112,7 @@
         border: 0;
         padding: 0;
     }
-    .login-links {
+    .login__links-container {
         display: flex;
         margin-left: auto;
     }
