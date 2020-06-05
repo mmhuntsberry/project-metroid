@@ -18,7 +18,8 @@ const typeDefs = `
 
   type Mutation {
     createUser(name: String!, email: String!): User!
-    createGame(title: String!, platform: String!, rating: Float): Game
+    createGame(title: String!, platform: String!, rating: Float): Game!
+    createReview(review: String!, published: Boolean!, game: ID!, user: ID!): Review!
   }
 
   type Game {
@@ -122,6 +123,29 @@ const resolvers = {
 
       games.push(game);
       return game;
+    },
+    createReview(parent, args, ctx, info) {
+      const userExists = users.some((user) => user.id === args.user);
+
+      if (!userExists) {
+        throw new Error("User not found");
+      }
+
+      const review = {
+        id: uuid(),
+        review: args.review,
+        game: args.game,
+        user: args.user,
+      };
+
+      const findUser = users.find((user) => user.id === args.user);
+      const findGame = games.find((game) => game.id === args.game);
+
+      findUser.reviews.push(review.id);
+      findGame.reviews.push(review.id);
+      reviews.push(review);
+
+      return review;
     },
   },
   User: {
