@@ -1,4 +1,5 @@
 import { GraphQLServer } from "graphql-yoga";
+import { uuid } from "uuidv4";
 import { games } from "../db/games.js";
 import { users } from "../db/users.js";
 import { reviews } from "../db/reviews.js";
@@ -13,6 +14,10 @@ const typeDefs = `
     user: User!
     users: [User!]!
     reviews: [Review!]!
+  }
+
+  type Mutation {
+    createUser(name: String!, email: String!): User!
   }
 
   type Game {
@@ -37,8 +42,8 @@ const typeDefs = `
     id: ID!
     name: String
     email: String
-    collection: [Game!]!
-    reviews: [Review]!
+    collection: [Game]
+    reviews: [Review]
   }
  `;
 
@@ -77,6 +82,26 @@ const resolvers = {
       return reviews;
     },
   },
+  Mutation: {
+    createUser(parent, args, ctx, info) {
+      const emailTaken = users.some((user) => args.email === user.email);
+
+      if (emailTaken) {
+        throw new Error("Email taken");
+      }
+
+      const user = {
+        id: uuid(),
+        name: args.name,
+        email: args.email,
+        collection: [],
+        reviews: [],
+      };
+
+      users.push(user);
+      return user;
+    },
+  },
   User: {
     collection({ collection }, args, ctx, info) {
       return collection.reduce((filtered, id) => {
@@ -89,12 +114,10 @@ const resolvers = {
       }, []);
     },
 
-    // TODO
-    // Doesn't return the reviews under users query
     reviews(parent, args, ctx, info) {
       return parent.reviews.reduce((filtered, id) => {
         reviews.filter((review) => {
-          if (review.author === id) {
+          if (review.id === id) {
             filtered.push(review);
           }
         });
@@ -103,7 +126,7 @@ const resolvers = {
       }, []);
     },
   },
-  // Working
+
   Game: {
     reviews(parent, args, ctx, info) {
       return parent.reviews.reduce((filtered, id) => {
