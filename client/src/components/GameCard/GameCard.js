@@ -1,0 +1,64 @@
+import React from "react";
+// import { GameCardContainer, GameCardText } from "./GameCard.styles";
+import styled from "@emotion/styled";
+
+const GameCardContainer = styled.div`
+  width: 104px;
+  display: flex;
+  flex-direction: column;
+  color: #e2e2e4;
+  background-color: transparent;
+  margin-right: 1rem;
+  font-size: 0.875em;
+  border: 0;
+  line-height: 1.5;
+  margin-bottom: 2.5em;
+
+  @media (min-width: 768px) {
+    width: 223px;
+    font-size: 1em;
+    margin-bottom: 4em;
+  }
+`;
+
+const GameArt = styled.img`
+  margin-right: 1em;
+  margin-bottom: 0.5em;
+  width: 100%;
+  border-radius: 0.25em;
+  object-fit: cover;
+
+  @media (min-width: 768px) {
+  }
+`;
+
+const GameTitle = styled.span`
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  display: -webkit-box;
+  font-weight: 600;
+`;
+
+const GameDeveloper = styled.span`
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  color: #858d95;
+`;
+
+const GameCard = (props) => {
+  return (
+    <GameCardContainer className="game-card">
+      <GameArt className="game-card__artwork" src={props.img} />
+      <GameTitle className="game-card__title">{props.title}</GameTitle>
+      <GameDeveloper className="game-card__developer">
+        {props.developer}
+      </GameDeveloper>
+    </GameCardContainer>
+  );
+};
+
+export default GameCard;
