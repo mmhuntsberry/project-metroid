@@ -18,6 +18,7 @@ const typeDefs = `
 
   type Mutation {
     createUser(name: String!, email: String!): User!
+    createGame(title: String!, platform: String!, rating: Float): Game
   }
 
   type Game {
@@ -100,6 +101,27 @@ const resolvers = {
 
       users.push(user);
       return user;
+    },
+    createGame(parent, args, ctx, info) {
+      const titleTaken = games.some((game) => game.title === args.title);
+      const platformTaken = games.some(
+        (game) => game.platform === args.platform
+      );
+
+      if (titleTaken && platformTaken) {
+        throw new Error("Game already exists");
+      }
+
+      const game = {
+        id: uuid(),
+        title: args.title,
+        platform: args.platform,
+        rating: args.rating || 0,
+        reviews: [],
+      };
+
+      games.push(game);
+      return game;
     },
   },
   User: {
