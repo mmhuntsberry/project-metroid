@@ -1,12 +1,10 @@
 import styled from "@emotion/styled";
 
 const InfoCardContainer = styled.div`
-  width: calc(100% - 2em);
   min-height: 64px;
   display: flex;
   color: #e2e2e4;
   background-color: #212131;
-  margin-right: 1em;
   padding: 0 1.5em 1.5em;
   font-size: 0.95em;
   border-radius: 4px;
