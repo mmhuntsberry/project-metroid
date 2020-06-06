@@ -22,5 +22,10 @@
         "img": "https://images.igdb.com/igdb/image/upload/t_cover_big/co1rft.jpg",
         "title": "Cyberpunk 2077",
         "developer": "CD Projeckt RED"
+    },
+    {
+        "img": "https://images.igdb.com/igdb/image/upload/t_cover_big/co27kt.jpg",
+        "title": "Xenoblade Chronicles: Definitive Edition",
+        "developer": "Monolith Soft"
     }
 ]
