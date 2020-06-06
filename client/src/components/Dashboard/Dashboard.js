@@ -1,17 +1,18 @@
 import React from "react";
 import Notice from "../Notice";
 import InfoCard from "../InfoCard";
-import { CardRow, RowTitle } from "./Dashboard.styles";
+import { CardRow, CardRowGrid, RowTitle } from "./Dashboard.styles";
 import { default as popularGameCardData } from "./popularGameCardData.json";
 import { default as infoCardData } from "./infoCardData.json";
+import { default as recentReviewsCardData } from "./recentReviewsCardData.json";
 import GameCard from "../GameCard/GameCard";
 
 const Dashboard = () => {
   return (
-    <div>
+    <div className="page-wrapper">
       <Notice />
       <RowTitle>Popular</RowTitle>
-      <CardRow>
+      <CardRowGrid>
         {popularGameCardData.map((card, i) => (
           <GameCard
             key={i}
@@ -20,13 +21,24 @@ const Dashboard = () => {
             developer={card.developer}
           />
         ))}
-      </CardRow>
+      </CardRowGrid>
       <RowTitle>Project Metroid Lets You</RowTitle>
       <CardRow>
         {infoCardData.map((card, i) => {
           return <InfoCard key={i} icon={card.icon} copy={card.copy} />;
         })}
       </CardRow>
+      <RowTitle>Recent Reviews</RowTitle>
+      <CardRowGrid>
+        {recentReviewsCardData.map((card, i) => (
+          <GameCard
+            key={i}
+            img={card.img}
+            title={card.title}
+            developer={card.developer}
+          />
+        ))}
+      </CardRowGrid>
     </div>
   );
 };
