@@ -3,6 +3,8 @@ import { uuid } from "uuidv4";
 import { games } from "../db/games.js";
 import { users } from "../db/users.js";
 import { reviews } from "../db/reviews.js";
+import { themes } from "../db/themes.js";
+import { reduceFilter } from "../utils/helpers.js";
 
 // typeDefs (schema)
 const typeDefs = `
@@ -14,6 +16,8 @@ const typeDefs = `
     user: User!
     users: [User!]!
     reviews: [Review!]!
+    theme: Theme!
+    themes: [Theme!]!
   }
 
   type Mutation {
@@ -47,17 +51,17 @@ const typeDefs = `
     collection: [Game]
     reviews: [Review]
   }
+
+  type Theme {
+    id: ID!
+    type: String!
+    games: [Game]
+  }
  `;
 
 // resolvers
 const resolvers = {
   Query: {
-    hello() {
-      return `This is my first query!`;
-    },
-    greeting(parent, { name }, ctx, info) {
-      return name ? `Hello, ${name}!` : `Hi Stranger!`;
-    },
     game() {
       return {
         id: "001",
@@ -82,6 +86,16 @@ const resolvers = {
     },
     reviews() {
       return reviews;
+    },
+    theme() {
+      return {
+        id: uuid(),
+        type: "Platform",
+        games: ["2", "3"],
+      };
+    },
+    themes() {
+      return themes;
     },
   },
   Mutation: {
@@ -149,48 +163,28 @@ const resolvers = {
     },
   },
   User: {
-    collection({ collection }, args, ctx, info) {
-      return collection.reduce((filtered, id) => {
-        games.filter((game) => {
-          if (game.id === id) {
-            filtered.push(game);
-          }
-        });
-        return filtered;
-      }, []);
+    collection(parent, args, ctx, info) {
+      return reduceFilter(parent.collection, games);
     },
-
     reviews(parent, args, ctx, info) {
-      return parent.reviews.reduce((filtered, id) => {
-        reviews.filter((review) => {
-          if (review.id === id) {
-            filtered.push(review);
-          }
-        });
-
-        return filtered;
-      }, []);
+      return reduceFilter(parent.reviews, reviews);
     },
   },
-
   Game: {
     reviews(parent, args, ctx, info) {
-      return parent.reviews.reduce((filtered, id) => {
-        reviews.filter((review) => {
-          if (review.id === id) {
-            filtered.push(review);
-          }
-        });
-        return filtered;
-      }, []);
+      return reduceFilter(parent.reviews, reviews);
     },
   },
-
   Review: {
     user(parent, args, ctx, info) {
       const filtered = users.filter((user) => user.id === parent.user);
 
       return filtered[0];
+    },
+  },
+  Theme: {
+    games(parent, args, ctx, info) {
+      return reduceFilter(parent.games, games);
     },
   },
 };

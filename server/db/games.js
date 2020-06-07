@@ -5,6 +5,7 @@ export const games = [
     platform: "Atari",
     rating: 1.0,
     reviews: ["101", "301"],
+    theme: "",
   },
   {
     id: "2",
@@ -12,6 +13,7 @@ export const games = [
     platform: "Nintendo(nes)",
     rating: 5.0,
     reviews: [],
+    theme: "1",
   },
   {
     id: "3",
@@ -19,5 +21,22 @@ export const games = [
     platform: "Nintendo(nes)",
     rating: 5.0,
     reviews: ["201"],
+    theme: "1",
+  },
+  {
+    id: "4",
+    title: "Resident Evil VII",
+    platform: "Playstation 4",
+    rating: 3.5,
+    reviews: [],
+    theme: "2",
+  },
+  {
+    id: "5",
+    title: "Eternal Darkness",
+    platform: "Gamecube",
+    rating: 4.0,
+    reviews: [],
+    theme: "2",
   },
 ];
