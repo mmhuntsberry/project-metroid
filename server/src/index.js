@@ -4,6 +4,9 @@ import { games } from "../db/games.js";
 import { users } from "../db/users.js";
 import { reviews } from "../db/reviews.js";
 import { themes } from "../db/themes.js";
+import { platforms } from "../db/platforms.js";
+import { genres } from "../db/genres.js";
+import { ratings } from "../db/ratings.js";
 import { reduceFilter } from "../utils/helpers.js";
 
 // typeDefs (schema)
@@ -18,6 +21,11 @@ const typeDefs = `
     reviews: [Review!]!
     theme: Theme!
     themes: [Theme!]!
+    platform: Platform!
+    platforms: [Platform!]!
+    genre: Genre!
+    genres: [Genre!]!
+    ratings: [Rating!]!
   }
 
   type Mutation {
@@ -32,6 +40,7 @@ const typeDefs = `
     releaseYear: Int
     platform: String!
     rating: Float
+    genres: [Genre!]!
     src: String
     reviews: [Review!]!
 
@@ -55,6 +64,24 @@ const typeDefs = `
   type Theme {
     id: ID!
     type: String!
+    games: [Game]
+  }
+
+  type Platform {
+    id: ID!
+    name: String!
+    games: [Game]
+  }
+
+  type Genre {
+    id: ID!
+    type: String!
+    games: [Game]
+  }
+
+  type Rating {
+    id: ID!
+    rating: Float!
     games: [Game]
   }
  `;
@@ -96,6 +123,29 @@ const resolvers = {
     },
     themes() {
       return themes;
+    },
+    platform() {
+      return {
+        id: uuid(),
+        name: "Nintendo(NES)",
+        games: ["2", "3"],
+      };
+    },
+    platforms() {
+      return platforms;
+    },
+    genre() {
+      return {
+        id: uuid(),
+        type: "Platform",
+        games: ["2", "3"],
+      };
+    },
+    genres() {
+      return genres;
+    },
+    ratings() {
+      return ratings;
     },
   },
   Mutation: {
@@ -183,6 +233,21 @@ const resolvers = {
     },
   },
   Theme: {
+    games(parent, args, ctx, info) {
+      return reduceFilter(parent.games, games);
+    },
+  },
+  Platform: {
+    games(parent, args, ctx, info) {
+      return reduceFilter(parent.games, games);
+    },
+  },
+  Genre: {
+    games(parent, args, ctx, info) {
+      return reduceFilter(parent.games, games);
+    },
+  },
+  Rating: {
     games(parent, args, ctx, info) {
       return reduceFilter(parent.games, games);
     },
