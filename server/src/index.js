@@ -4,6 +4,7 @@ import { games } from "../db/games.js";
 import { users } from "../db/users.js";
 import { reviews } from "../db/reviews.js";
 import { themes } from "../db/themes.js";
+import { reduceFilter } from "../utils/helpers.js";
 
 // typeDefs (schema)
 const typeDefs = `
@@ -162,38 +163,16 @@ const resolvers = {
     },
   },
   User: {
-    collection({ collection }, args, ctx, info) {
-      return collection.reduce((filtered, id) => {
-        games.filter((game) => {
-          if (game.id === id) {
-            filtered.push(game);
-          }
-        });
-        return filtered;
-      }, []);
+    collection(parent, args, ctx, info) {
+      return reduceFilter(parent.collection, games);
     },
     reviews(parent, args, ctx, info) {
-      return parent.reviews.reduce((filtered, id) => {
-        reviews.filter((review) => {
-          if (review.id === id) {
-            filtered.push(review);
-          }
-        });
-
-        return filtered;
-      }, []);
+      return reduceFilter(parent.reviews, reviews);
     },
   },
   Game: {
     reviews(parent, args, ctx, info) {
-      return parent.reviews.reduce((filtered, id) => {
-        reviews.filter((review) => {
-          if (review.id === id) {
-            filtered.push(review);
-          }
-        });
-        return filtered;
-      }, []);
+      return reduceFilter(parent.reviews, reviews);
     },
   },
   Review: {
@@ -205,16 +184,7 @@ const resolvers = {
   },
   Theme: {
     games(parent, args, ctx, info) {
-      console.log(parent);
-      return parent.games.reduce((filtered, id) => {
-        games.filter((game) => {
-          if (game.id === id) {
-            filtered.push(game);
-          }
-        });
-
-        return filtered;
-      }, []);
+      return reduceFilter(parent.games, games);
     },
   },
 };
