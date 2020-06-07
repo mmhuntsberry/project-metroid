@@ -3,21 +3,18 @@ import React from "react";
 import styled from "@emotion/styled";
 
 const GameCardContainer = styled.div`
-  width: 104px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   color: #e2e2e4;
   background-color: transparent;
-  margin-right: 1rem;
   font-size: 0.875em;
   border: 0;
   line-height: 1.5;
-  margin-bottom: 2.5em;
 
   @media (min-width: 768px) {
-    width: 223px;
+    /* width: 223px; */
     font-size: 1em;
-    margin-bottom: 4em;
   }
 `;
 
@@ -32,6 +29,8 @@ const GameArt = styled.img`
   }
 `;
 
+// these styles are needed to crop the
+// text to two lines add an ellipsis at the end.
 const GameTitle = styled.span`
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -41,6 +40,8 @@ const GameTitle = styled.span`
   font-weight: 600;
 `;
 
+// these styles do the same as above, but
+// crop to one line.
 const GameDeveloper = styled.span`
   display: -webkit-box;
   -webkit-line-clamp: 1;

@@ -27,3 +27,11 @@ body {
 button {
     cursor: pointer;
 }
+
+@media screen and (min-width: 1440px) {
+    .App {
+        display: grid;
+        max-width: 1440px;
+        margin: 0 auto;
+    }
+}
