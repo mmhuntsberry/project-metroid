@@ -73,8 +73,6 @@ const CarouselSlideList = styled.ul`
   list-style: none;
 `;
 
-
-
 const CarouselSlideInfo = styled.div`
 display: flex;
 position: absolute;
@@ -83,6 +81,10 @@ top: calc(15% + (10vw - 8vmax));
 left: 10%;
 flex-direction: column;
 width: 80%;
+
+@media screen and (min-width: 1440px) {
+  top: 120px;
+}
 `
 
 const CarouselSlideTitle = styled.h2`
@@ -92,14 +94,22 @@ const CarouselSlideTitle = styled.h2`
   font-size: calc(1em + (3vw - 0.5vmin));
   font-weight: 700;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+
+  @media screen and (min-width: 1440px) {
+    font-size: 3.5em;
+  }
 `
 
 const CarouselSlideDeveloper = styled.span`
   margin-top: 0.5em;
   color: #f9b2c8;
   font-family: Vollkorn, Georgia, "Times New Roman", Times, serif;
-  font-size: calc(1em + (1vw - 0.5vmin));
+  font-size: calc(1em + (1vw - 0.6vmin));
   font-style: italic;
+
+  @media screen and (min-width: 1440px) {
+    font-size: 1.5em;
+  }
 `
 const CarouselSlideDateAndPlatforms = styled.div`
   display: flex;
@@ -125,7 +135,7 @@ font-weight: 600;
 const CarouselSlideAddToSelectMenu = styled.select`
 width: min-content;
 height: 40px;
-margin-top: calc(1em + (1.3vw - 0.5vmin));
+margin-top: calc(1em + (1.3vw - 0.6vmin));
 padding: 10px 0 11px 15px;
 border: 0;
 border-radius: 4px;
@@ -141,18 +151,15 @@ appearance: none;
 &:hover {
   cursor: pointer;
 }
-`
 
+@media screen and (min-width: 1440px) {
+  margin-top: 2em;
+}
+`
 const CarouselSlideAddToSelectMenuOptions = styled.option`
   padding-right: 1em;
   color: #666;
   font-size: 1.2em;
-`
-
-const CarouselSlideImage = styled.img`
-width: 100vw;
-height: 42vw;
-object-fit: cover;
 `
 
 const CarouselControls = styled.div``;
@@ -166,8 +173,7 @@ const CarouselSlide = ({slide}) => {
   max-width: 1440px;
   height: 42vmax;
   background: linear-gradient(90deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%), url(${slide.image}) no-repeat;
-  background-position: center center;
-  background-size: cover;
+  background-size: 100%;
   box-shadow: inset 0 0 150px #000;
 `;
 
@@ -199,8 +205,6 @@ const CarouselSlide = ({slide}) => {
     </CarouselSlideListItem>
   );
 };
-
-const SlideLink = styled.a``;
 
 const Carousel = () => {
   return (
