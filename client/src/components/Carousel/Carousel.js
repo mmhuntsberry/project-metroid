@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "@emotion/styled";
 
 const slideData = [
   {
-    title: "The Legend of Zelda: Link's Awakening",
+    title: "The Legend of Zelda:",
+    subtitle: "Link's Awakening",
     developer: "Nintendo EAD",
     releaseDate: "6th June, 1993",
     platforms: [
@@ -12,7 +13,7 @@ const slideData = [
         full: "Game Boy",
       },
     ],
-    image: "https://live.staticflickr.com/7449/9309229943_44b68c376e_k.jpg",
+    image: "https://res.cloudinary.com/dfbyrhgyx/image/upload/v1591752322/hero-links-awakening_sfgrtc.jpg"
   },
   // {
   //   title: "Sable",
@@ -55,21 +56,26 @@ const slideData = [
 ];
 
 const CarouselContainer = styled.div`
-  display: none;
+display: none;
+color: #fff;
 
-  @media screen and (min-width: 768px) {
-    display: block;
-    max-width: 1440px;
-    height: 42vw;
-    max-height: 600px;
-    margin: 0 1em;
-    overflow: hidden;
-  }
+@media screen and (min-width: 768px) {
+  display: block;
+  /* max-width: 1440px;
+  height: 586px;
+  max-height: 600px;
+  margin: 0 1em;
+  overflow: hidden; */
+}
+
+@media screen and (min-width: 1440px) {
+  margin: 0 1em;
+}
 `;
 
 const CarouselSlideList = styled.ul`
   position: relative;
-  color: #fff;
+  margin: 0;
   list-style: none;
 `;
 
@@ -91,12 +97,26 @@ const CarouselSlideTitle = styled.h2`
   position: relative;
   margin: 0;
   font-family: "Fira Sans", sans-serif;
-  font-size: calc(1em + (3vw - 0.5vmin));
+  font-size: calc(1em + (3vw - 0.3vmin));
   font-weight: 700;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
 
   @media screen and (min-width: 1440px) {
     font-size: 3.5em;
+  }
+`
+
+const CarouselSlideSubtitle = styled.h3`
+  position: relative;
+  margin: 0;
+  color: #d2d2d4;
+  font-family: "Fira Sans", sans-serif;
+  font-size: calc(0.5em + (3vw - 0.5vmin));
+  font-weight: 600;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+
+  @media screen and (min-width: 1440px) {
+    font-size: 2.8em;
   }
 `
 
@@ -164,16 +184,29 @@ const CarouselSlideAddToSelectMenuOptions = styled.option`
 
 const CarouselControls = styled.div``;
 
-const CarouselSlide = ({slide}) => {
+const showAddToMenu = () => {
+  return (
+    <CarouselSlideAddToSelectMenu>
+      <CarouselSlideAddToSelectMenuOptions value="" hidden>Add to</CarouselSlideAddToSelectMenuOptions>
+      <CarouselSlideAddToSelectMenuOptions value="1">Collection</CarouselSlideAddToSelectMenuOptions>
+      <CarouselSlideAddToSelectMenuOptions value="2">Owned Games</CarouselSlideAddToSelectMenuOptions>
+    </CarouselSlideAddToSelectMenu>
+  )
+}
 
-  const CarouselSlideListItem = styled.li`
-  position: absolute;
-  left: 0;
-  width: 100%;
-  max-width: 1440px;
-  height: 42vmax;
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%), url(${slide.image}) no-repeat;
-  background-size: 100%;
+const CarouselSlide = ({slide}) => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+  const CarouselSlideListItem = styled.div`
+  position: relative;
+  /* left: 0; */
+  /* width: 100%; */
+  /* max-width: 1440px; */
+  height: 0;
+  padding-top: calc((614 / 1440) * 100%);
+  overflow: hidden;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%),url(${slide.image}) no-repeat;
+  background-size: cover;
   box-shadow: inset 0 0 150px #000;
 `;
 
@@ -184,6 +217,9 @@ const CarouselSlide = ({slide}) => {
         <CarouselSlideTitle>
           {slide.title}
         </CarouselSlideTitle>
+        <CarouselSlideSubtitle>
+          {slide.subtitle ? slide.subtitle : null}
+        </CarouselSlideSubtitle>
         <CarouselSlideDeveloper>
           {slide.developer}
         </CarouselSlideDeveloper>
@@ -191,15 +227,9 @@ const CarouselSlide = ({slide}) => {
         <CarouselSlideDate>
           {slide.releaseDate}
         </CarouselSlideDate>
-        {slide.platforms.map(platform => {
-          return <CarouselSlidePlatform title={platform.full}>{platform.short}</CarouselSlidePlatform>
-        })}
+        {slide.platforms.map(platform => ( <CarouselSlidePlatform title={platform.full}>{platform.short}</CarouselSlidePlatform> ))}
         </CarouselSlideDateAndPlatforms>
-        <CarouselSlideAddToSelectMenu>
-          <CarouselSlideAddToSelectMenuOptions value="" hidden>Add to</CarouselSlideAddToSelectMenuOptions>
-          <CarouselSlideAddToSelectMenuOptions value="1">Collection</CarouselSlideAddToSelectMenuOptions>
-          <CarouselSlideAddToSelectMenuOptions value="2">Owned Games</CarouselSlideAddToSelectMenuOptions>
-        </CarouselSlideAddToSelectMenu>
+        {isLoggedIn ? showAddToMenu() : null}
       </CarouselSlideInfo>
       {/* <CarouselSlideImage src={slide.image} /> */}
     </CarouselSlideListItem>
@@ -207,13 +237,14 @@ const CarouselSlide = ({slide}) => {
 };
 
 const Carousel = () => {
+
   return (
     <CarouselContainer>
-      <CarouselSlideList>
+      {/* <CarouselSlideList> */}
         {slideData.map((slide, i) => {
           return <CarouselSlide slide={slide} key={i} />;
         })}
-      </CarouselSlideList>
+      {/* </CarouselSlideList> */}
     </CarouselContainer>
   );
 };
