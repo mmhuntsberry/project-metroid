@@ -1,0 +1,75 @@
+type Query {
+  game: Game!
+  games: [Game!]!
+  user: User!
+  users: [User!]!
+  reviews: [Review!]!
+  theme: Theme!
+  themes: [Theme!]!
+  platform: Platform!
+  platforms: [Platform!]!
+  genre: Genre!
+  genres: [Genre!]!
+  ratings: [Rating!]!
+}
+
+type Mutation {
+  createUser(name: String!, email: String!): User!
+  createGame(title: String!, platform: String!, rating: Float): Game!
+  createReview(
+    review: String!
+    published: Boolean!
+    game: ID!
+    user: ID!
+  ): Review!
+}
+
+type Game {
+  id: ID!
+  title: String!
+  releaseYear: Int
+  platform: String!
+  rating: Float
+  genres: [Genre!]!
+  src: String
+  reviews: [Review!]!
+}
+
+type Review {
+  id: ID!
+  review: String!
+  game: Game!
+  user: User!
+}
+
+type User {
+  id: ID!
+  name: String
+  email: String
+  collection: [Game]
+  reviews: [Review]
+}
+
+type Theme {
+  id: ID!
+  type: String!
+  games: [Game]
+}
+
+type Platform {
+  id: ID!
+  name: String!
+  games: [Game]
+}
+
+type Genre {
+  id: ID!
+  type: String!
+  games: [Game]
+}
+
+type Rating {
+  id: ID!
+  rating: Float!
+  games: [Game]
+}

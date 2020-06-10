@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "start": "babel-node src/index.js",
-    "dev": "nodemon src/index.js --exec babel-node"
+    "dev": "nodemon src/index.js --ext js,graphql --exec babel-node"
   },
   "dependencies": {
     "babel-cli": "^6.26.0",
