@@ -5,32 +5,32 @@ import { Link } from "react-router-dom";
 
 const SignUpButton = styled.button`
   min-width: fit-content;
-  background: linear-gradient(90deg, #1fee7e -64.29%, #2386bd 166.07%), #c4c4c4;
+  padding: 0.625em 1.4375em;
   border: 0;
   border-radius: 5px;
-  padding: 0.625em 1.4375em;
-  text-transform: uppercase;
-  font-weight: 600;
+  background: linear-gradient(90deg, #1fee7e -64.29%, #2386bd 166.07%), #c4c4c4;
   color: #fff;
-  text-shadow: 1px 1px 1px #0000001a;
   font-size: 1.03em;
+  font-weight: 600;
   letter-spacing: 1px;
+  text-shadow: 1px 1px 1px #0000001a;
+  text-transform: uppercase;
 `;
 
 const AppTitle = styled.h2`
-  font-weight: normal;
-  font-size: 1.1em;
   color: #28c7b7;
+  font-size: 1.1em;
+  font-weight: normal;
 `;
 
 const SearchBar = styled.input`
   width: 100%;
   height: 32px;
+  padding-left: 2.5em;
   border: 0;
   border-radius: 5px;
   background-color: #323649;
   color: #a8b6c6;
-  padding-left: 2.5em;
   font-size: 1em;
   font-weight: 400;
 `;
