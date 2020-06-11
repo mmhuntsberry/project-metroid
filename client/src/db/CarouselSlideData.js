@@ -53,3 +53,4 @@ const CarouselSlideData = [
   ]
 
   export default CarouselSlideData;
+  
