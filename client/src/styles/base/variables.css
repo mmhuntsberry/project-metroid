@@ -60,7 +60,6 @@
   --dark-theme-bg-secondary: var(--green);
   --dark-theme-bg-tertiary: var(--pink);
   --dark-theme-platform-primary: var(--dark-red);
-  --light-theme-error: var(--error-01);
 
   /* Break points */
   --xs-breakpoint: 320px;

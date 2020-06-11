@@ -6,7 +6,7 @@
 @import "./styles/base/variables.css";
 
 /*  override default outline styling */
-@media screen and (min-width: var(--max-breakpoint)) {
+@media screen and (min-width: 1440px) {
   .app {
     display: grid;
     max-width: var(--max-breakpoint);
