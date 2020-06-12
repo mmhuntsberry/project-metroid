@@ -10,7 +10,7 @@ const CarouselContainer = styled.div`
     display: block;
   }
 
-  ${mq[5]} {
+  ${mq[6]} {
     margin: 0 var(--spacing-04);
   }
 `;
@@ -30,7 +30,7 @@ const CarouselSlideInfo = styled.div`
   flex-direction: column;
   width: 80%;
 
-  ${mq[5]} {
+  ${mq[6]} {
     top: var(--layout-07);
   }
 `;
@@ -43,7 +43,7 @@ const CarouselSlideTitle = styled.h2`
   font-weight: var(--font-weight-bold);
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
 
-  ${mq[5]} {
+  ${mq[6]} {
     font-size: var(--title-font-size-12);
   }
 `;
@@ -57,7 +57,7 @@ const CarouselSlideSubtitle = styled.h3`
   font-weight: var(--font-weight-bold);
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
 
-  ${mq[5]} {
+  ${mq[6]} {
     font-size: var(--title-font-size-11);
   }
 `;
@@ -69,7 +69,7 @@ const CarouselSlideDeveloper = styled.span`
   font-size: calc(1em + (1vw - 0.6vmin));
   font-style: var(--empasized);
 
-  ${mq[5]} {
+  ${mq[6]} {
     font-size: var(--title-font-size-06);
   }
 `;
@@ -114,7 +114,7 @@ const CarouselSlideAddToSelectMenu = styled.select`
     cursor: pointer;
   }
 
-  ${mq[5]} {
+  ${mq[6]} {
     margin-top: var(--spacing-07);
   }
 `;
