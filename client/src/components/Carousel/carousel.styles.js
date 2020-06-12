@@ -38,7 +38,7 @@ const CarouselSlideInfo = styled.div`
 const CarouselSlideTitle = styled.h2`
   position: relative;
   margin: 0;
-  font-family: var(--font-family-primary);
+  font-family: var(--title-font-family-secondary);
   font-size: calc(1em + (3vw - 0.3vmin));
   font-weight: var(--font-weight-bold);
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
@@ -52,7 +52,7 @@ const CarouselSlideSubtitle = styled.h3`
   position: relative;
   margin: 0;
   color: var(--grey-01);
-  font-family: var(--font-family-primary);
+  font-family: var(--title-font-family-secondary);
   font-size: calc(0.5em + (3vw - 0.5vmin));
   font-weight: var(--font-weight-bold);
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
@@ -65,9 +65,9 @@ const CarouselSlideSubtitle = styled.h3`
 const CarouselSlideDeveloper = styled.span`
   margin-top: var(--spacing-02);
   color: var(--dark-theme-bg-tertiary);
-  font-family: var(--font-family-tertiary);
+  font-family: var(--title-font-family-tertiary);
   font-size: calc(1em + (1vw - 0.6vmin));
-  font-style: var(--empasized);
+  font-style: var(--emphasized);
 
   ${mq[6]} {
     font-size: var(--title-font-size-06);
@@ -89,7 +89,7 @@ const CarouselSlidePlatform = styled.span`
   margin-right: var(--spacing-02);
   padding: var(--spacing-01) var(--spacing-03);
   border-radius: 0.25em;
-  background: var(--dark-theme-platform-primary);
+  background: ${(props) => `var(--platform-${props.color.toLowerCase()})`};
   font-size: var(--body-font-size-02);
   font-weight: var(--font-weight-bold);
 `;
