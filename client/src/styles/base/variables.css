@@ -36,7 +36,7 @@
   --font-weight-bolder: 700;
 
   /* spacing */
-  --spacing-01: 0.25em; /* 4px */
+  --spacing-01: 0.25em;
   --spacing-02: 0.5em; /*8px */
   --spacing-03: 0.75em; /* 12px */
   --spacing-04: 1em; /* 16px */
