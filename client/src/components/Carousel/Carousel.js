@@ -46,7 +46,7 @@ const CarouselSlide = ({ slide }) => {
         <CarouselSlideDateAndPlatforms>
           <CarouselSlideDate>{slide.releaseDate}</CarouselSlideDate>
           {slide.platforms.map((platform) => (
-            <CarouselSlidePlatform title={platform.full}>
+            <CarouselSlidePlatform title={platform.full} color={platform.short}>
               {platform.short}
             </CarouselSlidePlatform>
           ))}
