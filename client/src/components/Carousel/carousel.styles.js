@@ -8,14 +8,9 @@ const CarouselContainer = styled.div`
 
   ${mq[2]} {
     display: block;
-    /* max-width: 1440px;
-  height: 586px;
-  max-height: 600px;
-  margin: 0 1em;
-  overflow: hidden; */
   }
 
-  ${mq[5]} {
+  ${mq[6]} {
     margin: 0 var(--spacing-04);
   }
 `;
@@ -35,7 +30,7 @@ const CarouselSlideInfo = styled.div`
   flex-direction: column;
   width: 80%;
 
-  ${mq[5]} {
+  ${mq[6]} {
     top: var(--layout-07);
   }
 `;
@@ -48,7 +43,7 @@ const CarouselSlideTitle = styled.h2`
   font-weight: var(--font-weight-bold);
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
 
-  ${mq[5]} {
+  ${mq[6]} {
     font-size: var(--title-font-size-12);
   }
 `;
@@ -62,7 +57,7 @@ const CarouselSlideSubtitle = styled.h3`
   font-weight: var(--font-weight-bold);
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
 
-  ${mq[5]} {
+  ${mq[6]} {
     font-size: var(--title-font-size-11);
   }
 `;
@@ -74,7 +69,7 @@ const CarouselSlideDeveloper = styled.span`
   font-size: calc(1em + (1vw - 0.6vmin));
   font-style: var(--empasized);
 
-  ${mq[5]} {
+  ${mq[6]} {
     font-size: var(--title-font-size-06);
   }
 `;
@@ -119,7 +114,7 @@ const CarouselSlideAddToSelectMenu = styled.select`
     cursor: pointer;
   }
 
-  ${mq[5]} {
+  ${mq[6]} {
     margin-top: var(--spacing-07);
   }
 `;
@@ -141,14 +136,12 @@ const CarouselSlideListItem = styled.div`
   height: 0;
   padding-top: calc((614 / 1440) * 100%);
   overflow: hidden;
-  background: linear-gradient(
-      to bottom left,
-      rgba(0, 0, 0, 0.5) 0%,
-      rgb(23, 24, 36, 0.7) 50%,
-      rgb(23, 24, 36, 1) 100%
-    ),
+  background: linear-gradient(to bottom left,
+  rgba(0, 0, 0, 0.5) 0%,
+  rgb(23, 24, 36, 0.7) 50%,
+  rgb(23, 24, 36, 1) 100%),
     url("https://res.cloudinary.com/dfbyrhgyx/image/upload/v1591752322/hero-links-awakening_sfgrtc.jpg")
-      no-repeat;
+    no-repeat;
   background-size: cover;
   box-shadow: inset 0 0 150px #000;
 `;
