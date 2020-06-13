@@ -1,31 +1,38 @@
-[{
-        "img": "https://images.igdb.com/igdb/image/upload/t_cover_big/co1qxr.jpg",
-        "title": "Final Fantasy VII Remake",
-        "developer": "Square Enix"
-    },
-    {
-        "img": "https://images.igdb.com/igdb/image/upload/t_cover_big/co233r.jpg",
-        "title": "Minecraft Dungeons",
-        "developer": "Mojang Studios"
-    },
-    {
-        "img": "https://images.igdb.com/igdb/image/upload/t_cover_big/co27kt.jpg",
-        "title": "Xenoblade Chronicles: Definitive Edition",
-        "developer": "Monolith Soft"
-    },
-    {
-        "img": "https://images.igdb.com/igdb/image/upload/t_cover_big/co20n4.jpg",
-        "title": "Black Mesa",
-        "developer": "Crowbar Collective"
-    },
-    {
-        "img": "https://images.igdb.com/igdb/image/upload/t_cover_big/co1i6y.jpg",
-        "title": "Indivisible",
-        "developer": "Lab Zero Games"
-    },
-    {
-        "img": "https://images.igdb.com/igdb/image/upload/t_cover_big/co1y45.jpg",
-        "title": "Treachery in Beatdown City",
-        "developer": "Nuchallenger"
-    }
+[
+  {
+    "id": "1",
+    "img": "https://images.igdb.com/igdb/image/upload/t_cover_big/co1qxr.jpg",
+    "title": "Final Fantasy VII Remake",
+    "developer": "Square Enix"
+  },
+  {
+    "id": "2",
+    "img": "https://images.igdb.com/igdb/image/upload/t_cover_big/co233r.jpg",
+    "title": "Minecraft Dungeons",
+    "developer": "Mojang Studios"
+  },
+  {
+    "id": "3",
+    "img": "https://images.igdb.com/igdb/image/upload/t_cover_big/co27kt.jpg",
+    "title": "Xenoblade Chronicles: Definitive Edition",
+    "developer": "Monolith Soft"
+  },
+  {
+    "id": "4",
+    "img": "https://images.igdb.com/igdb/image/upload/t_cover_big/co20n4.jpg",
+    "title": "Black Mesa",
+    "developer": "Crowbar Collective"
+  },
+  {
+    "id": "5",
+    "img": "https://images.igdb.com/igdb/image/upload/t_cover_big/co1i6y.jpg",
+    "title": "Indivisible",
+    "developer": "Lab Zero Games"
+  },
+  {
+    "id": "6",
+    "img": "https://images.igdb.com/igdb/image/upload/t_cover_big/co1y45.jpg",
+    "title": "Treachery in Beatdown City",
+    "developer": "Nuchallenger"
+  }
 ]

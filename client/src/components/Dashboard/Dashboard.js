@@ -17,9 +17,9 @@ const Dashboard = () => {
       <Notice />
       <RowTitle>Popular</RowTitle>
       <CardRowGrid>
-        {popularGameCardData.map((card, i) => (
+        {popularGameCardData.map((card) => (
           <GameCard
-            key={i}
+            key={card.id}
             img={card.img}
             title={card.title}
             developer={card.developer}
@@ -28,15 +28,15 @@ const Dashboard = () => {
       </CardRowGrid>
       <RowTitle>Project Metroid Lets You</RowTitle>
       <CardRow>
-        {infoCardData.map((card, i) => {
-          return <InfoCard key={i} icon={card.icon} copy={card.copy} />;
+        {infoCardData.map((card) => {
+          return <InfoCard key={card.id} icon={card.icon} copy={card.copy} />;
         })}
       </CardRow>
       <RowTitle>Recent Reviews</RowTitle>
       <CardRowGrid>
-        {recentReviewsCardData.map((card, i) => (
+        {recentReviewsCardData.map((card) => (
           <GameCard
-            key={i}
+            key={card.id}
             img={card.img}
             title={card.title}
             developer={card.developer}
@@ -45,9 +45,9 @@ const Dashboard = () => {
       </CardRowGrid>
       <RowTitle>Newest Trailers</RowTitle>
       <CardRowGrid>
-        {newestTrailersCardData.map((card, i) => (
+        {newestTrailersCardData.map((card) => (
           <TrailerCard
-            key={i}
+            key={card.id}
             thumbnail={card.thumbnail}
             title={card.title}
             creator={card.creator}

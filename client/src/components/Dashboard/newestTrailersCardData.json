@@ -1,17 +1,20 @@
-[{
+[
+  {
+    "id": "1",
     "thumbnail": "http://i3.ytimg.com/vi/2TMs2E6cms4/maxresdefault.jpg",
     "title": "Demon's Souls",
     "creator": "Playstation"
-
-},
-{
+  },
+  {
+    "id": "2",
     "thumbnail": "http://i3.ytimg.com/vi/RkC0l4iekYo/maxresdefault.jpg",
     "title": "PS5 Hardware Reveal Trailer",
     "creator": "Playstation"
-},
-{
+  },
+  {
+    "id": "3",
     "thumbnail": "http://i3.ytimg.com/vi/gHzuHo80U2M/maxresdefault.jpg",
     "title": "Marvel's Spider-Man: Miles Morales - Announcement Trailer | PS5",
     "creator": "Playstation"
-}
+  }
 ]
