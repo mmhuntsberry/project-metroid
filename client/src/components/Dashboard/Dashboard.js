@@ -6,10 +6,12 @@ import { default as popularGameCardData } from "./popularGameCardData.json";
 import { default as infoCardData } from "./infoCardData.json";
 import { default as recentReviewsCardData } from "./recentReviewsCardData.json";
 import GameCard from "../GameCard/GameCard";
+import Carousel from "../Carousel";
 
 const Dashboard = () => {
   return (
     <div className="page-wrapper">
+      <Carousel />
       <Notice />
       <RowTitle>Popular</RowTitle>
       <CardRowGrid>

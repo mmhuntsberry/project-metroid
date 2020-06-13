@@ -1,0 +1,29 @@
+/* stylelint-disable selector-max-type */
+
+* {
+  box-sizing: border-box;
+}
+
+/* custom focus outline */
+*:focus {
+  outline: 0;
+  box-shadow: 0 0 4px 1px var(--dark-theme-bg-secondary);
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  font-family: var(--body-font-family-primary);
+  font-size: 16px;
+}
+
+body {
+  background-color: var(--dark-theme-bg-primary);
+}
+
+button,
+select {
+  cursor: pointer;
+}
+
+/* stylelint-enable selector-max-type */
