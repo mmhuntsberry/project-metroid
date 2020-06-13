@@ -14,7 +14,7 @@ import {
   CarouselContainer,
   CarouselSlideListItem,
 } from "./carousel.styles";
-import CarouselSlideData from "../../db/CarouselSlideData"
+import CarouselSlideData from "../../db/CarouselSlideData";
 
 const showAddToMenu = () => {
   return (
@@ -46,7 +46,7 @@ const CarouselSlide = ({ slide }) => {
         <CarouselSlideDateAndPlatforms>
           <CarouselSlideDate>{slide.releaseDate}</CarouselSlideDate>
           {slide.platforms.map((platform) => (
-            <CarouselSlidePlatform title={platform.full} color={platform.short}>
+            <CarouselSlidePlatform title={platform.full} color={platform.short} key={platform.full}>
               {platform.short}
             </CarouselSlidePlatform>
           ))}
