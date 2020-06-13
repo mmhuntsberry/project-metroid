@@ -8,8 +8,11 @@ export const games = [
     synopsis:
       "A spectacular re-imagining of one of the most visionary games ever,  Final Fantasy VII Remake rebuilds and expands the legendary RPG for today.  The first game in this project will be set in the eclectic city of Midgar and presents a fully standalone gaming experience.",
     description:
-      "Description: The world has fallen under the control of the Shinra Electric Power Company, a shadowy corporation controlling the planet’s very life force as mako energy.n the sprawling city of Midgar, an anti-Shinra organization calling themselves  Avalanche have stepped up their resistance. Cloud Strife, a former member of Shinra’s elite SOLDIER unit now turned mercenary, lends his aid to the group, unaware of the epic consequences that await him.",
-    trailer: "",
+      `Description: The world has fallen under the control of the Shinra Electric Power Company, 
+a shadowy corporation controlling the planet’s very life force as mako energy.
+
+In the sprawling city of Midgar, an anti-Shinra organization calling themselves  Avalanche have stepped up their resistance. Cloud Strife, a former member of Shinra’s elite SOLDIER unit now turned mercenary, lends his aid to the group, unaware of the epic consequences that await him.   `,
+    trailer: "https://youtu.be/QLYyWAqTTAo",
     // hero:
     //   "https://res.cloudinary.com/mattthebunny/image/upload/c_scale,f_auto,w_1440/v1592012891/ffvii_nseyzy.jpg",
     hero:

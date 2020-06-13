@@ -5,6 +5,12 @@ import {
   HeroTextContainer,
   HeroTitle,
   HeroDetails,
+  BoxArt,
+  BodyContainer,
+  GameDetailsContainer,
+  GameDescription,
+  GameSynopsis,
+  GameTrailer,
 } from "./game.styles.js";
 import { games } from "../../db/games.js";
 
@@ -20,7 +26,26 @@ const GamePage: FunctionComponent = () => {
           </HeroTextContainer>
           <HeroImage image={game.hero} />
         </Hero>
-        <img src={game.box_art} />
+        <BodyContainer>
+          <BoxArt src={game.box_art} />
+          <GameDetailsContainer>
+            <GameSynopsis>
+              {game.synopsis}
+            </GameSynopsis>
+            <GameDescription>
+              {game.description}
+            </GameDescription>
+            <iframe
+              width="100%"
+              height="640"
+              src="https://www.youtube.com/embed/QLYyWAqTTAo"
+              frameborder="0"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            >
+            </iframe>;
+          </GameDetailsContainer>
+        </BodyContainer>
       </div>
     ))
   );
