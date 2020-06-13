@@ -14,6 +14,38 @@
   --dark-red: #951010;
   --red: #f00;
 
+  /* platform colors */
+  --platform-nes: #eb3f0f;
+  --platform-snes: #8775a8;
+  --platform-n64: #f0ac00;
+  --platform-gcn: #505abf;
+  --platform-wii: #0eb5e9;
+  --platform-wiiu: #009ac7;
+  --platform-nsw: #e70012;
+  --platform-fam: #7f0708;
+  --platform-sfc: #06ab69;
+  --platform-gb: #872944;
+  --platform-gbc: #9668a8;
+  --platform-gba: #5d60a8;
+  --platform-nds: #004cd9;
+  --platform-dsi: #26b5d3;
+  --platform-3ds: #cf181d;
+  --platform-n3ds: #ce017c;
+  --platform-sms: #ce4636;
+  --platform-sg: #ab1b01;
+  --platform-sat: #b64672;
+  --platform-dc: #f46a3c;
+  --platform-smd: #00a23f;
+  --platform-gg: #d2469f;
+  --platform-ps1: #00ac9f;
+  --platform-ps2: #3a46ea;
+  --platform-ps3: #aa343c;
+  --platform-ps4: #0151a1;
+  --platform-ps5: #0646de;
+  --platform-psp: #894097;
+  --platform-vita: #006bb9;
+  --platform-other: #4f5e83;
+
   /* action colors */
   --error-01: var(--red);
 
