@@ -6,6 +6,26 @@
 @import "./styles/base/variables.css";
 
 /*  override default outline styling */
+
+/* stylelint-disable value-no-vendor-prefix, property-no-vendor-prefix */
+/* These styles clip text after
+   the specified line number and add an ellipsis */
+.card-truncate--one-line,
+.card-truncate--two-lines {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-truncate--one-line {
+  -webkit-line-clamp: 1;
+}
+
+.card-truncate--two-lines {
+  -webkit-line-clamp: 2;
+}
+/* stylelint-enable value-no-vendor-prefix, property-no-vendor-prefix*/
+
 @media screen and (min-width: 1440px) {
   .app {
     display: grid;

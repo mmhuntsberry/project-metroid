@@ -1,31 +1,38 @@
-[{
-        "img": "https://images.igdb.com/igdb/image/upload/t_cover_big/co1zm0.jpg",
-        "title": "Pokémon Mystery Dungeon: Rescue Team DX",
-        "developer": "Chunsoft"
-    },
-    {
-        "img": "https://images.igdb.com/igdb/image/upload/t_cover_big/co22l7.jpg",
-        "title": "Resident Evil 3",
-        "developer": "Capcom"
-    },
-    {
-        "img": "https://images.igdb.com/igdb/image/upload/t_cover_big/co20pk.jpg",
-        "title": "Streets of Rage 4",
-        "developer": "Lizardcube"
-    },
-    {
-        "img": "https://images.igdb.com/igdb/image/upload/t_cover_big/co1lvj.jpg",
-        "title": "Doom Eternal",
-        "developer": "id Software"
-    },
-    {
-        "img": "https://images.igdb.com/igdb/image/upload/t_cover_big/co1rft.jpg",
-        "title": "Cyberpunk 2077",
-        "developer": "CD Projeckt RED"
-    },
-    {
-        "img": "https://images.igdb.com/igdb/image/upload/t_cover_big/co27kt.jpg",
-        "title": "Xenoblade Chronicles: Definitive Edition",
-        "developer": "Monolith Soft"
-    }
+[
+  {
+    "id": "1",
+    "img": "https://images.igdb.com/igdb/image/upload/t_cover_big/co1zm0.jpg",
+    "title": "Pokémon Mystery Dungeon: Rescue Team DX",
+    "developer": "Chunsoft"
+  },
+  {
+    "id": "2",
+    "img": "https://images.igdb.com/igdb/image/upload/t_cover_big/co22l7.jpg",
+    "title": "Resident Evil 3",
+    "developer": "Capcom"
+  },
+  {
+    "id": "3",
+    "img": "https://images.igdb.com/igdb/image/upload/t_cover_big/co20pk.jpg",
+    "title": "Streets of Rage 4",
+    "developer": "Lizardcube"
+  },
+  {
+    "id": "4",
+    "img": "https://images.igdb.com/igdb/image/upload/t_cover_big/co1lvj.jpg",
+    "title": "Doom Eternal",
+    "developer": "id Software"
+  },
+  {
+    "id": "5",
+    "img": "https://images.igdb.com/igdb/image/upload/t_cover_big/co1rft.jpg",
+    "title": "Cyberpunk 2077",
+    "developer": "CD Projeckt RED"
+  },
+  {
+    "id": "6",
+    "img": "https://images.igdb.com/igdb/image/upload/t_cover_big/co27kt.jpg",
+    "title": "Xenoblade Chronicles: Definitive Edition",
+    "developer": "Monolith Soft"
+  }
 ]

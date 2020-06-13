@@ -5,7 +5,9 @@ import { CardRow, CardRowGrid, RowTitle } from "./Dashboard.styles";
 import { default as popularGameCardData } from "./popularGameCardData.json";
 import { default as infoCardData } from "./infoCardData.json";
 import { default as recentReviewsCardData } from "./recentReviewsCardData.json";
+import { default as newestTrailersCardData } from "./newestTrailersCardData.json"
 import GameCard from "../GameCard/GameCard";
+import TrailerCard from "../TrailerCard"
 import Carousel from "../Carousel";
 
 const Dashboard = () => {
@@ -15,9 +17,9 @@ const Dashboard = () => {
       <Notice />
       <RowTitle>Popular</RowTitle>
       <CardRowGrid>
-        {popularGameCardData.map((card, i) => (
+        {popularGameCardData.map((card) => (
           <GameCard
-            key={i}
+            key={card.id}
             img={card.img}
             title={card.title}
             developer={card.developer}
@@ -26,18 +28,29 @@ const Dashboard = () => {
       </CardRowGrid>
       <RowTitle>Project Metroid Lets You</RowTitle>
       <CardRow>
-        {infoCardData.map((card, i) => {
-          return <InfoCard key={i} icon={card.icon} copy={card.copy} />;
+        {infoCardData.map((card) => {
+          return <InfoCard key={card.id} icon={card.icon} copy={card.copy} />;
         })}
       </CardRow>
       <RowTitle>Recent Reviews</RowTitle>
       <CardRowGrid>
-        {recentReviewsCardData.map((card, i) => (
+        {recentReviewsCardData.map((card) => (
           <GameCard
-            key={i}
+            key={card.id}
             img={card.img}
             title={card.title}
             developer={card.developer}
+          />
+        ))}
+      </CardRowGrid>
+      <RowTitle>Newest Trailers</RowTitle>
+      <CardRowGrid>
+        {newestTrailersCardData.map((card) => (
+          <TrailerCard
+            key={card.id}
+            thumbnail={card.thumbnail}
+            title={card.title}
+            creator={card.creator}
           />
         ))}
       </CardRowGrid>
