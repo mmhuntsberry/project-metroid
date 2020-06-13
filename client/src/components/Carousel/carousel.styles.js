@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { mq } from "../../styles/utilities/breakpoints";
+import { mq } from "../../styles/utilities/breakpoints.js";
 import caret from "../../assests/image-background-landing-hero-button.svg";
 
 const CarouselContainer = styled.div`
