@@ -5,7 +5,9 @@ import { CardRow, CardRowGrid, RowTitle } from "./Dashboard.styles";
 import { default as popularGameCardData } from "./popularGameCardData.json";
 import { default as infoCardData } from "./infoCardData.json";
 import { default as recentReviewsCardData } from "./recentReviewsCardData.json";
+import { default as newestTrailersCardData } from "./newestTrailersCardData.json"
 import GameCard from "../GameCard/GameCard";
+import TrailerCard from "../TrailerCard"
 import Carousel from "../Carousel";
 
 const Dashboard = () => {
@@ -38,6 +40,17 @@ const Dashboard = () => {
             img={card.img}
             title={card.title}
             developer={card.developer}
+          />
+        ))}
+      </CardRowGrid>
+      <RowTitle>Newest Trailers</RowTitle>
+      <CardRowGrid>
+        {newestTrailersCardData.map((card, i) => (
+          <TrailerCard
+            key={i}
+            thumbnail={card.thumbnail}
+            title={card.title}
+            creator={card.creator}
           />
         ))}
       </CardRowGrid>
