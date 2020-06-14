@@ -33,10 +33,6 @@ export const HeroTextContainer = styled.div`
   align-items: baseline;
   margin-left: 16px;
 
-  ${mq[1]} {
-    margin-left: 62px;
-  }
-
   ${mq[2]} {
     margin-left: 124px;
   }
@@ -58,7 +54,7 @@ export const HeroDetails = styled.span`
   color: #979797;
   font-size: 20px;
   font-weight: var(--weight);
- 
+
   ${mq[2]} {
     display: block;
   }
@@ -68,8 +64,6 @@ export const HeroDetails = styled.span`
     padding-right: 24px;
     border-right: 2px solid #979797;
   }
-  
-
 `;
 
 export const BodyContainer = styled.div`
@@ -78,10 +72,6 @@ export const BodyContainer = styled.div`
   color: var(--white);
   line-height: 1.5;
 
-  ${mq[1]} {
-    margin-left: 62px;
-  }
-  
   ${mq[2]} {
     grid-template-columns: 1fr 3fr;
     margin-left: 124px;
@@ -95,6 +85,15 @@ export const BoxArt = styled.img`
 
 export const GameDetailsContainer = styled.div`
   margin-top: 24px;
+  margin-right: 20px;
+
+  ${mq[2]} {
+    margin: 0 20px;
+  }
+  
+  ${mq[6]} {
+    margin: 0;
+  }
 `;
 
 export const GameSynopsis = styled.p``;
@@ -103,4 +102,66 @@ export const GameDescription = styled.p`
   margin-top: 24px;
 `;
 
-export const GameTrailer = styled.video``;
+export const GameTrailer = styled.iframe`
+width: 100%;
+height: 320px;
+border: 0;
+
+${mq[2]} {
+  height: 640px;
+}
+`;
+
+export const GameSidebar = styled.div``;
+
+export const GameActionWdiget = styled.div``;
+
+export const GameInfo = styled.div`
+  color: var(--white);
+  margin-top: 24px;
+`;
+
+export const InfoContainer = styled.div`
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: baseline;
+  grid-gap: 16px 8px;
+`;
+
+export const GameInfoTitle = styled.h4`
+  font-weight: var(--font-weight-light);
+  display: inline;
+  margin: 0;
+`;
+
+export const GameRating = styled.span`
+  color: var(--dark-theme-bg-tertiary);
+  font-size: var(--body-font-size-05);
+`;
+
+export const GameGenre = styled.div``;
+export const GameTheme = styled.div``;
+export const GamePlatform = styled.div``;
+
+export const ReviewsContainer = styled.div`
+
+`;
+
+export const SectionContainer = styled.div`
+display: flex;
+align-items: baseline;
+justify-content: space-between;
+margin-top: 48px;
+border-bottom: 1px solid var(--white);
+`;
+
+export const SectionTitle = styled.h3`
+font-weight: var(--font-weight-light);
+color: var(--dark-theme-bg-secondary);
+margin-bottom: 8px;
+`;
+
+export const SectionLink = styled.a`
+  text-transform: uppercase;
+  color: var(--dark-theme-bg-quaternary);
+`;
