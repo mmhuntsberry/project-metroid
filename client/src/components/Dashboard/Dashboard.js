@@ -1,7 +1,7 @@
 import React from "react";
 import Notice from "../Notice";
 import InfoCard from "../InfoCard";
-import { CardRow, CardRowGrid, RowTitle } from "./Dashboard.styles";
+import { CardRow, CardRowGrid, TrailerCardRowGrid, RowTitle } from "./Dashboard.styles";
 import { default as popularGameCardData } from "./popularGameCardData.json";
 import { default as infoCardData } from "./infoCardData.json";
 import { default as recentReviewsCardData } from "./recentReviewsCardData.json";
@@ -15,7 +15,7 @@ const Dashboard = () => {
     <div className="page-wrapper">
       <Carousel />
       <Notice />
-      <RowTitle>Popular</RowTitle>
+      <RowTitle className="card-row__title">Popular</RowTitle>
       <CardRowGrid>
         {popularGameCardData.map((card) => (
           <GameCard
@@ -26,13 +26,13 @@ const Dashboard = () => {
           />
         ))}
       </CardRowGrid>
-      <RowTitle>Project Metroid Lets You</RowTitle>
+      <RowTitle className="card-row__title">Project Metroid Lets You</RowTitle>
       <CardRow>
         {infoCardData.map((card) => {
           return <InfoCard key={card.id} icon={card.icon} copy={card.copy} />;
         })}
       </CardRow>
-      <RowTitle>Recent Reviews</RowTitle>
+      <RowTitle className="card-row__title">Recent Reviews</RowTitle>
       <CardRowGrid>
         {recentReviewsCardData.map((card) => (
           <GameCard
@@ -43,8 +43,8 @@ const Dashboard = () => {
           />
         ))}
       </CardRowGrid>
-      <RowTitle>Newest Trailers</RowTitle>
-      <CardRowGrid>
+      <RowTitle className="card-row__title">Newest Trailers</RowTitle>
+      <TrailerCardRowGrid>
         {newestTrailersCardData.map((card) => (
           <TrailerCard
             key={card.id}
@@ -53,7 +53,7 @@ const Dashboard = () => {
             creator={card.creator}
           />
         ))}
-      </CardRowGrid>
+      </TrailerCardRowGrid>
     </div>
   );
 };

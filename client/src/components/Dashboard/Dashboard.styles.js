@@ -20,6 +20,17 @@ const CardRowGrid = styled.div `
     max-width: var(--max-breakpoint);
   }
 `
+const TrailerCardRowGrid = styled.div`
+  display: grid;
+  grid-gap: 1em;
+  grid-template-columns: repeat(1, 1fr);
+  margin: 0 1em;
+
+  @media (min-width: 600px) {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    max-width: var(--max-breakpoint);
+  }
+`
 
 const RowTitle = styled.h2 `
   width: max-content;
@@ -40,5 +51,6 @@ const RowTitle = styled.h2 `
 export {
     CardRow,
     CardRowGrid,
+    TrailerCardRowGrid,
     RowTitle
 };
