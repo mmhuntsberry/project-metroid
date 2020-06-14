@@ -3,17 +3,17 @@ import "../../styles/base/variables.css"
 
 const CardRow = styled.div `
   display: grid;
-  grid-gap: 1em;
+  grid-gap: var(--spacing-04);
   grid-template-columns: repeat(5, 1fr);
-  margin: 0 1em;
+  margin: 0 var(--spacing-04);
   overflow-x: auto;
 `;
 
 const CardRowGrid = styled.div `
   display: grid;
-  grid-gap: 1em;
+  grid-gap: var(--spacing-04);
   grid-template-columns: repeat(2, 1fr);
-  margin: 0 1em;
+  margin: 0 var(--spacing-04);
 
   @media (min-width: 600px) {
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -22,9 +22,9 @@ const CardRowGrid = styled.div `
 `
 const TrailerCardRowGrid = styled.div`
   display: grid;
-  grid-gap: 1em;
+  grid-gap: var(--spacing-04);
   grid-template-columns: repeat(1, 1fr);
-  margin: 0 1em;
+  margin: 0 var(--spacing-04);
 
   @media (min-width: 600px) {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -34,17 +34,17 @@ const TrailerCardRowGrid = styled.div`
 
 const RowTitle = styled.h2 `
   width: max-content;
-  margin-top: 2rem;
-  margin-bottom: 0.5rem;
-  margin-left: 1rem;
+  margin-top: var(--spacing-07);
+  margin-bottom: var(--spacing-02);
+  margin-left: var(--spacing-04);
   color: #28c7b7;
-  font-size: 1.5em;
+  font-size: var(--title-font-size-06);
   font-weight: 500;
   line-height: 1.6;
 
   @media (min-width: 768px) {
-    margin-top: 3.5rem;
-    font-size: 2em;
+    margin-top: var(--spacing-08);
+    font-size: var(--title-font-size-07);
   }
 `;
 
