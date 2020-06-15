@@ -5,6 +5,7 @@ import Browse from "./components/Browse";
 import Discover from "./components/Discover";
 import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route exact path="/discover" component={Discover} />
           <Route exact path="/browse" component={Browse} />
         </Switch>
+        <Footer />
       </div>
     </Router>
   );
