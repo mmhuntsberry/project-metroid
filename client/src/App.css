@@ -8,6 +8,13 @@
 /*  override default outline styling */
 
 /* stylelint-disable value-no-vendor-prefix, property-no-vendor-prefix */
+
+.card-row__title {
+  background: linear-gradient(155.35deg, #1fee7e -28.1%, #2386bd 119.81%);
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 /* These styles clip text after
    the specified line number and add an ellipsis */
 .card-truncate--one-line,
