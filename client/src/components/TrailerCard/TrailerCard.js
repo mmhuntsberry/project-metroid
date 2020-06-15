@@ -2,7 +2,7 @@ import React from "react";
 // import { GameCardContainer, GameCardText } from "./GameCard.styles";
 import styled from "@emotion/styled";
 import "../../styles/base/variables.css"
-import playButton from "../../assests/play-button-overlay.svg";
+import playButton from "../../assets/play-button-overlay.svg";
 
 const TrailerCardContainer = styled.a`
 display: flex;
