@@ -30,7 +30,7 @@ const FooterLink = styled.a`
   font-family: var(--footer-links-family-primary);
   text-decoration: none;
 
-  &:not(:nth-child(1)) {
+  &:not(:nth-of-type(1)) {
     margin-left: var(--spacing-07);
   }
 
