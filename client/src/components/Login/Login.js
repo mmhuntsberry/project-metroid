@@ -13,14 +13,14 @@ const Login = () => {
                 <label for="password"><b>Password</b></label> 
                 <input type="text" placeholder="" name="password" required></input>
                 
-                <a href="">Forgot Password?</a>
+                <a href="#">Forgot Password?</a>
             </div>
 
             <div class="container">
-                {/Add the right route for sign up/}
                 <span>Don't have an account? <a href="#">Sign up</a></span>       
                 <button>LOG IN</button>
             </div>
         </form>
     );
 };
+export default Login;
