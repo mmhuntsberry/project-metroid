@@ -1,39 +1,147 @@
 import React from "react";
 import "./navbar.css";
-import styled from "@emotion/styled";
+import {SignUpButton, AppTitle, SearchBar } from "./Navbar.styles"
 import { Link } from "react-router-dom";
+import styled from "@emotion/styled";
+import searchIcon from "../../assets/nav-search-icon.svg"
+import profileIcon from "../../assets/nav-avatar-default.svg"
+import menuIcon from "../../assets/nav-menu-icon.svg"
 
-const SignUpButton = styled.button`
-  min-width: fit-content;
-  padding: 0.625em 1.4375em;
-  border: 0;
-  border-radius: 5px;
-  background: linear-gradient(90deg, #1fee7e -64.29%, #2386bd 166.07%), #c4c4c4;
-  color: #fff;
-  font-size: 1.03em;
-  font-weight: 600;
-  letter-spacing: 1px;
-  text-shadow: 1px 1px 1px #0000001a;
-  text-transform: uppercase;
-`;
-
-const AppTitle = styled.h2`
-  color: #28c7b7;
-  font-size: 1.1em;
-  font-weight: normal;
-`;
-
-const SearchBar = styled.input`
+const Nav = styled.nav`
+  display: grid;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  grid-template-columns: 64px auto 64px 64px;
+  align-items: center;
   width: 100%;
-  height: 32px;
-  padding-left: 2.5em;
+  height: 64px;
+  background-color: #121216;
+  font-weight: 600;
+  letter-spacing: 0.31px;
+
+  @media screen and (min-width: 768px) {
+    grid-template-columns: max-content minmax(min-content, 400px) max-content auto;
+    background-color: #171823;
+  }
+`
+
+const NavButton = styled.button`
   border: 0;
-  border-radius: 5px;
-  background-color: #323649;
+  background-color: transparent;
   color: #a8b6c6;
-  font-size: 1em;
-  font-weight: 400;
-`;
+
+  ${props => props.searchToggle 
+  ? "grid-column: 1; grid-row: 1;"
+  : null }
+
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+`
+
+const NavLinkContainer = styled.div`
+  position: absolute;
+  z-index: 10;
+  top: 64px;
+  flex-direction: column;
+  width: 100%;
+  margin-right: var(--spacing-04);
+  background-color: #171823;
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+    position: relative;
+    top: unset;
+    flex-direction: row;
+    align-items: center;
+    width: unset;
+  }
+`
+
+const DimOverlay = styled.div`
+  display: none;
+  position: fixed;
+  z-index: -1;
+  width: 100%;
+  height: 100vh;
+  background-color: #000c;
+`
+
+const SearchBarContainer = styled.div`
+  position: absolute;
+  top: 64px;
+  width: 100%;
+  padding: var(--spacing-04);
+  background-color: #171823;
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+    position: relative;
+    top: unset;
+    padding: 0;
+  }
+`
+
+const SearchBarIcon = styled.img`
+  display: none;
+  position: absolute;
+  top: var(--spacing-02);
+  left: var(--spacing-03);
+  width: var(--layout-01);
+  height: var(--layout-01);
+  color: #a8b6c6;
+
+  @media screen and (min-width: 768px) {
+    display: block;
+  }
+`
+
+const NavIcon = styled.img`
+  display: inline-block;
+  width: var(--layout-02);
+  height: var(--layout-02);
+  color: #a8b6c6;
+
+  
+
+  &:hover {
+    filter: invert(56%) sepia(58%) saturate(479%) hue-rotate(125deg)
+      brightness(101%) contrast(99%);
+  }
+
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+`
+
+
+
+const NavLink = styled(Link)`
+  min-width: fit-content;
+  padding: 1.5em 2em;
+  border-bottom: 1px solid #7777;
+  color: #e2e2e4;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  @media screen and (min-width: 768px) {
+    margin-left: var(--spacing-04);
+    padding: 0;
+    border: 0;
+  }
+` 
+
+const LoginLinksContainer = styled.div`
+  display: none;
+  align-items: center;
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+    margin-right: var(--spacing-04);
+    margin-left: auto;
+  }
+`
 
 const Navbar = () => {
   // function to run when hamburger menu is clicked
@@ -57,42 +165,44 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="nav">
+    <Nav>
       <AppTitle className="app-title"> Project Metroid </AppTitle>
-      <button
+      <NavButton
+        searchToggle
         className="nav__button nav__button--search-toggle"
         onClick={handleSearchToggle}
       >
-        <i className="fas fa-search"> </i>
-      </button>
-      <button className="nav__button">
-        <i className="fas fa-user-circle"> </i>
-      </button>
-      <button className="nav__button" onClick={handleMenuToggle}>
-        <i className="fas fa-bars"> </i>
-      </button>
-      <div className="search-bar__container">
-        <i className="search-bar__icon fas fa-search"> </i>
+        <NavIcon src={searchIcon} />
+      </NavButton>
+      <NavButton className="nav__button">
+        <NavIcon src={profileIcon} />
+      </NavButton>
+      <NavButton className="nav__button nav__button--menu-toggle" onClick={handleMenuToggle}>
+        <NavIcon src={menuIcon} />
+      </NavButton>
+      <SearchBarContainer className="search-bar__container">
+        <SearchBarIcon inset src={searchIcon} />
         <SearchBar
           type="search"
           name="Search"
           className="search-bar"
           placeholder="Search"
         />
-      </div>
-      <div className="nav__link-container">
-        <Link className="nav__link" to="/discover">
+      </SearchBarContainer>
+      <NavLinkContainer className="nav__link-container">
+        <NavLink className="nav__link" to="/discover">
           Discover
-        </Link>
-        <Link className="nav__link" to="/browse">
+        </NavLink>
+        <NavLink className="nav__link" to="/browse">
           Browse
-        </Link>
-      </div>
-      <div className="login__links-container">
+        </NavLink>
+      </NavLinkContainer>
+      <LoginLinksContainer className="login__links-container">
         <SignUpButton className="sign-up">Sign Up</SignUpButton>
-        <a className="nav__link">Log In</a>
-      </div>
-    </nav>
+        <NavLink className="nav__link">Log In</NavLink>
+      </LoginLinksContainer>
+      <DimOverlay />
+    </Nav>
   );
 };
 
