@@ -130,9 +130,7 @@ const CarouselControls = styled.div``;
 
 const CarouselSlideListItem = styled.div`
   position: relative;
-  /* left: 0; */
-  /* width: 100%; */
-  /* max-width: 1440px; */
+  z-index: 0;
   height: 0;
   padding-top: calc((614 / 1440) * 100%);
   overflow: hidden;
