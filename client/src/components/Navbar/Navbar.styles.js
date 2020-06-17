@@ -135,7 +135,7 @@ const NavLink = styled(Link)`
   text-decoration: none;
   text-transform: uppercase;
 
-  ${(props) => (props.login ? "border: 0;" : "border-bottom: 1px solid #7777;")}
+  ${(props) => (props.children === "Log In" ? "border: 0;" : "border-bottom: 1px solid #7777;")}
 
   @media screen and (min-width: 768px) {
     margin-left: var(--spacing-04);

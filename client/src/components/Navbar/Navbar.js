@@ -95,7 +95,7 @@ const Navbar = () => {
       </NavLinkContainer>
       <LoginLinksContainer className="login__links-container">
         <SignUpButton className="sign-up">Sign Up</SignUpButton>
-        <NavLink login className="nav__link">
+        <NavLink className="nav__link" to="/discover">
           Log In
         </NavLink>
       </LoginLinksContainer>
