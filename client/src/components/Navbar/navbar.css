@@ -1,8 +1,7 @@
-.nav__link-container {
-  display: none;
-}
-
-.search-bar__container {
+.nav__link-container,
+.search-bar__container,
+.login__links-container,
+.overlay {
   display: none;
 }
 
