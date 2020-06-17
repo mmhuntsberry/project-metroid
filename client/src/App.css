@@ -7,6 +7,10 @@
 
 /*  override default outline styling */
 
+.page-wrapper {
+  padding-bottom: 3em;
+}
+
 /* stylelint-disable value-no-vendor-prefix, property-no-vendor-prefix */
 
 .card-row__title {
