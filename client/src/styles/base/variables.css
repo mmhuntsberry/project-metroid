@@ -21,9 +21,8 @@
   /* font sizes (body) */
   --body-font-size-01: 0.75em; /* 12px */
   --body-font-size-02: 0.875em; /* 14px */
-  --body-font-size-03: 16px;
-  --body-font-size-04: 18px;
-  --body-font-size-05: 1.25em; /* 20px */
+  --body-font-size-03: 1em;
+  --body-font-size-04: 1.25em; /* 20px */
 
   /* font sizes (titles) */
   --title-font-size-06: 1.5em; /* 24px */
