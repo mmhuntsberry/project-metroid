@@ -70,6 +70,7 @@ const NavIcon = styled.img`
 
 const SearchBarContainer = styled.div`
   position: absolute;
+  z-index: inherit;
   top: 64px;
   width: 100%;
   padding: var(--spacing-04);
@@ -136,6 +137,10 @@ const NavLink = styled(Link)`
   text-transform: uppercase;
 
   ${(props) => (props.children === "Log In" ? "border: 0;" : "border-bottom: 1px solid #7777;")}
+
+  &:hover {
+    color: var(--green);
+  }
 
   @media screen and (min-width: 768px) {
     margin-left: var(--spacing-04);
