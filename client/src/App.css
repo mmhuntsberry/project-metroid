@@ -6,6 +6,37 @@
 @import "./styles/base/variables.css";
 
 /*  override default outline styling */
+
+.page-wrapper {
+  padding-bottom: 3em;
+}
+
+/* stylelint-disable value-no-vendor-prefix, property-no-vendor-prefix */
+
+.card-row__title {
+  background: linear-gradient(155.35deg, #1fee7e -28.1%, #2386bd 119.81%);
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* These styles clip text after
+   the specified line number and add an ellipsis */
+.card-truncate--one-line,
+.card-truncate--two-lines {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-truncate--one-line {
+  -webkit-line-clamp: 1;
+}
+
+.card-truncate--two-lines {
+  -webkit-line-clamp: 2;
+}
+/* stylelint-enable value-no-vendor-prefix, property-no-vendor-prefix*/
+
 @media screen and (min-width: 1440px) {
   .app {
     display: grid;

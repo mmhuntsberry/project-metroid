@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import {
-  CarouselControls,
   CarouselSlideAddToSelectMenuOptions,
   CarouselSlideAddToSelectMenu,
   CarouselSlidePlatform,
@@ -10,7 +9,6 @@ import {
   CarouselSlideSubtitle,
   CarouselSlideTitle,
   CarouselSlideInfo,
-  CarouselSlideList,
   CarouselContainer,
   CarouselSlideListItem,
 } from "./carousel.styles";
@@ -33,7 +31,7 @@ const showAddToMenu = () => {
 };
 
 const CarouselSlide = ({ slide }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(true); // eslint-disable-line no-unused-vars
 
   return (
     <CarouselSlideListItem>
@@ -53,7 +51,6 @@ const CarouselSlide = ({ slide }) => {
         </CarouselSlideDateAndPlatforms>
         {isLoggedIn ? showAddToMenu() : null}
       </CarouselSlideInfo>
-      {/* <CarouselSlideImage src={slide.image} /> */}
     </CarouselSlideListItem>
   );
 };
@@ -61,11 +58,9 @@ const CarouselSlide = ({ slide }) => {
 const Carousel = () => {
   return (
     <CarouselContainer>
-      {/* <CarouselSlideList> */}
         {CarouselSlideData.map((slide, i) => {
           return <CarouselSlide slide={slide} key={i} />;
         })}
-      {/* </CarouselSlideList> */}
     </CarouselContainer>
   );
 };
