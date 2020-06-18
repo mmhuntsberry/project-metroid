@@ -1,7 +1,7 @@
 import React from "react";
 import Notice from "../Notice";
 import InfoCard from "../InfoCard";
-import { CardRow, CardRowGrid, TrailerCardRowGrid, RowTitle } from "./Dashboard.styles";
+import { PageWrapper, CardRow, CardRowGrid, TrailerCardRowGrid, RowTitle } from "./Dashboard.styles";
 import { default as popularGameCardData } from "./popularGameCardData.json";
 import { default as infoCardData } from "./infoCardData.json";
 import { default as recentReviewsCardData } from "./recentReviewsCardData.json";
@@ -12,7 +12,7 @@ import Carousel from "../Carousel";
 
 const Dashboard = () => {
   return (
-    <div className="page-wrapper">
+    <PageWrapper className="page-wrapper">
       <Carousel />
       <Notice />
       <RowTitle className="card-row__title">Popular</RowTitle>
@@ -54,7 +54,7 @@ const Dashboard = () => {
           />
         ))}
       </TrailerCardRowGrid>
-    </div>
+    </PageWrapper>
   );
 };
 
