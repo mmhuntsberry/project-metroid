@@ -10,22 +10,58 @@
 
   /* colors */
   --dark-blue: #171824;
+  --foreground-dark-blue: #212131;
   --green: #28c7b7;
   --pink: #f9b2c8;
   --dark-red: #951010;
   --red: #f00;
 
+  /* platform colors */
+  --platform-nes: #eb3f0f;
+  --platform-snes: #8775a8;
+  --platform-n64: #f0ac00;
+  --platform-gcn: #505abf;
+  --platform-wii: #0eb5e9;
+  --platform-wiiu: #009ac7;
+  --platform-nsw: #e70012;
+  --platform-fam: #7f0708;
+  --platform-sfc: #06ab69;
+  --platform-gb: #872944;
+  --platform-gbc: #9668a8;
+  --platform-gba: #5d60a8;
+  --platform-nds: #004cd9;
+  --platform-dsi: #26b5d3;
+  --platform-3ds: #cf181d;
+  --platform-n3ds: #ce017c;
+  --platform-sms: #ce4636;
+  --platform-sg: #ab1b01;
+  --platform-sat: #b64672;
+  --platform-dc: #f46a3c;
+  --platform-smd: #00a23f;
+  --platform-gg: #d2469f;
+  --platform-ps1: #00ac9f;
+  --platform-ps2: #3a46ea;
+  --platform-ps3: #aa343c;
+  --platform-ps4: #0151a1;
+  --platform-ps5: #0646de;
+  --platform-psp: #894097;
+  --platform-vita: #006bb9;
+  --platform-other: #4f5e83;
+
   /* action colors */
   --error-01: var(--red);
 
   /* font sizes (body) */
+  --body-font-size-00: 0.625em; /* 10px */
   --body-font-size-01: 0.75em; /* 12px */
   --body-font-size-02: 0.875em; /* 14px */
-  --body-font-size-03: 1em;
-  --body-font-size-04: 1.25em; /* 20px */
+  --body-font-size-03: 16px;
+  --body-font-size-04: 18px;
+  --body-font-size-05: 1.25em; /* 20px */
 
   /* font sizes (titles) */
   --title-font-size-06: 1.5em; /* 24px */
+  --title-font-size-07: 2em; /* 32px */
   --title-font-size-11: 2.25em; /* 36px */
   --title-font-size-12: 3.5em; /* 48px */
 
@@ -45,6 +81,7 @@
   --spacing-06: 1.5em; /* 24px */
   --spacing-07: 2em; /* 32px */
   --spacing-08: 3em; /* 48px */
+  --spacing-09: 4em; /* 64px */
 
   /* layout */
   --layout-01: var(--spacing-04);
@@ -54,7 +91,8 @@
   --layout-05: 54px;
   --layout-06: 96px;
   --layout-07: 120px;
-  --layout-08: 160px;
+  --layout-08: 150px;
+  --layout-09: 160px;
 
   /* theme colors */
   --dark-theme-bg-primary: var(--dark-blue);
@@ -73,6 +111,7 @@
 
   /* Typography */
   --body-font-family-primary: "Open Sans", Roboto, sans-serif;
+  --footer-links-family-primary: Roboto, sans-serif;
   --title-font-family-secondary: "Fira Sans", sans-serif;
   --title-font-family-tertiary: Vollkorn, Georgia, "Times New Roman", Times,
     serif;
