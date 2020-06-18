@@ -62,6 +62,7 @@ export const HeroDetails = styled.span`
 
 export const BodyContainer = styled.div`
   display: grid;
+  margin-right: var(--spacing-04);
   margin-left: var(--spacing-04);
   color: var(--white);
   line-height: 1.5;
