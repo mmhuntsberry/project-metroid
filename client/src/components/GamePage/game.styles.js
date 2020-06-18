@@ -73,7 +73,7 @@ export const BodyContainer = styled.div`
 `;
 
 export const BoxArt = styled.img`
-  margin-top: var(-spacing-06);
+  margin-top: var(--spacing-06);
   border-radius: 25px;
 `;
 

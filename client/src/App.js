@@ -5,11 +5,10 @@ import Dashboard from "./components/Dashboard";
 import Browse from "./components/Browse";
 import Discover from "./components/Discover";
 import GamePage from "./components/GamePage/GamePage.tsx";
-import { games } from "./db/games.js";
-import "./App.css";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import BottomNav from "./components/BottomNav";
 import Footer from "./components/Footer";
+import { games } from "./db/games.js";
+import "./App.css";
 
 function App() {
   return (
