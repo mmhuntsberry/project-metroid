@@ -38,9 +38,9 @@ const CarouselSlideInfo = styled.div`
 const CarouselSlideTitle = styled.h2`
   position: relative;
   margin: 0;
-  font-family: var(--title-font-family-secondary);
+  font-family: var(--body-font-family-primary);
   font-size: calc(1em + (3vw - 0.3vmin));
-  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-bolder);
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
 
   ${mq[6]} {
@@ -52,8 +52,8 @@ const CarouselSlideSubtitle = styled.h3`
   position: relative;
   margin: 0;
   color: var(--grey-01);
-  font-family: var(--title-font-family-secondary);
-  font-size: calc(0.5em + (3vw - 0.5vmin));
+  font-family: var(--body-font-family-primary);
+  font-size: calc(0.8em + (3vw - 1vmin));
   font-weight: var(--font-weight-bold);
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
 
@@ -65,9 +65,10 @@ const CarouselSlideSubtitle = styled.h3`
 const CarouselSlideDeveloper = styled.span`
   margin-top: var(--spacing-02);
   color: var(--dark-theme-bg-tertiary);
-  font-family: var(--title-font-family-tertiary);
-  font-size: calc(1em + (1vw - 0.6vmin));
+  font-family: var(--body-font-family-primary);
+  font-size: calc(1em + (1vw - 1vmin));
   font-style: var(--emphasized);
+  text-transform: uppercase;
 
   ${mq[6]} {
     font-size: var(--title-font-size-06);

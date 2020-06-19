@@ -27,7 +27,7 @@ const FooterLinksContainer = styled.nav`
 
 const FooterLink = styled.a`
   color: ${(props) => (props.social ? "var(--grey-02)" : "var(--green)")};
-  font-family: var(--footer-links-family-primary);
+  font-family: var(--body-font-family-primary);
   text-decoration: none;
 
   &:not(:nth-of-type(1)) {
