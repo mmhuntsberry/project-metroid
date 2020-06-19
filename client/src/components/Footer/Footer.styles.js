@@ -2,12 +2,13 @@ import styled from "@emotion/styled";
 import "../../styles/base/variables.css";
 
 const FooterContainer = styled.footer`
-  display: flex;
+  display: none;
   align-items: center;
   width: 100%;
   margin-top: var(--spacing-08);
 
   @media screen and (min-width: 768px) {
+    display: flex;
     height: var(--layout-08);
     background-color: var(--foreground-dark-blue);
   }
