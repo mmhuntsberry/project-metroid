@@ -6,6 +6,7 @@ export interface GameModel {
   box_art: string;
   synopsis: string;
   description: string;
+  trailer: string;
   rating: string;
   platform: string;
   theme: string;
@@ -17,5 +18,5 @@ export interface ReviewModel {
   game: string;
   user: object;
   timestamp: string;
-  rating: string;
+  rating: number;
 }

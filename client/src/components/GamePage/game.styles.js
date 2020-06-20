@@ -29,7 +29,7 @@ export const HeroTextContainer = styled.div`
   justify-content: space-between;
   margin-left: 16px;
 
-  ${mq[2]} {
+  ${mq[3]} {
     margin-left: calc(var(--layout-07) + var(--spacing-01));
   }
 `;
@@ -38,7 +38,6 @@ export const HeroTitle = styled.h1`
   margin: 0;
   color: var(--white);
   font-size: calc(1em + (3vw - 0.3vmin));
-
   font-weight: var(--font-weight-light);
 `;
 
@@ -64,10 +63,10 @@ export const BodyContainer = styled.div`
   display: grid;
   margin-right: var(--spacing-04);
   margin-left: var(--spacing-04);
+  grid-gap: var(--spacing-05);
   color: var(--white);
-  line-height: 1.5;
 
-  ${mq[2]} {
+  ${mq[3]} {
     grid-template-columns: 1fr 3fr;
     margin-left: calc(var(--layout-07) + var(--spacing-01));
   }
@@ -85,26 +84,29 @@ export const GameDetailsContainer = styled.div`
   ${mq[2]} {
     margin: 0 var(-spacing-05);
   }
-  
+
   ${mq[6]} {
     margin: 0;
   }
 `;
 
-export const GameSynopsis = styled.p``;
+export const GameSynopsis = styled.p`
+  line-height: 1.6;
+`;
 
 export const GameDescription = styled.p`
   margin-top: var(-spacing-06);
+  line-height: 1.6;
 `;
 
 export const GameTrailer = styled.iframe`
-width: 100%;
-height: 320px;
-border: 0;
+  width: 100%;
+  height: 320px;
+  border: 0;
 
-${mq[2]} {
-  height: 640px;
-}
+  ${mq[2]} {
+    height: 640px;
+  }
 `;
 
 export const GameSidebar = styled.div``;
@@ -112,7 +114,7 @@ export const GameSidebar = styled.div``;
 export const GameActionWdiget = styled.div``;
 
 export const GameInfo = styled.div`
-  margin-top: var(-spacing-06);
+  margin-top: var(--spacing-06);
   color: var(--white);
 `;
 
@@ -140,17 +142,18 @@ export const GamePlatform = styled.div``;
 export const ReviewsContainer = styled.div``;
 
 export const SectionContainer = styled.div`
-display: flex;
-align-items: baseline;
-justify-content: space-between;
-margin-top: var(--spacing-08);
-border-bottom: 1px solid var(--white);
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-top: var(--spacing-08);
+  margin-bottom: var(--spacing-08);
+  border-bottom: 1px solid var(--white);
 `;
 
 export const SectionTitle = styled.h3`
-margin-bottom: var(--spacing-02);
-color: var(--dark-theme-bg-secondary);
-font-weight: var(--font-weight-light);
+  margin-bottom: var(--spacing-02);
+  color: var(--dark-theme-bg-secondary);
+  font-weight: var(--font-weight-light);
 `;
 
 export const SectionLink = styled.a`

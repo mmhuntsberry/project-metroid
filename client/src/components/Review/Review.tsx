@@ -8,6 +8,8 @@ import {
   ReviewRating,
   ReviewUsername,
   ReviewTimestamp,
+  ReviewBy,
+  ReviewBody,
 } from "./review.styles.js";
 
 interface Props {
@@ -28,7 +30,7 @@ const Review: FunctionComponent<Props> = (props: Props) => {
       <ReviewUserThumbnail src={thumbnail} />
       <div>
         <ReviewInfoContainer>
-          <span>Reviewed by</span>
+          <ReviewBy>Reviewed by</ReviewBy>
           <ReviewUsername>{username}</ReviewUsername>
           <ReviewTimestamp>
             <em>{userReview.timestamp}</em>
@@ -45,9 +47,7 @@ const Review: FunctionComponent<Props> = (props: Props) => {
             />
           </ReviewRating>
         </ReviewInfoContainer>
-        <div className="review__text-container">
-          <p>{userReview.review}</p>
-        </div>
+        <ReviewBody>{userReview.review}</ReviewBody>
       </div>
     </ReviewContainer>
   );

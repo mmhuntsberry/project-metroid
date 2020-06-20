@@ -1,4 +1,4 @@
-import React, { FC, FunctionComponent } from "react";
+import React, { FunctionComponent } from "react";
 import {
   Hero,
   HeroImage,
@@ -23,18 +23,27 @@ import {
   SectionContainer,
   SectionTitle,
   SectionLink,
-} from "./game.styles.js";
+} from "./Game.styles.js";
+import { CardRowGrid } from "../Dashboard/Dashboard.styles.js";
+import GameCard from "../GameCard/GameCard";
+import Review from "../Review/Review";
 import { GameModel } from "../../models";
 import { intersperse } from "../../utils/helpers.js";
-import Review from "../Review/Review";
 import { reviews } from "../../db/reviews.js";
+import { useParams } from "react-router-dom";
+import { default as popularGameCardData } from "../Dashboard/popularGameCardData.json";
 
 interface Props {
   game: GameModel;
 }
 
-const GamePage: FC<Props> = (props: Props) => {
+interface RouteParams {
+  id: string;
+}
+
+const GamePage: FunctionComponent<Props> = (props: Props) => {
   const { game } = props;
+  const params = useParams<RouteParams>();
 
   return (
     <div className="game-page">
@@ -72,7 +81,7 @@ const GamePage: FC<Props> = (props: Props) => {
           <GameSynopsis>{game.synopsis}</GameSynopsis>
           <GameDescription>{game.description}</GameDescription>
           <GameTrailer
-            src="https://www.youtube.com/embed/QLYyWAqTTAo"
+            src={game.trailer}
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen
           ></GameTrailer>
@@ -85,6 +94,21 @@ const GamePage: FC<Props> = (props: Props) => {
               <Review userReview={review} />
             ))}
           </ReviewsContainer>
+          <SectionContainer>
+            <SectionTitle>Popular Games</SectionTitle>
+            <SectionLink>More</SectionLink>
+          </SectionContainer>
+          <CardRowGrid>
+            {popularGameCardData.slice(2).map((card) => (
+              <GameCard
+                class="popular__game"
+                key={card.id}
+                img={card.img}
+                title={card.title}
+                developer={card.developer}
+              />
+            ))}
+          </CardRowGrid>
         </GameDetailsContainer>
       </BodyContainer>
     </div>

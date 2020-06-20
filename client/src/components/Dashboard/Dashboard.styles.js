@@ -1,11 +1,12 @@
 import styled from "@emotion/styled";
-import "../../styles/base/variables.css"
+import "../../styles/base/variables.css";
+import { mq } from "../../styles/utilities/breakpoints.js";
 
 const PageWrapper = styled.div`
   padding-top: var(--spacing-09);
-`
+`;
 
-const CardRow = styled.div `
+const CardRow = styled.div`
   display: grid;
   grid-gap: var(--spacing-04);
   grid-template-columns: repeat(5, 1fr);
@@ -13,17 +14,17 @@ const CardRow = styled.div `
   overflow-x: auto;
 `;
 
-const CardRowGrid = styled.div `
+const CardRowGrid = styled.div`
   display: grid;
   grid-gap: var(--spacing-04);
   grid-template-columns: repeat(2, 1fr);
   margin: 0 var(--spacing-04);
 
-  @media (min-width: 600px) {
+  ${mq[0]} {
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    max-width: var(--max-breakpoint);
+    /* max-width: var(--max-breakpoint); */
   }
-`
+`;
 const TrailerCardRowGrid = styled.div`
   display: grid;
   grid-gap: var(--spacing-04);
@@ -34,9 +35,9 @@ const TrailerCardRowGrid = styled.div`
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     max-width: var(--max-breakpoint);
   }
-`
+`;
 
-const RowTitle = styled.h2 `
+const RowTitle = styled.h2`
   width: max-content;
   margin-top: var(--spacing-07);
   margin-bottom: var(--spacing-02);
@@ -52,10 +53,4 @@ const RowTitle = styled.h2 `
   }
 `;
 
-export {
-  PageWrapper,
-  CardRow,
-  CardRowGrid,
-  TrailerCardRowGrid,
-  RowTitle
-};
+export { PageWrapper, CardRow, CardRowGrid, TrailerCardRowGrid, RowTitle };

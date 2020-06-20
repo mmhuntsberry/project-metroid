@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Dashboard from "./components/Dashboard";
 import Browse from "./components/Browse";
@@ -22,7 +22,7 @@ function App() {
           <Route
             exact
             path="/game/:id"
-            component={() => <GamePage game={games[0]} />}
+            component={() => <GamePage game={games[1]} />}
             å
           />
         </Switch>
