@@ -22,7 +22,6 @@ const CardRowGrid = styled.div`
 
   ${mq[0]} {
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    /* max-width: var(--max-breakpoint); */
   }
 `;
 const TrailerCardRowGrid = styled.div`
