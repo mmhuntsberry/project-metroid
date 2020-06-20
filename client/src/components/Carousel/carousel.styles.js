@@ -96,7 +96,7 @@ const CarouselSlidePlatform = styled.span`
 `;
 
 const CarouselSlideAddToSelectMenu = styled.select`
-  width: min-content;
+  width: var(--layout-10);
   height: 40px;
   margin-top: calc(1em + (1.3vw - 0.6vmin));
   padding: var(--spacing-02) 0 var(--spacing-02) var(--spacing-04);
@@ -120,11 +120,9 @@ const CarouselSlideAddToSelectMenu = styled.select`
   }
 `;
 
-// TODO tested toggling styles. Not sure what this is actually connected to
 const CarouselSlideAddToSelectMenuOptions = styled.option`
-  padding-right: 1em;
   color: var(--grey-03);
-  font-size: 1.2em;
+  font-size: var(--body-font-size-05);
 `;
 
 const CarouselControls = styled.div``;
@@ -136,9 +134,9 @@ const CarouselSlideListItem = styled.div`
   padding-top: calc((614 / 1440) * 100%);
   overflow: hidden;
   background: linear-gradient(to bottom left,
-  rgba(0, 0, 0, 0.5) 0%,
-  rgb(23, 24, 36, 0.7) 50%,
-  rgb(23, 24, 36, 1) 100%),
+  rgba(0, 0, 0, 0.2) 0%,
+  rgb(23, 24, 36, 0.3) 50%,
+  rgb(23, 24, 36, 0.8) 100%),
     url("https://res.cloudinary.com/dfbyrhgyx/image/upload/v1591752322/hero-links-awakening_sfgrtc.jpg")
     no-repeat;
   background-size: cover;
