@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import "../../styles/base/variables.css";
 
 const FooterContainer = styled.footer`
-  display: none;
+  display: flex;
   align-items: center;
   width: 100%;
   margin-top: var(--spacing-08);
@@ -17,6 +17,7 @@ const FooterContainer = styled.footer`
 const FooterLinksContainer = styled.nav`
   display: flex;
   position: relative;
+  align-items: center;
   width: 100%;
   margin: var(--spacing-07);
 
@@ -27,6 +28,7 @@ const FooterLinksContainer = styled.nav`
 `;
 
 const FooterLink = styled.a`
+  display: none;
   color: ${(props) => (props.social ? "var(--grey-02)" : "var(--green)")};
   font-family: var(--body-font-family-primary);
   text-decoration: none;
@@ -38,6 +40,10 @@ const FooterLink = styled.a`
   &:hover {
     color: var(--pink);
   }
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+  }
 `;
 
 const SocialLinkContainer = styled.div`
@@ -48,10 +54,16 @@ const SocialLinkContainer = styled.div`
 const SocialLink = styled.a`
   width: var(--body-font-size-05);
   height: var(--body-font-size-05);
-  margin-left: var(--spacing-02);
+  margin-left: var(--spacing-05);
+
+  @media screen and (min-width: 768px) {
+    width: var(--title-font-size-06);
+    height: var(--title-font-size-06);
+  }
 `;
 
 const SocialLinkIcon = styled.img`
+  width: 100%;
   /* Using CSS filter to give us the same 
   value as --green while using an SVG */
   &:hover {
@@ -61,13 +73,17 @@ const SocialLinkIcon = styled.img`
 `;
 
 const Copyright = styled.span`
-  position: absolute;
-  top: 100%;
-  left: 0;
+  position: inherit;
   color: var(--grey-02);
   font-family: var(--footer-links-family-primary);
-  font-size: var(--body-font-size-00);
+  font-size: var(--body-font-size-01);
   font-style: var(--emphasized);
+
+  @media screen and (min-width: 768px) {
+    position: absolute;
+    top: 100%;
+    left: 0;
+  }
 `;
 
 export {
