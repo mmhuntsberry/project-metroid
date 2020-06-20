@@ -52,36 +52,36 @@
   --error-01: var(--red);
 
   /* font sizes (body) */
-  --body-font-size-00: 0.625em; /* 10px */
-  --body-font-size-01: 0.75em; /* 12px */
-  --body-font-size-02: 0.875em; /* 14px */
+  --body-font-size-00: 0.625rem; /* 10px */
+  --body-font-size-01: 0.75rem; /* 12px */
+  --body-font-size-02: 0.875rem; /* 14px */
   --body-font-size-03: 16px;
   --body-font-size-04: 18px;
-  --body-font-size-05: 1.25em; /* 20px */
+  --body-font-size-05: 1.25rem; /* 20px */
 
   /* font sizes (titles) */
-  --title-font-size-06: 1.5em; /* 24px */
-  --title-font-size-07: 2em; /* 32px */
-  --title-font-size-11: 2.25em; /* 36px */
-  --title-font-size-12: 3.5em; /* 48px */
+  --title-font-size-06: 1.5rem; /* 24px */
+  --title-font-size-07: 2rem; /* 32px */
+  --title-font-size-11: 2.5rem; /* 36px */
+  --title-font-size-12: 3.5rem; /* 48px */
 
   /* font styles */
   --emphasized: italic;
   --font-weight-light: 100;
   --font-weight-normal: 400;
   --font-weight-bold: 600;
-  --font-weight-bolder: 700;
+  --font-weight-bolder: 800;
 
   /* spacing */
-  --spacing-01: 0.25em;
-  --spacing-02: 0.5em; /*8px */
-  --spacing-03: 0.75em; /* 12px */
-  --spacing-04: 1em; /* 16px */
-  --spacing-05: 1.25em; /* 20px */
-  --spacing-06: 1.5em; /* 24px */
-  --spacing-07: 2em; /* 32px */
-  --spacing-08: 3em; /* 48px */
-  --spacing-09: 4em; /* 64px */
+  --spacing-01: 0.25rem;
+  --spacing-02: 0.5rem; /*8px */
+  --spacing-03: 0.75rem; /* 12px */
+  --spacing-04: 1rem; /* 16px */
+  --spacing-05: 1.25rem; /* 20px */
+  --spacing-06: 1.5rem; /* 24px */
+  --spacing-07: 2rem; /* 32px */
+  --spacing-08: 3rem; /* 48px */
+  --spacing-09: 4rem; /* 64px */
 
   /* layout */
   --layout-01: var(--spacing-04);
@@ -93,6 +93,7 @@
   --layout-07: 120px;
   --layout-08: 150px;
   --layout-09: 160px;
+  --layout-10: 175px;
 
   /* theme colors */
   --dark-theme-bg-primary: var(--dark-blue);
@@ -110,9 +111,5 @@
   --max-breakpoint: 1440px;
 
   /* Typography */
-  --body-font-family-primary: "Open Sans", Roboto, sans-serif;
-  --footer-links-family-primary: Roboto, sans-serif;
-  --title-font-family-secondary: "Fira Sans", sans-serif;
-  --title-font-family-tertiary: Vollkorn, Georgia, "Times New Roman", Times,
-    serif;
+  --body-font-family-primary: "Open Sans", sans-serif;
 }

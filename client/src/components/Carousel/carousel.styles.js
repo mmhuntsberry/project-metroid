@@ -38,9 +38,9 @@ const CarouselSlideInfo = styled.div`
 const CarouselSlideTitle = styled.h2`
   position: relative;
   margin: 0;
-  font-family: var(--title-font-family-secondary);
+  font-family: var(--body-font-family-primary);
   font-size: calc(1em + (3vw - 0.3vmin));
-  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-bolder);
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
 
   ${mq[6]} {
@@ -52,8 +52,8 @@ const CarouselSlideSubtitle = styled.h3`
   position: relative;
   margin: 0;
   color: var(--grey-01);
-  font-family: var(--title-font-family-secondary);
-  font-size: calc(0.5em + (3vw - 0.5vmin));
+  font-family: var(--body-font-family-primary);
+  font-size: calc(0.8em + (3vw - 1vmin));
   font-weight: var(--font-weight-bold);
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
 
@@ -65,9 +65,10 @@ const CarouselSlideSubtitle = styled.h3`
 const CarouselSlideDeveloper = styled.span`
   margin-top: var(--spacing-02);
   color: var(--dark-theme-bg-tertiary);
-  font-family: var(--title-font-family-tertiary);
-  font-size: calc(1em + (1vw - 0.6vmin));
+  font-family: var(--body-font-family-primary);
+  font-size: calc(1em + (1vw - 1vmin));
   font-style: var(--emphasized);
+  text-transform: uppercase;
 
   ${mq[6]} {
     font-size: var(--title-font-size-06);
@@ -95,7 +96,7 @@ const CarouselSlidePlatform = styled.span`
 `;
 
 const CarouselSlideAddToSelectMenu = styled.select`
-  width: min-content;
+  width: var(--layout-10);
   height: 40px;
   margin-top: calc(1em + (1.3vw - 0.6vmin));
   padding: var(--spacing-02) 0 var(--spacing-02) var(--spacing-04);
@@ -119,27 +120,23 @@ const CarouselSlideAddToSelectMenu = styled.select`
   }
 `;
 
-// TODO tested toggling styles. Not sure what this is actually connected to
 const CarouselSlideAddToSelectMenuOptions = styled.option`
-  padding-right: 1em;
   color: var(--grey-03);
-  font-size: 1.2em;
+  font-size: var(--body-font-size-05);
 `;
 
 const CarouselControls = styled.div``;
 
 const CarouselSlideListItem = styled.div`
   position: relative;
-  /* left: 0; */
-  /* width: 100%; */
-  /* max-width: 1440px; */
+  z-index: 0;
   height: 0;
   padding-top: calc((614 / 1440) * 100%);
   overflow: hidden;
   background: linear-gradient(to bottom left,
-  rgba(0, 0, 0, 0.5) 0%,
-  rgb(23, 24, 36, 0.7) 50%,
-  rgb(23, 24, 36, 1) 100%),
+  rgba(0, 0, 0, 0.2) 0%,
+  rgb(23, 24, 36, 0.3) 50%,
+  rgb(23, 24, 36, 0.8) 100%),
     url("https://res.cloudinary.com/dfbyrhgyx/image/upload/v1591752322/hero-links-awakening_sfgrtc.jpg")
     no-repeat;
   background-size: cover;

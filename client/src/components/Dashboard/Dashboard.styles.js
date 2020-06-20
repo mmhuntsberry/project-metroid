@@ -1,6 +1,10 @@
 import styled from "@emotion/styled";
 import "../../styles/base/variables.css"
 
+const PageWrapper = styled.div`
+  padding-top: var(--spacing-09);
+`
+
 const CardRow = styled.div `
   display: grid;
   grid-gap: var(--spacing-04);
@@ -49,8 +53,9 @@ const RowTitle = styled.h2 `
 `;
 
 export {
-    CardRow,
-    CardRowGrid,
-    TrailerCardRowGrid,
-    RowTitle
+  PageWrapper,
+  CardRow,
+  CardRowGrid,
+  TrailerCardRowGrid,
+  RowTitle
 };
