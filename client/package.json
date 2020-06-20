@@ -49,6 +49,7 @@
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^3.2.0",
-    "@typescript-eslint/parser": "^3.2.0"
+    "@typescript-eslint/parser": "^3.2.0",
+    "react-star-ratings": "^2.3.0"
   }
 }

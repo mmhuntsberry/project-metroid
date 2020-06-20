@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, FunctionComponent } from "react";
 import {
   Hero,
   HeroImage,
@@ -24,14 +24,18 @@ import {
   SectionTitle,
   SectionLink,
 } from "./game.styles.js";
-import Game from "../../models";
+import { GameModel } from "../../models";
 import { intersperse } from "../../utils/helpers.js";
+import Review from "../Review/Review";
+import { reviews } from "../../db/reviews.js";
 
-type Props = {
-  game: Game;
-};
+interface Props {
+  game: GameModel;
+}
 
-const GamePage: FC = ({ game }: Props) => {
+const GamePage: FC<Props> = (props: Props) => {
+  const { game } = props;
+
   return (
     <div className="game-page">
       <Hero>
@@ -71,14 +75,16 @@ const GamePage: FC = ({ game }: Props) => {
             src="https://www.youtube.com/embed/QLYyWAqTTAo"
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen
-          >
-          </GameTrailer>
+          ></GameTrailer>
           <SectionContainer>
             <SectionTitle>Popular reviews</SectionTitle>
             <SectionLink>More</SectionLink>
           </SectionContainer>
-          {/* <ReviewsContainer>
-          </ReviewsContainer> */}
+          <ReviewsContainer>
+            {reviews.map((review) => (
+              <Review userReview={review} />
+            ))}
+          </ReviewsContainer>
         </GameDetailsContainer>
       </BodyContainer>
     </div>
