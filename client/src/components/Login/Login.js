@@ -7,15 +7,15 @@ const Login = () => {
             <div class="container">
                 <LoginTitle>Log in to Project Metroid</LoginTitle>
                 
-                <label for="email">Email</label> 
+                <LoginLabel for="email">Email</LoginLabel> 
                 <LoginInput type="text" placeholder="" name="email" required></LoginInput>
                 
-                <label for="password">Password</label> 
+                <LoginLabel for="password">Password</LoginLabel> 
                 <LoginInput type="text" placeholder="" name="password" required></LoginInput>
                 
-                <a href="#">Forgot Password?</a>
+                <LoginAction href="#">Forgot Password?</LoginAction>
                 
-                <span>Don't have an account? <a href="#">Sign up</a></span>       
+                <LoginText>Don't have an account? <LoginAction href="#">Sign up</LoginAction></LoginText>       
                 <LoginButton>LOG IN</LoginButton>
             </div>
         </LoginForm>
