@@ -1,24 +1,24 @@
 import React from "react";
-
+import {LoginForm, LoginContainer, LoginTitle, LoginLabel, LoginInput, LoginAction, LoginText, LoginButton} from "./Login.styles";
 const Login = () => {
     return (
         // Add Css classes and submit button
-        <form class="form login-form" action="" method="">
+        <LoginForm class="form login-form" action="" method="">
             <div class="container">
-                <h1>Log in to Project Metroid</h1>
+                <LoginTitle>Log in to Project Metroid</LoginTitle>
                 
                 <label for="email">Email</label> 
-                <input type="text" placeholder="" name="email" required></input>
+                <LoginInput type="text" placeholder="" name="email" required></LoginInput>
                 
                 <label for="password">Password</label> 
-                <input type="text" placeholder="" name="password" required></input>
+                <LoginInput type="text" placeholder="" name="password" required></LoginInput>
                 
                 <a href="#">Forgot Password?</a>
                 
                 <span>Don't have an account? <a href="#">Sign up</a></span>       
-                <button>LOG IN</button>
+                <LoginButton>LOG IN</LoginButton>
             </div>
-        </form>
+        </LoginForm>
     );
 };
 export default Login;

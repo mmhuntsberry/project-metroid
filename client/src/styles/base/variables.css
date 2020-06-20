@@ -70,7 +70,7 @@
   --max-breakpoint: 1440px;
 
   /* Typography */
-  --body-font-family-primary: "Open Sans", Roboto, sans-serif;
+  --title-font-family-primary: "Open Sans", Roboto, sans-serif;
   --title-font-family-secondary: "Fira Sans", sans-serif;
   --title-font-family-tertiary: Vollkorn, Georgia, "Times New Roman", Times,
     serif;
