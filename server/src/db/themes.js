@@ -19,4 +19,9 @@ export const themes = [
     type: "Fantasy",
     games: ["1", "3"],
   },
+  {
+    id: "5",
+    type: "Action",
+    games: ["1"],
+  },
 ];

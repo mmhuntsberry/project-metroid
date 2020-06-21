@@ -17,8 +17,8 @@ In the sprawling city of Midgar, an anti-Shinra organization calling themselves 
     developer: "Square Enix",
     reviews: ["101"],
     rating: ["4"],
-    theme: ["Action", "Fantasy"],
-    genre: ["Adventure", "Role Playing"],
+    theme: ["5", "6"],
+    genre: ["1", "5"],
   },
   {
     id: "2",

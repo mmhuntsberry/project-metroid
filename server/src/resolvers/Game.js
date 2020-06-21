@@ -5,8 +5,9 @@ export const Game = {
     return reduceFilter(parent.reviews, db.reviews);
   },
   rating(parent, args, { db }, info) {
-    console.log("parent", parent.rating);
-    console.log("db", db.ratings);
     return reduceFilter(parent.rating, db.ratings);
+  },
+  theme(parent, args, { db }, info) {
+    return reduceFilter(parent.theme, db.themes);
   },
 };
