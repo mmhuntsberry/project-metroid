@@ -23,7 +23,6 @@ function App() {
             exact
             path="/game/:id"
             component={() => <GamePage game={games[1]} />}
-            å
           />
         </Switch>
         <Footer />
