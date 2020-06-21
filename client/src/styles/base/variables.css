@@ -5,7 +5,8 @@
   --grey-01: #d2d2d4;
   --grey-02: #8c8c8c;
   --grey-03: #666;
-  --grey-04: #4d4d4d;
+  --grey-05: #979797;
+  --grey-06: #4d4d4d;
 
   /* colors */
   --dark-blue: #171824;
@@ -98,6 +99,7 @@
   --dark-theme-bg-primary: var(--dark-blue);
   --dark-theme-bg-secondary: var(--green);
   --dark-theme-bg-tertiary: var(--pink);
+  --dark-theme-bg-quaternary: var(--grey-05);
   --dark-theme-platform-primary: var(--dark-red);
 
   /* Break points */
