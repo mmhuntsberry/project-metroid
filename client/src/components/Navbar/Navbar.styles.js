@@ -38,6 +38,10 @@ const AppTitle = styled.h2`
     grid-column: 1;
     font-size: 1.25em;
   }
+
+  @media screen and (min-width: 1440px) {
+    margin-left: 0;
+  }
 `;
 
 const NavButton = styled.button`
@@ -167,6 +171,10 @@ const LoginLinksContainer = styled.div`
     margin-left: auto;
     padding-right: var(--spacing-04);
     border: 0;
+  }
+
+  @media screen and (min-width: 1440px) {
+    padding-right: 0;
   }
 `;
 
