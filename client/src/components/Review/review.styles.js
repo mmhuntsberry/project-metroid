@@ -48,8 +48,8 @@ export const ReviewUsername = styled.h4`
 `;
 
 export const ReviewTimestamp = styled.span`
-  color: var(--grey-02);
   padding-bottom: var(--spacing-01);
+  color: var(--grey-02);
 
   ${mq[2]} {
     padding-bottom: 0;
