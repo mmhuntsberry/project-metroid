@@ -123,11 +123,13 @@ export const InfoContainer = styled.div`
   grid-gap: var(--spacing-04) var(--spacing-02);
   grid-template-columns: auto 1fr;
   align-items: baseline;
+  padding-bottom: var(--spacing-03);
 `;
 
 export const GameInfoTitle = styled.h4`
   display: inline;
   margin: 0;
+  color: var(--dark-theme-bg-quaternary);
   font-weight: var(--font-weight-light);
 `;
 
@@ -136,9 +138,18 @@ export const GameRating = styled.span`
   font-size: var(--body-font-size-05);
 `;
 
-export const GameGenre = styled.div``;
-export const GameTheme = styled.div``;
-export const GamePlatform = styled.div``;
+export const GameGenre = styled.span`
+  color: var(--dark-theme-bg-tertiary);
+`;
+
+export const GameTheme = styled.span`
+  color: var(--dark-theme-bg-tertiary);
+`;
+
+export const GamePlatform = styled.div`
+  color: var(--dark-theme-bg-tertiary);
+`;
+
 export const ReviewsContainer = styled.div``;
 
 export const SectionContainer = styled.div`

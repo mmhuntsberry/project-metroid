@@ -39,11 +39,21 @@ export const ReviewInfoContainer = styled.div`
 export const ReviewUsername = styled.h4`
   margin: 0;
   margin-right: var(--spacing-04);
+  padding-bottom: var(--spacing-02);
   color: var(--dark-theme-bg-tertiary);
+
+  ${mq[2]} {
+    padding-bottom: 0;
+  }
 `;
 
 export const ReviewTimestamp = styled.span`
   color: var(--grey-02);
+  padding-bottom: var(--spacing-01);
+
+  ${mq[2]} {
+    padding-bottom: 0;
+  }
 `;
 
 export const ReviewRating = styled.div`

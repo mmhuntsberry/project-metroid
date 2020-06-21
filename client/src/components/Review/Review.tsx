@@ -10,7 +10,7 @@ import {
   ReviewTimestamp,
   ReviewBy,
   ReviewBody,
-} from "./review.styles.js";
+} from "./Review.styles.js";
 
 interface Props {
   userReview: ReviewModel;
