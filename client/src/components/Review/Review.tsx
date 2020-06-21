@@ -1,16 +1,16 @@
 import React, { FunctionComponent } from "react";
 import { ReviewModel } from "../../models";
 import StarRatings from "react-star-ratings";
-// import {
-//   ReviewContainer,
-//   ReviewUserThumbnail,
-//   ReviewInfoContainer,
-//   ReviewRating,
-//   ReviewUsername,
-//   ReviewTimestamp,
-//   ReviewBy,
-//   ReviewBody,
-// } from "./Review.styles.js";
+import {
+  ReviewContainer,
+  ReviewUserThumbnail,
+  ReviewInfoContainer,
+  ReviewRating,
+  ReviewUsername,
+  ReviewTimestamp,
+  ReviewBy,
+  ReviewBody,
+} from "./Review.styles.js";
 
 interface Props {
   userReview: ReviewModel;
