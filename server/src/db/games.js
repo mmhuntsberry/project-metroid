@@ -35,26 +35,7 @@ In the sprawling city of Midgar, an anti-Shinra organization calling themselves 
 
     release_year: 1985,
     rating: ["4"],
-    reviews: [
-      `I'm baby art party retro letterpress, vape fingerstache neutra irony shabby chic scenester shaman master cleanse gastropub. Shaman biodiesel celiac single-origin coffee. La croix kitsch crucifix, bespoke hot chicken everyday carry chia austin disrupt paleo letterpress fashion axe tacos. Godard fingerstache stumptown celiac everyday carry hot chicken tattooed knausgaard organic. Neutra enamel pin trust fund activated charcoal photo booth, pitchfork mustache yuccie sustainable taxidermy 90's lyft literally.
-      
-      Hashtag tumblr post-ironic meggings ethical ramps readymade. Shoreditch cloud bread brooklyn chicharrones mlkshk, tote bag pitchfork poke single-origin coffee offal. Skateboard tumeric tousled pabst flannel pinterest aesthetic hella direct trade vape hashtag marfa. Lumbersexual kickstarter gentrify live-edge scenester fixie cardigan. Bushwick messenger bag copper mug, squid everyday carry ennui mumblecore literally lumbersexual listicle bitters. Edison bulb scenester lyft dreamcatcher.`,
-      `I'm baby art party retro letterpress, vape fingerstache neutra irony shabby chic scenester shaman master cleanse gastropub. 
-      
-      Shaman biodiesel celiac single-origin coffee. La croix kitsch crucifix.`,
-    ],
-    theme: ["Action"],
-    genre: ["Platform"],
-  },
-  {
-    id: "3",
-    title: "Pokémon Mystery Dungeon: Rescue Team DX",
-    platform: "Nintendo Switch",
-    release_year: 2020,
-    box_art: "https://images.igdb.com/igdb/image/upload/t_cover_big/co1zm0.jpg",
-    synopsis:
-      "You can meet and recruit Pokémon in a dungeon-crawling adventure within their world! Build a rescue team to take on mysterious, changing dungeons and strategically plan your moves as you venture forth to make the Pokémon world a safer place…and uncover your true purpose along the way. ",
-    description: `As you recruit Pokémon, these trusty teammates will need somewhere to stay, so build camps to house, manage, and strengthen your Pokémon friends. Think hard about who is right for the job and how to approach each mysterious dungeon as you prepare a rescue team. You’ll move a single square at a time or use Auto mode to speed up movement until you engage other Pokémon in turn-based battles—but don’t forget about Pokémon strengths and weaknesses! This version adds gorgeous watercolor-inspired graphics, and more! Get comfortable in being a Pokémon, there’s a lot of work to do.`,
+    reviews: [],
     trailer: "https://www.youtube.com/embed/2R_1HEbxYhA",
     hero:
       "https://hb.imgix.net/dfa1f20492dfcac68551d1626f201c8f3c3a0d96.jpg?auto=compress,format&fit=crop&h=353&w=616&s=ee1848d43a40aa38c5d4aa189de8e0bd",
@@ -64,22 +45,58 @@ In the sprawling city of Midgar, an anti-Shinra organization calling themselves 
     theme: ["3", "4"],
     genre: ["1", "5"],
   },
-  // {
-  //   id: "4",
-  //   title: "Resident Evil VII",
-  //   platform: "Playstation 4",
-  //   rating: "3.5",
-  //   reviews: [],
-  //   genres: ["3", "4"],
-  //   theme: "2",
-  // },
-  // {
-  //   id: "5",
-  //   title: "Eternal Darkness",
-  //   platform: "Gamecube",
-  //   rating: "4.0",
-  //   reviews: [],
-  //   genres: ["4"],
-  //   theme: "2",
-  // },
+  {
+    id: "4",
+    title: "Resident Evil 3",
+    platform: "Playstation 4",
+    release_year: 2020,
+    box_art: "https://images.igdb.com/igdb/image/upload/t_cover_big/co22l7.jpg",
+    synopsis:
+      "Jill Valentine is one of the last remaining people in Raccoon City to witness the atrocities Umbrella performed. To stop her, Umbrella unleashes their ultimate secret weapon: Nemesis! Also includes Resident Evil Resistance, a new 1 vs 4 online multiplayer game set in the Resident Evil universe.",
+    description: "",
+    trailer: "https://www.youtube.com/embed/Wghn3tYYVNw",
+    hero:
+      "https://steamcdn-a.akamaihd.net/steam/apps/952060/header.jpg?t=1591585542",
+    developer: "Capcom",
+    reviews: [],
+    rating: ["3"],
+    theme: ["2"],
+    genre: ["1", "6"],
+  },
+  {
+    id: "5",
+    title: "Streets of Rage 4",
+    platform: "Playstation 4",
+    release_year: 2020,
+    box_art: "https://images.igdb.com/igdb/image/upload/t_cover_big/co20pk.jpg",
+    synopsis:
+      "Publisher Dotemu (Wonder Boy, Windjammers 1/2) and developers Lizardcube (Wonder Boy) and Guard Crush Games today revealed Streets of Rage 4, an all-new continuation of SEGA’s iconic arcade brawler series known for its radical fights, jammin’ ‘90s beats and dashing sparring gloves and bandanas.",
+    description: "",
+    trailer: "https://www.youtube.com/embed/hdsCVmrfrjI",
+    hero:
+      "https://www.nintendo.com/content/dam/noa/en_US/games/switch/s/streets-of-rage-4-switch/streets-of-rage-4-switch-hero.jpg",
+    developer: "Dotemu",
+    reviews: [],
+    rating: ["2"],
+    theme: ["5"],
+    genre: ["7"],
+  },
+  {
+    id: "6",
+    title: "Cyberpunk 2077",
+    platform: "Playstation 4",
+    release_year: 2020,
+    box_art: "https://images.igdb.com/igdb/image/upload/t_cover_big/co1rft.jpg",
+    synopsis:
+      "Cyberpunk 2077 is a role-playing video game developed and published by CD Projekt. Adapted from the Cyberpunk franchise, the game is an open world, non-linear RPG with an FPS style in which players are able to heavily customize their character to suit their play style. Gun play, exploration, player choice and activities such as hacking are to feature heavily throughout the game with missions, quests and objectives being completed in a variety of different ways. The world will have dynamic weather and a day/night cycle to make it truly immersive.",
+    description: "",
+    trailer: "https://www.youtube.com/embed/vjF9GgrY9c0",
+    hero:
+      "https://image-cdn.essentiallysports.com/wp-content/uploads/20200620215515/cyberpunk-2077-2.jpg",
+    developer: "CD Projekt RED",
+    reviews: [],
+    rating: ["2"],
+    theme: ["1"],
+    genre: ["5"],
+  },
 ];

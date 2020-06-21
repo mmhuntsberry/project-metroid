@@ -10,4 +10,7 @@ export const Game = {
   theme(parent, args, { db }, info) {
     return reduceFilter(parent.theme, db.themes);
   },
+  genre(parent, args, { db }, info) {
+    return reduceFilter(parent.genre, db.genres);
+  },
 };

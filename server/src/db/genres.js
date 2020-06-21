@@ -22,6 +22,16 @@ export const genres = [
   {
     id: "5",
     type: "Role-playing (RPG)",
-    games: "3",
+    games: ["3"],
+  },
+  {
+    id: "6",
+    type: "Shooter",
+    games: ["4"],
+  },
+  {
+    id: "7",
+    type: "Beat'em up",
+    games: ["5"],
   },
 ];

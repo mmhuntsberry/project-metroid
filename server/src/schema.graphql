@@ -38,7 +38,7 @@ type Game {
   reviews: [Review!]!
   rating: [Rating]!
   theme: [Theme!]!
-  genres: [Genre!]!
+  genre: [Genre!]!
 }
 
 type Review {
