@@ -24,7 +24,7 @@ function App() {
           <Route
             exact
             path="/games/:id"
-            component={() => <GamePage game={games[0]} />}
+            component={() => <GamePage game={games[2]} />}
           />
         </Switch>
         <Footer />

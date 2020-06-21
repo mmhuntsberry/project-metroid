@@ -9,4 +9,14 @@ export const themes = [
     type: "Horror",
     games: ["4", "5"],
   },
+  {
+    id: "3",
+    type: "Kids",
+    games: ["3", "2"],
+  },
+  {
+    id: "4",
+    type: "Fantasy",
+    games: ["1", "3"],
+  },
 ];

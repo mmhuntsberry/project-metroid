@@ -27,12 +27,18 @@ type Mutation {
 type Game {
   id: ID!
   title: String!
-  releaseYear: Int
   platform: String!
-  rating: Float
-  genres: [Genre!]!
-  src: String
+  release_year: Int
+  box_art: String!
+  synopsis: String!
+  description: String!
+  trailer: String
+  hero: String
+  developer: String
   reviews: [Review!]!
+  rating: [Rating]!
+  theme: [Theme!]!
+  genres: [Genre!]!
 }
 
 type Review {
@@ -70,6 +76,6 @@ type Genre {
 
 type Rating {
   id: ID!
-  rating: Float!
+  rating: Int!
   games: [Game]
 }
