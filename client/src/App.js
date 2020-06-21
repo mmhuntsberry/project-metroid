@@ -8,12 +8,14 @@ import GamePage from "./components/GamePage/GamePage.tsx";
 import BottomNav from "./components/BottomNav";
 import Footer from "./components/Footer";
 import { games } from "./db/games.js";
+import ScrollToTop from "./utils/hooks/ScrollToTop";
 import "./App.css";
 
 function App() {
   return (
     <Router>
       <div className="app">
+        <ScrollToTop />
         <Navbar />
         <Switch>
           <Route exact path="/" component={Dashboard} />
