@@ -30,7 +30,6 @@ import Review from "../Review/Review";
 import { GameModel } from "../../models";
 import { intersperse } from "../../utils/helpers.js";
 import { reviews } from "../../db/reviews.js";
-import { useParams } from "react-router-dom";
 import { default as popularGameCardData } from "../Dashboard/popularGameCardData.json";
 
 interface Props {
@@ -43,7 +42,6 @@ interface RouteParams {
 
 const GamePage: FunctionComponent<Props> = (props: Props) => {
   const { game } = props;
-  const params = useParams<RouteParams>();
 
   return (
     <div className="game-page">

@@ -1,5 +1,3 @@
-import React from "react";
-
 export const intersperse = (arr, delim) => {
   if (arr.length === 0) {
     return [];
