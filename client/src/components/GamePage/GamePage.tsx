@@ -23,7 +23,7 @@ import {
   SectionContainer,
   SectionTitle,
   SectionLink,
-} from "./Game.styles.js";
+} from "./GamePage.styles.js";
 import { CardRowGrid } from "../Dashboard/Dashboard.styles.js";
 import GameCard from "../GameCard/GameCard";
 import Review from "../Review/Review";

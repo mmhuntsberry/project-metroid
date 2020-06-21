@@ -61,9 +61,9 @@ export const HeroDetails = styled.span`
 
 export const BodyContainer = styled.div`
   display: grid;
+  grid-gap: var(--spacing-05);
   margin-right: var(--spacing-04);
   margin-left: var(--spacing-04);
-  grid-gap: var(--spacing-05);
   color: var(--white);
 
   ${mq[3]} {
