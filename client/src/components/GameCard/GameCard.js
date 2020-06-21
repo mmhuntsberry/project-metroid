@@ -1,8 +1,9 @@
 import React from "react";
+import { Link } from "react-router-dom";
 // import { GameCardContainer, GameCardText } from "./GameCard.styles";
 import styled from "@emotion/styled";
 
-const GameCardContainer = styled.div`
+const GameCardContainer = styled(Link)`
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -52,7 +53,7 @@ const GameDeveloper = styled.span`
 
 const GameCard = (props) => {
   return (
-    <GameCardContainer className="game-card">
+    <GameCardContainer className="game-card" to="/games/2">
       <GameArt className="game-card__artwork" src={props.img} />
       <GameTitle className="game-card__title">{props.title}</GameTitle>
       <GameDeveloper className="game-card__developer">
