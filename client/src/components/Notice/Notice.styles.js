@@ -1,33 +1,50 @@
 import styled from "@emotion/styled";
+import "../../styles/base/variables.css";
+import { mq } from "../../styles/utilities/breakpoints.js";
 
 const NoticeContainer = styled.div`
-  width: calc(100% - 2em);
-  min-height: 64px;
   display: flex;
-  color: #e2e2e4;
-  background-color: #212131;
-  margin: 1em;
-  padding: 0 1.5em;
-  font-size: 0.95em;
-  border-radius: 4px;
-  border: 0;
-  line-height: 1.5;
+  flex-direction: column;
   align-items: center;
+  min-height: var(--layout-05);
+  margin: var(--spacing-04);
+  padding: 0 var(--spacing-06);
+  border: 0;
+  border-radius: var(--spacing-01);
+  background-color: var(--foreground-dark-blue);
+  color: var(--grey-01);
+  line-height: 1.5;
+
+  @media screen and (min-width: 375px) {
+    flex-direction: row;
+  }
+
+  ${mq[6]} {
+    margin: var(--spacing-04) 0;
+  }
 `;
 
 const NoticeText = styled.p`
   justify-content: flex-start;
-  margin-right: 1em;
+  
+  @media screen and (min-width: 375px) {
+    margin-right: var(--spacing-04);
+  }
 `;
 
 const NoticeAction = styled.a`
-  text-transform: uppercase;
-  color: #f9b2c8;
-  font-weight: 600;
-  white-space: nowrap;
-  text-decoration: none;
   justify-content: flex-end;
+  margin-bottom: var(--spacing-04);
   margin-left: auto;
+  color: var(--pink);
+  font-weight: var(--font-weight-bold);
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  @media screen and (min-width: 375px) {
+    margin-bottom: 0;
+  }
 `;
 
 export { NoticeContainer, NoticeText, NoticeAction };
