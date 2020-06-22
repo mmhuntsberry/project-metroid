@@ -46,7 +46,7 @@ In the sprawling city of Midgar, an anti-Shinra organization calling themselves 
     genre: ["1", "5"],
   },
   {
-    id: "4",
+    id: "3",
     title: "Resident Evil 3",
     platform: "Playstation 4",
     release_year: 2020,
@@ -60,11 +60,11 @@ In the sprawling city of Midgar, an anti-Shinra organization calling themselves 
     developer: "Capcom",
     reviews: [],
     rating: ["3"],
-    theme: ["2"],
+    theme: ["2", "6"],
     genre: ["1", "6"],
   },
   {
-    id: "5",
+    id: "4",
     title: "Streets of Rage 4",
     platform: "Playstation 4",
     release_year: 2020,
@@ -82,7 +82,7 @@ In the sprawling city of Midgar, an anti-Shinra organization calling themselves 
     genre: ["7"],
   },
   {
-    id: "6",
+    id: "5",
     title: "Cyberpunk 2077",
     platform: "Playstation 4",
     release_year: 2020,

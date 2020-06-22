@@ -1,0 +1,53 @@
+version: "3"
+
+services:
+  db:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./sql
+    volumes:
+      - "./.data/db:/var/lib/mysql"
+    environment:
+      DATABASE_HOST: project-metroid
+      MYSQL_USER: root
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: test
+      # MYSQL_PORT: 3306
+    ports:
+      - "33061:3306"
+
+  api:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./server
+    ports:
+      - "4000:4000"
+    environment:
+      DATABASE_HOST: project-metroid
+      MYSQL_USER: root
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: test
+      MYSQL_PORT: 3306
+    depends_on:
+      - db
+    restart: on-failure
+    volumes:
+      # bookmark node_modules
+      # don't try to override it
+      - /home/node/app/node_modules
+      # when we make a change of the server on our local machine
+      # it will be reflected in the app dir in our container
+      - ./server:/home/node/app
+    # environment:
+    #   # when we access a service that has been defined inside a
+    #   # docker-compose file, we just need to reference the name
+    #   # of that service
+    #   - MYSQL_HOST=db
+    #   # redis defualt port is 6379
+    #   - MYSQL_PORT=3308
+    #   # default user
+    #   - MYSQL_USER=root
+    #   # default database
+    #   - MYSQL_DATABASE=password
+    #   # default password
+    #   - MYSQL_ROOT_PASSWORD=helloworld

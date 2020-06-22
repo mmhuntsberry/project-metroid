@@ -52,7 +52,6 @@ const GameDeveloper = styled.span`
 `;
 
 const GameCard = (props) => {
-  console.log(props);
   const { id } = props;
   return (
     <GameCardContainer className="game-card" to={`/games/${id}`}>

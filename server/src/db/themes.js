@@ -24,4 +24,9 @@ export const themes = [
     type: "Action",
     games: ["1"],
   },
+  {
+    id: "6",
+    type: "Survival",
+    games: ["4"],
+  },
 ];
