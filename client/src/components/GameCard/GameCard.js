@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 // import { GameCardContainer, GameCardText } from "./GameCard.styles";
 import styled from "@emotion/styled";
 
@@ -52,8 +52,9 @@ const GameDeveloper = styled.span`
 `;
 
 const GameCard = (props) => {
+  const { id } = useParams();
   return (
-    <GameCardContainer className="game-card" to="/games/2">
+    <GameCardContainer className="game-card" to="/games/id">
       <GameArt className="game-card__artwork" src={props.img} />
       <GameTitle className="game-card__title">{props.title}</GameTitle>
       <GameDeveloper className="game-card__developer">

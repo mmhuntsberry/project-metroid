@@ -1,4 +1,7 @@
 import React from "react";
+import GameCard from "../GameCard/GameCard";
+import { BrowseContainer } from "./Browse.styles";
+import { CardRowGrid } from "../../styles/layout/layout.styles.js";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 
@@ -6,24 +9,24 @@ const Browse = () => {
   return (
     <Query query={GET_GAMES}>
       {({ data, loading }) => {
+        console.log(data);
         if (loading) return "Loading...";
 
         return (
-          data &&
-          data.games &&
-          data.games.map((game) => (
-            <>
-              <h4>{game.title}</h4>
-              <p>{game.platform}</p>
-              <p>{game.release_year}</p>
-              <img src={game.box_art} />
-              <p>{game.synopsis}</p>
-              <p>{game.description}</p>
-              <iframe src={game.trailer} frameborder="0"></iframe>
-              <img src={game.hero} />
-              <p>{game.developer}</p>
-            </>
-          ))
+          <BrowseContainer>
+            <CardRowGrid>
+              {data &&
+                data.games &&
+                data.games.map((game) => (
+                  <GameCard
+                    key={game.id}
+                    img={game.box_art}
+                    title={game.title}
+                    developer={game.developer}
+                  />
+                ))}
+            </CardRowGrid>
+          </BrowseContainer>
         );
       }}
     </Query>

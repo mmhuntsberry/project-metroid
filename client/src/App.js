@@ -1,5 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  useParams,
+} from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Dashboard from "./components/Dashboard";
 import Browse from "./components/Browse";
@@ -24,7 +29,7 @@ function App() {
           <Route
             exact
             path="/games/:id"
-            component={() => <GamePage game={games[2]} />}
+            component={() => <GamePage />}
           />
         </Switch>
         <Footer />
