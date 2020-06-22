@@ -3,7 +3,6 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
-  useParams,
 } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Dashboard from "./components/Dashboard";
@@ -12,8 +11,8 @@ import Discover from "./components/Discover";
 import GamePage from "./components/GamePage/GamePage.tsx";
 import BottomNav from "./components/BottomNav";
 import Footer from "./components/Footer";
-import { games } from "./db/games.js";
 import ScrollToTop from "./utils/hooks/ScrollToTop";
+import { games } from "./db/games.js";
 import "./App.css";
 
 function App() {

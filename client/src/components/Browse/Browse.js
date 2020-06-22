@@ -19,6 +19,7 @@ const Browse = () => {
                 data.games &&
                 data.games.map((game) => (
                   <GameCard
+                    id={game.id}
                     key={game.id}
                     img={game.box_art}
                     title={game.title}

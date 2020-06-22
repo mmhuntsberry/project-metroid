@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from "react";
+import { useParams } from "react-router-dom";
 import {
   Hero,
   HeroImage,
@@ -33,6 +34,7 @@ import { reviews } from "../../db/reviews.js";
 import { default as popularGameCardData } from "../Dashboard/popularGameCardData.json";
 import gql from "graphql-tag";
 import { graphql } from "react-apollo";
+import { useQuery } from "@apollo/react-hooks";
 
 interface Props {
   data: IData;
@@ -44,10 +46,16 @@ interface IData {
 }
 
 const GamePage: FunctionComponent<Props> = (props: Props) => {
-  if (props.data.loading) return "Loading...";
+  const { id } = useParams();
 
-  const { game } = props.data;
-  console.log(game);
+  // const id = "3";
+  const { loading, error, data } = useQuery(GET_GAME, {
+    variables: { id },
+  });
+  if (loading) return "Loading...";
+
+  console.log(data);
+  const { game } = data;
   return (
     <div className="game-page">
       <Hero>
@@ -88,8 +96,7 @@ const GamePage: FunctionComponent<Props> = (props: Props) => {
             src={game.trailer}
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen
-          >
-          </GameTrailer>
+          ></GameTrailer>
           <SectionContainer>
             <SectionTitle>Popular reviews</SectionTitle>
             <SectionLink>More</SectionLink>
@@ -121,29 +128,29 @@ const GamePage: FunctionComponent<Props> = (props: Props) => {
 };
 
 const GET_GAME = gql`
-  query {
-  game(id: "4") {
-    id
-    title
-		platform
-    release_year
-    box_art
-    synopsis
-    description
-    trailer
-    hero
-    developer
-    rating {
-      rating
-    }
-    genre {
-      type
-    }
-    theme {
-      type
+  query Game($id: ID!) {
+    game(id: $id) {
+      id
+      title
+      platform
+      release_year
+      box_art
+      synopsis
+      description
+      trailer
+      hero
+      developer
+      rating {
+        rating
+      }
+      genre {
+        type
+      }
+      theme {
+        type
+      }
     }
   }
-}
 `;
 
 export default graphql(GET_GAME)(GamePage);
