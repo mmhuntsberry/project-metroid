@@ -34,12 +34,6 @@ In the sprawling city of Midgar, an anti-Shinra organization calling themselves 
     trailer: "https://www.youtube.com/embed/hXar_5soj94",
 
     release_year: 1985,
-    rating: ["4"],
-    reviews: [],
-    trailer: "https://www.youtube.com/embed/2R_1HEbxYhA",
-    hero:
-      "https://hb.imgix.net/dfa1f20492dfcac68551d1626f201c8f3c3a0d96.jpg?auto=compress,format&fit=crop&h=353&w=616&s=ee1848d43a40aa38c5d4aa189de8e0bd",
-    developer: "The Pokémon Company",
     reviews: ["201"],
     rating: ["2"],
     theme: ["3", "4"],
