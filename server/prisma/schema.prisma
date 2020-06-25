@@ -1,0 +1,31 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model games {
+  box_art      String
+  description  String?
+  developer    String?
+  hero         String?
+  id           Int       @default(autoincrement()) @id
+  platform     String
+  release_year Int
+  synopsis     String
+  title        String
+  trailer      String?
+  reviews      reviews[]
+}
+
+model reviews {
+  game_id Int?
+  id      Int    @default(autoincrement()) @id
+  review  String
+  games   games? @relation(fields: [game_id], references: [id])
+
+  @@index([game_id], name: "game_id")
+}

@@ -1,10 +1,4 @@
-DROP TABLE IF EXISTS games, reviews;
-
-/* CREATE TABLE users (
-  id AUTO_INCREMENT PRIMARY KEY
-  name VARCHAR(100)
-  email VARCHAR(100)
-) */
+DROP TABLE IF EXISTS games, reviews, users;
 
 CREATE TABLE games (
   id INT AUTO_INCREMENT PRIMARY KEY,
@@ -24,72 +18,72 @@ CREATE TABLE reviews (
   review VARCHAR(255) NOT NULL,
   game_id INT,
   FOREIGN KEY (game_id) REFERENCES games (id)
+);
+
+CREATE TABLE users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100),
+  email VARCHAR(100),
+  created_at TIMESTAMP
+);
+
+CREATE TABLE themes (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  type VARCHAR(100) UNIQUE
+);
+
+CREATE TABLE game_theme (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  game_id INT, 
+  theme_id INT,
+  FOREIGN KEY (game_id) REFERENCES games(id),
+  FOREIGN KEY (theme_id) REFERENCES themes(id)
+);
+
+CREATE TABLE platforms (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  type VARCHAR(100) UNIQUE
+);
+
+CREATE TABLE game_platform (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  game_id INT, 
+  theme_id INT,
+  FOREIGN KEY (game_id) REFERENCES games(id),
+  FOREIGN KEY (platform_id) REFERENCES platforms(id)
 )
 
-/* CREATE TABLE characters (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    first_name VARCHAR(255) NOT NULL,
-    last_name VARCHAR(255),
-    nickname VARCHAR(255),
-    race VARCHAR(128),
-    homeland VARCHAR(128)
+CREATE TABLE game_platform (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  game_id INT, 
+  platform_id INT,
+  FOREIGN KEY (game_id) REFERENCES games(id),
+  FOREIGN KEY (platform_id) REFERENCES platforms(id)
 );
 
-
-
-CREATE TABLE spren (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    type VARCHAR(255) NOT NULL,
-    name VARCHAR(255)
+CREATE TABLE genres (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  type VARCHAR(100)
 );
 
-
-
-CREATE TABLE knight_radiant (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    kr_order VARCHAR(255),
-    spren_id INT NOT NULL,
-    char_id INT NOT NULL,
-    FOREIGN KEY (spren_id) REFERENCES spren(id)
-        ON DELETE CASCADE,
-    FOREIGN KEY (char_id) REFERENCES characters(id)
-        ON DELETE CASCADE
+CREATE TABLE game_genre (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  game_id INT, 
+  genre_id INT,
+  FOREIGN KEY (game_id) REFERENCES games(id),
+  FOREIGN KEY (genre_id) REFERENCES genres(id)
 );
 
-
-
-CREATE TABLE allegiance (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255) NOT NULL
+CREATE TABLE ratings (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  rating VARCHAR(100) NOT NULL
 );
 
-
-
-CREATE TABLE ability (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    type VARCHAR(255) NOT NULL
+-- Example of how to create the relationship
+CREATE TABLE game_rating (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  game_id INT,
+  rating_id INT,
+  FOREIGN KEY (game_id) REFERENCES games(id),
+  FOREIGN KEY (rating_id) REFERENCES ratings(id)
 );
-
-
-
-CREATE TABLE char_allegiances (
-    char_id INT NOT NULL,
-    allegiance_id INT NOT NULL,
-    FOREIGN KEY (char_id) REFERENCES characters(id)
-        ON DELETE CASCADE,
-    FOREIGN KEY (allegiance_id) REFERENCES allegiance(id)
-        ON DELETE CASCADE, 
-    PRIMARY KEY (char_id, allegiance_id)
-);
-
-
-CREATE TABLE char_abilities (
-    char_id INT NOT NULL,
-    ability_id INT NOT NULL,
-    FOREIGN KEY (char_id) REFERENCES characters(id)
-        ON DELETE CASCADE,
-    FOREIGN KEY (ability_id) REFERENCES ability(id)
-        ON DELETE CASCADE,
-    PRIMARY KEY (char_id, ability_id)
-);
- */

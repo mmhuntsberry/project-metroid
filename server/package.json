@@ -8,12 +8,14 @@
     "dev": "nodemon src/index.js --ext js,graphql --exec babel-node"
   },
   "dependencies": {
+    "@prisma/client": "^2.1.0",
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "graphql-yoga": "^1.18.3",
     "uuidv4": "^6.1.0"
   },
   "devDependencies": {
+    "@prisma/cli": "^2.1.0",
     "nodemon": "^2.0.4"
   }
 }
