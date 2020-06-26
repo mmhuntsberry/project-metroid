@@ -14,6 +14,9 @@
   --dark-red: #951010;
   --red: #f00;
 
+  /* color gradient */
+  --color-gradient-right-green: linear-gradient(90deg, #1FEE7E -64.29%, #2386BD 166.07%);
+  
   /* action colors */
   --error-01: var(--red);
 

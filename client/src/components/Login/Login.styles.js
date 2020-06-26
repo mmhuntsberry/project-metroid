@@ -10,7 +10,7 @@ const LoginForm = styled.form`
     margin: 0 auto;
     padding: 0 1.5em;
     font-size: 0.95em;
-    border-radius: 4px; 
+    border-radius: 5px; 
     border: 0;
     line-height: 1.5;
     align-items: center;
@@ -47,7 +47,7 @@ const LoginInput = styled.input`
     width: 382px;
     height: 40px;
     background: var(--dark-blue);
-    border-radius: 4px;
+    border-radius: 5px;
 `;
 
 const LoginAction = styled.a`
@@ -71,6 +71,8 @@ const LoginText = styled.span`
 
 const LoginButton = styled.button`
     margin-right: auto;
+    border-radius: 5px;
+    background: var(--color-gradient-right-green), var(--grey-01);
 `;
 
 export {LoginForm, LoginContainer, LoginTitle, LoginLabel, LoginInput, LoginAction, LoginText, LoginButton};
