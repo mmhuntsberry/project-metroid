@@ -75,14 +75,23 @@ VALUES (
   );
 /* INSERT INTO users (name, email) VALUES ('Matt', 'matt@gmail.com'), ('Stephanie', 'stephanie@gmail.com'), ('Link', 'link@gmail.com'); */
 INSERT INTO themes (type)
-VALUES ('Horror'),
-  ('Action'),
+VALUES ('Platform'),
+  ('Horror'),
   ('kids'),
   ('Fantasy'),
+  ('Action'),
   ('Survival');
 INSERT INTO game_theme (game_id, theme_id)
-VALUES (1, 2),
-  (1, 4);
+VALUES (1, 4),
+  (1, 5),
+  (2, 1),
+  (2, 3),
+  (3, 1),
+  (3, 3),
+  (3, 4),
+  (4, 2),
+  (4, 6),
+  (5, 5);
 INSERT INTO platforms (type)
 VALUES ('Atari'),
   ('Nintendo (NES)'),
@@ -140,4 +149,8 @@ VALUES (0),
   (4),
   (5);
 INSERT INTO game_rating (game_id, rating_id)
-VALUES (1, 6);
+VALUES (1, 6),
+  (2, 6),
+  (3, 5),
+  (4, 4),
+  (5, 4);
