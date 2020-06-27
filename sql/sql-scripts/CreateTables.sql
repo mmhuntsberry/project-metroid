@@ -48,14 +48,6 @@ CREATE TABLE platforms (
 CREATE TABLE game_platform (
   id INT AUTO_INCREMENT PRIMARY KEY,
   game_id INT, 
-  theme_id INT,
-  FOREIGN KEY (game_id) REFERENCES games(id),
-  FOREIGN KEY (platform_id) REFERENCES platforms(id)
-)
-
-CREATE TABLE game_platform (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  game_id INT, 
   platform_id INT,
   FOREIGN KEY (game_id) REFERENCES games(id),
   FOREIGN KEY (platform_id) REFERENCES platforms(id)
