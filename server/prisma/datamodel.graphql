@@ -1,16 +1,16 @@
 type Query {
-  game(id: ID!): Game! @relation(name: "Game")
-  games: [Game!]! @relation(name: "Game")
-  user: User! @relation(name: "User")
-  users: [User!]! @relation(name: "User")
-  reviews: [Review!]! @relation(name: "Review")
-  theme: Theme! @relation(name: "Theme")
-  themes: [Theme!]! @relation(name: Theme)
-  platform: Platform! @relation(name: Platform)
-  platforms: [Platform!]! @relation(name: Platform)
-  genre: Genre! @relation(name: Genre)
-  genres: [Genre!]! @relation(name: Genre)
-  ratings: [Rating!]! @relation(name: Rating)
+  game(id: ID!): Game!
+  games: [Game!]!
+  user: User!
+  users: [User!]!
+  reviews: [Review!]!
+  theme: Theme!
+  themes: [Theme!]!
+  platform: Platform!
+  platforms: [Platform!]!
+  genre: Genre!
+  genres: [Genre!]!
+  ratings: [Rating!]!
 }
 
 type Mutation {

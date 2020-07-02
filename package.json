@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start:clean": "rm -rf .data && docker-compose down --rmi all && docker-compose up --build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start:clean": "docker system prune -a --volumes && rm -rf .data && docker-compose down && docker-compose up --build"
   },
   "repository": {
     "type": "git",
