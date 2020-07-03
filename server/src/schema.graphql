@@ -1,16 +1,16 @@
 type Query {
-  game(id: ID!): Game! @relation(name: "Game")
-  games: [Game!]! @relation(name: "Game")
-  user: User! @relation(name: "User")
-  users: [User!]! @relation(name: "User")
-  reviews: [Review!]! @relation(name: "Review")
-  theme: Theme! @relation(name: "Theme")
-  themes: [Theme!]! @relation(name: Theme)
-  platform: Platform! @relation(name: Platform)
-  platforms: [Platform!]! @relation(name: Platform)
-  genre: Genre! @relation(name: Genre)
-  genres: [Genre!]! @relation(name: Genre)
-  ratings: [Rating!]! @relation(name: Rating)
+  game(id: ID!): Game!
+  games: [Game!]!
+  user: User!
+  users: [User!]!
+  reviews: [Review!]!
+  theme: Theme!
+  themes: [Theme!]!
+  platform: Platform!
+  platforms: [Platform!]!
+  genre: Genre!
+  genres: [Genre!]!
+  ratings: [Rating!]!
 }
 
 type Mutation {
@@ -25,7 +25,7 @@ type Mutation {
 }
 
 type Game {
-  id: ID! @unique
+  id: ID!
   title: String!
   platform: String!
   release_year: Int
@@ -42,14 +42,14 @@ type Game {
 }
 
 type Review {
-  id: ID! @unique
+  id: ID!
   review: String!
   game: Game!
   user: User!
 }
 
 type User {
-  id: ID! @unique
+  id: ID!
   name: String
   email: String
   collection: [Game!]!
@@ -57,25 +57,25 @@ type User {
 }
 
 type Theme {
-  id: ID! @unique
+  id: ID!
   type: String!
   games: [Game!]!
 }
 
 type Platform {
-  id: ID! @unique
+  id: ID!
   name: String!
   games: [Game!]!
 }
 
 type Genre {
-  id: ID! @unique
+  id: ID!
   type: String!
   games: [Game!]!
 }
 
 type Rating {
-  id: ID! @unique
+  id: ID!
   rating: Int!
   games: [Game!]!
 }

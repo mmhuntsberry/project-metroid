@@ -23,4 +23,29 @@ Assuming you have Docker installed this application is designed to spin up the C
 
 Let's spin them up!
 
-At the time of writing this only the MySQL and Server are hooked up together.  
+At the time of writing this only the MySQL Database and GraphQL Server are hooked up together.
+
+In the root of the project, in the `package.json` file, you'll find three scripts.  You can `docker-compose up` or `docker-compose down` individually or do both and clean your local environment of any dangling images(recommended).
+
+Simply run, 
+```
+yarn start:clean
+```
+
+This command will spin down any already running container, prune them from memory, then rebuild them. 
+
+Once your containers are up and running you can visit your `graphql playground` at `http://localhost:4000/` and if you have a database management system such as MySQL Workbench you can see a visual representation of your data.
+
+In order to view your data in MySQL workbench you need to configure your connection.  For development purposes, mySQL persists its data on your local machine in a `.data` file in the root of your project.  The `.data` directory should be automatically seeded with whatever tables and data you have specified in the `/sql/sql-scripts` directory.
+
+MySQL development configuration
+```
+connection name: project-metroid
+host: 127.0.0.1
+user: root
+password: password
+default schema: test
+```
+
+_note:_ If you're using a windows machine your host will be whatever the docker machine ip is hosting the db.
+
