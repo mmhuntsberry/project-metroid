@@ -8,6 +8,10 @@ const PageWrapper = styled.div`
 
 const DashboardBoardBodyContainer = styled.div`
   margin: 0 var(--spacing-04);
+
+  ${mq[6]} {
+    margin: 0;
+  }
 `;
 
 const CardRow = styled.div`
