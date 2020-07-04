@@ -1,24 +1,41 @@
 import styled from "@emotion/styled";
+import "../../styles/base/variables.css"
+import { mq } from "../../styles/utilities/breakpoints.js";
+import { Link } from "react-router-dom";
 
-const GameCardContainer = styled.div`
-  width: calc(100% - 2em);
-  min-height: 64px;
+const GameCardContainer = styled(Link)`
   display: flex;
-  color: #e2e2e4;
-  background-color: #212131;
-  margin-right: 1em;
-  padding: 0 1.5em 1.5em;
-  font-size: 0.95em;
-  border-radius: 4px;
+  flex-direction: column;
+  width: 100%;
   border: 0;
+  background-color: transparent;
+  color: var(--grey-01);
+  font-size: var(--body-font-size-02);
   line-height: 1.5;
-  align-items: flex-start;
+
+  ${mq[2]} {
+    font-size: var(--body-font-size-03);
+  }
 `;
 
-const GameCardText = styled.p`
-  justify-content: flex-start;
-  margin-right: 1em;
-  width: 150px;
+const GameArt = styled.img`
+  width: 100%;
+  margin-right: var(--spacing-04);
+  margin-bottom: var(--spacing-02);
+  border-radius: var(--spacing-01);
+  object-fit: cover;
 `;
 
-export { GameCardContainer, GameCardText };
+// these styles are needed to crop the
+// text to two lines add an ellipsis at the end.
+const GameTitle = styled.span`
+  font-weight: var(--font-weight-bold);
+`;
+
+// these styles do the same as above, but
+// crop to one line.
+const GameDeveloper = styled.span`
+  color: var(--grey-02);
+`;
+
+export { GameCardContainer, GameArt, GameTitle, GameDeveloper };
