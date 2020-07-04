@@ -37,8 +37,6 @@ Assuming you have Docker installed this application is designed to spin up the C
 
 Let's spin them up!
 
-_note:_ _At the time of writing this only the MySQL Database and GraphQL Server are hooked up together._
-
 In the root of the project, in the `package.json` file, you'll find three scripts.  You can `docker-compose up` or `docker-compose down` individually or do both and clean your local environment of any dangling images(recommended).
 
 Simply run, 
