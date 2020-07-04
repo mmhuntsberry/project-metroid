@@ -11,6 +11,7 @@ type Query {
   genre: Genre!
   genres: [Genre!]!
   ratings: [Rating!]!
+  rating(id: ID!): Rating!
 }
 
 type Mutation {
@@ -36,7 +37,7 @@ type Game {
   hero: String
   developer: String
   reviews: [Review!]!
-  rating: [Rating!]!
+  rating: Rating!
   theme: [Theme!]!
   genre: [Genre!]!
 }

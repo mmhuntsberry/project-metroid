@@ -4,8 +4,18 @@ export const Game = {
   reviews(parent, args, { db }, info) {
     return reduceFilter(parent.reviews, db.reviews);
   },
-  rating(parent, args, { db }, info) {
-    return reduceFilter(parent.rating, db.ratings);
+  async rating(parent, args, ctx, info) {
+    return await ctx.prisma.game_rating
+      .findOne({
+        where: { game_id: parent.id },
+      })
+      .then((data) => {
+        return ctx.prisma.ratings.findOne({
+          where: {
+            id: data.rating_id,
+          },
+        });
+      });
   },
   theme(parent, args, { db }, info) {
     return reduceFilter(parent.theme, db.themes);

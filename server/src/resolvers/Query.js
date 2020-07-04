@@ -15,16 +15,24 @@ export const Query = {
   reviews(parent, args, { db }, info) {
     return db.reviews;
   },
-  themes(parent, ctx, { db }, info) {
+  themes(parent, args, ctx, info) {
     return db.themes;
   },
-  platforms(parent, ctx, { db }, info) {
+  platforms(parent, args, ctx, info) {
     return db.platforms;
   },
-  genres(parent, ctx, { db }, info) {
+  genres(parent, args, ctx, info) {
     return db.genres;
   },
-  ratings(parent, ctx, { db }, info) {
-    return db.ratings;
+  async ratings(parent, args, ctx, info) {
+    return await ctx.prisma.ratings.findMany();
+  },
+  async rating(parent, { id }, ctx, info) {
+    // return db.ratings;
+    return await ctx.prisma.ratings.findOne({
+      where: {
+        id: Number(id),
+      },
+    });
   },
 };
