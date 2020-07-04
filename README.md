@@ -1,9 +1,9 @@
 # Project Metroid
 
-A collection tracking application and social network for gamers. Built using React, TypeScript, Emotion, GraphQL, MySQL and Docker.
-
 ## Table of Contents
+- [Uses](#uses)
 - [Getting Started](#getting-started)
+- [Docker and MySQL](#docker-and-mysql)
 
 This project uses:
 
@@ -19,11 +19,25 @@ This project uses:
 
 ## Getting Started
 
+The application is split up between three different services.  The `client`, `server` and the `database`.
+
+You can serve each the client and server individually.  The client and server you can serve up simply navigating to their respective directory and running:
+
+```
+yarn start
+```
+
+For example, if you are in the root of the project, navigate to the client folder and run `yarn start` to get the React frontend running.  
+
+You can view your React frontend at `localhost:3000` and your graphql-playground at `localhost:4000`.
+
+## Docker and MySQL
+
 Assuming you have Docker installed this application is designed to spin up the Client(React), the Server(Node, GraphQL), and MySQL in a Docker container using a `docker-compose.yml` file.
 
 Let's spin them up!
 
-At the time of writing this only the MySQL Database and GraphQL Server are hooked up together.
+_note:_ _At the time of writing this only the MySQL Database and GraphQL Server are hooked up together._
 
 In the root of the project, in the `package.json` file, you'll find three scripts.  You can `docker-compose up` or `docker-compose down` individually or do both and clean your local environment of any dangling images(recommended).
 
