@@ -47,18 +47,6 @@ const GET_GAMES = gql`
       trailer
       hero
       developer
-      reviews {
-        review
-      }
-      rating {
-        rating
-      }
-      theme {
-        type
-      }
-      genre {
-        type
-      }
     }
   }
 `;
