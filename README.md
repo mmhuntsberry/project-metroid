@@ -5,6 +5,8 @@
 - [Getting Started](#getting-started)
 - [Docker and MySQL](#docker-and-mysql)
 
+
+## Uses
 This project uses:
 
 **React** - A JavaScript library for building user interfaces. Uses Create React App.

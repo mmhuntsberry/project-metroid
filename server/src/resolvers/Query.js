@@ -1,11 +1,13 @@
 export const Query = {
   async games(parent, args, ctx, info) {
-    console.log(ctx);
     return await ctx.prisma.games.findMany();
   },
-  game(parent, { id }, { db }, info) {
-    const findGame = db.games.find((game) => game.id === id);
-    return findGame;
+  async game(parent, { id }, ctx, info) {
+    return await ctx.prisma.games.findOne({
+      where: {
+        id: Number(id),
+      },
+    });
   },
   users(parent, args, { db }, info) {
     return db.users;
