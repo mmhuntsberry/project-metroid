@@ -15,8 +15,15 @@ export const Query = {
   reviews(parent, args, { db }, info) {
     return db.reviews;
   },
-  themes(parent, args, ctx, info) {
-    return db.themes;
+  async theme(parent, { id }, ctx, info) {
+    return await ctx.prisma.themes.findOne({
+      where: {
+        id: Number(id),
+      },
+    });
+  },
+  async themes(parent, { id }, ctx, info) {
+    return await ctx.prisma.themes.findMany();
   },
   platforms(parent, args, ctx, info) {
     return db.platforms;

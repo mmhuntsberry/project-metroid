@@ -83,13 +83,13 @@ VALUES ('Platform'),
   ('Survival');
 INSERT INTO game_theme (game_id, theme_id)
 VALUES (1, 4),
-  (1, 5),
+  (1, 3),
   (2, 1),
   (2, 3),
-  (3, 1),
-  (3, 4),
-  (4, 2),
-  (4, 6),
+  (3, 2),
+  (3, 5),
+  (3, 6),
+  (4, 5),
   (5, 5);
 INSERT INTO platforms (type)
 VALUES ('Atari'),

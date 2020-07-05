@@ -4,7 +4,7 @@ type Query {
   user: User!
   users: [User!]!
   reviews: [Review!]!
-  theme: Theme!
+  theme(id: ID!): Theme!
   themes: [Theme!]!
   platform: Platform!
   platforms: [Platform!]!
