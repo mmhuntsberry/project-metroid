@@ -34,6 +34,7 @@ const CardRowGrid = styled.div`
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   }
 `;
+
 const TrailerCardRowGrid = styled.div`
   display: grid;
   grid-gap: var(--spacing-04);

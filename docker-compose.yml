@@ -1,0 +1,68 @@
+version: "3.7"
+
+services:
+   # Client side React or Vue
+  client:
+    # since we are wanting to run our
+    # containers using a file other than
+    # that the default Dockerfile.
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
+    build:
+      # we specify a context
+      context: ./client
+      # and the location of the file
+      dockerfile: Dockerfile.dev
+    # what port we want to make available
+    ports:
+      - "3000:3000"
+    # here we bind our volumes
+    volumes:
+      # don't try to map a folder against
+      # our node modules
+      - /home/node/app/node_modules
+      # map the current dir outside the
+      # container to the app folder
+      # inside the container
+      - ./client:/home/node/app
+  db:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./server/sql
+    restart: "always"
+    volumes:
+      - "./.data/db:/var/lib/mysql"
+    environment:
+      DATABASE_HOST: project-metroid
+      MYSQL_USER: root
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: test
+    expose: 
+      - "3306"
+    ports:
+      - "3306:3306"
+
+  api:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./server
+    ports:
+      - "4000:4000"
+    depends_on: 
+      - db
+    environment:
+      CHOKIDAR_USEPOLLING: "true"
+      DATABASE_HOST: project-metroid
+      MYSQL_USER: root
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: test
+      MYSQL_PORT: 3306
+
+    restart: on-failure
+    volumes:
+      # bookmark node_modules
+      # don't try to override it
+      - /home/node/app/node_modules
+      # when we make a change of the server on our local machine
+      # it will be reflected in the app dir in our container
+      - ./server:/home/node/app

@@ -1,16 +1,17 @@
 type Query {
-  game: Game!
+  game(id: ID!): Game!
   games: [Game!]!
   user: User!
   users: [User!]!
   reviews: [Review!]!
-  theme: Theme!
+  theme(id: ID!): Theme!
   themes: [Theme!]!
   platform: Platform!
   platforms: [Platform!]!
   genre: Genre!
   genres: [Genre!]!
   ratings: [Rating!]!
+  rating(id: ID!): Rating!
 }
 
 type Mutation {
@@ -27,12 +28,18 @@ type Mutation {
 type Game {
   id: ID!
   title: String!
-  releaseYear: Int
   platform: String!
-  rating: Float
-  genres: [Genre!]!
-  src: String
+  release_year: Int
+  box_art: String!
+  synopsis: String!
+  description: String!
+  trailer: String
+  hero: String
+  developer: String
   reviews: [Review!]!
+  rating: Rating!
+  theme: [Theme!]!
+  genre: [Genre!]!
 }
 
 type Review {
@@ -46,30 +53,30 @@ type User {
   id: ID!
   name: String
   email: String
-  collection: [Game]
-  reviews: [Review]
+  collection: [Game!]!
+  reviews: [Review!]!
 }
 
 type Theme {
   id: ID!
   type: String!
-  games: [Game]
+  games: [Game!]!
 }
 
 type Platform {
   id: ID!
   name: String!
-  games: [Game]
+  games: [Game!]!
 }
 
 type Genre {
   id: ID!
   type: String!
-  games: [Game]
+  games: [Game!]!
 }
 
 type Rating {
   id: ID!
-  rating: Float!
-  games: [Game]
+  rating: Int!
+  games: [Game!]!
 }

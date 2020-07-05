@@ -1,0 +1,31 @@
+# ---------------------------------------------
+# This file is for the Development Environment
+# ---------------------------------------------
+
+# Choose a base image
+FROM node:12-alpine
+
+# remove .git file && install git
+RUN apk update && apk upgrade && \
+  apk add --no-cache bash git openssh 
+
+# create user node
+USER node
+
+# create a working directory
+RUN mkdir -p /home/node/app
+
+# switch to working directory
+WORKDIR /home/node/app
+
+# change ownership and copy over files to package.json
+COPY --chown=node:node yarn.lock package.json ./
+
+# installs dependencies
+RUN yarn install
+
+# copy over all other files
+COPY --chown=node:node . .
+
+# run app
+CMD ["yarn", "start"]

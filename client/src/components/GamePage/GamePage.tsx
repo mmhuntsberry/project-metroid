@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from "react";
+import { useParams } from "react-router-dom";
 import {
   Hero,
   HeroImage,
@@ -31,18 +32,30 @@ import { GameModel } from "../../models";
 import { intersperse } from "../../utils/helpers.js";
 import { reviews } from "../../db/reviews.js";
 import { default as popularGameCardData } from "../Dashboard/popularGameCardData.json";
+import gql from "graphql-tag";
+import { graphql } from "react-apollo";
+import { useQuery } from "@apollo/react-hooks";
 
 interface Props {
+  data: IData;
+}
+
+interface IData {
+  loading: boolean;
   game: GameModel;
 }
 
-interface RouteParams {
-  id: string;
-}
-
 const GamePage: FunctionComponent<Props> = (props: Props) => {
-  const { game } = props;
+  const { id } = useParams();
 
+  // const id = "3";
+  const { loading, error, data } = useQuery(GET_GAME, {
+    variables: { id },
+  });
+  if (loading) return "Loading...";
+
+  console.log(data);
+  const { game } = data;
   return (
     <div className="game-page">
       <Hero>
@@ -59,7 +72,8 @@ const GamePage: FunctionComponent<Props> = (props: Props) => {
           <GameInfo>
             <InfoContainer>
               <GameInfoTitle>Rating:</GameInfoTitle>
-              <GameRating>{game.rating} / 10</GameRating>
+              {console.log(game)}
+              <GameRating>{game.rating.rating} / 5</GameRating>
             </InfoContainer>
             <InfoContainer>
               <GameInfoTitle>Platform:</GameInfoTitle>
@@ -67,6 +81,7 @@ const GamePage: FunctionComponent<Props> = (props: Props) => {
             </InfoContainer>
             <InfoContainer>
               <GameInfoTitle>Theme:</GameInfoTitle>
+              {console.log("theme", game.theme)}
               <GameGenre>{intersperse(game.theme, ", ")}</GameGenre>
             </InfoContainer>
             <InfoContainer>
@@ -89,7 +104,7 @@ const GamePage: FunctionComponent<Props> = (props: Props) => {
           </SectionContainer>
           <ReviewsContainer>
             {reviews.map((review) => (
-              <Review userReview={review} />
+              <Review key={review.id} userReview={review} />
             ))}
           </ReviewsContainer>
           <SectionContainer>
@@ -113,4 +128,33 @@ const GamePage: FunctionComponent<Props> = (props: Props) => {
   );
 };
 
-export default GamePage;
+const GET_GAME = gql`
+  query Game($id: ID!) {
+    game(id: $id) {
+      id
+      title
+      platform
+      release_year
+      box_art
+      synopsis
+      description
+      trailer
+      hero
+      developer
+      rating {
+        rating
+      }
+      genre {
+        type
+      }
+      theme {
+        type
+      }
+      reviews {
+        review
+      }
+    }
+  }
+`;
+
+export default graphql(GET_GAME)(GamePage);
