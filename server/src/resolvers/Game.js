@@ -1,8 +1,12 @@
 import { reduceFilter } from "../../utils/helpers.js";
 
 export const Game = {
-  reviews(parent, args, { db }, info) {
-    return reduceFilter(parent.reviews, db.reviews);
+  async reviews(parent, args, ctx, info) {
+    const reviews = await ctx.prisma.reviews.findMany({
+      where: { game_id: parent.id },
+    });
+
+    return reviews.map((review) => review);
   },
   async rating(parent, args, ctx, info) {
     return await ctx.prisma.game_rating
@@ -36,7 +40,6 @@ export const Game = {
     return filiteredThemes.map((theme) => theme);
   },
   async genre(parent, args, ctx, info) {
-    // return reduceFilter(parent.genre, db.genres);
     const genres = await ctx.prisma.genres.findMany();
     const games = await ctx.prisma.game_genre.findMany();
 
