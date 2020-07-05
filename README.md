@@ -4,6 +4,8 @@
 - [Uses](#uses)
 - [Getting Started](#getting-started)
 - [Docker and MySQL](#docker-and-mysql)
+- [Updating the Schema](#updating-the-schema)
+
 
 
 ## Uses
@@ -39,6 +41,11 @@ Assuming you have Docker installed this application is designed to spin up the C
 
 Let's spin them up!
 
+First, in the `/server/primsa` directory.  We need to create a `.env` in here your credentials for our MySQL database will be stored. Since at the moment we are hosting our DB locally in a Docker container our credentials are secret.  Add this line to your `.env` file.
+```
+DATABASE_URL="mysql://root:password@db:3306/test"
+```
+
 In the root of the project, in the `package.json` file, you'll find three scripts.  You can `docker-compose up` or `docker-compose down` individually or do both and clean your local environment of any dangling images(recommended).
 
 Simply run, 
@@ -62,4 +69,55 @@ default schema: test
 ```
 
 _note:_ If you're using a windows machine your host will be whatever the docker machine ip is hosting the db.
+
+## Updating the Schema
+If you need to make a change to the Schema for any reason, please follow these steps until we can automate the process.  
+
+- Step 1
+In the projects root directory run:
+  ```
+  yarn down
+  ```
+  This will kill any running docker containers.
+
+- Step 2
+Navigate to `/server/prisma` and in the `.env` file replace the database address which in this case is `db` with `127.0.0.1`.  Resulting in our `DATABASE_URL` now looking like this:
+  ```
+  DATABASE_URL='mysql://root:password@127.0.0.1:3306/test'
+  ```
+- Step 3
+We need to start up our server and database again.  In the root of our project, run: 
+  ```
+  yarn start:clean
+  ```
+  If you're wanting to start with new data be sure to delete `.data` directory.
+
+- Step 4
+Make whatever changes you need to your schema.
+
+- Step 5
+Back in the `/server/prisma` directory, we need prisma to take in our new schema changes and we do so by running: 
+  ```
+  npx prisma introspect
+  ```
+  and 
+  ```
+  npx prisma generate
+  ```
+- Step 6
+We need to switch our database url back to what it was originally. We can do this by first running:
+  ```
+  yarn down
+  ```
+  In `/server/prisma/.env` file change the `DATABASE_URL` to:
+
+  ```
+  DATABASE_URL="mysql://root:password@db:3306/test"
+  ```
+- Step 7
+Spin up docker containers in the root of the project.
+  ```
+  yarn start:clean
+  ```
+
 

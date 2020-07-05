@@ -72,7 +72,8 @@ const GamePage: FunctionComponent<Props> = (props: Props) => {
           <GameInfo>
             <InfoContainer>
               <GameInfoTitle>Rating:</GameInfoTitle>
-              <GameRating>{game.rating[0].rating} / 5</GameRating>
+              {console.log(game)}
+              <GameRating>{game.rating.rating} / 5</GameRating>
             </InfoContainer>
             <InfoContainer>
               <GameInfoTitle>Platform:</GameInfoTitle>
@@ -148,6 +149,9 @@ const GET_GAME = gql`
       }
       theme {
         type
+      }
+      reviews {
+        review
       }
     }
   }
