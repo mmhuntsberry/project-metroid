@@ -59,19 +59,19 @@ type User {
 
 type Theme {
   id: ID!
-  type: String!
+  theme: String!
   games: [Game!]!
 }
 
 type Platform {
   id: ID!
-  name: String!
+  platform: String!
   games: [Game!]!
 }
 
 type Genre {
   id: ID!
-  type: String!
+  genre: String!
   games: [Game!]!
 }
 

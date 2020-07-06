@@ -25,8 +25,15 @@ export const Query = {
   async themes(parent, { id }, ctx, info) {
     return await ctx.prisma.themes.findMany();
   },
-  platforms(parent, args, ctx, info) {
-    return db.platforms;
+  async platform(parent, args, ctx, info) {
+    return await ctx.prisma.platforms.findMany({
+      where: {
+        id: Number(id),
+      },
+    });
+  },
+  async platforms(parent, args, ctx, info) {
+    return await ctx.prisma.platforms.findMany();
   },
   genres(parent, args, ctx, info) {
     return db.genres;
