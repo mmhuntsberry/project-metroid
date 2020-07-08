@@ -25,8 +25,8 @@ export const Query = {
   async themes(parent, { id }, ctx, info) {
     return await ctx.prisma.themes.findMany();
   },
-  async platform(parent, args, ctx, info) {
-    return await ctx.prisma.platforms.findMany({
+  async platform(parent, { id }, ctx, info) {
+    return await ctx.prisma.platforms.findOne({
       where: {
         id: Number(id),
       },

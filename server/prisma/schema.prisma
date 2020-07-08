@@ -71,14 +71,14 @@ model game_theme {
 }
 
 model genres {
+  genre      String?
   id         Int          @default(autoincrement()) @id
-  type       String?
   game_genre game_genre[]
 }
 
 model platforms {
   id            Int             @default(autoincrement()) @id
-  type          String?         @unique
+  platform      String?         @unique
   game_platform game_platform[]
 }
 
@@ -99,7 +99,7 @@ model reviews {
 
 model themes {
   id         Int          @default(autoincrement()) @id
-  type       String?      @unique
+  theme      String?      @unique
   game_theme game_theme[]
 }
 
