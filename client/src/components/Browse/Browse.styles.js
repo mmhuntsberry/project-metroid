@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import { mq } from "../../styles/utilities/breakpoints.js";
 
 export const BrowseContainer = styled.div`
-height: 100vh;
+height: fit-content;
   ${mq[6]} {
   }
 `;
@@ -27,15 +27,23 @@ export const BackgroundImage = styled.div`
 
 export const TitleDiv = styled.div`
 position: absolute;
-left: 3.14%;
 font-family: Open Sans;
 font-style: normal;
 font-size: 32px;
 color: #28c7b7;
+margin-left: 35px;
 
   ${mq[2]} {
   position: absolute;  
-  left: 8.7%;
+  margin-left: 70px;
+  font-family: Open Sans;
+  font-style: normal;
+  font-size: 32px;
+  color: #28c7b7;
+`;
+
+export const ByTitle = styled.div`
+  margin-bottom: 20px;
   font-family: Open Sans;
   font-style: normal;
   font-size: 32px;
@@ -71,4 +79,35 @@ export const CustomTitleWithCarrot = styled.h3`
 ${mq[2]} {
   display: none;
 }
+`;
+
+export const BrowseBtn = styled.button`
+  background-color: #171824;
+  padding: 5px;
+  margin-bottom: 5px;
+  margin-right: 5px;
+  border: 1px solid #8c8c8c;
+  border-radius: 8px;
+  color: #aaaaaa;
+
+${mq[2]} {
+  background-color: #171824;
+  padding: 10px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  margin-right: 10px
+  border: 1px solid #8c8c8c;
+  border-radius: 8px;
+  color: #aaaaaa;
+}  
+`;
+
+export const ButtonContainer = styled.div`
+  margin-left: 35px;
+  margin-top: 50px;
+
+${mq[2]} {
+  margin-left: 70px;
+  margin-top: 80px;
+}  
 `;
