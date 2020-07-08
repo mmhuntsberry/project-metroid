@@ -1,6 +1,6 @@
 import React from "react";
 import GameCard from "../GameCard/GameCard";
-import { BrowseContainer, BackgroundImage } from "./Browse.styles";
+import { BrowseContainer, BackgroundImage, TitleDiv, CustomTitle, CustomTitleWithCarrot } from "./Browse.styles";
 import './Browse.styles'
 import { CardRowGrid } from "../../styles/layout/layout.styles.js";
 import { Query } from "react-apollo";
@@ -12,7 +12,11 @@ const Browse = () => {
         return (
           <BrowseContainer>
             <BackgroundImage/>
-            test
+            <TitleDiv>
+              Browse 
+              <CustomTitle>customize</CustomTitle>
+              <CustomTitleWithCarrot>Customize&gt;</CustomTitleWithCarrot>
+            </TitleDiv>
           </BrowseContainer>
         
   );
