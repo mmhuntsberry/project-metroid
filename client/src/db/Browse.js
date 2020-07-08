@@ -221,10 +221,12 @@ export const browse_theme = [
         id: "1",
         theme: "Action",
         onclick: "clicky",
+    },
     {
         id: "2",
         theme: "Fantasy",
         onclick: "clicky",
+    },
     {
         id: "3",
         theme: "Science fiction",
@@ -510,6 +512,7 @@ export const browse_decade = [
         id: "4",
         decade: "1990s",
         onclick: "clicky",
+    },
     {
         id: "5",
         decade: "1980s",
