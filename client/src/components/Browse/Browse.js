@@ -1,13 +1,15 @@
 import React from "react";
-import GameCard from "../GameCard/GameCard";
+import "../../db/Browse";
 import { BrowseContainer, BackgroundImage, TitleDiv, CustomTitle, CustomTitleWithCarrot } from "./Browse.styles";
 import './Browse.styles'
-import { CardRowGrid } from "../../styles/layout/layout.styles.js";
-import { Query } from "react-apollo";
-import gql from "graphql-tag";
+
 
 const Browse = () => {
-  
+   function makePlatformBtn(){
+     return(
+       
+     )
+   }
 
         return (
           <BrowseContainer>
@@ -17,6 +19,7 @@ const Browse = () => {
               <CustomTitle>customize</CustomTitle>
               <CustomTitleWithCarrot>Customize&gt;</CustomTitleWithCarrot>
             </TitleDiv>
+
           </BrowseContainer>
         
   );
