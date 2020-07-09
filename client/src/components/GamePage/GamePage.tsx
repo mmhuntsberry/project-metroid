@@ -53,6 +53,7 @@ const GamePage: FunctionComponent<Props> = (props: Props) => {
     variables: { id },
   });
   if (loading) return "Loading...";
+  if (error) return "Error..."
 
   console.log(data);
   const { game } = data;
