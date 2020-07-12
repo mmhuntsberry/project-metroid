@@ -35,6 +35,13 @@ export const Query = {
   async platforms(parent, args, ctx, info) {
     return await ctx.prisma.platforms.findMany();
   },
+  async genre(parent, args, ctx, info) {
+    return await ctx.prisma.ratings.findOne({
+      where: {
+        id: Number(id),
+      },
+    });
+  },
   async genres(parent, args, ctx, info) {
     return await ctx.prisma.genres.findMany();
   },
