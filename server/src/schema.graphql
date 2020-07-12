@@ -6,7 +6,7 @@ type Query {
   reviews: [Review!]!
   theme(id: ID!): Theme!
   themes: [Theme!]!
-  platform: Platform!
+  platform(id: ID!): Platform!
   platforms: [Platform!]!
   genre: Genre!
   genres: [Genre!]!
@@ -59,19 +59,19 @@ type User {
 
 type Theme {
   id: ID!
-  type: String!
+  theme: String!
   games: [Game!]!
 }
 
 type Platform {
   id: ID!
-  name: String!
+  platform: String!
   games: [Game!]!
 }
 
 type Genre {
   id: ID!
-  type: String!
+  genre: String!
   games: [Game!]!
 }
 
