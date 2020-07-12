@@ -8,7 +8,7 @@ type Query {
   themes: [Theme!]!
   platform(id: ID!): Platform!
   platforms: [Platform!]!
-  genre: Genre!
+  genre(id: ID!): Genre!
   genres: [Genre!]!
   ratings: [Rating!]!
   rating(id: ID!): Rating!

@@ -107,23 +107,18 @@ VALUES (2, 56),
   (4, 92),
   (5, 90),
   (5, 91),
-  (5, 94),
-  INSERT INTO genres (type)
-VALUES ('Adventure'),
-  ('Platform'),
-  ('Action'),
-  ('Horror'),
-  ('Role Playing (RPG)'),
-  ('Shooter'),
-  ("Beat'em up");
+  (5, 94);
 INSERT INTO game_genre (game_id, genre_id)
 VALUES (1, 1),
-  (1, 5),
+  (1, 16),
   (2, 1),
-  (2, 2),
-  (3, 4),
-  (4, 4),
-  (5, 5);
+  (2, 10),
+  (3, 1),
+  (3, 17),
+  (4, 6),
+  (4, 3),
+  (4, 7),
+  (5, 16);
 INSERT INTO ratings (rating)
 VALUES (0),
   (1),
