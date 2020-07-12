@@ -78,23 +78,18 @@ VALUES (
     3
   );
 /* INSERT INTO users (name, email) VALUES ('Matt', 'matt@gmail.com'), ('Stephanie', 'stephanie@gmail.com'), ('Link', 'link@gmail.com'); */
-INSERT INTO themes (type)
-VALUES ('Platform'),
-  ('Horror'),
-  ('kids'),
-  ('Fantasy'),
-  ('Action'),
-  ('Survival');
 INSERT INTO game_theme (game_id, theme_id)
-VALUES (1, 4),
-  (1, 3),
-  (2, 1),
-  (2, 3),
+VALUES (1, 2),
+  (1, 8),
+  (2, 11),
+  (2, 2),
   (3, 2),
-  (3, 5),
-  (3, 6),
-  (4, 5),
-  (5, 5);
+  (3, 10),
+  (3, 20),
+  (3, 21),
+  (4, 2),
+  (5, 18),
+  (5, 13);
 INSERT INTO game_platform (game_id, platform_id)
 VALUES (2, 56),
   (1, 90),
