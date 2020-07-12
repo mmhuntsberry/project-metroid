@@ -119,13 +119,6 @@ VALUES (1, 1),
   (4, 3),
   (4, 7),
   (5, 16);
-INSERT INTO ratings (rating)
-VALUES (0),
-  (1),
-  (2),
-  (3),
-  (4),
-  (5);
 INSERT INTO game_rating (game_id, rating_id)
 VALUES (1, 6),
   (2, 6),
