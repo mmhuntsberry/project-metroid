@@ -30,7 +30,7 @@ const MetaWrapper = styled.section`
   display: grid;
   z-index: 10;
   grid-gap: var(--spacing-02);
-  grid-template-columns: 300px auto 180px 190px 36px min-content;
+  grid-template-columns: 300px auto min-content min-content 36px min-content;
   height: 36px;
 `
 

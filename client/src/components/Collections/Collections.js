@@ -27,7 +27,7 @@ const Collections = () => {
           />
           <ListSearchBar />
           <DropdownMenu
-            text={"Games Per Page: "}
+            text={"Collections Per Page: "}
             options={itemsPerPage}
             default={itemsPerPage[0]}
           />
