@@ -6,16 +6,16 @@ const LoginForm = styled.form`
     display: block;
     color: #e2e2e4;
     background: #212131;
-    margin: 0 auto;
-    padding: 0 1.5em;
+    margin: auto;
     font-size: 0.95em;
-    border-radius: 5px; 
+    border-radius: var(--spacing-02); 
     border: 0;
     line-height: 1.5;
-    align-items: center;
 `;
 
 const LoginContainer = styled.div`
+    margin: auto;
+    padding: var(--spacing-09) var(--spacing-10);
 `;
 
 const LoginTitle = styled.h1`

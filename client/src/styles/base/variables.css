@@ -47,7 +47,9 @@
   --spacing-06: 1.5em; /* 24px */
   --spacing-07: 2em; /* 32px */
   --spacing-08: 3em; /* 48px */
-
+  --spacing-09: 4em; /* 64px */
+  --spacing-10: 7em; /* 112px */
+  
   /* layout */
   --layout-01: var(--spacing-04);
   --layout-02: var(--spacing-06);
