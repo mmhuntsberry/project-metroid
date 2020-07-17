@@ -40,12 +40,13 @@ type Game {
   rating: Rating!
   theme: [Theme!]!
   genre: [Genre!]!
+  #  TODO Add platform
 }
 
 type Review {
   id: ID!
   review: String!
-  game: Game!
+  game: [Game!]!
   user: User!
 }
 

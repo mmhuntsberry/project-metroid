@@ -30,6 +30,7 @@ export const Query = {
     });
   },
   async themes(parent, { id }, ctx, info) {
+    console.log("Hi");
     return await ctx.prisma.themes.findMany();
   },
   async platform(parent, { id }, ctx, info) {
@@ -56,7 +57,6 @@ export const Query = {
     return await ctx.prisma.ratings.findMany();
   },
   async rating(parent, { id }, ctx, info) {
-    // return db.ratings;
     return await ctx.prisma.ratings.findOne({
       where: {
         id: Number(id),

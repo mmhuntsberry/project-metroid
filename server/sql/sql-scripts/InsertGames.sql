@@ -1,6 +1,5 @@
 INSERT INTO games (
     title,
-    platform,
     release_year,
     box_art,
     synopsis,

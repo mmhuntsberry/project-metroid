@@ -1,4 +1,4 @@
-INSERT INTO genre (genre)
+INSERT INTO genres (genre)
 VALUES ('Adventure'),
   ('Arcade'),
   ("Beat 'em up"),

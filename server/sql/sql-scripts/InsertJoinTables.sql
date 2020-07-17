@@ -1,8 +1,7 @@
 INSERT INTO game_review (game_id, review_id)
 VALUES (1, 2),
   (2, 1),
-  (1, 3)
-  /* INSERT INTO users (name, email) VALUES ('Matt', 'matt@gmail.com'), ('Stephanie', 'stephanie@gmail.com'), ('Link', 'link@gmail.com'); */
+  (1, 3);
 INSERT INTO game_theme (game_id, theme_id)
 VALUES (1, 2),
   (1, 8),
@@ -16,18 +15,19 @@ VALUES (1, 2),
   (5, 18),
   (5, 13);
 INSERT INTO game_platform (game_id, platform_id)
-VALUES (2, 56),
-  (1, 90),
-  (3, 90),
-  (3, 91),
-  (3, 94),
-  (4, 90),
-  (4, 91),
-  (4, 94),
-  (4, 92),
-  (5, 90),
-  (5, 91),
-  (5, 94);
+VALUES (1, 42),
+  (2, 8),
+  (3, 42),
+  (3, 43),
+  (3, 46),
+  (4, 42),
+  (4, 43),
+  (4, 46),
+  (4, 47),
+  (5, 42),
+  (5, 43),
+  (5, 46),
+  (5, 47);
 INSERT INTO game_genre (game_id, genre_id)
 VALUES (1, 1),
   (1, 16),

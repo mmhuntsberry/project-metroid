@@ -1,16 +1,16 @@
-DROP TABLE IF EXISTS reviews,
-game_review,
-users,
-user_review,
-themes,
-game_theme,
-platforms,
-game_platform,
-genres,
-game_genre,
-ratings,
-game_rating,
-games;
+-- DROP TABLE IF EXISTS reviews,
+-- game_review,
+-- users,
+-- user_review,
+-- themes,
+-- game_theme,
+-- platforms,
+-- game_platform,
+-- genres,
+-- game_genre,
+-- ratings,
+-- game_rating,
+-- games;
 CREATE TABLE games (
   id INT AUTO_INCREMENT PRIMARY KEY,
   title VARCHAR(255) NOT NULL,
@@ -59,7 +59,7 @@ CREATE TABLE game_theme (
 );
 CREATE TABLE platforms (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  platform VARCHAR(100) UNIQUE
+  platform VARCHAR(100)
 );
 CREATE TABLE game_platform (
   id INT AUTO_INCREMENT PRIMARY KEY,
