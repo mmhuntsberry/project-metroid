@@ -1,20 +1,18 @@
 import styled from "@emotion/styled";
 
-const LoginForm = styled.form`
-    
-`;
-
 const LoginContainer = styled.div`
-    width: 600px;
-    height: 418px;
+    width: 50%;
     color: #e2e2e4;
     background: #212131;
-    font-size: 0.95em;
     border-radius: var(--spacing-02); 
     border: 0;
     line-height: 1.5;
     margin:auto;
-    padding: 10px 20px;
+    padding: var(--spacing-09) var(--spacing-10);
+    box-sizing: border-box;
+`;
+
+const LoginForm = styled.form`  
 `;
 
 const LoginTitle = styled.h1`
@@ -24,7 +22,6 @@ const LoginTitle = styled.h1`
     font-size: var(--title-font-size-11);
     line-height: 100%;
     color: var(--green);
-    padding-top: var(--spacing-07);
     text-align: center;
 `;
 
@@ -45,7 +42,7 @@ const LoginInput = styled.input`
     width: 100%;
     height: 40px;
     background: var(--dark-blue);
-    border-radius: 15px;
+    border-radius: 5px;
 `;
 
 const LoginAction = styled.a`
@@ -61,25 +58,25 @@ const LoginText = styled.span`
     font-family: Roboto;
     font-style: italic;
     font-weight: normal;
-    font-size: var(--body-font-size-01);
+    font-size: var(--body-font-size-02);
     line-height: 12px;
     color: var(--grey-03);
+    padding: var(--spacing-02) var(--spacing-04);
 `;
 
+
 const LoginButton = styled.input`
-    margin-right: auto;
     border-radius: 5px;
     background-image: var(--color-gradient-right-green); 
     color: var(--grey-01);
     min-width: fit-content;
-    padding: 0.625em 1.4375em;
+    padding: var(--spacing-02) var(--spacing-04);
     border: 0;
     font-size: 1.03em;
     font-weight: 600;
     letter-spacing: 1px;
     text-shadow: 1px 1px 1px #0000001a;
     text-transform: uppercase;
-    justify-content: flex-end;
 `;
 
 export {LoginForm, LoginContainer, LoginTitle, LoginLabel, LoginInput, LoginAction, LoginText, LoginButton};
