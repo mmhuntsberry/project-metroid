@@ -1,21 +1,20 @@
 import styled from "@emotion/styled";
 
 const LoginForm = styled.form`
+    
+`;
+
+const LoginContainer = styled.div`
     width: 600px;
     height: 418px;
-    display: block;
     color: #e2e2e4;
     background: #212131;
-    margin: auto;
     font-size: 0.95em;
     border-radius: var(--spacing-02); 
     border: 0;
     line-height: 1.5;
-`;
-
-const LoginContainer = styled.div`
-    margin: auto;
-    padding: var(--spacing-09) var(--spacing-10);
+    margin:auto;
+    padding: 10px 20px;
 `;
 
 const LoginTitle = styled.h1`
@@ -40,12 +39,13 @@ const LoginLabel = styled.label`
 
 
 const LoginInput = styled.input`
-    margin: var(--spacing-02) 0;
-    padding: var(--spacing-03) var(--spacing-05);
-    width: calc(100% - 2em);
+    margin: 8px 0;
+    display: inline-block;
+    padding: 12px 20px;
+    width: 100%;
     height: 40px;
     background: var(--dark-blue);
-    border-radius: 5px;
+    border-radius: 15px;
 `;
 
 const LoginAction = styled.a`
