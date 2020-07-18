@@ -1,18 +1,17 @@
 import styled from "@emotion/styled";
 
 const LoginContainer = styled.div`
-    width: 50%;
+    width: 60%;
     color: #e2e2e4;
     background: #212131;
     border-radius: var(--spacing-02); 
     border: 0;
-    line-height: 1.5;
-    margin:auto;
-    padding: var(--spacing-09) var(--spacing-10);
+    padding: var(--spacing-08) var(--spacing-10);
     box-sizing: border-box;
+    
 `;
 
-const LoginForm = styled.form`  
+const LoginForm = styled.form`
 `;
 
 const LoginTitle = styled.h1`
@@ -23,6 +22,8 @@ const LoginTitle = styled.h1`
     line-height: 100%;
     color: var(--green);
     text-align: center;
+    margin: var(--spacing-02);
+    display: block;
 `;
 
 const LoginLabel = styled.label`
@@ -32,6 +33,8 @@ const LoginLabel = styled.label`
     font-size: var(--body-font-size-03); 
     line height:100%; 
     color: var(--pink);
+    margin-top: var(--spacing-06);
+    display: block;
 `;
 
 
@@ -43,6 +46,8 @@ const LoginInput = styled.input`
     height: 40px;
     background: var(--dark-blue);
     border-radius: 5px;
+    border: 0;
+    display: block;
 `;
 
 const LoginAction = styled.a`
@@ -51,7 +56,8 @@ const LoginAction = styled.a`
     font-weight: normal;
     font-size: var(--body-font-size-01);
     line-height: 12px;
-    color: var(--pink);  
+    color: var(--pink);
+    display: inline-block;  
 `;
 
 const LoginText = styled.span`
@@ -62,6 +68,7 @@ const LoginText = styled.span`
     line-height: 12px;
     color: var(--grey-03);
     padding: var(--spacing-02) var(--spacing-04);
+    display: block;
 `;
 
 
@@ -77,6 +84,7 @@ const LoginButton = styled.input`
     letter-spacing: 1px;
     text-shadow: 1px 1px 1px #0000001a;
     text-transform: uppercase;
+    display: inline-block;
 `;
 
 export {LoginForm, LoginContainer, LoginTitle, LoginLabel, LoginInput, LoginAction, LoginText, LoginButton};
