@@ -9,8 +9,15 @@ export const Query = {
       },
     });
   },
-  users(parent, args, { db }, info) {
-    return db.users;
+  async user(parent, { id }, ctx, info) {
+    return await ctx.prisma.users.findOne({
+      where: {
+        id: Number(id),
+      },
+    });
+  },
+  users(parent, args, ctx, info) {
+    return ctx.prisma.users.findMany();
   },
   async review(parent, { id }, ctx, info) {
     return await ctx.prisma.reviews.findOne({

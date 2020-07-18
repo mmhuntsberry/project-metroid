@@ -16,7 +16,7 @@ type Query {
 }
 
 type Mutation {
-  createUser(name: String!, email: String!): User!
+  createUser(data: CreateUserInput): User!
   createGame(title: String!, platform: String!, rating: Float): Game!
   createReview(
     review: String!
@@ -24,6 +24,19 @@ type Mutation {
     game: ID!
     user: ID!
   ): Review!
+}
+
+input CreateUserInput {
+  name: String!
+  first_name: String!
+  last_name: String!
+  email: String!
+  password: String!
+}
+
+enum Role {
+  ADMIN
+  USER
 }
 
 type CollectionDetails {
@@ -98,4 +111,5 @@ type User {
   collection: [Game!]!
   reviews: [Review!]!
   created_at: String! # Use Date.toISOString()
+  role: Role!
 }

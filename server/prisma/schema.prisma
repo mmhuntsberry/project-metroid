@@ -114,8 +114,11 @@ model themes {
 model users {
   created_at  DateTime      @default(now())
   email       String?
+  first_name  String?
   id          Int           @default(autoincrement()) @id
-  name        String?
+  last_name   String?
+  password    String?
+  username    String?
   user_review user_review[]
 }
 
