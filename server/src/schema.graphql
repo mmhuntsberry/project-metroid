@@ -26,6 +26,11 @@ type Mutation {
   ): Review!
 }
 
+type Collection {
+  
+}
+
+
 type Game {
   id: ID!
   title: String!
@@ -43,24 +48,9 @@ type Game {
   #  TODO Add platform
 }
 
-type Review {
+type Genre {
   id: ID!
-  review: String!
-  game: [Game!]!
-  user: User!
-}
-
-type User {
-  id: ID!
-  name: String
-  email: String
-  collection: [Game!]!
-  reviews: [Review!]!
-}
-
-type Theme {
-  id: ID!
-  theme: String!
+  genre: String!
   games: [Game!]!
 }
 
@@ -70,14 +60,34 @@ type Platform {
   games: [Game!]!
 }
 
-type Genre {
-  id: ID!
-  genre: String!
-  games: [Game!]!
-}
-
 type Rating {
   id: ID!
   rating: Int!
   games: [Game!]!
 }
+
+type Review {
+  id: ID!
+  review: String!
+  game: [Game!]!
+  user: User!
+}
+
+type Theme {
+  id: ID!
+  theme: String!
+  games: [Game!]!
+}
+
+
+type User {
+  id: ID!
+  username: String!
+  first_name: String!
+  last_name: String!
+  email: String!
+  password: String!
+  collection: [Game!]!
+  reviews: [Review!]!
+}
+
