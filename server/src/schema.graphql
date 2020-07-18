@@ -26,10 +26,13 @@ type Mutation {
   ): Review!
 }
 
-type Collection {
-  
+type CollectionDetails {
+  game: [Game!]!
+  rank: Int!
+  created_at: String! # Use Date.toISOString() to represent DATETIME ????
+  status: Boolean!
+  owned: Boolean!
 }
-
 
 type Game {
   id: ID!
@@ -45,7 +48,7 @@ type Game {
   rating: Rating!
   theme: [Theme!]!
   genre: [Genre!]!
-  #  TODO Add platform
+  platform: [Platform!]!
 }
 
 type Genre {
@@ -73,12 +76,17 @@ type Review {
   user: User!
 }
 
+type SubCollection {
+  id: ID!
+  name: String!
+  collection: [Game!]!
+}
+
 type Theme {
   id: ID!
   theme: String!
   games: [Game!]!
 }
-
 
 type User {
   id: ID!
@@ -89,5 +97,5 @@ type User {
   password: String!
   collection: [Game!]!
   reviews: [Review!]!
+  created_at: String! # Use Date.toISOString()
 }
-

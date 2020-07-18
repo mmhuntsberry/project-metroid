@@ -35,8 +35,10 @@ CREATE TABLE game_review (
 );
 CREATE TABLE users (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  name VARCHAR(100),
+  first_name VARCHAR(100),
+  last_name: VARCHAR(100),
   email VARCHAR(100),
+  password: VARCHAR(100),
   created_at TIMESTAMP
 );
 CREATE TABLE user_review (
