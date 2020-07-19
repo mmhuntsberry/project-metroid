@@ -24,6 +24,7 @@ const PageTitle = styled.header`
 const ContentWrapper = styled.div`
   display: grid;
   grid-template-rows: 56px auto;
+  margin-top: var(--spacing-06);
 `;
 
 const MetaWrapper = styled.section`
