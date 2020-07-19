@@ -13,7 +13,6 @@ import {
   AddCollectionInput,
   AddCollectionButton
 } from "./Collections.styles";
-import CurrentlyPlayingList from "../CurrentlyPlayingList";
 import CollectionsList from "../CollectionsList";
 
 const collectionList = [
@@ -24,22 +23,6 @@ const collectionList = [
 ];
 const itemsPerPage = ["10", "25", "50", "100"];
 const sortByOptions = ["Title", "Release Date", "Date Added", "Rating"];
-const currentlyPlaying = [
-  {
-    boxArt: "https://images.igdb.com/igdb/image/upload/t_cover_big/co1qve.jpg",
-    title: "The Legend of Zelda: Link's Awakening",
-    releaseDate: "2019-09-20",
-    platform: "Nintendo Switch",
-    startedOn: "2020-05-21"
-  },
-  {
-    boxArt: "https://images.igdb.com/igdb/image/upload/t_cover_big/co1nic.jpg",
-    title: "Persona 5 Royal",
-    releaseDate: "2019-10-31",
-    platform: "Playstation 4",
-    startedOn: "2020-06-17"
-  }
-];
 
 const handleAddCollection = () => {
   const button = document.querySelector(".add-collection-button");
@@ -129,7 +112,6 @@ const Collections = () => {
           </AddCollectionContainer>
           <ListSearchBar />
         </MetaWrapper>
-        <CurrentlyPlayingList />
         <CollectionsList />
       </ContentWrapper>
     </PageWrapper>
