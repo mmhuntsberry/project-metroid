@@ -1,5 +1,4 @@
 import React from "react";
-import { PageWrapper } from "../Dashboard/Dashboard.styles";
 import {
   ContentWrapper,
   ListWrapper,
