@@ -1,7 +1,13 @@
 import styled from "@emotion/styled";
+import { mq } from "../../styles/utilities/breakpoints.js";
 
 const DropdownContainer = styled.div`
   position: relative;
+  grid-column: ${props => props.spanMultiple === true ?  "span 2" : "unset" };
+
+  ${mq[1]} {
+    grid-column: span 1;
+  }
 `
 
 const SortByButton = styled.button`
@@ -44,7 +50,7 @@ const SortByButton = styled.button`
 `;
 
 const SortByList = styled.ul`
-  display: block;
+  display: none;
   position: absolute;
   z-index: -1;
   right: 0;
@@ -58,6 +64,7 @@ const SortByList = styled.ul`
   border-radius: 0 0 0.25rem 0.25rem;
   opacity: 1;
   background-color: #212131;
+  box-shadow: 0 3px 8px #0005;
   color: #28c7b7;
   font-size: 0.75rem;
   font-weight: 600;
