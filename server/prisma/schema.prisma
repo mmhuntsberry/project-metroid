@@ -81,20 +81,20 @@ model game_theme {
 }
 
 model genres {
-  genre      String?
+  genre      String?      @unique
   id         Int          @default(autoincrement()) @id
   game_genre game_genre[]
 }
 
 model platforms {
   id            Int             @default(autoincrement()) @id
-  platform      String?
+  platform      String?         @unique
   game_platform game_platform[]
 }
 
 model ratings {
   id          Int           @default(autoincrement()) @id
-  rating      String
+  rating      String        @unique
   game_rating game_rating[]
 }
 
@@ -113,12 +113,12 @@ model themes {
 
 model users {
   created_at  DateTime      @default(now())
-  email       String?
-  first_name  String?
+  email       String        @unique
+  first_name  String
   id          Int           @default(autoincrement()) @id
-  last_name   String?
+  last_name   String
   password    String?
-  username    String?
+  username    String        @unique
   user_review user_review[]
 }
 

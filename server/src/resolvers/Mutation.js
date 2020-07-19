@@ -1,7 +1,33 @@
 export const Mutation = {
-  createUser(parent, { data }, ctx, info) {
-    const { name, email } = data;
-    const emailTaken = ctx.prisma.users.some((user) => email === user.email);
+  async createUser(parent, args, ctx, info) {
+    const { data } = args;
+    const { username, email, first_name, last_name, password } = data;
+
+    const emailExists = await ctx.prisma.users.findOne({
+      where: {
+        email: args.data.email,
+      },
+    });
+
+    const usernameExists = await ctx.prisma.users.findOne({
+      where: {
+        username: args.data.username,
+      },
+    });
+
+    if (!emailExists || !username) {
+      return await ctx.prisma.users.create({
+        data: {
+          username,
+          first_name,
+          last_name,
+          email,
+          password,
+        },
+      });
+    } else {
+      throw new Error("Email or Username already exits choose another");
+    }
   },
   // createGame(parent, { title, platform, rating }, { db }, info) {
   //   const titleTaken = db.games.some((game) => game.title === title);

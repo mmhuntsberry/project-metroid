@@ -9,10 +9,13 @@ export const Query = {
       },
     });
   },
-  async user(parent, { id }, ctx, info) {
+  async user(parent, args, ctx, info) {
+    console.log(args);
     return await ctx.prisma.users.findOne({
       where: {
-        id: Number(id),
+        id: Number(args.id) || undefined,
+        email: args.email,
+        username: args.username,
       },
     });
   },

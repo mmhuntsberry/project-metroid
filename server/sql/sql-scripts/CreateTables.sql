@@ -35,10 +35,10 @@ CREATE TABLE game_review (
 );
 CREATE TABLE users (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  username VARCHAR(100),
-  first_name VARCHAR(100),
-  last_name VARCHAR(100),
-  email VARCHAR(100),
+  username VARCHAR(100) UNIQUE NOT NULL,
+  first_name VARCHAR(100) NOT NULL,
+  last_name VARCHAR(100) NOT NULL,
+  email VARCHAR(100) UNIQUE NOT NULL,
   password VARCHAR(100),
   created_at TIMESTAMP
 );
@@ -62,7 +62,7 @@ CREATE TABLE game_theme (
 );
 CREATE TABLE platforms (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  platform VARCHAR(100)
+  platform VARCHAR(100) UNIQUE
 );
 CREATE TABLE game_platform (
   id INT AUTO_INCREMENT PRIMARY KEY,
@@ -73,7 +73,7 @@ CREATE TABLE game_platform (
 );
 CREATE TABLE genres (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  genre VARCHAR(100)
+  genre VARCHAR(100) UNIQUE
 );
 CREATE TABLE game_genre (
   id INT AUTO_INCREMENT PRIMARY KEY,
@@ -84,7 +84,7 @@ CREATE TABLE game_genre (
 );
 CREATE TABLE ratings (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  rating VARCHAR(100) NOT NULL
+  rating VARCHAR(100) UNIQUE NOT NULL
 );
 -- Example of how to create the relationship
 CREATE TABLE game_rating (
