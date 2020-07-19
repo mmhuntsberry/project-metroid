@@ -15,6 +15,7 @@ const SortByButton = styled.button`
   z-index: 10;
 
   width: 100%;
+  height: 36px;
   padding: 0.7rem;
   padding-right: 2rem;
   overflow: hidden;
