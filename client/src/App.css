@@ -37,6 +37,28 @@
 }
 /* stylelint-enable value-no-vendor-prefix, property-no-vendor-prefix*/
 
+/* stylelint-disable selector-max-type */
+
+.collection-list__dropdown-arrow.clicked > svg,
+.button__collection-control.clicked > svg,
+.button__collection-control.button__collection-control:hover,
+.button__collection-control.button__collection-control:hover > svg {
+  color: #fff;
+}
+
+.button__collection-control.button__delete:hover,
+.button__collection-control.button__delete:hover > svg,
+.button__collection-control.button__delete.clicked > svg {
+  color: #eb4162;
+}
+
+.collection-list__dropdown-arrow:not(.clicked) > svg,
+.button__collection-control:not(.clicked) > svg {
+  color: #bbb;
+}
+
+/* stylelint-enable selector-max-type */
+
 @media screen and (min-width: 1440px) {
   .app {
     display: grid;
