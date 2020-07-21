@@ -22,7 +22,8 @@
 /* These styles clip text after
    the specified line number and add an ellipsis */
 .card-truncate--one-line,
-.card-truncate--two-lines {
+.card-truncate--two-lines,
+.text-truncate--three-lines {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   overflow: hidden;
@@ -34,6 +35,10 @@
 
 .card-truncate--two-lines {
   -webkit-line-clamp: 2;
+}
+
+.text-truncate--three-lines {
+  -webkit-line-clamp: 3;
 }
 /* stylelint-enable value-no-vendor-prefix, property-no-vendor-prefix*/
 
