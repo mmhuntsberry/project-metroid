@@ -72,10 +72,10 @@ const itemsPerPage = ["10", "25", "50", "100"];
 const sortByOptions = ["Title", "Release Date", "Date Added", "Rating"];
 
 const handleAddCollection = () => {
-  const button = document.querySelector(".add-collection-button");
-  const input = document.querySelector(".add-collection-input");
-  const metaToolbar = document.querySelector(".meta-toolbar");
-  const unusedCells = Array.from(metaToolbar.childNodes);
+  // const button = document.querySelector(".add-collection-button");
+  // const input = document.querySelector(".add-collection-input");
+  // const metaToolbar = document.querySelector(".meta-toolbar");
+  // const unusedCells = Array.from(metaToolbar.childNodes);
   
   // bad idea. use a modal instead.
   // if (button.innerText === "Add") {

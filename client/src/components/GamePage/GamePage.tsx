@@ -49,7 +49,10 @@ const GamePage: FunctionComponent<Props> = (props: Props) => {
   const { id } = useParams();
 
   // const id = "3";
-  const { loading, error, data } = useQuery(GET_GAME, {
+
+  // modifying this line to fix a linter warning
+  // const { loading, error, data } = useQuery(GET_GAME, {
+  const { loading, data } = useQuery(GET_GAME, {
     variables: { id },
   });
   if (loading) return "Loading...";
