@@ -4,15 +4,17 @@ import { mq } from "../../styles/utilities/breakpoints.js";
 
 const ContentWrapper = styled.div`
 display: grid;
+grid-row: 1 / 1;
 width: 100%;
-padding: 1rem;
-padding-bottom: ${(props) => props.currentlyPlaying ? "2rem" : "1rem"};
-border-bottom: 1px solid #38384e;
-border-radius: 0.25rem;
-border-radius: ${(props) => props.currentlyPlaying ? "0.25rem 0.25rem 0 0" : "0.25rem"};
-background-color: #212131;
-color: #bbb;
+margin-bottom: var(--spacing-07);
+border-radius: var(--spacing-01);
+color: var(--grey-01);
 letter-spacing: 0.31px;
+
+${mq[3]} {
+  padding: var(--spacing-04);
+  background-color: var(--foreground-dark-blue);
+}
 `;
 
 const ListWrapper = styled.div`
@@ -23,57 +25,71 @@ const ListWrapper = styled.div`
 const CurrentlyPlayingTitle = styled.h5`
   margin: 0;
   padding: 0;
-  font-size: 14px;
-  font-weight: 400;
+  font-size: var(--body-font-size-02);
+  font-weight: var(--font-weight-normal);
 `
 
 const GameList = styled.div`
   display: grid;
-  grid-gap: 12px;
-  grid-template-columns: repeat(3, 1fr);
-  margin-top: 8px;
+  grid-gap: var(--spacing-03);
+  grid-template-columns: 1fr;
+  margin-top: var(--spacing-02);
+
+  @media screen and (min-width: 560px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  ${mq[3]} {
+    grid-template-columns: repeat(3, 1fr);
+  }
 `
 
 const GameContainer = styled.div`
   display: flex;
-  padding: 12px;
-  border-radius: 4px;
-  background-color: #28283c;
+  padding: var(--spacing-03);
+  border-radius: var(--spacing-01);
+  background-color: var(--foreground-dark-blue);
+
+  ${mq[3]} {
+    background-color: var(--foreground-lighter-dark-blue);
+  }
 `
 
 const GameArt = styled.img`
   width: 104px;
-  border-radius: 4px;
+  height: 139px;
+  border-radius: var(--spacing-01);
+  object-fit: cover;
 `
 
 const GameInfoContainer = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 0 12px;
+  padding: 0 var(--spacing-03);
 `
 
 const GameTitle = styled.span`
-  margin-bottom: 6px;
-  color: #fff;
+  margin-bottom: 0.375rem;
+  color: var(--white);
 `
 
 const GamePlatform = styled.span`
-  margin-bottom: 6px;
-  color: #777;
-  font-size: 14px;
+  margin-bottom: 0.375rem;
+  color: var(--grey-02);
+  font-size: var(--body-font-size-02);
   font-style: italic;
 `
 
 const GameStartDate = styled.span`
-  margin-bottom: 12px;
-  color: #bbb;
-  font-size: 12px;
+  margin-bottom: var(--spacing-03);
+  color: var(--grey-01);
+  font-size: var(--body-font-size-01);
 `
 
 const UpdateStatus = styled.button`
   width: min-content;
-  height: 36px;
-  padding: 4px var(--spacing-03);
+  height: var(--layout-03);
+  padding: var(--spacing-01) var(--spacing-03);
   transition: background-color 200ms;
   border: 0;
   border-radius: var(--spacing-01);

@@ -22,7 +22,7 @@ const CurrentlyPlayingList = (props) => {
 
 
 
-  return <ContentWrapper currentlyPlaying={props.currentlyPlaying}>
+  return <ContentWrapper className="currently-playing-wrapper" currentlyPlaying={props.currentlyPlaying}>
     <ListWrapper>
       <CurrentlyPlayingTitle>Currently Playing:</CurrentlyPlayingTitle>
       <GameList>
