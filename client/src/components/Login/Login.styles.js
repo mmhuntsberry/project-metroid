@@ -8,10 +8,15 @@ const LoginContainer = styled.div`
     border: 0;
     padding: var(--spacing-08) var(--spacing-10);
     box-sizing: border-box;
-    
+    display: block;
+    text-align: center;
+    margin: auto;
 `;
 
 const LoginForm = styled.form`
+    display: inline-block;
+    margin: 0 auto 0;
+    text-align: left;
 `;
 
 const LoginTitle = styled.h1`
@@ -55,7 +60,6 @@ const LoginAction = styled.a`
     font-style: italic;
     font-weight: normal;
     font-size: var(--body-font-size-01);
-    line-height: 12px;
     color: var(--pink);
     display: inline-block;  
 `;
@@ -65,10 +69,11 @@ const LoginText = styled.span`
     font-style: italic;
     font-weight: normal;
     font-size: var(--body-font-size-02);
-    line-height: 12px;
     color: var(--grey-03);
     padding: var(--spacing-02) var(--spacing-04);
     display: block;
+    text-align: right;
+    margin-top: var(--spacing-02);
 `;
 
 
@@ -85,6 +90,7 @@ const LoginButton = styled.input`
     text-shadow: 1px 1px 1px #0000001a;
     text-transform: uppercase;
     display: inline-block;
+    float: right;
 `;
 
 export {LoginForm, LoginContainer, LoginTitle, LoginLabel, LoginInput, LoginAction, LoginText, LoginButton};
