@@ -9,18 +9,65 @@ import {
   MetaWrapper,
   DropdownWithTitle,
   DropdownTitle,
-  AddCollectionContainer,
-  AddCollectionInput,
   AddCollectionButton
 } from "./Collections.styles";
 import CollectionsList from "../CollectionsList";
+import CurrentlyPlayingList from "../CurrentlyPlayingList"
 
-const collectionList = [
-  "All Games",
-  "Best SNES RPGs You’ve Already Seen on Hundreds of Lists Already",
-  "Best Shmups for REAL MANLY MEN!!",
-  "Legendary Soundtracks"
+const currentlyPlaying = [
+  {
+    boxArt: "https://images.igdb.com/igdb/image/upload/t_cover_big/co1qve.jpg",
+    title: "The Legend of Zelda: Link's Awakening",
+    releaseDate: "2019-09-20",
+    platform: "Nintendo Switch",
+    startedOn: "2019-11-21"
+  },
+  {
+    boxArt: "https://images.igdb.com/igdb/image/upload/t_cover_big/co1nic.jpg",
+    title: "Persona 5 Royal",
+    releaseDate: "2019-10-31",
+    platform: "Playstation 4",
+    startedOn: "2020-06-17"
+  },
 ];
+
+// hard-coded data that will eventually be filled by the database
+const collectionListData = [
+  {
+    title: "All Games",
+    thumbnail: "https://gamefaqs1.cbsistatic.com/box/4/1/0/48410_front.jpg",
+    games: "381",
+    comments: "",
+    main: true,
+    disabled: "disabled"
+  },
+  {
+    title: "Best SNES RPGs You’ve Already Seen on Hundreds of Lists Already",
+    thumbnail: "https://gamefaqs1.cbsistatic.com/box/2/2/1/24221_front.jpg",
+    games: "14",
+    comments: "1",
+    main: false
+  },
+  {
+    title: "Best Shmups for REAL MANLY MEN!!",
+    thumbnail: "https://gamefaqs1.cbsistatic.com/box/2/0/2/49202_front.jpg",
+    games: "27",
+    comments: "4",
+    main: false
+  },
+  {
+    title: "Legendary Soundtracks",
+    thumbnail: "https://images.igdb.com/igdb/image/upload/t_cover_big/co2cm4.jpg",
+    games: "39",
+    comments: "1",
+    main: false
+  },
+];
+
+// get just the collection titles for our quick select dropdown menu
+const collectionListTitles = collectionListData.map(collection => collection.title)
+
+// our data for the other dropdown menus. these won't change.
 const itemsPerPage = ["10", "25", "50", "100"];
 const sortByOptions = ["Title", "Release Date", "Date Added", "Rating"];
 
@@ -29,36 +76,37 @@ const handleAddCollection = () => {
   const input = document.querySelector(".add-collection-input");
   const metaToolbar = document.querySelector(".meta-toolbar");
   const unusedCells = Array.from(metaToolbar.childNodes);
-
-  if (button.innerText === "Add") {
-    unusedCells.map(cell => (cell.style.display = "block"));
-    metaToolbar.style.gridTemplateColumns =
-      "300px auto min-content min-content 36px min-content";
-    metaToolbar.style.alignItems = "flex-end";
-    button.innerText = "Add A Collection";
-    button.style.position = "relative";
-    button.style.backgroundColor = "var(--dim-green)";
-    window.setTimeout(() => {
-      input.style.transform = "scaleX(0)";
-    }, 100);
-    input.style.display = "none";
-  } else {
-    unusedCells.map((cell, index) =>
-      index < unusedCells.length - 1
-        ? (cell.style.display = "none")
-        : (cell.style.display = "flex")
-    );
-    metaToolbar.style.gridTemplateColumns = "auto";
-    metaToolbar.style.alignItems = "center";
-    button.innerText = "Add";
-    window.setTimeout(() => {
-      input.style.transform = "scaleX(1)";
-    }, 100);
-    input.style.display = "block";
-    button.style.position = "absolute";
-    button.style.backgroundColor = "var(--pink)";
-    input.focus();
-  }
+  
+  // bad idea. use a modal instead.
+  // if (button.innerText === "Add") {
+  //   unusedCells.map(cell => (cell.style.display = "block"));
+  //   metaToolbar.style.gridTemplateColumns =
+  //     "300px auto min-content min-content 36px min-content";
+  //   metaToolbar.style.alignItems = "flex-end";
+  //   button.innerText = "Add A Collection";
+  //   button.style.position = "relative";
+  //   button.style.backgroundColor = "var(--dim-green)";
+  //   window.setTimeout(() => {
+  //     input.style.transform = "scaleX(0)";
+  //   }, 100);
+  //   input.style.display = "none";
+  // } else {
+  //   unusedCells.map((cell, index) =>
+  //     index < unusedCells.length - 1
+  //       ? (cell.style.display = "none")
+  //       : (cell.style.display = "flex")
+  //   );
+  //   metaToolbar.style.gridTemplateColumns = "auto";
+  //   metaToolbar.style.alignItems = "center";
+  //   button.innerText = "Add";
+  //   window.setTimeout(() => {
+  //     input.style.transform = "scaleX(1)";
+  //   }, 100);
+  //   input.style.display = "block";
+  //   button.style.position = "absolute";
+  //   button.style.backgroundColor = "var(--pink)";
+  //   input.focus();
+  // }
 };
 
 const Collections = () => {
@@ -67,13 +115,14 @@ const Collections = () => {
   return (
     <PageWrapper>
       <PageTitle>Your Collections</PageTitle>
-      <ContentWrapper>
+      <ContentWrapper className="content-wrapper">
+        <CurrentlyPlayingList currentlyPlaying={currentlyPlaying} />
         <MetaWrapper className="meta-toolbar">
           <DropdownWithTitle>
             <DropdownTitle>Quick Select</DropdownTitle>
             <DropdownMenu
               text={""}
-              options={collectionList}
+              options={collectionListTitles}
               default={"Choose A Collection"}
               previousButton={previousButton}
               setPreviousButton={setPreviousButton}
@@ -96,23 +145,15 @@ const Collections = () => {
             setPreviousButton={setPreviousButton}
           />
           <SortOrderButton />
-          <AddCollectionContainer>
-            <AddCollectionInput
-              type="search"
-              name="Search"
-              className="add-collection-input"
-              placeholder="Collection Name"
-            />
-            <AddCollectionButton
-              className="add-collection-button"
-              onClick={handleAddCollection}
-            >
-              Add A Collection
-            </AddCollectionButton>
-          </AddCollectionContainer>
+          <AddCollectionButton
+            className="add-collection-button"
+            onClick={handleAddCollection}
+          >
+            Add A Collection
+          </AddCollectionButton>
           <ListSearchBar />
         </MetaWrapper>
-        <CollectionsList />
+        <CollectionsList collectionListData={collectionListData}/>
       </ContentWrapper>
     </PageWrapper>
   );

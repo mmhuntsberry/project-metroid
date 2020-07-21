@@ -15,15 +15,15 @@ const PageTitle = styled.header`
   width: max-content;
   margin-top: var(--spacing-07);
   margin-bottom: var(--spacing-02);
-  color: #28c7b7;
+  color: var(--green);
   font-size: var(--title-font-size-06);
-  font-weight: 500;
+  font-weight: var(--font-weight-bold);
   line-height: 1.6;
 `;
 
 const ContentWrapper = styled.div`
-  display: grid;
-  grid-template-rows: 56px auto;
+  display: flex;
+  flex-direction: column;
   margin-top: var(--spacing-06);
 `;
 
@@ -31,24 +31,23 @@ const MetaWrapper = styled.section`
   display: grid;
   z-index: 10;
   grid-gap: var(--spacing-02);
-  grid-template-columns: minmax(180px, 1fr) 36px;
+  grid-template-columns: minmax(180px, 1fr) var(--toolbar-height);
   align-items: flex-end;
-  height: 36px;
 
   ${mq[1]} {
     grid-template-columns: minmax(210px, 1fr) minmax(180px, 1fr) min-content;
   }
 
   ${mq[2]} {
-    grid-template-columns: minmax(210px, 1fr) 27px minmax(210px, 1fr) 36px min-content;
-    
+    grid-template-columns: minmax(210px, 1fr) 27px minmax(210px, 1fr) var(--toolbar-height) min-content;
+
     div:nth-of-type(3) {
       grid-column: span 2;
     }
   }
 
   ${mq[3]} {
-    grid-template-columns: minmax(300px, 1fr) min-content min-content 36px min-content;
+    grid-template-columns: minmax(300px, 1fr) min-content min-content var(--toolbar-height) min-content;
 
     div:nth-of-type(3) {
       grid-column: span 1;
@@ -56,10 +55,8 @@ const MetaWrapper = styled.section`
   }
 
   ${mq[4]} {
-    grid-template-columns: minmax(300px, 1fr) auto min-content min-content 36px min-content;
+    grid-template-columns: minmax(300px, 1fr) auto min-content min-content var(--toolbar-height) min-content;
   }
-
-  
 `;
 
 const DropdownWithTitle = styled.div`
@@ -78,54 +75,23 @@ const DropdownWithTitle = styled.div`
 
 const DropdownTitle = styled.h6`
   margin: var(--spacing-01) 0;
-  color: #bbb;
+  color: var(--grey-01);
   font-size: var(--body-font-size-01);
-  font-weight: 600;
+  font-weight: var(-font-weight-bold);
   text-align: left;
   text-transform: uppercase;
 `;
 
-const AddCollectionContainer = styled.div`
-  display: none;
-  position: relative;
-  z-index: 15;
+const AddCollectionContainer = styled.div``;
 
-  ${mq[2]} {
-    display: flex;
-    
-  }
-`;
+const AddCollectionInput = styled.input``;
 
-const AddCollectionInput = styled.input`
-  display: none;
-  position: absolute;
-  right: 0;
-  width: 100%;
-  height: 36px;
-  padding-top: 0.2rem;
-  padding-right: var(--spacing-08);
-  padding-left: 1rem;
-  transform: scaleX(0);
-  transform-origin: right;
-  transition: all 350ms ease-in-out;
-  border: 0;
-  border-radius: 5px;
-  background-color: #212131;
-  color: #f9b2c8;
-  font-size: 1em;
-  font-weight: 400;
-  letter-spacing: 0.31px;
-
-  &::placeholder {
-    opacity: 0.5;
-    color: #f9b2c8;
-  }
-`;
 const AddCollectionButton = styled.button`
+  display: none;
   position: relative;
   right: 0;
-  width: 140px;
-  height: 36px;
+  width: var(--layout-08);
+  height: var(--toolbar-height);
   padding: 7px var(--spacing-02);
   transition: background-color 200ms;
   border: 0;
@@ -139,6 +105,10 @@ const AddCollectionButton = styled.button`
     background-color: var(--green);
     cursor: pointer;
   }
+
+  ${mq[2]} {
+    display: block;
+  }
 `;
 
 export {
@@ -150,5 +120,5 @@ export {
   DropdownTitle,
   AddCollectionContainer,
   AddCollectionInput,
-  AddCollectionButton
+  AddCollectionButton,
 };
