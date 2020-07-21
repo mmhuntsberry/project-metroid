@@ -8,7 +8,7 @@
 /*  override default outline styling */
 
 .page-wrapper {
-  padding-bottom: 3em;
+  padding-bottom: var(--spacing-08);
 }
 
 /* stylelint-disable value-no-vendor-prefix, property-no-vendor-prefix */
@@ -48,18 +48,18 @@
 .button__collection-control.clicked > svg,
 .button__collection-control.button__collection-control:hover,
 .button__collection-control.button__collection-control:hover > svg {
-  color: #fff;
+  color: var(--white);
 }
 
 .button__collection-control.button__delete:hover,
 .button__collection-control.button__delete:hover > svg,
 .button__collection-control.button__delete.clicked > svg {
-  color: #eb4162;
+  color: var(--red);
 }
 
 .collection-list__dropdown-arrow:not(.clicked) > svg,
 .button__collection-control:not(.clicked) > svg {
-  color: #bbb;
+  color: var(--grey-01);
 }
 
 /* stylelint-enable selector-max-type */
