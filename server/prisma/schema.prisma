@@ -14,7 +14,6 @@ model games {
   developer     String?
   hero          String?
   id            Int             @default(autoincrement()) @id
-  platform      String
   release_year  Int
   synopsis      String
   title         String
@@ -22,8 +21,8 @@ model games {
   game_genre    game_genre[]
   game_platform game_platform[]
   game_rating   game_rating[]
+  game_review   game_review[]
   game_theme    game_theme[]
-  reviews       reviews[]
 }
 
 model game_genre {
@@ -59,6 +58,17 @@ model game_rating {
   @@index([rating_id], name: "rating_id")
 }
 
+model game_review {
+  game_id   Int?
+  id        Int      @default(autoincrement()) @id
+  review_id Int?
+  games     games?   @relation(fields: [game_id], references: [id])
+  reviews   reviews? @relation(fields: [review_id], references: [id])
+
+  @@index([game_id], name: "game_id")
+  @@index([review_id], name: "review_id")
+}
+
 model game_theme {
   game_id  Int?
   id       Int     @default(autoincrement()) @id
@@ -78,7 +88,7 @@ model genres {
 
 model platforms {
   id            Int             @default(autoincrement()) @id
-  platform      String?         @unique
+  platform      String?
   game_platform game_platform[]
 }
 
@@ -89,12 +99,10 @@ model ratings {
 }
 
 model reviews {
-  game_id Int?
-  id      Int    @default(autoincrement()) @id
-  review  String
-  games   games? @relation(fields: [game_id], references: [id])
-
-  @@index([game_id], name: "game_id")
+  id          Int           @default(autoincrement()) @id
+  review      String
+  game_review game_review[]
+  user_review user_review[]
 }
 
 model themes {
@@ -104,8 +112,20 @@ model themes {
 }
 
 model users {
-  created_at DateTime @default(now())
-  email      String?
-  id         Int      @default(autoincrement()) @id
-  name       String?
+  created_at  DateTime      @default(now())
+  email       String?
+  id          Int           @default(autoincrement()) @id
+  name        String?
+  user_review user_review[]
+}
+
+model user_review {
+  id        Int      @default(autoincrement()) @id
+  review_id Int?
+  user_id   Int?
+  reviews   reviews? @relation(fields: [review_id], references: [id])
+  users     users?   @relation(fields: [user_id], references: [id])
+
+  @@index([review_id], name: "review_id")
+  @@index([user_id], name: "user_id")
 }

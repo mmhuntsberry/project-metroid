@@ -3,6 +3,7 @@ type Query {
   games: [Game!]!
   user: User!
   users: [User!]!
+  review(id: ID!): Review!
   reviews: [Review!]!
   theme(id: ID!): Theme!
   themes: [Theme!]!
@@ -28,7 +29,6 @@ type Mutation {
 type Game {
   id: ID!
   title: String!
-  platform: String!
   release_year: Int
   box_art: String!
   synopsis: String!
@@ -40,12 +40,13 @@ type Game {
   rating: Rating!
   theme: [Theme!]!
   genre: [Genre!]!
+  #  TODO Add platform
 }
 
 type Review {
   id: ID!
   review: String!
-  game: Game!
+  game: [Game!]!
   user: User!
 }
 

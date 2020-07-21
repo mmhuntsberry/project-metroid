@@ -1,7 +1,21 @@
 export const Review = {
-  user(parent, args, { db }, info) {
-    const filtered = db.users.filter((user) => user.id === parent.user);
+  // TODO finish implementing the
+  async game(parent, args, ctx, info) {
+    const games = await ctx.prisma.games.findMany();
+    const gameReviews = await ctx.prisma.game_review.findMany();
 
-    return filtered[0];
+    const filteredReview = games.reduce((filtered, curr) => {
+      gameReviews.filter((item) => {
+        if (parent.id === item.review_id) {
+          if (curr.id === item.game_id) {
+            filtered.push(curr);
+          }
+        }
+      });
+
+      return filtered;
+    }, []);
+
+    return filteredReview.map((g) => g);
   },
 };

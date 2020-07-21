@@ -1,10 +1,19 @@
-DROP TABLE IF EXISTS games,
-reviews,
-users;
+-- DROP TABLE IF EXISTS reviews,
+-- game_review,
+-- users,
+-- user_review,
+-- themes,
+-- game_theme,
+-- platforms,
+-- game_platform,
+-- genres,
+-- game_genre,
+-- ratings,
+-- game_rating,
+-- games;
 CREATE TABLE games (
   id INT AUTO_INCREMENT PRIMARY KEY,
   title VARCHAR(255) NOT NULL,
-  platform VARCHAR(255) NOT NULL,
   release_year INT NOT NULL,
   box_art VARCHAR(255) NOT NULL,
   synopsis TEXT NOT NULL,
@@ -15,15 +24,27 @@ CREATE TABLE games (
 );
 CREATE TABLE reviews (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  review VARCHAR(255) NOT NULL,
+  review VARCHAR(255) NOT NULL
+);
+CREATE TABLE game_review (
+  id INT AUTO_INCREMENT PRIMARY KEY,
   game_id INT,
-  FOREIGN KEY (game_id) REFERENCES games (id)
+  review_id INT,
+  FOREIGN KEY (game_id) REFERENCES games(id),
+  FOREIGN KEY (review_id) REFERENCES reviews(id)
 );
 CREATE TABLE users (
   id INT AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(100),
   email VARCHAR(100),
   created_at TIMESTAMP
+);
+CREATE TABLE user_review (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT,
+  review_id INT,
+  FOREIGN KEY (user_id) REFERENCES users(id),
+  FOREIGN KEY (review_id) REFERENCES reviews(id)
 );
 CREATE TABLE themes (
   id INT AUTO_INCREMENT PRIMARY KEY,
@@ -38,7 +59,7 @@ CREATE TABLE game_theme (
 );
 CREATE TABLE platforms (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  platform VARCHAR(100) UNIQUE
+  platform VARCHAR(100)
 );
 CREATE TABLE game_platform (
   id INT AUTO_INCREMENT PRIMARY KEY,

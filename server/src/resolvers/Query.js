@@ -12,8 +12,15 @@ export const Query = {
   users(parent, args, { db }, info) {
     return db.users;
   },
-  reviews(parent, args, { db }, info) {
-    return db.reviews;
+  async review(parent, { id }, ctx, info) {
+    return await ctx.prisma.reviews.findOne({
+      where: {
+        id: Number(id),
+      },
+    });
+  },
+  async reviews(parent, args, ctx, info) {
+    return await ctx.prisma.reviews.findMany();
   },
   async theme(parent, { id }, ctx, info) {
     return await ctx.prisma.themes.findOne({
@@ -23,6 +30,7 @@ export const Query = {
     });
   },
   async themes(parent, { id }, ctx, info) {
+    console.log("Hi");
     return await ctx.prisma.themes.findMany();
   },
   async platform(parent, { id }, ctx, info) {
@@ -49,7 +57,6 @@ export const Query = {
     return await ctx.prisma.ratings.findMany();
   },
   async rating(parent, { id }, ctx, info) {
-    // return db.ratings;
     return await ctx.prisma.ratings.findOne({
       where: {
         id: Number(id),
