@@ -13,10 +13,6 @@ import {
   UpdateStatus,
 } from "./CurrentlyPlayingList.styles";
 
-import dayjs from "dayjs";
-import advancedFormat from 'dayjs/plugin/advancedFormat'
-dayjs.extend(advancedFormat)
-
 
 const CurrentlyPlayingList = (props) => {
 
@@ -28,13 +24,27 @@ const CurrentlyPlayingList = (props) => {
       <GameList>
         {props.currentlyPlaying.map(game => {
 
-          // get the current year so we can add the year to the
-          // start date for the currently played game if it was 
-          // started in another year
-          let thisYear = new Date();
-          thisYear = dayjs(thisYear).format("YYYY");
-          const startedThisYear = thisYear === dayjs(game.startedOn).format("YYYY")
-          const startDate = startedThisYear ? dayjs(game.startedOn).format("MMMM Do") : dayjs(game.startedOn).format("MMMM Do, YYYY");
+          function formatDate(dateVal, obj) {
+            if (dateVal) {
+              return new Date(dateVal).toLocaleDateString("en-US", obj);
+            } else {
+              return new Date().toLocaleDateString("en-US", obj);
+            }
+          }
+
+          // get the current year to compare with the year
+          // the game was started during
+          let thisYear = formatDate(null, {year: "numeric"});
+          let startedOnYear = formatDate(game.startedOn, {year: "numeric"});
+          const startedThisYear = thisYear !== startedOnYear;
+          
+          const options = {}
+          // if we started in another year, include the year
+          startedThisYear && (options.year = "numeric");
+          options.month = "long";
+          options.day = "numeric";
+
+          const startDate = formatDate(game.startedOn, options);
           
           return (
             <GameContainer key={game.title}>
