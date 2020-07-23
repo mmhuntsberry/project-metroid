@@ -5,7 +5,7 @@ import {
   SearchBar
 } from "./ListSearchBar.styles";
 
-const ListSearchBar = () => {
+const ListSearchBar = (props) => {
   return (
     <SearchBarContainer className="search-bar__container">
       <SearchBarIcon
@@ -27,7 +27,7 @@ const ListSearchBar = () => {
         type="search"
         name="Search"
         className="search-bar"
-        placeholder="Search this collection"
+        placeholder={props.placeholder}
       />
     </SearchBarContainer>
   );
