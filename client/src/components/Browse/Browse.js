@@ -1,54 +1,77 @@
 import React from "react";
-import GameCard from "../GameCard/GameCard";
-import { BrowseContainer } from "./Browse.styles";
-import { CardRowGrid } from "../../styles/layout/layout.styles.js";
-import { Query } from "react-apollo";
-import gql from "graphql-tag";
+import "../../db/Browse";
+import {
+  BrowseContainer,
+  BackgroundImage,
+  TitleDiv,
+  CustomTitle,
+  CustomTitleWithCarrot,
+  ButtonContainer,
+  ByTitle,
+} from "./Browse.styles";
+import "./Browse.styles";
+import {
+  browse_platform,
+  browse_genre,
+  browse_theme,
+  browse_keyword,
+  browse_decade,
+  browse_rating,
+  makePlatformBtn,
+  makeGenreBtn,
+  makeThemeBtn,
+  makeKeywordBtn,
+  makeDecadeBtn,
+  makeRatingBtn,
+} from "../../db/Browse";
 
 const Browse = () => {
-  return (
-    <Query query={GET_GAMES}>
-      {({ data, loading }) => {
-        console.log(data);
-        if (loading) return "Loading...";
+  
 
-        return (
-          <BrowseContainer>
-            <CardRowGrid>
-              {data &&
-                data.games &&
-                data.games.map((game) => (
-                  <GameCard
-                    id={game.id}
-                    key={game.id}
-                    img={game.box_art}
-                    title={game.title}
-                    developer={game.developer}
-                  />
-                ))}
-            </CardRowGrid>
-          </BrowseContainer>
-        );
-      }}
-    </Query>
+  //functions in client/src/db/Browse
+  
+
+  return (
+    <BrowseContainer>
+      <BackgroundImage />
+      <TitleDiv>
+        Browse
+        <CustomTitle>customize</CustomTitle>
+        <CustomTitleWithCarrot>Customize&gt;</CustomTitleWithCarrot>
+      </TitleDiv>
+
+      <ButtonContainer>
+        <ByTitle>By Platform</ByTitle>
+        {browse_platform.map(makePlatformBtn, this)}
+      </ButtonContainer>
+
+      <ButtonContainer>
+        <ByTitle>By Genre</ByTitle>
+        {browse_genre.map(makeGenreBtn, this)}
+      </ButtonContainer>
+
+      <ButtonContainer>
+        <ByTitle>By Theme</ByTitle>
+        {browse_theme.map(makeThemeBtn, this)}
+      </ButtonContainer>
+
+      <ButtonContainer>
+        <ByTitle>By Keyword</ByTitle>
+        {browse_keyword.map(makeKeywordBtn, this)}
+      </ButtonContainer>
+
+      <ButtonContainer>
+        <ByTitle>By Decade</ByTitle>
+        {browse_decade.map(makeDecadeBtn, this)}
+      </ButtonContainer>
+
+      <ButtonContainer>
+        <ByTitle>By Rating</ByTitle>
+        {browse_rating.map(makeRatingBtn, this)}
+      </ButtonContainer>
+      
+    </BrowseContainer>
   );
 };
-
-const GET_GAMES = gql`
-  query {
-    games {
-      id
-      title
-      platform
-      release_year
-      box_art
-      synopsis
-      description
-      trailer
-      hero
-      developer
-    }
-  }
-`;
 
 export default Browse;
