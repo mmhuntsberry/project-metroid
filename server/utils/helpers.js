@@ -3,6 +3,7 @@ export const APP_SECRET = "samusaran";
 
 export const getUserId = (context) => {
   const Authorization = context.request.get("Authorization");
+  console.log("Authorization", Authorization);
   if (Authorization) {
     const token = Authorization.replace("Bearer ", "");
     const { userId } = jwt.verify(token, APP_SECRET);

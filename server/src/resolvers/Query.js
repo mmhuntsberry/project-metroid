@@ -1,3 +1,5 @@
+import { getUserId } from "../../utils/helpers";
+
 export const Query = {
   async games(parent, args, ctx, info) {
     return await ctx.prisma.games.findMany();
@@ -10,14 +12,23 @@ export const Query = {
     });
   },
   async user(parent, args, ctx, info) {
-    return await ctx.prisma.users.findOne({
-      where: {
-        id: Number(args.id) || undefined,
-        email: args.email,
-        username: args.username,
-      },
-    });
+    const userId = getUserId(ctx);
+
+    if (!userId) {
+      throw new Error("You are not Authenticated.");
+    }
+
+    return ctx.prisma.users.findOne({ where: { id: userId } });
   },
+  // async user(parent, args, ctx, info) {
+  //   return await ctx.prisma.users.findOne({
+  //     where: {
+  //       id: Number(args.id) || undefined,
+  //       email: args.email,
+  //       username: args.username,
+  //     },
+  //   });
+  // },
   users(parent, args, ctx, info) {
     return ctx.prisma.users.findMany();
   },

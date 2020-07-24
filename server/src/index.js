@@ -1,8 +1,22 @@
 import { GraphQLServer } from "graphql-yoga";
 import * as resolvers from "./resolvers";
 import * as db from "./db";
-const { PrismaClient } = require("@prisma/client");
+import { APP_SECRET } from "../utils/helpers";
+// import { getUserId } from "../utils/helpers";
+APP_SECRET;
 
+const getUser = (token) => {
+  try {
+    if (token) {
+      return jwt.verify(token, APP_SECRET);
+    }
+    return null;
+  } catch (err) {
+    return null;
+  }
+};
+
+const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 const server = new GraphQLServer({
