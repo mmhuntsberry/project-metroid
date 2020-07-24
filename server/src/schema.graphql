@@ -17,13 +17,16 @@ type Query {
 
 type Mutation {
   createUser(data: CreateUserInput): User!
+  signup(
+    email: String!
+    password: String!
+    username: String!
+    first_name: String!
+    last_name: String!
+  ): AuthPayload
+  login(email: String!, password: String!): AuthPayload
   createGame(title: String!, platform: String!, rating: Float): Game!
-  createReview(
-    review: String!
-    published: Boolean!
-    game: ID!
-    user: ID!
-  ): Review!
+  createReview(review: String!, published: Boolean!, game: ID!): Review!
 }
 
 input CreateUserInput {
@@ -36,6 +39,11 @@ input CreateUserInput {
   # reviews: [Review!]!
   # created_at: String! # Use Date.toISOString()
   # role: Role!
+}
+
+type AuthPayload {
+  token: String
+  user: User
 }
 
 enum Role {
@@ -89,8 +97,10 @@ type Rating {
 type Review {
   id: ID!
   review: String!
-  game: [Game!]!
-  user: User!
+  created_at: String!
+  # game: [Game!]!
+  game: Game!
+  author: User!
 }
 
 type SubCollection {

@@ -10,7 +10,6 @@ export const Query = {
     });
   },
   async user(parent, args, ctx, info) {
-    console.log(args);
     return await ctx.prisma.users.findOne({
       where: {
         id: Number(args.id) || undefined,
@@ -40,7 +39,6 @@ export const Query = {
     });
   },
   async themes(parent, { id }, ctx, info) {
-    console.log("Hi");
     return await ctx.prisma.themes.findMany();
   },
   async platform(parent, { id }, ctx, info) {

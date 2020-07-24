@@ -2,9 +2,11 @@ import { reduceFilter } from "../../utils/helpers.js";
 
 export const Game = {
   async reviews(parent, args, ctx, info) {
-    const reviews = await ctx.prisma.reviews.findMany({
-      where: { game_id: parent.id },
-    });
+    const reviews = await ctx.prisma.reviews
+      .findMany({
+        where: { game_id: parent.id },
+      })
+      .reviews();
 
     return reviews.map((review) => review);
   },

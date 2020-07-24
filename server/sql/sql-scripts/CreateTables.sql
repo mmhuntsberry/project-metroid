@@ -24,14 +24,15 @@ CREATE TABLE games (
 );
 CREATE TABLE reviews (
   id INT AUTO_INCREMENT PRIMARY KEY,
+  created_at TIMESTAMP,
   review VARCHAR(255) NOT NULL
 );
 CREATE TABLE game_review (
   id INT AUTO_INCREMENT PRIMARY KEY,
   game_id INT,
   review_id INT,
-  FOREIGN KEY (game_id) REFERENCES games(id),
-  FOREIGN KEY (review_id) REFERENCES reviews(id)
+  FOREIGN KEY (game_id) REFERENCES games(id) ON DELETE CASCADE,
+  FOREIGN KEY (review_id) REFERENCES reviews(id) ON DELETE CASCADE
 );
 CREATE TABLE users (
   id INT AUTO_INCREMENT PRIMARY KEY,
@@ -46,8 +47,8 @@ CREATE TABLE user_review (
   id INT AUTO_INCREMENT PRIMARY KEY,
   user_id INT,
   review_id INT,
-  FOREIGN KEY (user_id) REFERENCES users(id),
-  FOREIGN KEY (review_id) REFERENCES reviews(id)
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+  FOREIGN KEY (review_id) REFERENCES reviews(id) ON DELETE CASCADE
 );
 CREATE TABLE themes (
   id INT AUTO_INCREMENT PRIMARY KEY,
@@ -57,8 +58,8 @@ CREATE TABLE game_theme (
   id INT AUTO_INCREMENT PRIMARY KEY,
   game_id INT,
   theme_id INT,
-  FOREIGN KEY (game_id) REFERENCES games(id),
-  FOREIGN KEY (theme_id) REFERENCES themes(id)
+  FOREIGN KEY (game_id) REFERENCES games(id) ON DELETE CASCADE,
+  FOREIGN KEY (theme_id) REFERENCES themes(id) ON DELETE CASCADE
 );
 CREATE TABLE platforms (
   id INT AUTO_INCREMENT PRIMARY KEY,
@@ -68,8 +69,8 @@ CREATE TABLE game_platform (
   id INT AUTO_INCREMENT PRIMARY KEY,
   game_id INT,
   platform_id INT,
-  FOREIGN KEY (game_id) REFERENCES games(id),
-  FOREIGN KEY (platform_id) REFERENCES platforms(id)
+  FOREIGN KEY (game_id) REFERENCES games(id) ON DELETE CASCADE,
+  FOREIGN KEY (platform_id) REFERENCES platforms(id) ON DELETE CASCADE
 );
 CREATE TABLE genres (
   id INT AUTO_INCREMENT PRIMARY KEY,
@@ -79,8 +80,8 @@ CREATE TABLE game_genre (
   id INT AUTO_INCREMENT PRIMARY KEY,
   game_id INT,
   genre_id INT,
-  FOREIGN KEY (game_id) REFERENCES games(id),
-  FOREIGN KEY (genre_id) REFERENCES genres(id)
+  FOREIGN KEY (game_id) REFERENCES games(id) ON DELETE CASCADE,
+  FOREIGN KEY (genre_id) REFERENCES genres(id) ON DELETE CASCADE
 );
 CREATE TABLE ratings (
   id INT AUTO_INCREMENT PRIMARY KEY,
@@ -91,6 +92,6 @@ CREATE TABLE game_rating (
   id INT AUTO_INCREMENT PRIMARY KEY,
   game_id INT,
   rating_id INT,
-  FOREIGN KEY (game_id) REFERENCES games(id),
-  FOREIGN KEY (rating_id) REFERENCES ratings(id)
+  FOREIGN KEY (game_id) REFERENCES games(id) ON DELETE CASCADE,
+  FOREIGN KEY (rating_id) REFERENCES ratings(id) ON DELETE CASCADE
 );

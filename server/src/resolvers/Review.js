@@ -1,5 +1,6 @@
+import { users } from "../db";
+
 export const Review = {
-  // TODO finish implementing the
   async game(parent, args, ctx, info) {
     const games = await ctx.prisma.games.findMany();
     const gameReviews = await ctx.prisma.game_review.findMany();
@@ -17,5 +18,12 @@ export const Review = {
     }, []);
 
     return filteredReview.map((g) => g);
+  },
+  async author(parent, args, ctx, info) {
+    return await ctx.prisma.reviews.findOne({
+      where: {
+        id: parent.id,
+      },
+    });
   },
 };
