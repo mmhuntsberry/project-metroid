@@ -55,14 +55,16 @@ const LoginInput = styled.input`
     display: block;
 `;
 
-const LoginAction = styled.a`
+const LoginForgotPassword = styled.a`
+    display: block;  
     font-family: Roboto;
     font-style: italic;
     font-weight: normal;
-    font-size: var(--body-font-size-01);
-    color: var(--pink);
-    display: inline-block;  
+    font-size: var(--body-font-size-02);
+    color: var(--grey-03);
+    text-decoration: none;
 `;
+
 
 const LoginText = styled.span`
     font-family: Roboto;
@@ -71,9 +73,19 @@ const LoginText = styled.span`
     font-size: var(--body-font-size-02);
     color: var(--grey-03);
     padding: var(--spacing-02) var(--spacing-04);
-    display: block;
+    display: inline-block;
     text-align: right;
     margin-top: var(--spacing-02);
+`;
+
+const LoginSignUp = styled.a`
+    display: inline-block;  
+    font-family: Roboto;
+    font-style: italic;
+    font-weight: normal;
+    font-size: var(--body-font-size-02);
+    color: var(--pink);
+    text-decoration: none;
 `;
 
 
@@ -90,7 +102,6 @@ const LoginButton = styled.input`
     text-shadow: 1px 1px 1px #0000001a;
     text-transform: uppercase;
     display: inline-block;
-    float: right;
 `;
 
-export {LoginForm, LoginContainer, LoginTitle, LoginLabel, LoginInput, LoginAction, LoginText, LoginButton};
+export {LoginForm, LoginContainer, LoginTitle, LoginLabel, LoginInput, LoginForgotPassword, LoginText, LoginSignUp, LoginButton};
