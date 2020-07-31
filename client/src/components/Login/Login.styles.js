@@ -65,6 +65,11 @@ const LoginForgotPassword = styled.a`
     text-decoration: none;
 `;
 
+const LoginBottomContainer = styled.div`
+    display: inline-block;
+    height: auto;
+    padding-top: var(--spacing-02)
+`;
 
 const LoginText = styled.span`
     font-family: Roboto;
@@ -75,7 +80,7 @@ const LoginText = styled.span`
     padding: var(--spacing-02) var(--spacing-04);
     display: inline-block;
     text-align: right;
-    margin-top: var(--spacing-02);
+    margin-top: var(--spacing-02); 
 `;
 
 const LoginSignUp = styled.a`
@@ -102,6 +107,7 @@ const LoginButton = styled.input`
     text-shadow: 1px 1px 1px #0000001a;
     text-transform: uppercase;
     display: inline-block;
+    vertical-align: text-bottom;
 `;
 
-export {LoginForm, LoginContainer, LoginTitle, LoginLabel, LoginInput, LoginForgotPassword, LoginText, LoginSignUp, LoginButton};
+export {LoginForm, LoginContainer, LoginTitle, LoginLabel, LoginInput, LoginForgotPassword, LoginBottomContainer, LoginText, LoginSignUp, LoginButton};

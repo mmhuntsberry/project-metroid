@@ -1,5 +1,5 @@
 import React from "react";
-import {LoginForm, LoginContainer, LoginTitle, LoginLabel, LoginInput, LoginForgotPassword, LoginSignUp, LoginText, LoginButton} from "./Login.styles";
+import {LoginForm, LoginContainer, LoginTitle, LoginLabel, LoginInput, LoginForgotPassword, LoginSignUp, LoginBottomContainer, LoginText, LoginButton} from "./Login.styles";
 const Login = () => {
     return (
         // Add Css classes and submit button
@@ -15,8 +15,12 @@ const Login = () => {
 
                 <LoginForgotPassword href="#">Forgot Password?</LoginForgotPassword>
 
-                <LoginText>Don't have an account? <LoginSignUp href="#">Sign up</LoginSignUp></LoginText>       
-                <LoginButton type="submit" value="Log in" ></LoginButton>      
+                <LoginBottomContainer>
+                    <LoginText>Don't have an account? </LoginText>       
+                    <LoginSignUp href="#">Sign up</LoginSignUp>
+                    <LoginButton type="submit" value="Log in"></LoginButton>
+                </LoginBottomContainer>
+                      
             </LoginForm>
         </LoginContainer>
         
