@@ -38,8 +38,20 @@ const CollectionsList = (props) => {
     } else {
       menu.style.maxHeight = menu.scrollHeight + "px";
     }
+  }
 
-
+  const populateModalData = (title, modalType) => {
+    let getModalData = {}
+    if (modalType === "delete") {
+      getModalData = props.modalData.deleteCollection;
+    } else if (modalType ==="edit") {
+      getModalData = props.modalData.editCollection;
+    }
+    // pass the clicked title to the modalData
+    getModalData.bodyText = title;
+    // set the updated modal content ot state
+    props.setModalContent(getModalData);
+    props.showModal()
   }
 
   return <PageWrapper className="collections-wrapper">
@@ -64,7 +76,7 @@ const CollectionsList = (props) => {
                         {collection.games}
                         <CollectionGamesText>{`${collection.games === "1" ? " Game" : " Games"}`}</CollectionGamesText>
                       </CollectionGames>
-                      <CollectionComments isMain={collection.main}>
+                      <CollectionComments isMain={collection.isMain}>
                         <svg width="17" height="15" viewBox="0 0 17 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path
                             d="M8.5 0.154297C4.08125 0.154297 0.5 3.06367 0.5 6.6543C0.5 8.2043 1.16875 9.62305 2.28125 10.7387C1.89062 12.3137 0.584375 13.7168 0.56875 13.7324C0.5 13.8043 0.48125 13.9105 0.521875 14.0043C0.5625 14.098 0.65 14.1543 0.75 14.1543C2.82188 14.1543 4.375 13.1605 5.14375 12.548C6.16563 12.9324 7.3 13.1543 8.5 13.1543C12.9187 13.1543 16.5 10.2449 16.5 6.6543C16.5 3.06367 12.9187 0.154297 8.5 0.154297Z"
@@ -77,7 +89,7 @@ const CollectionsList = (props) => {
                     </CollectionMetaInfo>
                   </CollectionMetaAndTitle>
                   <CollectionControlsContainer className="collection-controls-container">
-                    <CollectionControlContainer className="button__collection-control" disabled={collection.main}>
+                    <CollectionControlContainer className="button__collection-control" disabled={collection.isMain} onClick={(e) => populateModalData(collection.title, "edit")}>
                       <CollectionControlIcon width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
                           d="M0.410156 15.52V19.5H4.38288L16.0592 7.80237L12.0865 3.8224L0.410156 15.52ZM19.0992 4.75683C19.5138 4.34153 19.5138 3.68397 19.0992 3.26867L16.6465 0.811475C16.232 0.396175 15.5756 0.396175 15.1611 0.811475L13.2265 2.71494L17.1647 6.66029L19.0992 4.75683Z"
@@ -86,7 +98,7 @@ const CollectionsList = (props) => {
                       </CollectionControlIcon>
                       <CollectionControlText>Edit</CollectionControlText>
                     </CollectionControlContainer>
-                    <CollectionControlContainer className="button__collection-control" disabled={collection.main}>
+                    <CollectionControlContainer className="button__collection-control" disabled={collection.isMain}>
                       <CollectionControlIcon width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
                           fillRule="evenodd"
@@ -101,7 +113,7 @@ const CollectionsList = (props) => {
                       </CollectionControlIcon>
                       <CollectionControlText>Merge</CollectionControlText>
                     </CollectionControlContainer>
-                    <CollectionControlContainer className="button__collection-control button__delete" disabled={collection.main}>
+                    <CollectionControlContainer className="button__collection-control button__delete" disabled={collection.isMain} onClick={(e) => populateModalData(collection.title, "delete")}>
                       <CollectionControlIcon width="18" height="21" viewBox="0 0 18 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
                           d="M17.0352 1.75001H12.3477L11.9805 1.01954C11.9027 0.863372 11.7829 0.732008 11.6345 0.640225C11.4861 0.548442 11.3151 0.499882 11.1406 0.500007H6.67578C6.50171 0.499338 6.33097 0.547717 6.18313 0.639602C6.03528 0.731487 5.91631 0.863161 5.83984 1.01954L5.47265 1.75001H0.785156C0.619396 1.75001 0.460425 1.81585 0.343214 1.93306C0.226004 2.05027 0.160156 2.20925 0.160156 2.37501L0.160156 3.62501C0.160156 3.79077 0.226004 3.94974 0.343214 4.06695C0.460425 4.18416 0.619396 4.25001 0.785156 4.25001H17.0352C17.2009 4.25001 17.3599 4.18416 17.4771 4.06695C17.5943 3.94974 17.6602 3.79077 17.6602 3.62501V2.37501C17.6602 2.20925 17.5943 2.05027 17.4771 1.93306C17.3599 1.81585 17.2009 1.75001 17.0352 1.75001ZM2.23828 18.7422C2.26809 19.2182 2.47819 19.665 2.8258 19.9915C3.17342 20.3181 3.63242 20.4999 4.10937 20.5H13.7109C14.1879 20.4999 14.6469 20.3181 14.9945 19.9915C15.3421 19.665 15.5522 19.2182 15.582 18.7422L16.4102 5.5H1.41016L2.23828 18.7422Z"
@@ -116,9 +128,9 @@ const CollectionsList = (props) => {
                 </CollectionInfoContainer>
                 <CollectionControlsDropdownArrowContainer
                   className="collection-list__dropdown-arrow"
-                  isMain={collection.main}
+                  isMain={collection.isMain}
                   onClick={(e) => handleClick(e)}
-                  disabled={collection.main}
+                  disabled={collection.isMain}
                 >
                   <CollectionControlsDropdownArrow className="dropdown-arrow" width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -128,7 +140,7 @@ const CollectionsList = (props) => {
                   </CollectionControlsDropdownArrow>
                 </CollectionControlsDropdownArrowContainer>
               </CollectionContainer>
-              {collection.main !== true 
+              {collection.isMain !== true 
               ? <CollectionControlsDropdownList>
                   <CollectionControlsDropdownListItem>
                     Edit collection

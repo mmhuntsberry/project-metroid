@@ -13,6 +13,10 @@ import {
 } from "./Collections.styles";
 import CollectionsList from "../CollectionsList";
 import CurrentlyPlayingList from "../CurrentlyPlayingList"
+import Modal from "../Modal"
+import addCollectionGraphic from "../../assets/collection-add.svg"
+import editCollectionGraphic from "../../assets/collection-edit.svg"
+import deleteCollectionGraphic from "../../assets/collection-delete.svg"
 
 const currentlyPlaying = [
   {
@@ -38,7 +42,7 @@ const collectionListData = [
     thumbnail: "https://gamefaqs1.cbsistatic.com/box/4/1/0/48410_front.jpg",
     games: "381",
     comments: "",
-    main: true,
+    isMain: true,
     disabled: "disabled"
   },
   {
@@ -46,23 +50,25 @@ const collectionListData = [
     thumbnail: "https://gamefaqs1.cbsistatic.com/box/2/2/1/24221_front.jpg",
     games: "14",
     comments: "1",
-    main: false
+    isMain: false
   },
   {
     title: "Best Shmups for REAL MANLY MEN!!",
     thumbnail: "https://gamefaqs1.cbsistatic.com/box/2/0/2/49202_front.jpg",
     games: "27",
     comments: "4",
-    main: false
+    isMain: false
   },
   {
     title: "Legendary Soundtracks",
     thumbnail: "https://images.igdb.com/igdb/image/upload/t_cover_big/co2cm4.jpg",
     games: "39",
     comments: "1",
-    main: false
+    isMain: false
   },
 ];
+
+
 
 // get just the collection titles for our quick select dropdown menu
 const collectionListTitles = collectionListData.map(collection => collection.title)
@@ -71,46 +77,59 @@ const collectionListTitles = collectionListData.map(collection => collection.tit
 const itemsPerPage = ["10", "25", "50", "100"];
 const sortByOptions = ["Title", "Release Date", "Date Added", "Rating"];
 
-const handleAddCollection = () => {
-  // const button = document.querySelector(".add-collection-button");
-  // const input = document.querySelector(".add-collection-input");
-  // const metaToolbar = document.querySelector(".meta-toolbar");
-  // const unusedCells = Array.from(metaToolbar.childNodes);
-  
-  // bad idea. use a modal instead.
-  // if (button.innerText === "Add") {
-  //   unusedCells.map(cell => (cell.style.display = "block"));
-  //   metaToolbar.style.gridTemplateColumns =
-  //     "300px auto min-content min-content 36px min-content";
-  //   metaToolbar.style.alignItems = "flex-end";
-  //   button.innerText = "Add A Collection";
-  //   button.style.position = "relative";
-  //   button.style.backgroundColor = "var(--dim-green)";
-  //   window.setTimeout(() => {
-  //     input.style.transform = "scaleX(0)";
-  //   }, 100);
-  //   input.style.display = "none";
-  // } else {
-  //   unusedCells.map((cell, index) =>
-  //     index < unusedCells.length - 1
-  //       ? (cell.style.display = "none")
-  //       : (cell.style.display = "flex")
-  //   );
-  //   metaToolbar.style.gridTemplateColumns = "auto";
-  //   metaToolbar.style.alignItems = "center";
-  //   button.innerText = "Add";
-  //   window.setTimeout(() => {
-  //     input.style.transform = "scaleX(1)";
-  //   }, 100);
-  //   input.style.display = "block";
-  //   button.style.position = "absolute";
-  //   button.style.backgroundColor = "var(--pink)";
-  //   input.focus();
-  // }
-};
-
 const Collections = () => {
   const [previousButton, setPreviousButton] = useState("");
+  const [show, setShow] = useState(false);
+  const [modalContent, setModalContent] = useState({});
+
+  const getScrollbarWidth = () => {
+    return window.innerWidth - document.body.clientWidth;
+  }
+
+  const showModal = e => {
+    const body = document.body
+    // var t0 = performance.now()
+    const scrollbarWidth = getScrollbarWidth()
+    // var t1 = performance.now()
+    // console.log("Call to getScrollbarWidth took " + (t1 - t0) + " milliseconds.")
+    
+    // add padding to account for disappearing scrollbar
+    if (scrollbarWidth > 0) {
+      body.style.paddingRight = scrollbarWidth + "px";
+      body.style.overflowY = "hidden";
+    }
+    setShow(!show)
+  }
+
+  const modalData = {
+    addCollection: {
+      className: "modal__add-collection",
+      graphic: addCollectionGraphic,
+      title: "Add Collection",
+      bodyType: "input",
+      bodyText: `Enter collection name`,
+      cancelText: "Cancel",
+      confirmText: "Save"
+    },
+    editCollection: {
+      className: "modal__edit-collection",
+      graphic: editCollectionGraphic,
+      title: "Edit Collection",
+      bodyType: "input",
+      bodyText: "",
+      cancelText: "Cancel",
+      confirmText: "Save"
+    },
+    deleteCollection: {
+      className: "modal__delete-collection",
+      graphic: deleteCollectionGraphic,
+      title: "Are you sure?",
+      bodyType: "text",
+      bodyText: ``,
+      cancelText: "Cancel",
+      confirmText: "Yes"
+    }
+  }
 
   return (
     <PageWrapper>
@@ -147,13 +166,29 @@ const Collections = () => {
           <SortOrderButton />
           <AddCollectionButton
             className="add-collection-button"
-            onClick={handleAddCollection}
+            onClick={(e) => {
+              e.preventDefault();
+              setModalContent(modalData.addCollection);
+              showModal(e);
+            }}
           >
             Add A Collection
           </AddCollectionButton>
-          <ListSearchBar />
+          <ListSearchBar placeholder="Search this collection" type="search" />
         </MetaWrapper>
-        <CollectionsList collectionListData={collectionListData}/>
+        <CollectionsList
+          collectionListData={collectionListData}
+          getScrollbarWidth={getScrollbarWidth}
+          showModal={showModal}
+          setModalContent={setModalContent}
+          modalData={modalData}
+          show={show}
+        />
+        <Modal
+          modalContent={modalContent}
+          onClose={showModal}
+          show={show}
+        />
       </ContentWrapper>
     </PageWrapper>
   );
