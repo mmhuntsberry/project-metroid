@@ -2,14 +2,11 @@ import styled from "@emotion/styled";
 
 const SortOrderButtonStyles = styled.button`
   padding: 9px 12px 6px;
+  transform: ${(props) => props.sortOrder === "asc" ? "rotate(180deg)" : "rotate(0deg)"};
   border: 0;
   border-radius: 0.25rem;
   background-color: #212131;
-
-  &[reverse] {
-    transform: rotate(180deg);
-  }
-
+  
   &:hover {
     background-color: #28283c;
     cursor: pointer;
@@ -21,4 +18,8 @@ const SortOrderButtonStyles = styled.button`
   }
 `;
 
-export { SortOrderButtonStyles };
+const SortOrderButtonIcon = styled.svg`
+  pointer-events: none;
+`
+
+export { SortOrderButtonStyles, SortOrderButtonIcon };

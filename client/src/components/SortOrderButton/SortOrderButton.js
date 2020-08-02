@@ -1,14 +1,25 @@
 import React from "react";
-import { SortOrderButtonStyles } from "./SortOrderButton.styles";
+import { SortOrderButtonStyles, SortOrderButtonIcon } from "./SortOrderButton.styles";
 
-const handleClick = () => {
-  this.toggleAttribute("reverse");
-}
+const SortOrderButton = props => {
+  const handleClick = (e) => {
+    console.log(props.sortOrder)
+    if (props.sortOrder === "asc") {
+      // e.target.setAttribute("data-sort", "desc")
+      props.setSortOrder("desc")
+      props.handleCollectionsSortSelect("desc")
+      // console.log(props.sortOrder)
+    } else if (props.sortOrder === "desc") {
+      // e.target.setAttribute("data-sort", "asc")
+      props.setSortOrder("asc")
+      props.handleCollectionsSortSelect("asc")
+      // console.log(props.sortOrder)
+    }
+  }
 
-const SortOrderButton = () => {
   return (
-    <SortOrderButtonStyles className="button__sort-order" onClick={handleClick}>
-      <svg
+    <SortOrderButtonStyles className="button__sort-order" sortOrder={props.sortOrder} onClick={(e) => handleClick(e)}>
+      <SortOrderButtonIcon
         width="10"
         height="18"
         viewBox="0 0 10 18"
@@ -27,7 +38,7 @@ const SortOrderButton = () => {
           fill="#28C7B7"
           stroke="#28C7B7"
         />
-      </svg>
+      </SortOrderButtonIcon>
     </SortOrderButtonStyles>
   );
 };

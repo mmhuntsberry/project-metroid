@@ -97,31 +97,71 @@ const Collections = () => {
   const [selectedCollection, setSelectedCollection] = useState("");
   const [collectionsPerPage, setCollectionsPerPage] = useState(10);
   const [collectionSortBy, setCollectionSortBy] = useState("Date Added")
+  const [sortOrder, setSortOrder] = useState("asc");
 
 
   const handleCollectionSelect = () => {}
   const handleCollectionsPerPageSelect = () => {}
-  const handleCollectionsSortSelect = () => {
+  const handleCollectionsSortSelect = (order) => {
     console.log(collectionSortBy)
+    console.log("order: ", order)
     const sortBy = collectionSortBy
     let sortedArray;
     if (sortBy === "Title") {
       // sort by Title
-      sortedArray = [...collectionList].sort((a, b) => (a.title.toLowerCase() > b.title.toLowerCase()) ? 1 : -1);
+      if (!order) {
+        sortedArray = [...collectionList].sort((a, b) => (a.title.toLowerCase() > b.title.toLowerCase()) ? 1 : -1);
+        // default Title sort: ascending
+        setSortOrder("asc")
+      }
+      if (order === "asc") {
+        sortedArray = [...collectionList].sort((a, b) => (a.title.toLowerCase() > b.title.toLowerCase()) ? 1 : -1);
+      } else if (order === "desc") {
+        sortedArray = [...collectionList].sort((a, b) => (b.title.toLowerCase() > b.title.toLowerCase()) ? 1 : -1);
+      }
       setCollectionList(sortedArray);
+      
     } else if (sortBy === "Date Added") {
       // sort by Date Added
-      sortedArray = [...collectionList].sort((a, b) => (Date.parse(a.dateAdded) - Date.parse(b.dateAdded)));
+      if (!order) {
+        sortedArray = [...collectionList].sort((a, b) => (Date.parse(a.dateAdded) - Date.parse(b.dateAdded)));
+        // default Date sort: ascending
+        setSortOrder("asc")
+      }
+      if (order === "asc") {
+        sortedArray = [...collectionList].sort((a, b) => (Date.parse(a.dateAdded) - Date.parse(b.dateAdded)));
+      } else if (order === "desc") {
+        sortedArray = [...collectionList].sort((a, b) => (Date.parse(b.dateAdded) - Date.parse(a.dateAdded)));
+      }
       setCollectionList(sortedArray);
     } else if (sortBy === "Games") {
       // sort by Games
-      sortedArray = [...collectionList].sort((a, b) => (parseInt(a.games) < parseInt(b.games)) ? 1 : -1);
+      if (!order) {
+        sortedArray = [...collectionList].sort((a, b) => (parseInt(a.games) < parseInt(b.games)) ? 1 : -1);
+        // default Games sort: descending
+        setSortOrder("desc")
+      }
+      if (order === "asc") {
+        sortedArray = [...collectionList].sort((a, b) => (parseInt(a.games) > parseInt(b.games)) ? 1 : -1);
+      } else if (order === "desc") {
+        sortedArray = [...collectionList].sort((a, b) => (parseInt(a.games) < parseInt(b.games)) ? 1 : -1);
+      }
       setCollectionList(sortedArray);
     } else if (sortBy === "Comments") {
       // sort by Comments
-      sortedArray = [...collectionList].sort((a, b) => (parseInt(a.comments) < parseInt(b.comments)) ? 1 : -1);
+      if (!order) {
+        sortedArray = [...collectionList].sort((a, b) => (parseInt(a.comments) < parseInt(b.comments)) ? 1 : -1);  
+        // default Comments sort: descending
+        setSortOrder("desc")
+      }
+      if (order === "asc") {
+        sortedArray = [...collectionList].sort((a, b) => (parseInt(a.comments) > parseInt(b.comments)) ? 1 : -1);
+      } else if (order === "desc") {
+        sortedArray = [...collectionList].sort((a, b) => (parseInt(a.comments) < parseInt(b.comments)) ? 1 : -1);
+      }
+      
       setCollectionList(sortedArray);
-      console.log(sortedArray);
+      
     }
   }
 
@@ -207,7 +247,11 @@ const Collections = () => {
             setPreviousButton={setPreviousButton}
             chosenOption={setCollectionSortBy}
           />
-          <SortOrderButton />
+          <SortOrderButton
+            sortOrder={sortOrder}
+            setSortOrder={setSortOrder}
+            handleCollectionsSortSelect={handleCollectionsSortSelect}
+          />
           <AddCollectionButton
             className="add-collection-button"
             onClick={(e) => {
@@ -228,11 +272,7 @@ const Collections = () => {
           modalData={modalData}
           show={show}
         />
-        <Modal
-          modalContent={modalContent}
-          onClose={showModal}
-          show={show}
-        />
+        <Modal modalContent={modalContent} onClose={showModal} show={show} />
       </ContentWrapper>
     </PageWrapper>
   );
