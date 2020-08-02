@@ -47,7 +47,7 @@ const MetaWrapper = styled.section`
   }
 
   ${mq[3]} {
-    grid-template-columns: minmax(300px, 1fr) min-content min-content var(--toolbar-height) min-content;
+    grid-template-columns: minmax(260px, 1fr) min-content min-content var(--toolbar-height) min-content;
 
     div:nth-of-type(3) {
       grid-column: span 1;
@@ -55,7 +55,7 @@ const MetaWrapper = styled.section`
   }
 
   ${mq[4]} {
-    grid-template-columns: minmax(300px, 1fr) auto min-content min-content var(--toolbar-height) min-content;
+    grid-template-columns: minmax(260px, 1fr) auto min-content min-content var(--toolbar-height) min-content;
   }
 `;
 

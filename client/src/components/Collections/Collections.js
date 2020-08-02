@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import DropdownMenu from "../DropdownMenu";
 import ListSearchBar from "../ListSearchBar";
 import SortOrderButton from "../SortOrderButton";
@@ -42,14 +42,24 @@ const collectionListData = [
     thumbnail: "https://gamefaqs1.cbsistatic.com/box/4/1/0/48410_front.jpg",
     games: "381",
     comments: "",
+    dateAdded: "2020-03-19 19:45:26",
     isMain: true,
     disabled: "disabled"
+  },
+  {
+    title: "Totally Rad Games",
+    thumbnail: "https://giantbomb1.cbsistatic.com/uploads/scale_medium/8/81005/2771287-2900330282-label.jpg",
+    games: "52",
+    comments: "12",
+    dateAdded: "2020-07-08 01:26:02",
+    isMain: false
   },
   {
     title: "Best SNES RPGs You’ve Already Seen on Hundreds of Lists Already",
     thumbnail: "https://gamefaqs1.cbsistatic.com/box/2/2/1/24221_front.jpg",
     games: "14",
     comments: "1",
+    dateAdded: "2020-04-23 18:33:18",
     isMain: false
   },
   {
@@ -57,6 +67,7 @@ const collectionListData = [
     thumbnail: "https://gamefaqs1.cbsistatic.com/box/2/0/2/49202_front.jpg",
     games: "27",
     comments: "4",
+    dateAdded: "2020-05-29 18:39:50",
     isMain: false
   },
   {
@@ -64,6 +75,7 @@ const collectionListData = [
     thumbnail: "https://images.igdb.com/igdb/image/upload/t_cover_big/co2cm4.jpg",
     games: "39",
     comments: "1",
+    dateAdded: "2020-04-25 04:39:28",
     isMain: false
   },
 ];
@@ -75,12 +87,47 @@ const collectionListTitles = collectionListData.map(collection => collection.tit
 
 // our data for the other dropdown menus. these won't change.
 const itemsPerPage = ["10", "25", "50", "100"];
-const sortByOptions = ["Title", "Release Date", "Date Added", "Rating"];
+const sortByOptions = ["Title", "Date Added", "Games", "Comments"];
 
 const Collections = () => {
   const [previousButton, setPreviousButton] = useState("");
   const [show, setShow] = useState(false);
   const [modalContent, setModalContent] = useState({});
+  const [collectionList, setCollectionList] = useState(collectionListData);
+  const [selectedCollection, setSelectedCollection] = useState("");
+  const [collectionsPerPage, setCollectionsPerPage] = useState(10);
+  const [collectionSortBy, setCollectionSortBy] = useState("Date Added")
+
+
+  const handleCollectionSelect = () => {}
+  const handleCollectionsPerPageSelect = () => {}
+  const handleCollectionsSortSelect = () => {
+    console.log(collectionSortBy)
+    const sortBy = collectionSortBy
+    let sortedArray;
+    if (sortBy === "Title") {
+      // sort by Title
+      sortedArray = [...collectionList].sort((a, b) => (a.title.toLowerCase() > b.title.toLowerCase()) ? 1 : -1);
+      setCollectionList(sortedArray);
+    } else if (sortBy === "Date Added") {
+      // sort by Date Added
+      sortedArray = [...collectionList].sort((a, b) => (Date.parse(a.dateAdded) - Date.parse(b.dateAdded)));
+      setCollectionList(sortedArray);
+    } else if (sortBy === "Games") {
+      // sort by Games
+      sortedArray = [...collectionList].sort((a, b) => (parseInt(a.games) < parseInt(b.games)) ? 1 : -1);
+      setCollectionList(sortedArray);
+    } else if (sortBy === "Comments") {
+      // sort by Comments
+      sortedArray = [...collectionList].sort((a, b) => (parseInt(a.comments) < parseInt(b.comments)) ? 1 : -1);
+      setCollectionList(sortedArray);
+      console.log(sortedArray);
+    }
+  }
+
+  useEffect(() => {
+    handleCollectionsSortSelect();
+  }, [collectionSortBy])
 
   const getScrollbarWidth = () => {
     return window.innerWidth - document.body.clientWidth;
@@ -88,11 +135,7 @@ const Collections = () => {
 
   const showModal = e => {
     const body = document.body
-    // var t0 = performance.now()
     const scrollbarWidth = getScrollbarWidth()
-    // var t1 = performance.now()
-    // console.log("Call to getScrollbarWidth took " + (t1 - t0) + " milliseconds.")
-    
     // add padding to account for disappearing scrollbar
     if (scrollbarWidth > 0) {
       body.style.paddingRight = scrollbarWidth + "px";
@@ -158,10 +201,11 @@ const Collections = () => {
           <DropdownMenu
             text={"Sort By: "}
             options={sortByOptions}
-            default={sortByOptions[2]}
+            default={sortByOptions[1]}
             spanMultipleMQ2={true}
             previousButton={previousButton}
             setPreviousButton={setPreviousButton}
+            chosenOption={setCollectionSortBy}
           />
           <SortOrderButton />
           <AddCollectionButton
@@ -177,7 +221,7 @@ const Collections = () => {
           <ListSearchBar placeholder="Search this collection" type="search" />
         </MetaWrapper>
         <CollectionsList
-          collectionListData={collectionListData}
+          collectionListData={collectionList}
           getScrollbarWidth={getScrollbarWidth}
           showModal={showModal}
           setModalContent={setModalContent}

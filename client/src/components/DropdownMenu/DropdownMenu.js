@@ -79,6 +79,8 @@ const DropdownMenu = props => {
     button.parentElement.style.zIndex = 0;
     list.toggleAttribute("hidden");
     
+    console.log("list target: ", e.target.innerText)
+    props.chosenOption(e.target.innerText)
   };
 
   return (
