@@ -94,17 +94,16 @@ const Collections = () => {
   const [show, setShow] = useState(false);
   const [modalContent, setModalContent] = useState({});
   const [collectionList, setCollectionList] = useState(collectionListData);
-  const [selectedCollection, setSelectedCollection] = useState("");
+  // const [selectedCollection, setSelectedCollection] = useState("");
   const [collectionsPerPage, setCollectionsPerPage] = useState(10);
   const [collectionSortBy, setCollectionSortBy] = useState("Date Added")
   const [sortOrder, setSortOrder] = useState("asc");
+  const [searchKeyword, setSearchKeyword] = useState(null);
 
 
   const handleCollectionSelect = () => {}
   const handleCollectionsPerPageSelect = () => {}
   const handleCollectionsSortSelect = (order) => {
-    console.log(collectionSortBy)
-    console.log("order: ", order)
     const sortBy = collectionSortBy
     let sortedArray;
     if (sortBy === "Title") {
@@ -117,7 +116,7 @@ const Collections = () => {
       if (order === "asc") {
         sortedArray = [...collectionList].sort((a, b) => (a.title.toLowerCase() > b.title.toLowerCase()) ? 1 : -1);
       } else if (order === "desc") {
-        sortedArray = [...collectionList].sort((a, b) => (b.title.toLowerCase() > b.title.toLowerCase()) ? 1 : -1);
+        sortedArray = [...collectionList].sort((a, b) => (b.title.toLowerCase() > a.title.toLowerCase()) ? 1 : -1);
       }
       setCollectionList(sortedArray);
       
@@ -262,7 +261,7 @@ const Collections = () => {
           >
             Add A Collection
           </AddCollectionButton>
-          <ListSearchBar placeholder="Search this collection" type="search" />
+          <ListSearchBar placeholder="Search this collection" type="search" setSearchKeyword={setSearchKeyword} />
         </MetaWrapper>
         <CollectionsList
           collectionListData={collectionList}
@@ -271,6 +270,7 @@ const Collections = () => {
           setModalContent={setModalContent}
           modalData={modalData}
           show={show}
+          searchKeyword={searchKeyword}
         />
         <Modal modalContent={modalContent} onClose={showModal} show={show} />
       </ContentWrapper>

@@ -6,6 +6,12 @@ import {
 } from "./ListSearchBar.styles";
 
 const ListSearchBar = (props) => {
+  const handleChange = (e) => {
+    e.preventDefault();
+    let keyword = e.target.value
+    props.setSearchKeyword(keyword);
+  }
+
   return (
     <SearchBarContainer className="search-bar__container">
       <SearchBarIcon
@@ -28,6 +34,7 @@ const ListSearchBar = (props) => {
         name="Search"
         className="search-bar"
         placeholder={props.placeholder}
+        onChange={(e) => handleChange(e)}
       />
     </SearchBarContainer>
   );

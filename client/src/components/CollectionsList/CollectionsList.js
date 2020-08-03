@@ -18,13 +18,19 @@ const CollectionsList = (props) => {
     getModalData.bodyText = title;
     // set the updated modal content ot state
     props.setModalContent(getModalData);
-    props.showModal()
+    props.showModal();
   }
 
   return <PageWrapper className="collections-wrapper">
     <ContentWrapper currentlyPlaying={true}>
       <CollectionListContainer className="collection-list__container">
-        {props.collectionListData.map(collection => {
+        {props.collectionListData.filter(collection => {
+          if (props.searchKeyword === null) {
+            return collection
+          } else if (collection.title.toLowerCase().includes(props.searchKeyword.toLowerCase())) {
+            return collection
+          }
+        }).map(collection => {
           return (
             <CollectionListItem
               key={collection.title} 
