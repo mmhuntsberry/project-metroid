@@ -5,6 +5,8 @@ import {
   CollectionListContainer,
 } from "./CollectionsList.styles"
 import CollectionListItem from "../CollectionListItem"
+import collectionListData from "../Collections/collectionListData";
+import Pagination from "../Pagination"
 
 const CollectionsList = (props) => {
   const populateModalData = (title, modalType) => {
@@ -21,27 +23,45 @@ const CollectionsList = (props) => {
     props.showModal();
   }
 
-  return <PageWrapper className="collections-wrapper">
-    <ContentWrapper currentlyPlaying={true}>
-      <CollectionListContainer className="collection-list__container">
-        {props.collectionListData.filter(collection => {
-          if (props.searchKeyword === null) {
-            return collection
-          } else if (collection.title.toLowerCase().includes(props.searchKeyword.toLowerCase())) {
-            return collection
-          }
-        }).map(collection => {
-          return (
-            <CollectionListItem
-              key={collection.title} 
-              collection={collection}
-              populateModalData={populateModalData}
-            />
-          );
-        })}
-      </CollectionListContainer>
-    </ContentWrapper>
-    </PageWrapper>;
+  if (props.loading) {
+    return <h2>Loading...</h2>
+  }
+
+  return (
+    <PageWrapper className="collections-wrapper">
+      <ContentWrapper currentlyPlaying={true}>
+        <CollectionListContainer className="collection-list__container">
+          {props.collectionListData
+            .filter((collection) => {
+              if (props.searchKeyword === null) {
+                return collection;
+              } else if (
+                collection.title
+                  .toLowerCase()
+                  .includes(props.searchKeyword.toLowerCase())
+              ) {
+                return collection;
+              }
+            })
+            .map((collection) => {
+              return (
+                <CollectionListItem
+                  key={collection.id}
+                  collection={collection}
+                  populateModalData={populateModalData}
+                />
+              );
+            })}
+        </CollectionListContainer>
+        <Pagination
+          collectionsPerPage={props.collectionsPerPage}
+          totalCollections={collectionListData.length}
+          paginate={props.paginate}
+          pageNumber={props.pageNumber}
+        />
+      </ContentWrapper>
+    </PageWrapper>
+  );
 };
 
 export default CollectionsList;

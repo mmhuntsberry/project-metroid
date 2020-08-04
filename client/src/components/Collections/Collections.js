@@ -17,6 +17,7 @@ import Modal from "../Modal"
 import addCollectionGraphic from "../../assets/collection-add.svg"
 import editCollectionGraphic from "../../assets/collection-edit.svg"
 import deleteCollectionGraphic from "../../assets/collection-delete.svg"
+import collectionListData from "./collectionListData"
 
 const currentlyPlaying = [
   {
@@ -35,53 +36,6 @@ const currentlyPlaying = [
   },
 ];
 
-// hard-coded data that will eventually be filled by the database
-const collectionListData = [
-  {
-    title: "All Games",
-    thumbnail: "https://gamefaqs1.cbsistatic.com/box/4/1/0/48410_front.jpg",
-    games: "381",
-    comments: "",
-    dateAdded: "2020-03-19 19:45:26",
-    isMain: true,
-    disabled: "disabled"
-  },
-  {
-    title: "Totally Rad Games",
-    thumbnail: "https://giantbomb1.cbsistatic.com/uploads/scale_medium/8/81005/2771287-2900330282-label.jpg",
-    games: "52",
-    comments: "12",
-    dateAdded: "2020-07-08 01:26:02",
-    isMain: false
-  },
-  {
-    title: "Best SNES RPGs You’ve Already Seen on Hundreds of Lists Already",
-    thumbnail: "https://gamefaqs1.cbsistatic.com/box/2/2/1/24221_front.jpg",
-    games: "14",
-    comments: "1",
-    dateAdded: "2020-04-23 18:33:18",
-    isMain: false
-  },
-  {
-    title: "Best Shmups for REAL MANLY MEN!!",
-    thumbnail: "https://gamefaqs1.cbsistatic.com/box/2/0/2/49202_front.jpg",
-    games: "27",
-    comments: "4",
-    dateAdded: "2020-05-29 18:39:50",
-    isMain: false
-  },
-  {
-    title: "Legendary Soundtracks",
-    thumbnail: "https://images.igdb.com/igdb/image/upload/t_cover_big/co2cm4.jpg",
-    games: "39",
-    comments: "1",
-    dateAdded: "2020-04-25 04:39:28",
-    isMain: false
-  },
-];
-
-
-
 // get just the collection titles for our quick select dropdown menu
 const collectionListTitles = collectionListData.map(collection => collection.title)
 
@@ -93,16 +47,47 @@ const Collections = () => {
   const [previousButton, setPreviousButton] = useState("");
   const [show, setShow] = useState(false);
   const [modalContent, setModalContent] = useState({});
-  const [collectionList, setCollectionList] = useState(collectionListData);
+  const [collectionList, setCollectionList] = useState([]);
   // const [selectedCollection, setSelectedCollection] = useState("");
-  const [collectionsPerPage, setCollectionsPerPage] = useState(10);
-  const [collectionSortBy, setCollectionSortBy] = useState("Date Added")
+  const [collectionsPerPage, setCollectionsPerPage] = useState(2);
+  const [pageNumber, setPageNumber] = useState(1);
+  const [loading, setLoading] = useState(false);
+  const [collectionSortBy, setCollectionSortBy] = useState("Date Added");
   const [sortOrder, setSortOrder] = useState("asc");
   const [searchKeyword, setSearchKeyword] = useState(null);
 
+  useEffect(() => {
+    const fetchCollectionList = () => {
+      setLoading(true);
+      // TODO change for actual fetch request from DB
+      setCollectionList(collectionListData);
+      setLoading(false);
+    }
 
-  const handleCollectionSelect = () => {}
-  const handleCollectionsPerPageSelect = () => {}
+    fetchCollectionList();
+    console.log(collectionList)
+  }, [collectionList])
+
+
+  // Get current posts
+  const indexOfLastCollection = pageNumber * collectionsPerPage;
+  const indexOfFirstCollection = indexOfLastCollection - collectionsPerPage;
+  const currentCollections = collectionList.slice(indexOfFirstCollection, indexOfLastCollection);
+
+  // Change page
+  const paginate = (event, number) => {
+    event.preventDefault();
+    setPageNumber(number);
+  }
+
+
+  const handleCollectionSelect = (collection) => {
+    console.log(collection);
+  }
+  const handleCollectionsPerPageSelect = (pageCount) => {
+    console.log(pageCount)
+    setPageNumber(parseInt())
+  }
   const handleCollectionsSortSelect = (order) => {
     const sortBy = collectionSortBy
     let sortedArray;
@@ -227,6 +212,7 @@ const Collections = () => {
               default={"Choose A Collection"}
               previousButton={previousButton}
               setPreviousButton={setPreviousButton}
+              chosenOption={handleCollectionSelect}
             />
           </DropdownWithTitle>
           <DropdownMenu
@@ -236,6 +222,7 @@ const Collections = () => {
             spanMultiple={true}
             previousButton={previousButton}
             setPreviousButton={setPreviousButton}
+            chosenOption={handleCollectionsPerPageSelect}
           />
           <DropdownMenu
             text={"Sort By: "}
@@ -264,13 +251,18 @@ const Collections = () => {
           <ListSearchBar placeholder="Search this collection" type="search" setSearchKeyword={setSearchKeyword} />
         </MetaWrapper>
         <CollectionsList
-          collectionListData={collectionList}
+          collectionListData={currentCollections}
           getScrollbarWidth={getScrollbarWidth}
           showModal={showModal}
           setModalContent={setModalContent}
           modalData={modalData}
           show={show}
           searchKeyword={searchKeyword}
+          pageNumber={pageNumber}
+          loading={loading}
+          collectionsPerPage={collectionsPerPage}
+          paginate={paginate}
+          pageNumber={pageNumber}
         />
         <Modal modalContent={modalContent} onClose={showModal} show={show} />
       </ContentWrapper>

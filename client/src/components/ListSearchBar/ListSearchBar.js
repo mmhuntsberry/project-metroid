@@ -8,7 +8,7 @@ import {
 const ListSearchBar = (props) => {
   const handleChange = (e) => {
     e.preventDefault();
-    let keyword = e.target.value
+    const keyword = e.target.value
     props.setSearchKeyword(keyword);
   }
 
