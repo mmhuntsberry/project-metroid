@@ -3,6 +3,8 @@ import * as resolvers from "./resolvers";
 import * as db from "./db";
 const { PrismaClient } = require("@prisma/client");
 
+// This is a test
+
 const server = new GraphQLServer({
   typeDefs: "./src/schema.graphql",
   resolvers,
