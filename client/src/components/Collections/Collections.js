@@ -57,17 +57,26 @@ const Collections = () => {
   const [searchKeyword, setSearchKeyword] = useState(null);
 
   useEffect(() => {
-    const fetchCollectionList = () => {
-      setLoading(true);
-      // TODO change for actual fetch request from DB
-      setCollectionList(collectionListData);
-      setLoading(false);
-    }
+    console.log("initial: ", collectionList);
+    // for hard-coded data only.
+    // remove and use async/await with fetch to get data from DB
+    if (collectionList[0] === undefined) {
+      const fetchCollectionList = async () => {
+        setLoading(true);
+        // TODO change for actual fetch request from DB
+        await setCollectionList(collectionListData);
+        setLoading(false);
+      }
 
-    fetchCollectionList();
-    console.log(collectionList)
+      fetchCollectionList();
+      console.log("after fetch: ", collectionList)
+    }
   }, [collectionList])
 
+  // trigger list sort
+  useEffect(() => {
+    handleCollectionsSortSelect();
+  }, [collectionSortBy])
 
   // Get current posts
   const indexOfLastCollection = pageNumber * collectionsPerPage;
@@ -84,10 +93,14 @@ const Collections = () => {
   const handleCollectionSelect = (collection) => {
     console.log(collection);
   }
+
+  // set # of collections per page
   const handleCollectionsPerPageSelect = (pageCount) => {
     console.log(pageCount)
     setCollectionsPerPage(parseInt(pageCount))
   }
+
+  // sort list
   const handleCollectionsSortSelect = (order) => {
     const sortBy = collectionSortBy
     let sortedArray;
@@ -149,9 +162,6 @@ const Collections = () => {
     }
   }
 
-  useEffect(() => {
-    handleCollectionsSortSelect();
-  }, [collectionSortBy])
 
   const getScrollbarWidth = () => {
     return window.innerWidth - document.body.clientWidth;
@@ -262,7 +272,6 @@ const Collections = () => {
           loading={loading}
           collectionsPerPage={collectionsPerPage}
           paginate={paginate}
-          pageNumber={pageNumber}
           setPageNumber={setPageNumber}
         />
         <Modal modalContent={modalContent} onClose={showModal} show={show} />
