@@ -7,16 +7,30 @@ import {
   PageNumberLink
 } from "./Pagination.styles"
 
-export const Pagination = ({ collectionsPerPage, totalCollections, paginate, pageNumber }) => {
+export const Pagination = ({ collectionsPerPage, totalCollections, paginate, pageNumber, setPageNumber }) => {
   const pageNumbers = [];
 
   for (let i = 1; i < Math.ceil(totalCollections / collectionsPerPage); i++) {
     pageNumbers.push(i)
   }
 
+  const handlePrevClick = () => {
+    if (pageNumber !== pageNumbers[0]) {
+      setPageNumber(pageNumber - 1)
+    }
+  }
+
+  const handleNextClick = () => {
+    if (pageNumber !== pageNumbers.length) {
+      setPageNumber(pageNumber + 1)
+    }
+  }
+
   return (
     <PaginationWrapper>
-      {pageNumber !== 1 ? <PrevNextButton>Prev</PrevNextButton> : null}
+      {pageNumber !== pageNumbers[0] 
+        ? <PrevNextButton onClick={handlePrevClick}>Prev</PrevNextButton> 
+        : null}
       <PaginationContainer>
         
         {pageNumbers.map(number => (
@@ -27,7 +41,9 @@ export const Pagination = ({ collectionsPerPage, totalCollections, paginate, pag
           </PageNumberContainer>
         ))}
       </PaginationContainer>
-      {pageNumber !== pageNumbers.length ? <PrevNextButton>Next</PrevNextButton> : null}
+      {pageNumber !== pageNumbers.length 
+        ? <PrevNextButton onClick={handleNextClick}>Next</PrevNextButton> 
+        : null}
     </PaginationWrapper>
   )
 }

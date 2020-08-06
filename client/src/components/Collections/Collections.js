@@ -40,7 +40,7 @@ const currentlyPlaying = [
 const collectionListTitles = collectionListData.map(collection => collection.title)
 
 // our data for the other dropdown menus. these won't change.
-const itemsPerPage = ["10", "25", "50", "100"];
+const itemsPerPage = ["2", "10", "25", "50", "100"];
 const sortByOptions = ["Title", "Date Added", "Games", "Comments"];
 
 const Collections = () => {
@@ -86,7 +86,7 @@ const Collections = () => {
   }
   const handleCollectionsPerPageSelect = (pageCount) => {
     console.log(pageCount)
-    setPageNumber(parseInt())
+    setCollectionsPerPage(parseInt(pageCount))
   }
   const handleCollectionsSortSelect = (order) => {
     const sortBy = collectionSortBy
@@ -263,6 +263,7 @@ const Collections = () => {
           collectionsPerPage={collectionsPerPage}
           paginate={paginate}
           pageNumber={pageNumber}
+          setPageNumber={setPageNumber}
         />
         <Modal modalContent={modalContent} onClose={showModal} show={show} />
       </ContentWrapper>

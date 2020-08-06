@@ -58,6 +58,7 @@ const CollectionsList = (props) => {
           totalCollections={collectionListData.length}
           paginate={props.paginate}
           pageNumber={props.pageNumber}
+          setPageNumber={props.setPageNumber}
         />
       </ContentWrapper>
     </PageWrapper>
