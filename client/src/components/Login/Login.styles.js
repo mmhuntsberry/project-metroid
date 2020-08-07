@@ -68,7 +68,8 @@ const LoginForgotPassword = styled.a`
 const LoginBottomContainer = styled.div`
     display: inline-block;
     height: auto;
-    padding-top: var(--spacing-02)
+    padding-top: var(--spacing-02);
+    width: 100%;
 `;
 
 const LoginText = styled.span`
