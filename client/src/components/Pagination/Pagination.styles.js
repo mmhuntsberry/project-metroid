@@ -10,6 +10,7 @@ const PaginationWrapper = styled.nav`
 
 const PaginationContainer = styled.ul`
   display: flex;
+  margin: 0;
   padding-left: 0;
   list-style: none;
 `

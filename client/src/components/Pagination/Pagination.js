@@ -15,20 +15,20 @@ export const Pagination = ({ collectionsPerPage, totalCollections, paginate, pag
   }
 
   const handlePrevClick = () => {
-    if (pageNumber !== pageNumbers[0]) {
+    if (pageNumber !== pageNumbers[0] && pageNumbers[0] !== undefined) {
       setPageNumber(pageNumber - 1)
     }
   }
 
   const handleNextClick = () => {
-    if (pageNumber !== pageNumbers.length) {
+    if (pageNumber !== pageNumbers.length && pageNumbers[0] !== undefined) {
       setPageNumber(pageNumber + 1)
     }
   }
 
   return (
     <PaginationWrapper>
-      {pageNumber !== pageNumbers[0] 
+      {pageNumber !== pageNumbers[0] && pageNumbers[0] !== undefined
         ? <PrevNextButton onClick={handlePrevClick}>Prev</PrevNextButton> 
         : null}
       <PaginationContainer>
@@ -41,7 +41,7 @@ export const Pagination = ({ collectionsPerPage, totalCollections, paginate, pag
           </PageNumberContainer>
         ))}
       </PaginationContainer>
-      {pageNumber !== pageNumbers.length 
+      {pageNumber !== pageNumbers.length  && pageNumbers[0] !== undefined
         ? <PrevNextButton onClick={handleNextClick}>Next</PrevNextButton> 
         : null}
     </PaginationWrapper>
