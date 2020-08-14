@@ -3,23 +3,40 @@ import bcrypt from "bcryptjs";
 import { APP_SECRET, getUserId } from "../../utils/helpers.js";
 
 export const Mutation = {
-  async signup(parent, args, context, info) {
-    // 1
-    const password = await bcrypt.hash(args.password, 10);
-    console.log("password", password);
-    // 2
-    const user = await context.prisma.users.create({
-      data: { ...args, password },
+  async signup(parent, args, ctx, info) {
+    // check if email already exists in db
+    const emailExists = await ctx.prisma.users.findOne({
+      where: {
+        email: args.email,
+      },
     });
 
-    // 3
-    const token = jwt.sign({ userId: user.id }, APP_SECRET);
+    // check if username already exists
+    const usernameExists = await ctx.prisma.users.findOne({
+      where: {
+        username: args.username,
+      },
+    });
 
-    // 4
-    return {
-      token,
-      user,
-    };
+    if (!emailExists || !usernameExists) {
+      // has the users password
+      const password = await bcrypt.hash(args.password, 10);
+
+      // create new user in the db
+      const user = await ctx.prisma.users.create({
+        data: { ...args, password },
+      });
+
+      const token = jwt.sign({ userId: user.id }, APP_SECRET);
+
+      // return the AuthPayload
+      return {
+        token,
+        user,
+      };
+    } else {
+      throw new Error("Email or Username already exits choose another");
+    }
   },
   async login(parent, args, ctx, info) {
     const user = await ctx.prisma.users.findOne({

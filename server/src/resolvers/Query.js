@@ -2,7 +2,13 @@ import { getUserId } from "../../utils/helpers";
 
 export const Query = {
   async games(parent, args, ctx, info) {
-    return await ctx.prisma.games.findMany();
+    const userId = getUserId(ctx);
+
+    if (!userId) {
+      throw new Error("You are not Authenticated.");
+    } else {
+      return await ctx.prisma.games.findMany();
+    }
   },
   async game(parent, { id }, ctx, info) {
     return await ctx.prisma.games.findOne({
