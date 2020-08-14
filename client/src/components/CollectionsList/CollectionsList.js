@@ -34,16 +34,20 @@ const CollectionsList = (props) => {
           {props.collectionListData
             .filter((collection) => {
               if (props.searchKeyword === null) {
+                console.log("keyword = null: ", collection.title)
                 return collection;
               } else if (
                 collection.title
                   .toLowerCase()
                   .includes(props.searchKeyword.toLowerCase())
               ) {
+                console.log("keyword: ", collection.title);
+                
                 return collection;
               }
             })
             .map((collection) => {
+              console.log("---------------------------------------------");
               return (
                 <CollectionListItem
                   key={collection.id}

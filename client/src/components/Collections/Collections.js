@@ -71,6 +71,7 @@ const Collections = () => {
       fetchCollectionList();
       console.log("after fetch: ", collectionList)
     }
+    
   }, [collectionList])
 
   // trigger list sort
