@@ -87,12 +87,12 @@ const AddCollectionContainer = styled.div``;
 const AddCollectionInput = styled.input``;
 
 const AddCollectionButton = styled.button`
-  display: none;
   position: relative;
   right: 0;
-  width: var(--layout-08);
+  grid-area: 4 / 1 / 4 / 4;
+  width: auto;
   height: var(--toolbar-height);
-  padding: 7px var(--spacing-02);
+  padding: var(--spacing-02);
   transition: background-color 200ms;
   border: 0;
   border-radius: var(--spacing-01);
@@ -107,7 +107,8 @@ const AddCollectionButton = styled.button`
   }
 
   ${mq[2]} {
-    display: block;
+    grid-area: auto;
+    width: var(--layout-08);
   }
 `;
 

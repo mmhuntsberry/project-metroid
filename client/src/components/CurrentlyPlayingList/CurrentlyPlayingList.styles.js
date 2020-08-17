@@ -55,6 +55,7 @@ const GameContainer = styled.div`
   }
 `
 
+// Game Art width and height look good at this size at any breakpoint
 const GameArt = styled.img`
   width: 104px;
   height: 139px;

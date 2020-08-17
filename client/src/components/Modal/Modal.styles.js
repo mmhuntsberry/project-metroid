@@ -14,7 +14,7 @@ const ModalOverlay = styled.div`
   overflow: hidden;
   transition: opacity 150ms;
 
-  background-color: #000;
+  background-color: var(--black);
   background-color: #0007;
 
   &.modal--open {
@@ -58,7 +58,7 @@ ${mq[2]} {
 const ModalContentContainer = styled.div`
   display: flex;
   position: relative;
-  padding: 1rem 1.5rem;
+  padding: var(--spacing-04) var(--spacing-06);
   border-radius: var(--spacing-01);
   background-color: var(--foreground-dark-blue);
 
@@ -88,7 +88,7 @@ const CloseButtonContainer = styled.button`
 `
 
 const CloseButton = styled.span`
-  font-size: 24px;
+  font-size: var(--title-font-size-06);
   font-weight: var(--font-weight-bold);
   line-height: 1;
   text-shadow: 0 1px 0 #000;
@@ -104,7 +104,6 @@ const ModalContent = styled.div`
 
   ${mq[1]} {
     grid-gap: var(--spacing-06);
-    width: 70vw;
   }
 
   ${mq[2]} {
@@ -141,7 +140,7 @@ const ActionButtons = styled.div`
 const CancelButton = styled.button`
   width: var(--layout-07);
   height: var(--layout-03);
-  padding: 7px var(--spacing-02);
+  padding: var(--spacing-02);
   transition: background-color 200ms;
   border: 0;
   border-radius: var(--spacing-01);

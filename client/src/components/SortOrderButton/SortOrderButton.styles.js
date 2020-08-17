@@ -1,14 +1,15 @@
 import styled from "@emotion/styled";
 
 const SortOrderButtonStyles = styled.button`
-  padding: 9px 12px 6px;
+  height: var(--toolbar-height);
+  padding: var(--spacing-02) var(--spacing-03);
   transform: ${(props) => props.sortOrder === "asc" ? "rotate(180deg)" : "rotate(0deg)"};
   border: 0;
-  border-radius: 0.25rem;
-  background-color: #212131;
+  border-radius: var(--spacing-01);
+  background-color: var(--foreground-dark-blue);
   
   &:hover {
-    background-color: #28283c;
+    background-color: var(--foreground-lighter-dark-blue);
     cursor: pointer;
   }
 

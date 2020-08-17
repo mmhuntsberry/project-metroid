@@ -10,7 +10,7 @@ const SearchBarContainer = styled.div`
   min-width: 295px;
   padding: var(--spacing-04);
   padding: 0;
-  background-color: #171823;
+  background-color: var(--dark-blue);
 
   ${mq[2]} {
     grid-area: 1 / 3 / 1 / -1;
@@ -25,36 +25,36 @@ const SearchBarContainer = styled.div`
   }
 `;
 
+// search icon requires pixel-perfect positioning
 const SearchBarIcon = styled.svg`
   display: block;
   position: absolute;
-  top: 11px;
+  top: 0;
   left: var(--spacing-04);
-  width: 14px;
-  height: 14px;
-  color: #f9b2c8;
+  width: var(--body-font-size-02);
+  height: 100%;
+  color: var(--pink);
 `;
 
 const SearchBar = styled.input`
   width: 100%;
-  height: 36px;
-  padding-top: 0.2em;
+  height: var(--toolbar-height);
   padding-left: var(--spacing-08);
   border: 0;
-  border-radius: 5px;
-  background-color: #212131;
-  color: #f9b2c8;
-  font-size: 1em;
-  font-weight: 400;
+  border-radius: var(--spacing-01);
+  background-color: var(--foreground-dark-blue);
+  color: var(--pink);
+  font-size: var(--body-font-size-03);
+  font-weight: var(--font-weight-normal);
   letter-spacing: 0.31px;
 
   &:hover {
-    background-color: #28283c;
+    background-color: var(--foreground-lighter-dark-blue);
   }
 
   &::placeholder {
     opacity: 0.5;
-    color: #f9b2c8;
+    color: var(--pink);
   }
 `;
 

@@ -15,13 +15,16 @@ const ContentWrapper = styled.div`
     padding: var(--spacing-02);
 
     border-radius: ${(props) =>
-      props.currentlyPlaying ? "0 0 var(--spacing-01) var(--spacing-01)" : "var(--spacing-01)"};
+      props.currentlyPlaying
+      ? "0 0 var(--spacing-01) var(--spacing-01)"
+      : "var(--spacing-01)"};
     background-color: var(--foreground-dark-blue);
   }
 
   ${mq[4]} {
     padding: var(--spacing-04);
-    padding-top: ${(props) => (props.currentlyPlaying ? "var(--spacing-07)" : "var(--spacing-04)")};
+    padding-top: ${(props) =>
+      props.currentlyPlaying ? "var(--spacing-07)" : "var(--spacing-04)"};
   }
 `;
 
@@ -35,10 +38,4 @@ const CollectionListContainer = styled.div`
   }
 `;
 
-
-
-export {
-  PageWrapper,
-  ContentWrapper,
-  CollectionListContainer,
-};
+export { PageWrapper, ContentWrapper, CollectionListContainer };
