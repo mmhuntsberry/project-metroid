@@ -5,8 +5,8 @@ import {
   CollectionListContainer,
 } from "./CollectionsList.styles"
 import CollectionListItem from "../CollectionListItem"
-import collectionListData from "../Collections/collectionListData";
-import Pagination from "../Pagination"
+// import collectionListData from "../Collections/collectionListData";
+// import Pagination from "../Pagination"
 
 const CollectionsList = (props) => {
   const populateModalData = (title, modalType) => {
@@ -34,20 +34,17 @@ const CollectionsList = (props) => {
           {props.collectionListData
             .filter((collection) => {
               if (props.searchKeyword === null) {
-                console.log("keyword = null: ", collection.title)
                 return collection;
               } else if (
                 collection.title
                   .toLowerCase()
                   .includes(props.searchKeyword.toLowerCase())
               ) {
-                console.log("keyword: ", collection.title);
                 
                 return collection;
               }
             })
             .map((collection) => {
-              console.log("---------------------------------------------");
               return (
                 <CollectionListItem
                   key={collection.id}
@@ -57,13 +54,13 @@ const CollectionsList = (props) => {
               );
             })}
         </CollectionListContainer>
-        <Pagination
+        {/* <Pagination
           collectionsPerPage={props.collectionsPerPage}
           totalCollections={collectionListData.length}
           paginate={props.paginate}
           pageNumber={props.pageNumber}
           setPageNumber={props.setPageNumber}
-        />
+        /> */}
       </ContentWrapper>
     </PageWrapper>
   );

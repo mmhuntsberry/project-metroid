@@ -40,7 +40,7 @@ const currentlyPlaying = [
 const collectionListTitles = collectionListData.map(collection => collection.title)
 
 // our data for the other dropdown menus. these won't change.
-const itemsPerPage = ["2", "10", "25", "50", "100"];
+const itemsPerPage = ["10", "25", "50", "100"];
 const sortByOptions = ["Title", "Date Added", "Games", "Comments"];
 
 const Collections = () => {
@@ -49,7 +49,7 @@ const Collections = () => {
   const [modalContent, setModalContent] = useState({});
   const [collectionList, setCollectionList] = useState([]);
   // const [selectedCollection, setSelectedCollection] = useState("");
-  const [collectionsPerPage, setCollectionsPerPage] = useState(2);
+  const [collectionsPerPage, setCollectionsPerPage] = useState(100);
   const [pageNumber, setPageNumber] = useState(1);
   const [loading, setLoading] = useState(false);
   const [collectionSortBy, setCollectionSortBy] = useState("Date Added");
@@ -57,7 +57,7 @@ const Collections = () => {
   const [searchKeyword, setSearchKeyword] = useState(null);
 
   useEffect(() => {
-    console.log("initial: ", collectionList);
+    // console.log("initial: ", collectionList);
     // for hard-coded data only.
     // remove and use async/await with fetch to get data from DB
     if (collectionList[0] === undefined) {
@@ -69,7 +69,6 @@ const Collections = () => {
       }
 
       fetchCollectionList();
-      console.log("after fetch: ", collectionList)
     }
     
   }, [collectionList])
@@ -97,7 +96,6 @@ const Collections = () => {
 
   // set # of collections per page
   const handleCollectionsPerPageSelect = (pageCount) => {
-    console.log(pageCount)
     setCollectionsPerPage(parseInt(pageCount))
   }
 
@@ -229,7 +227,7 @@ const Collections = () => {
           <DropdownMenu
             text={"Collections Per Page: "}
             options={itemsPerPage}
-            default={itemsPerPage[0]}
+            default={itemsPerPage[3]}
             spanMultiple={true}
             previousButton={previousButton}
             setPreviousButton={setPreviousButton}
