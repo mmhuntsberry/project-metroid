@@ -76,6 +76,7 @@ const Collections = () => {
   // trigger list sort
   useEffect(() => {
     handleCollectionsSortSelect();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [collectionSortBy])
 
   // Get current posts

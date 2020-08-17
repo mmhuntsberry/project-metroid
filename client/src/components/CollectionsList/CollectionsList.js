@@ -40,7 +40,8 @@ const CollectionsList = (props) => {
                   .toLowerCase()
                   .includes(props.searchKeyword.toLowerCase())
               ) {
-                
+                return collection;
+              } else {
                 return collection;
               }
             })
