@@ -23,7 +23,7 @@ const LoginTitle = styled.h1`
     font-family: var(--title-font-family-primary);
     font-style: normal;
     font-weight: normal;
-    font-size: var(--title-font-size-11);
+    font-size: var(--title-font-size-10);
     line-height: 100%;
     color: var(--green);
     text-align: center;
@@ -66,11 +66,13 @@ const LoginForgotPassword = styled.a`
 `;
 
 const LoginBottomContainer = styled.div`
-    display: inline-block;
+    display: flex;
     height: auto;
+    justify-content: flex-end;
+    align-items: flex-end;
     padding-top: var(--spacing-02);
     width: 100%;
-`;
+`;  
 
 const LoginText = styled.span`
     font-family: Roboto;
@@ -78,7 +80,6 @@ const LoginText = styled.span`
     font-weight: normal;
     font-size: var(--body-font-size-02);
     color: var(--grey-03);
-    padding: var(--spacing-02) var(--spacing-04);
     display: inline-block;
     text-align: right;
     margin-top: var(--spacing-02); 
@@ -92,6 +93,7 @@ const LoginSignUp = styled.a`
     font-size: var(--body-font-size-02);
     color: var(--pink);
     text-decoration: none;
+    padding-left: var(--spacing-03);
 `;
 
 
@@ -101,6 +103,7 @@ const LoginButton = styled.input`
     color: var(--grey-01);
     min-width: fit-content;
     padding: var(--spacing-02) var(--spacing-04);
+    margin-left: var(--spacing-03);
     border: 0;
     font-size: 1.03em;
     font-weight: 600;
@@ -109,6 +112,7 @@ const LoginButton = styled.input`
     text-transform: uppercase;
     display: inline-block;
     vertical-align: text-bottom;
+    align-self: flex-start;
 `;
 
 export {LoginForm, LoginContainer, LoginTitle, LoginLabel, LoginInput, LoginForgotPassword, LoginBottomContainer, LoginText, LoginSignUp, LoginButton};
