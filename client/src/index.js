@@ -7,7 +7,7 @@ import "./index.css";
 import * as serviceWorker from "./serviceWorker";
 
 const client = new ApolloClient({
-  uri: "http://localhost:4000",
+  uri: "http://localhost:4000/",
 });
 
 ReactDOM.render(

@@ -2,7 +2,9 @@ import { getUserId } from "../../utils/helpers";
 
 export const Query = {
   async games(parent, args, ctx, info) {
-    const userId = getUserId(ctx);
+    // const userId = getUserId(ctx);
+
+    const userId = "hello";
 
     if (!userId) {
       throw new Error("You are not Authenticated.");
@@ -11,11 +13,12 @@ export const Query = {
     }
   },
   async game(parent, { id }, ctx, info) {
-    return await ctx.prisma.games.findOne({
+    const game = await ctx.prisma.games.findOne({
       where: {
         id: Number(id),
       },
     });
+    return game;
   },
   async user(parent, args, ctx, info) {
     const userId = getUserId(ctx);
@@ -26,17 +29,8 @@ export const Query = {
 
     return ctx.prisma.users.findOne({ where: { id: userId } });
   },
-  // async user(parent, args, ctx, info) {
-  //   return await ctx.prisma.users.findOne({
-  //     where: {
-  //       id: Number(args.id) || undefined,
-  //       email: args.email,
-  //       username: args.username,
-  //     },
-  //   });
-  // },
-  users(parent, args, ctx, info) {
-    return ctx.prisma.users.findMany();
+  async users(parent, args, ctx, info) {
+    return await ctx.prisma.users.findMany();
   },
   async review(parent, { id }, ctx, info) {
     return await ctx.prisma.reviews.findOne({

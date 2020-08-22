@@ -134,19 +134,23 @@ export const GameInfoTitle = styled.h4`
 `;
 
 export const GameRating = styled.span`
+  justify-self: end;
   color: var(--dark-theme-bg-tertiary);
   font-size: var(--body-font-size-05);
 `;
 
 export const GameGenre = styled.span`
+  justify-self: end;
   color: var(--dark-theme-bg-tertiary);
 `;
 
 export const GameTheme = styled.span`
+  justify-self: end;
   color: var(--dark-theme-bg-tertiary);
 `;
 
 export const GamePlatform = styled.div`
+  justify-self: end;
   color: var(--dark-theme-bg-tertiary);
 `;
 

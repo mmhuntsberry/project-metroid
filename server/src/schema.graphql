@@ -16,34 +16,18 @@ type Query {
 }
 
 type Mutation {
-  createUser(data: CreateUserInput): User!
   signup(
-    email: String!
-    password: String!
     username: String!
+    thumbnail: String! = "https://api.adorable.io/avatars/83/abott@adorable.png"
     first_name: String!
     last_name: String!
-  ): AuthPayload
+    email: String!
+    password: String!
+    user_role: Role! = USER
+  ): AuthPayload!
   login(email: String!, password: String!): AuthPayload
   createGame(title: String!, platform: String!, rating: Float): Game!
   createReview(review: String!, published: Boolean!, game: ID!): Review!
-}
-
-input CreateUserInput {
-  username: String!
-  first_name: String!
-  last_name: String!
-  email: String!
-  password: String!
-  # collection: [Game!]!
-  # reviews: [Review!]!
-  # created_at: String! # Use Date.toISOString()
-  # role: Role!
-}
-
-type AuthPayload {
-  token: String
-  user: User
 }
 
 enum Role {
@@ -51,9 +35,25 @@ enum Role {
   USER
 }
 
-type CollectionDetails {
+# input CreateUserInput {
+#   username: String!
+#   first_name: String!
+#   last_name: String!
+#   email: String!
+#   password: String!
+#   user_role: [Role]
+#   # created_at: String! # Use Date.toISOString()
+# }
+
+type AuthPayload {
+  token: String
+  user: User
+}
+
+type GameCollectionDetails {
   game: [Game!]!
   rank: Int!
+  thumbnail: String! # Link to Game?
   created_at: String! # Use Date.toISOString() to represent DATETIME ????
   status: Boolean!
   owned: Boolean!
@@ -118,12 +118,13 @@ type Theme {
 type User {
   id: ID!
   username: String!
+  thumbnail: String!
   first_name: String!
   last_name: String!
   email: String!
   password: String!
-  collection: [Game!]!
   reviews: [Review!]!
   created_at: String! # Use Date.toISOString()
-  role: Role!
+  collection: [GameCollectionDetails!]!
+  user_role: Role!
 }

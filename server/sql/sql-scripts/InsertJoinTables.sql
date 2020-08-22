@@ -45,3 +45,21 @@ VALUES (1, 6),
   (3, 5),
   (4, 4),
   (5, 4);
+INSERT INTO user_collection (user_id)
+VALUES (1);
+INSERT INTO user_collection_detail (
+    game_id,
+    collection_id,
+    rank,
+    thumbnail,
+    status,
+    owned
+  )
+VALUES (
+    1,
+    1,
+    1,
+    "https://www.placecage.com/250",
+    false,
+    true
+  );

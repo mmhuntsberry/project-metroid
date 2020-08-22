@@ -2,6 +2,8 @@
 -- game_review,
 -- users,
 -- user_review,
+-- user_collection,
+-- user_collection_detail,
 -- themes,
 -- game_theme,
 -- platforms,
@@ -37,9 +39,11 @@ CREATE TABLE game_review (
 CREATE TABLE users (
   id INT AUTO_INCREMENT PRIMARY KEY,
   username VARCHAR(100) UNIQUE NOT NULL,
+  thumbnail VARCHAR(100) NOT NULL,
   first_name VARCHAR(100) NOT NULL,
   last_name VARCHAR(100) NOT NULL,
   email VARCHAR(100) UNIQUE NOT NULL,
+  user_role VARCHAR(25) NOT NULL,
   password VARCHAR(100),
   created_at TIMESTAMP
 );
@@ -49,6 +53,23 @@ CREATE TABLE user_review (
   review_id INT,
   FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
   FOREIGN KEY (review_id) REFERENCES reviews(id) ON DELETE CASCADE
+);
+CREATE TABLE user_collection (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT,
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+CREATE TABLE user_collection_detail (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  game_id INT,
+  collection_id INT,
+  rank INT,
+  thumbnail VARCHAR(100),
+  created_at TIMESTAMP,
+  status BOOLEAN,
+  owned BOOLEAN,
+  FOREIGN KEY (game_id) REFERENCES games(id) ON DELETE CASCADE,
+  FOREIGN KEY (collection_id) REFERENCES user_collection(id)
 );
 CREATE TABLE themes (
   id INT AUTO_INCREMENT PRIMARY KEY,

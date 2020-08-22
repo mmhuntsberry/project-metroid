@@ -20,10 +20,13 @@ export const Review = {
     return filteredReview.map((g) => g);
   },
   async author(parent, args, ctx, info) {
-    return await ctx.prisma.reviews.findOne({
+    const author = await ctx.prisma.users.findOne({
       where: {
         id: parent.id,
       },
     });
+
+    console.log(author);
+    return author;
   },
 };

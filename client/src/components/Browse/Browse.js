@@ -9,12 +9,14 @@ const Browse = () => {
   return (
     <Query query={GET_GAMES}>
       {({ data, loading }) => {
-        console.log(data);
+        console.log(loading);
         if (loading) return "Loading...";
 
         return (
           <BrowseContainer>
             <CardRowGrid>
+              {!loading && console.log(data)}
+
               {data &&
                 data.games &&
                 data.games.map((game) => (
@@ -39,7 +41,6 @@ const GET_GAMES = gql`
     games {
       id
       title
-      platform
       release_year
       box_art
       synopsis

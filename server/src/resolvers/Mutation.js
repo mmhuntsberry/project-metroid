@@ -4,6 +4,7 @@ import { APP_SECRET, getUserId } from "../../utils/helpers.js";
 
 export const Mutation = {
   async signup(parent, args, ctx, info) {
+    console.log(args);
     // check if email already exists in db
     const emailExists = await ctx.prisma.users.findOne({
       where: {
@@ -62,35 +63,6 @@ export const Mutation = {
       token,
       user,
     };
-  },
-  async createUser(parent, { data }, ctx, info) {
-    const { username, email, first_name, last_name, password } = data;
-
-    const emailExists = await ctx.prisma.users.findOne({
-      where: {
-        email,
-      },
-    });
-
-    const usernameExists = await ctx.prisma.users.findOne({
-      where: {
-        username,
-      },
-    });
-
-    if (!emailExists || !username) {
-      return await ctx.prisma.users.create({
-        data: {
-          username,
-          first_name,
-          last_name,
-          email,
-          password,
-        },
-      });
-    } else {
-      throw new Error("Email or Username already exits choose another");
-    }
   },
   async createReview(parent, { user, review, game }, ctx, info) {
     const userId = getUserId(ctx);
