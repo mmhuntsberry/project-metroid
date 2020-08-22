@@ -1,6 +1,4 @@
 import React from "react";
-import { Link, useParams } from "react-router-dom";
-import styled from "@emotion/styled";
 import { GameCardContainer, GameArt, GameTitle, GameDeveloper } from "./GameCard.styles";
 
 

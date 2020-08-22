@@ -8,11 +8,12 @@ import Navbar from "./components/Navbar";
 import Dashboard from "./components/Dashboard";
 import Browse from "./components/Browse";
 import Discover from "./components/Discover";
+import Collections from "./components/Collections"
 import GamePage from "./components/GamePage/GamePage.tsx";
 import BottomNav from "./components/BottomNav";
 import Footer from "./components/Footer";
 import ScrollToTop from "./utils/hooks/ScrollToTop";
-import { games } from "./db/games.js";
+// import { games } from "./db/games.js";
 import "./App.css";
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
           <Route exact path="/" component={Dashboard} />
           <Route exact path="/discover" component={Discover} />
           <Route exact path="/browse" component={Browse} />
+          <Route exact path="/collections" component={Collections} />
           <Route
             exact
             path="/games/:id"
