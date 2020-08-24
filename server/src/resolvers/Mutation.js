@@ -77,4 +77,7 @@ export const Mutation = {
 
     return newReview;
   },
+  async createGame(parent, args, ctx, info) {
+    console.log(args);
+  },
 };

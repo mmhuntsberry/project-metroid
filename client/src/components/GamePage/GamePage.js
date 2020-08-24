@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import {
   Hero,
@@ -31,9 +31,7 @@ import { GameModel } from "../../models";
 import { intersperse } from "../../utils/helpers.js";
 import { reviews } from "../../db/reviews.js";
 import { default as popularGameCardData } from "../Dashboard/popularGameCardData.json";
-import gql from "graphql-tag";
-import { graphql } from "react-apollo";
-import { useQuery } from "@apollo/react-hooks";
+import { useQuery, gql } from "@apollo/client";
 import Review from "../Review/Review";
 
 // interface Props {
@@ -46,10 +44,10 @@ import Review from "../Review/Review";
 // }
 
 const GamePage = (props) => {
-  const { id } = useParams();
+  const { id: gameID } = useParams();
 
   const { loading, error, data } = useQuery(GET_GAME, {
-    variables: { id },
+    variables: { id: gameID },
   });
 
   return (
@@ -176,4 +174,4 @@ const GET_GAME = gql`
   }
 `;
 
-export default graphql(GET_GAME)(GamePage);
+export default GamePage;

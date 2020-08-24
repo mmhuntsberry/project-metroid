@@ -2,39 +2,33 @@ import React from "react";
 import GameCard from "../GameCard/GameCard";
 import { BrowseContainer } from "./Browse.styles";
 import { CardRowGrid } from "../../styles/layout/layout.styles.js";
-import { Query } from "react-apollo";
-import gql from "graphql-tag";
+import { useQuery, gql } from "@apollo/client";
 
 const Browse = () => {
+  const { loading, error, data } = useQuery(GET_GAMES);
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error :(</p>;
   return (
-    <Query query={GET_GAMES}>
-      {({ data, loading }) => {
-        console.log(loading);
-        if (loading) return "Loading...";
+    <BrowseContainer>
+      <CardRowGrid>
+        {!loading && console.log(data)}
 
-        return (
-          <BrowseContainer>
-            <CardRowGrid>
-              {!loading && console.log(data)}
-
-              {data &&
-                data.games &&
-                data.games.map((game) => (
-                  <GameCard
-                    id={game.id}
-                    key={game.id}
-                    img={game.box_art}
-                    title={game.title}
-                    developer={game.developer}
-                  />
-                ))}
-            </CardRowGrid>
-          </BrowseContainer>
-        );
-      }}
-    </Query>
+        {data &&
+          data.games &&
+          data.games.map((game) => (
+            <GameCard
+              id={game.id}
+              key={game.id}
+              img={game.box_art}
+              title={game.title}
+              developer={game.developer}
+            />
+          ))}
+      </CardRowGrid>
+    </BrowseContainer>
   );
 };
+export default Browse;
 
 const GET_GAMES = gql`
   query {
@@ -51,5 +45,3 @@ const GET_GAMES = gql`
     }
   }
 `;
-
-export default Browse;

@@ -133,6 +133,8 @@ export const GameInfoTitle = styled.h4`
   font-weight: var(--font-weight-light);
 `;
 
+// TODO Refactor to be more reusable
+// FROM HERE =====
 export const GameRating = styled.span`
   justify-self: end;
   color: var(--dark-theme-bg-tertiary);
@@ -153,6 +155,7 @@ export const GamePlatform = styled.div`
   justify-self: end;
   color: var(--dark-theme-bg-tertiary);
 `;
+// TO HERE
 
 export const ReviewsContainer = styled.div``;
 

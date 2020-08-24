@@ -26,7 +26,7 @@ type Mutation {
     user_role: Role! = USER
   ): AuthPayload!
   login(email: String!, password: String!): AuthPayload
-  createGame(title: String!, platform: String!, rating: Float): Game!
+  createGame(data: createGameInput): Game!
   createReview(review: String!, published: Boolean!, game: ID!): Review!
 }
 
@@ -44,6 +44,17 @@ enum Role {
 #   user_role: [Role]
 #   # created_at: String! # Use Date.toISOString()
 # }
+
+input createGameInput {
+  title: String!
+  release_year: Int!
+  box_art: String!
+  synopsis: String!
+  description: String!
+  trailer: String!
+  hero: String!
+  developer: String!
+}
 
 type AuthPayload {
   token: String

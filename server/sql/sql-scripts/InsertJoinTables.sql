@@ -38,13 +38,17 @@ VALUES (1, 1),
   (4, 6),
   (4, 3),
   (4, 7),
-  (5, 16);
+  (5, 16),
+  (12, 1),
+  (12, 12),
+  (12, 10);
 INSERT INTO game_rating (game_id, rating_id)
 VALUES (1, 6),
   (2, 6),
   (3, 5),
   (4, 4),
-  (5, 4);
+  (5, 4),
+  (12, 4);
 INSERT INTO user_collection (user_id)
 VALUES (1);
 INSERT INTO user_collection_detail (
