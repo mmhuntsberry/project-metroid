@@ -1,5 +1,6 @@
 import * as jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
+import { v4 as uuidv4 } from "uuid";
 import { APP_SECRET, getUserId } from "../../utils/helpers.js";
 
 export const Mutation = {
@@ -77,7 +78,83 @@ export const Mutation = {
 
     return newReview;
   },
-  async createGame(parent, args, ctx, info) {
-    console.log(args);
+  async createGame(parent, { data }, ctx, info) {
+    const id = uuidv4();
+
+    const foundRating = await ctx.prisma.ratings.findOne({
+      where: {
+        rating: data.rating.toString(),
+      },
+    });
+
+    const foundGenre = await ctx.prisma.genres.findOne({
+      where: {
+        genre: data.genre,
+      },
+    });
+
+    const foundPlatform = await ctx.prisma.platforms.findOne({
+      where: {
+        platform: data.platform,
+      },
+    });
+
+    const foundTheme = await ctx.prisma.themes.findOne({
+      where: {
+        theme: data.theme,
+      },
+    });
+
+    const newGame = await ctx.prisma.games.create({
+      data: {
+        id,
+        title: data.title,
+        release_year: data.release_year,
+        box_art: data.box_art,
+        synopsis: data.synopsis,
+        description: data.description,
+        trailer: data.trailer,
+        hero: data.hero,
+        developer: data.developer,
+      },
+    });
+
+    const connectGameToRatings = await ctx.prisma.game_rating.create({
+      data: {
+        ratings: {
+          connect: { id: foundRating.id },
+        },
+        games: { connect: { id: newGame.id } },
+      },
+    });
+
+    const connectGameToPlatforms = await ctx.prisma.game_platform.create({
+      data: {
+        platforms: {
+          connect: { id: foundPlatform.id },
+        },
+        games: { connect: { id: newGame.id } },
+      },
+    });
+
+    const connectGameToThemes = await ctx.prisma.game_theme.create({
+      data: {
+        themes: {
+          connect: { id: foundTheme.id },
+        },
+        games: { connect: { id: newGame.id } },
+      },
+    });
+
+    const connectGameToGenress = await ctx.prisma.game_genre.create({
+      data: {
+        genres: {
+          connect: { id: foundGenre.id },
+        },
+        games: { connect: { id: newGame.id } },
+      },
+    });
+
+    return newGame;
   },
 };

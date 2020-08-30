@@ -50,10 +50,14 @@ input createGameInput {
   release_year: Int!
   box_art: String!
   synopsis: String!
-  description: String!
+  description: String
   trailer: String!
   hero: String!
   developer: String!
+  platform: String!
+  rating: Int!
+  genre: String!
+  theme: String!
 }
 
 type AuthPayload {

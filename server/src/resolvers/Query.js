@@ -15,7 +15,7 @@ export const Query = {
   async game(parent, { id }, ctx, info) {
     const game = await ctx.prisma.games.findOne({
       where: {
-        id: Number(id),
+        id,
       },
     });
     return game;
