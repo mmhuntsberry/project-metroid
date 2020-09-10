@@ -54,10 +54,10 @@ input createGameInput {
   trailer: String!
   hero: String!
   developer: String!
-  platform: String!
+  platform: [String]!
   rating: Int!
-  genre: String!
-  theme: String!
+  genre: [String]!
+  theme: [String]!
 }
 
 type AuthPayload {

@@ -81,17 +81,50 @@ export const Mutation = {
   async createGame(parent, { data }, ctx, info) {
     const id = uuidv4();
 
+    // TODO LOOP THROUGH GENRES ARRAY AND FIND EACH ASSOCIATED GENRE AND MAP IT TO GAME_GENRE, GAME, and GENRE
     const foundRating = await ctx.prisma.ratings.findOne({
       where: {
         rating: data.rating.toString(),
       },
     });
 
-    const foundGenre = await ctx.prisma.genres.findOne({
-      where: {
-        genre: data.genre,
-      },
-    });
+    console.log("DATA", data);
+
+    const findGenres = (genres) => {
+      return genres.map(
+        async (g) =>
+          await ctx.prisma.genres.findOne({
+            where: {
+              genre: g,
+            },
+          })
+      );
+    };
+
+    const resolveGenres = (promises) => {
+      console.log("PROMISES", promises);
+      const resultArray = [];
+      Promise.all(promises).then((promise) => {
+        console.log("PROMISE", promise);
+        return promise.map((p) => {
+          console.log("P", p);
+          // Now I should loop through the second part.
+          return resultArray.push(p);
+        });
+      });
+
+      console.log("resultArray", resultArray);
+      return resultArray;
+    };
+
+    const genres = await resolveGenres(findGenres(data.genre));
+    console.log("genres", genres);
+
+    // const foundGenre = await ctx.prisma.genres.findOne({
+    //   where: {
+    //     genre: data.genre,
+    //   },
+    // });
 
     const foundPlatform = await ctx.prisma.platforms.findOne({
       where: {
@@ -146,14 +179,26 @@ export const Mutation = {
       },
     });
 
-    const connectGameToGenress = await ctx.prisma.game_genre.create({
-      data: {
-        genres: {
-          connect: { id: foundGenre.id },
-        },
-        games: { connect: { id: newGame.id } },
-      },
-    });
+    // const connectGameToGenres = await ctx.prisma.game_genre.create({
+    //   data: {
+    //     genres: {
+    //       connect: { id: foundGenre.id },
+    //     },
+    //     games: { connect: { id: newGame.id } },
+    //   },
+    // });
+
+    // Promise.all(findGenres(data.genre)).then(async (values) => {
+    //   console.log("values", values);
+    //   await ctx.prisma.game_genre.create({
+    //     data: {
+    //       genres: {
+    //         connect: { id: foundGenre.id },
+    //       },
+    //       games: { connect: { id: newGame.id } },
+    //     },
+    //   });
+    // });
 
     return newGame;
   },

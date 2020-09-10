@@ -107,7 +107,6 @@ const GamePage = (props) => {
                 <ReviewsContainer>
                   {data.game.reviews.length > 0 ? (
                     data.game.reviews.map((review) => {
-                      console.log(review);
                       return <Review key={review.id} userReview={review} />;
                     })
                   ) : (
