@@ -81,63 +81,6 @@ export const Mutation = {
   async createGame(parent, { data }, ctx, info) {
     const id = uuidv4();
 
-    // TODO LOOP THROUGH GENRES ARRAY AND FIND EACH ASSOCIATED GENRE AND MAP IT TO GAME_GENRE, GAME, and GENRE
-    const foundRating = await ctx.prisma.ratings.findOne({
-      where: {
-        rating: data.rating.toString(),
-      },
-    });
-
-    console.log("DATA", data);
-
-    const findGenres = (genres) => {
-      return genres.map(
-        async (g) =>
-          await ctx.prisma.genres.findOne({
-            where: {
-              genre: g,
-            },
-          })
-      );
-    };
-
-    const resolveGenres = (promises) => {
-      console.log("PROMISES", promises);
-      const resultArray = [];
-      Promise.all(promises).then((promise) => {
-        console.log("PROMISE", promise);
-        return promise.map((p) => {
-          console.log("P", p);
-          // Now I should loop through the second part.
-          return resultArray.push(p);
-        });
-      });
-
-      console.log("resultArray", resultArray);
-      return resultArray;
-    };
-
-    const genres = await resolveGenres(findGenres(data.genre));
-    console.log("genres", genres);
-
-    // const foundGenre = await ctx.prisma.genres.findOne({
-    //   where: {
-    //     genre: data.genre,
-    //   },
-    // });
-
-    const foundPlatform = await ctx.prisma.platforms.findOne({
-      where: {
-        platform: data.platform,
-      },
-    });
-
-    const foundTheme = await ctx.prisma.themes.findOne({
-      where: {
-        theme: data.theme,
-      },
-    });
-
     const newGame = await ctx.prisma.games.create({
       data: {
         id,
@@ -152,6 +95,94 @@ export const Mutation = {
       },
     });
 
+    const findGenres = (genres) => {
+      return genres.map(
+        async (g) =>
+          await ctx.prisma.genres.findOne({
+            where: {
+              genre: g,
+            },
+          })
+      );
+    };
+
+    const resolveGenres = (promises) => {
+      Promise.all(promises).then((promise) => {
+        return promise.map(async (p) => {
+          return await ctx.prisma.game_genre.create({
+            data: {
+              genres: {
+                connect: { id: p.id },
+              },
+              games: { connect: { id: newGame.id } },
+            },
+          });
+        });
+      });
+    };
+
+    const findPlatforms = (platforms) => {
+      return platforms.map(
+        async (p) =>
+          await ctx.prisma.platforms.findOne({
+            where: {
+              platform: p,
+            },
+          })
+      );
+    };
+
+    const resolvePlatforms = (promises) => {
+      Promise.all(promises).then((promise) => {
+        return promise.map(async (p) => {
+          return await ctx.prisma.game_platform.create({
+            data: {
+              platforms: {
+                connect: { id: p.id },
+              },
+              games: { connect: { id: newGame.id } },
+            },
+          });
+        });
+      });
+    };
+
+    const findThemes = (themes) => {
+      return themes.map(
+        async (t) =>
+          await ctx.prisma.themes.findOne({
+            where: {
+              theme: t,
+            },
+          })
+      );
+    };
+
+    const resolveThemes = (promises) => {
+      Promise.all(promises).then((promise) => {
+        return promise.map(async (p) => {
+          return await ctx.prisma.game_theme.create({
+            data: {
+              themes: {
+                connect: { id: p.id },
+              },
+              games: { connect: { id: newGame.id } },
+            },
+          });
+        });
+      });
+    };
+
+    const genres = await resolveGenres(findGenres(data.genre));
+    const platforms = await resolvePlatforms(findPlatforms(data.platform));
+    const themes = await resolveThemes(findThemes(data.theme));
+
+    const foundRating = await ctx.prisma.ratings.findOne({
+      where: {
+        rating: data.rating.toString(),
+      },
+    });
+
     const connectGameToRatings = await ctx.prisma.game_rating.create({
       data: {
         ratings: {
@@ -160,45 +191,6 @@ export const Mutation = {
         games: { connect: { id: newGame.id } },
       },
     });
-
-    const connectGameToPlatforms = await ctx.prisma.game_platform.create({
-      data: {
-        platforms: {
-          connect: { id: foundPlatform.id },
-        },
-        games: { connect: { id: newGame.id } },
-      },
-    });
-
-    const connectGameToThemes = await ctx.prisma.game_theme.create({
-      data: {
-        themes: {
-          connect: { id: foundTheme.id },
-        },
-        games: { connect: { id: newGame.id } },
-      },
-    });
-
-    // const connectGameToGenres = await ctx.prisma.game_genre.create({
-    //   data: {
-    //     genres: {
-    //       connect: { id: foundGenre.id },
-    //     },
-    //     games: { connect: { id: newGame.id } },
-    //   },
-    // });
-
-    // Promise.all(findGenres(data.genre)).then(async (values) => {
-    //   console.log("values", values);
-    //   await ctx.prisma.game_genre.create({
-    //     data: {
-    //       genres: {
-    //         connect: { id: foundGenre.id },
-    //       },
-    //       games: { connect: { id: newGame.id } },
-    //     },
-    //   });
-    // });
 
     return newGame;
   },

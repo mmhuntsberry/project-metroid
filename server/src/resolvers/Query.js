@@ -2,6 +2,7 @@ import { getUserId } from "../../utils/helpers";
 
 export const Query = {
   async games(parent, args, ctx, info) {
+    // uncomment this to require auth on specific queries
     // const userId = getUserId(ctx);
 
     const userId = "hello";

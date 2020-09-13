@@ -2,7 +2,6 @@ import { reduceFilter } from "../../utils/helpers.js";
 
 export const Genre = {
   async games(parent, args, ctx, info) {
-    // return reduceFilter(parent.games, db.games);
     const games = await ctx.prisma.games.findMany();
     const gameGenres = await ctx.prisma.game_genre.findMany();
 

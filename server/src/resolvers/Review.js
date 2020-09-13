@@ -26,7 +26,6 @@ export const Review = {
       },
     });
 
-    console.log(author);
     return author;
   },
 };
