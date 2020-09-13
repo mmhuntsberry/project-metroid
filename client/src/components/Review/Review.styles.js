@@ -19,6 +19,7 @@ export const ReviewBy = styled.span`
 export const ReviewUserThumbnail = styled.img`
   display: inline-block;
   width: 75px;
+  height: 75px;
   margin: 0 auto;
   margin-top: var(--spacing-06);
   border-radius: 100%;

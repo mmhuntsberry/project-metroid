@@ -9,26 +9,27 @@ datasource db {
 }
 
 model games {
-  box_art       String
-  description   String?
-  developer     String?
-  hero          String?
-  id            Int             @default(autoincrement()) @id
-  release_year  Int
-  synopsis      String
-  title         String
-  trailer       String?
-  game_genre    game_genre[]
-  game_platform game_platform[]
-  game_rating   game_rating[]
-  game_review   game_review[]
-  game_theme    game_theme[]
+  id                     String                   @id
+  title                  String
+  release_year           Int
+  box_art                String
+  synopsis               String
+  description            String?
+  trailer                String?
+  hero                   String?
+  developer              String?
+  game_genre             game_genre[]
+  game_platform          game_platform[]
+  game_rating            game_rating[]
+  game_review            game_review[]
+  game_theme             game_theme[]
+  user_collection_detail user_collection_detail[]
 }
 
 model game_genre {
-  game_id  Int?
-  genre_id Int?
   id       Int     @default(autoincrement()) @id
+  game_id  String?
+  genre_id Int?
   games    games?  @relation(fields: [game_id], references: [id])
   genres   genres? @relation(fields: [genre_id], references: [id])
 
@@ -37,8 +38,8 @@ model game_genre {
 }
 
 model game_platform {
-  game_id     Int?
   id          Int        @default(autoincrement()) @id
+  game_id     String?
   platform_id Int?
   games       games?     @relation(fields: [game_id], references: [id])
   platforms   platforms? @relation(fields: [platform_id], references: [id])
@@ -48,8 +49,8 @@ model game_platform {
 }
 
 model game_rating {
-  game_id   Int?
   id        Int      @default(autoincrement()) @id
+  game_id   String?
   rating_id Int?
   games     games?   @relation(fields: [game_id], references: [id])
   ratings   ratings? @relation(fields: [rating_id], references: [id])
@@ -59,8 +60,8 @@ model game_rating {
 }
 
 model game_review {
-  game_id   Int?
   id        Int      @default(autoincrement()) @id
+  game_id   String?
   review_id Int?
   games     games?   @relation(fields: [game_id], references: [id])
   reviews   reviews? @relation(fields: [review_id], references: [id])
@@ -70,8 +71,8 @@ model game_review {
 }
 
 model game_theme {
-  game_id  Int?
   id       Int     @default(autoincrement()) @id
+  game_id  String?
   theme_id Int?
   games    games?  @relation(fields: [game_id], references: [id])
   themes   themes? @relation(fields: [theme_id], references: [id])
@@ -81,25 +82,26 @@ model game_theme {
 }
 
 model genres {
-  genre      String?
   id         Int          @default(autoincrement()) @id
+  genre      String?      @unique
   game_genre game_genre[]
 }
 
 model platforms {
   id            Int             @default(autoincrement()) @id
-  platform      String?
+  platform      String?         @unique
   game_platform game_platform[]
 }
 
 model ratings {
   id          Int           @default(autoincrement()) @id
-  rating      String
+  rating      String        @unique
   game_rating game_rating[]
 }
 
 model reviews {
   id          Int           @default(autoincrement()) @id
+  created_at  DateTime      @default(now())
   review      String
   game_review game_review[]
   user_review user_review[]
@@ -112,17 +114,48 @@ model themes {
 }
 
 model users {
-  created_at  DateTime      @default(now())
-  email       String?
-  id          Int           @default(autoincrement()) @id
-  name        String?
-  user_review user_review[]
+  id              Int               @default(autoincrement()) @id
+  username        String            @unique
+  thumbnail       String?
+  first_name      String
+  last_name       String
+  email           String            @unique
+  user_role       String
+  password        String?
+  created_at      DateTime          @default(now())
+  user_collection user_collection[]
+  user_review     user_review[]
+}
+
+model user_collection {
+  id                     Int                      @default(autoincrement()) @id
+  user_id                Int?
+  users                  users?                   @relation(fields: [user_id], references: [id])
+  user_collection_detail user_collection_detail[]
+
+  @@index([user_id], name: "user_id")
+}
+
+model user_collection_detail {
+  id              Int              @default(autoincrement()) @id
+  game_id         String?
+  collection_id   Int?
+  rank            Int?
+  thumbnail       String?
+  created_at      DateTime         @default(now())
+  status          Boolean?
+  owned           Boolean?
+  user_collection user_collection? @relation(fields: [collection_id], references: [id])
+  games           games?           @relation(fields: [game_id], references: [id])
+
+  @@index([collection_id], name: "collection_id")
+  @@index([game_id], name: "game_id")
 }
 
 model user_review {
   id        Int      @default(autoincrement()) @id
-  review_id Int?
   user_id   Int?
+  review_id Int?
   reviews   reviews? @relation(fields: [review_id], references: [id])
   users     users?   @relation(fields: [user_id], references: [id])
 

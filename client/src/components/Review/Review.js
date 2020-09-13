@@ -12,31 +12,34 @@ import {
   ReviewBody,
 } from "./Review.styles.js";
 
-interface Props {
-  userReview: ReviewModel;
-}
+// interface Props {
+//   userReview: ReviewModel;
+// }
 
-interface User {
-  username: string;
-  thumbnail: string;
-}
+// interface User {
+//   username: string;
+//   thumbnail: string;
+// }
 
-const Review: FunctionComponent<Props> = (props: Props) => {
-  const { userReview } = props;
-  const { username, thumbnail } = userReview.user as User;
+const Review = (props) => {
+  console.log("props", props);
+  const { userReview, created_at } = props;
+
+  // const { username, thumbnail } = userReview.user;
 
   return (
     <ReviewContainer>
-      <ReviewUserThumbnail src={thumbnail} />
+      <ReviewUserThumbnail src={userReview.author.thumbnail} />
+
       <div>
         <ReviewInfoContainer>
           <ReviewBy>Reviewed by</ReviewBy>
-          <ReviewUsername>{username}</ReviewUsername>
+          <ReviewUsername>{userReview.author.username}</ReviewUsername>
           <ReviewTimestamp>
             <em>{userReview.timestamp}</em>
           </ReviewTimestamp>
           <ReviewRating>
-            <StarRatings
+            <react-star-ratings
               rating={userReview.rating}
               starRatedColor="#f9b2c8"
               starSpacing="2px"

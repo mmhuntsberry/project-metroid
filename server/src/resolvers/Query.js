@@ -1,16 +1,37 @@
+import { getUserId } from "../../utils/helpers";
+
 export const Query = {
   async games(parent, args, ctx, info) {
-    return await ctx.prisma.games.findMany();
+    // uncomment this to require auth on specific queries
+    // const userId = getUserId(ctx);
+
+    const userId = "hello";
+
+    if (!userId) {
+      throw new Error("You are not Authenticated.");
+    } else {
+      return await ctx.prisma.games.findMany();
+    }
   },
   async game(parent, { id }, ctx, info) {
-    return await ctx.prisma.games.findOne({
+    const game = await ctx.prisma.games.findOne({
       where: {
-        id: Number(id),
+        id,
       },
     });
+    return game;
   },
-  users(parent, args, { db }, info) {
-    return db.users;
+  async user(parent, args, ctx, info) {
+    const userId = getUserId(ctx);
+
+    if (!userId) {
+      throw new Error("You are not Authenticated.");
+    }
+
+    return ctx.prisma.users.findOne({ where: { id: userId } });
+  },
+  async users(parent, args, ctx, info) {
+    return await ctx.prisma.users.findMany();
   },
   async review(parent, { id }, ctx, info) {
     return await ctx.prisma.reviews.findOne({
@@ -30,7 +51,6 @@ export const Query = {
     });
   },
   async themes(parent, { id }, ctx, info) {
-    console.log("Hi");
     return await ctx.prisma.themes.findMany();
   },
   async platform(parent, { id }, ctx, info) {

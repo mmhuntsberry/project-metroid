@@ -1,5 +1,5 @@
-import React from 'react';
-import { BottomNavContainer, BottomNavLink } from "./BottomNav.styles"
+import React from "react";
+import { BottomNavContainer, BottomNavLink } from "./BottomNav.styles.js";
 import discover from "../../assets/bottom-nav-discover.svg";
 import browse from "../../assets/bottom-nav-browse.svg";
 import collections from "../../assets/bottom-nav-collections.svg";
@@ -12,9 +12,13 @@ const BottomNav = () => {
     <BottomNavContainer>
       <BottomNavLink icon={discover} hover={discoverHover} to="/discover" />
       <BottomNavLink icon={browse} hover={browseHover} to="/browse" />
-      <BottomNavLink icon={collections} hover={collectionsHover} to="/collections" />
+      <BottomNavLink
+        icon={collections}
+        hover={collectionsHover}
+        to="/collections"
+      />
     </BottomNavContainer>
-  )
-}
+  );
+};
 
 export default BottomNav;
