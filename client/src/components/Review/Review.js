@@ -22,7 +22,6 @@ import {
 // }
 
 const Review = (props) => {
-  console.log("props", props);
   const { userReview, created_at } = props;
 
   // const { username, thumbnail } = userReview.user;

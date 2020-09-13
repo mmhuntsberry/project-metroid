@@ -33,17 +33,12 @@ const CreateGame = () => {
 
   const [addGame, { data }] = useMutation(CREATE_GAME);
 
-  useEffect(() => {
-    console.log("genre", genre);
-    console.log("theme", theme);
-    console.log("platform", platform);
-  }, [state, genre, platform, theme]);
+  useEffect(() => {}, [state, genre, platform, theme]);
 
   const handleChange = (evt) => {
     if (!evt.target) {
       const name = Object.keys(evt[0])[1];
       const value = String(Object.values(evt[0])[1]);
-      console.log(`${name}: ${value}`);
       dispatch({ field: name, value: value });
     } else {
       dispatch({ field: evt.target.name, value: evt.target.value });
@@ -88,10 +83,7 @@ const CreateGame = () => {
       platforms: [...platform],
     };
 
-    console.log(newState);
-
     evt.preventDefault();
-    console.log(state);
     addGame({
       variables: {
         data: {

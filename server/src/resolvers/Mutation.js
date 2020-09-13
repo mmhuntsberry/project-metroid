@@ -5,7 +5,6 @@ import { APP_SECRET, getUserId } from "../../utils/helpers.js";
 
 export const Mutation = {
   async signup(parent, args, ctx, info) {
-    console.log(args);
     // check if email already exists in db
     const emailExists = await ctx.prisma.users.findOne({
       where: {
@@ -46,8 +45,6 @@ export const Mutation = {
         email: args.email,
       },
     });
-
-    console.log("USER", user);
 
     if (!user) {
       throw new Error("No user found.");
