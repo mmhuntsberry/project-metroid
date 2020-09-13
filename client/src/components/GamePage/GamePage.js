@@ -29,7 +29,6 @@ import { CardRowGrid } from "../Dashboard/Dashboard.styles.js";
 import GameCard from "../GameCard/GameCard";
 import { GameModel } from "../../models";
 import { intersperse } from "../../utils/helpers.js";
-import { reviews } from "../../db/reviews.js";
 import { default as popularGameCardData } from "../Dashboard/popularGameCardData.json";
 import { useQuery, gql } from "@apollo/client";
 import Review from "../Review/Review";

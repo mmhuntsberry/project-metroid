@@ -1,5 +1,3 @@
-import { users } from "../db";
-
 export const Review = {
   async game(parent, args, ctx, info) {
     const games = await ctx.prisma.games.findMany();

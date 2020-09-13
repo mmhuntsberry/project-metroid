@@ -12,14 +12,14 @@ const reducer = (state, { field, value }) => {
 };
 
 const initialState = {
-  title: "A boy and his blob",
-  release_year: 1989,
-  box_art: "https://www.placecage.com",
-  synopsis: "a",
-  description: "b",
-  hero: "aa",
-  trailer: "bb",
-  developer: "Imagineer",
+  title: "",
+  release_year: null,
+  box_art: "",
+  synopsis: "",
+  description: "",
+  hero: "",
+  trailer: "",
+  developer: "",
   rating: "",
 };
 

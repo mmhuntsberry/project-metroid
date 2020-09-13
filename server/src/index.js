@@ -1,9 +1,7 @@
 import { GraphQLServer } from "graphql-yoga";
 import * as resolvers from "./resolvers";
-import * as db from "./db";
 import { APP_SECRET } from "../utils/helpers";
 // import { getUserId } from "../utils/helpers";
-APP_SECRET;
 
 const getUser = (token) => {
   try {
