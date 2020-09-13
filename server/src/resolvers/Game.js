@@ -20,13 +20,11 @@ export const Game = {
     return filteredReviews.map((review) => review);
   },
   async rating(parent, args, ctx, info) {
-    console.log("parent", parent);
     const rating = await ctx.prisma.game_rating
       .findOne({
         where: { game_id: parent.id },
       })
       .then((data) => {
-        console.log("data", data);
         return ctx.prisma.ratings.findOne({
           where: {
             id: data.rating_id,
@@ -34,7 +32,6 @@ export const Game = {
         });
       });
 
-    console.log("rating", rating);
     return rating;
   },
   async theme(parent, { id }, ctx, info) {

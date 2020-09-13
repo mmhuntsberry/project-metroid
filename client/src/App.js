@@ -22,17 +22,8 @@ function App() {
           <Route exact path="/" component={Dashboard} />
           <Route exact path="/discover" component={Discover} />
           <Route exact path="/browse" component={Browse} />
-<<<<<<< HEAD
-          <Route exact path="/collections" component={Collections} />
-          <Route
-            exact
-            path="/games/:id"
-            component={() => <GamePage />}
-          />
-=======
           <Route exact path="/create-game" component={CreateGame} />
           <Route exact path="/games/:id" component={() => <GamePage />} />
->>>>>>> user
         </Switch>
         <Footer />
         <BottomNav />

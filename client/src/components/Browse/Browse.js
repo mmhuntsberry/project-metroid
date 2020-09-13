@@ -11,8 +11,6 @@ const Browse = () => {
   return (
     <BrowseContainer>
       <CardRowGrid>
-        {!loading && console.log(data)}
-
         {data &&
           data.games &&
           data.games.map((game) => (
