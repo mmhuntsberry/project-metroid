@@ -1,10 +1,15 @@
-export const intersperse = (arr, delim) => {
+export const intersperse = (arr, type, delim) => {
   if (arr.length === 0) {
     return [];
   }
 
-  return arr.slice(1).reduce((xs, x, i) => {
-    console.log(xs);
-    return xs.concat([`${delim}${x}`]);
-  }, arr[0]);
+  console.log(type);
+
+  const results = arr.reduce((xs, x, i) => {
+    return i < arr.length - 1
+      ? xs.concat([`${x[type]}${delim}`])
+      : xs.concat([`${x[type]}`]);
+  }, "");
+
+  return results;
 };

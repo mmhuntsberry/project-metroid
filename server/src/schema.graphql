@@ -1,75 +1,145 @@
 type Query {
-  game: Game!
+  game(id: ID!): Game!
   games: [Game!]!
-  user: User!
+  user(id: ID, email: String, username: String): User!
   users: [User!]!
+  review(id: ID!): Review!
   reviews: [Review!]!
-  theme: Theme!
+  theme(id: ID!): Theme!
   themes: [Theme!]!
-  platform: Platform!
+  platform(id: ID!): Platform!
   platforms: [Platform!]!
-  genre: Genre!
+  genre(id: ID!): Genre!
   genres: [Genre!]!
   ratings: [Rating!]!
+  rating(id: ID!): Rating!
 }
 
 type Mutation {
-  createUser(name: String!, email: String!): User!
-  createGame(title: String!, platform: String!, rating: Float): Game!
-  createReview(
-    review: String!
-    published: Boolean!
-    game: ID!
-    user: ID!
-  ): Review!
+  signup(
+    username: String!
+    thumbnail: String! = "https://api.adorable.io/avatars/83/abott@adorable.png"
+    first_name: String!
+    last_name: String!
+    email: String!
+    password: String!
+    user_role: Role! = USER
+  ): AuthPayload!
+  login(email: String!, password: String!): AuthPayload
+  createGame(data: createGameInput): Game!
+  createReview(review: String!, published: Boolean!, game: ID!): Review!
+}
+
+enum Role {
+  ADMIN
+  USER
+}
+
+# input CreateUserInput {
+#   username: String!
+#   first_name: String!
+#   last_name: String!
+#   email: String!
+#   password: String!
+#   user_role: [Role]
+#   # created_at: String! # Use Date.toISOString()
+# }
+
+input createGameInput {
+  title: String!
+  release_year: Int!
+  box_art: String!
+  synopsis: String!
+  description: String
+  trailer: String!
+  hero: String!
+  developer: String!
+  platform: [String]!
+  rating: Int!
+  genre: [String]!
+  theme: [String]!
+}
+
+type AuthPayload {
+  token: String
+  user: User
+}
+
+type GameCollectionDetails {
+  game: [Game!]!
+  rank: Int!
+  thumbnail: String! # Link to Game?
+  created_at: String! # Use Date.toISOString() to represent DATETIME ????
+  status: Boolean!
+  owned: Boolean!
 }
 
 type Game {
   id: ID!
   title: String!
-  releaseYear: Int
-  platform: String!
-  rating: Float
-  genres: [Genre!]!
-  src: String
+  release_year: Int
+  box_art: String!
+  synopsis: String!
+  description: String!
+  trailer: String
+  hero: String
+  developer: String
   reviews: [Review!]!
+  rating: Rating!
+  theme: [Theme!]!
+  genre: [Genre!]!
+  platform: [Platform!]!
+}
+
+type Genre {
+  id: ID!
+  genre: String!
+  games: [Game!]!
+}
+
+type Platform {
+  id: ID!
+  platform: String!
+  games: [Game!]!
+}
+
+type Rating {
+  id: ID!
+  rating: Int!
+  games: [Game!]!
 }
 
 type Review {
   id: ID!
   review: String!
+  created_at: String!
+  # game: [Game!]!
   game: Game!
-  user: User!
+  author: User!
 }
 
-type User {
+type SubCollection {
   id: ID!
-  name: String
-  email: String
-  collection: [Game]
-  reviews: [Review]
+  name: String!
+  collection: [Game!]!
 }
 
 type Theme {
   id: ID!
-  type: String!
-  games: [Game]
+  theme: String!
+  games: [Game!]!
 }
 
-type Platform {
+type User {
   id: ID!
-  name: String!
-  games: [Game]
-}
-
-type Genre {
-  id: ID!
-  type: String!
-  games: [Game]
-}
-
-type Rating {
-  id: ID!
-  rating: Float!
-  games: [Game]
+  username: String!
+  thumbnail: String!
+  first_name: String!
+  last_name: String!
+  email: String!
+  password: String!
+  reviews: [Review!]!
+  created_at: String! # Use Date.toISOString()
+  collection: [GameCollectionDetails!]!
+  user_role: Role!
 }

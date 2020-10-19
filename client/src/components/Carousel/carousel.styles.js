@@ -9,10 +9,6 @@ const CarouselContainer = styled.div`
   ${mq[2]} {
     display: block;
   }
-
-  ${mq[6]} {
-    margin: 0 var(--spacing-04);
-  }
 `;
 
 const CarouselSlideList = styled.ul`

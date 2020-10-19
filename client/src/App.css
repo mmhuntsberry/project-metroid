@@ -8,7 +8,7 @@
 /*  override default outline styling */
 
 .page-wrapper {
-  padding-bottom: 3em;
+  padding-bottom: var(--spacing-08);
 }
 
 /* stylelint-disable value-no-vendor-prefix, property-no-vendor-prefix */
@@ -22,7 +22,8 @@
 /* These styles clip text after
    the specified line number and add an ellipsis */
 .card-truncate--one-line,
-.card-truncate--two-lines {
+.card-truncate--two-lines,
+.text-truncate--three-lines {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   overflow: hidden;
@@ -35,7 +36,37 @@
 .card-truncate--two-lines {
   -webkit-line-clamp: 2;
 }
+
+.text-truncate--three-lines {
+  -webkit-line-clamp: 3;
+}
 /* stylelint-enable value-no-vendor-prefix, property-no-vendor-prefix*/
+
+/* stylelint-disable selector-max-type */
+
+.collection-list__dropdown-arrow.clicked > svg,
+.button__collection-control.clicked > svg,
+.button__collection-control.button__collection-control:hover,
+.button__collection-control.button__collection-control:hover > svg {
+  color: var(--white);
+}
+
+.button__collection-control.button__delete:hover,
+.button__collection-control.button__delete:hover > svg,
+.button__collection-control.button__delete.clicked > svg {
+  color: var(--red);
+}
+
+.collection-list__dropdown-arrow:not(.clicked) > svg,
+.button__collection-control:not(.clicked) > svg {
+  color: var(--grey-01);
+}
+
+/* stylelint-enable selector-max-type */
+
+.modal--open {
+  overflow: hidden;
+}
 
 @media screen and (min-width: 1440px) {
   .app {

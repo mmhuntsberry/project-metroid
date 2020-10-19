@@ -4,11 +4,12 @@ import Navbar from "./components/Navbar";
 import Dashboard from "./components/Dashboard";
 import Browse from "./components/Browse";
 import Discover from "./components/Discover";
-import GamePage from "./components/GamePage/GamePage.tsx";
+import GamePage from "./components/GamePage/GamePage.js";
 import BottomNav from "./components/BottomNav";
 import Footer from "./components/Footer";
-import { games } from "./db/games.js";
+import CreateGame from "./components/CreateGame";
 import ScrollToTop from "./utils/hooks/ScrollToTop";
+// import { games } from "./db/games.js";
 import "./App.css";
 
 function App() {
@@ -21,11 +22,8 @@ function App() {
           <Route exact path="/" component={Dashboard} />
           <Route exact path="/discover" component={Discover} />
           <Route exact path="/browse" component={Browse} />
-          <Route
-            exact
-            path="/games/:id"
-            component={() => <GamePage game={games[0]} />}
-          />
+          <Route exact path="/create-game" component={CreateGame} />
+          <Route exact path="/games/:id" component={() => <GamePage />} />
         </Switch>
         <Footer />
         <BottomNav />

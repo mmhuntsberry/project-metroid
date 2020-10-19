@@ -8,6 +8,10 @@ const PageWrapper = styled.div`
 
 const DashboardBoardBodyContainer = styled.div`
   margin: 0 var(--spacing-04);
+
+  ${mq[6]} {
+    margin: 0;
+  }
 `;
 
 const CardRow = styled.div`
@@ -30,6 +34,7 @@ const CardRowGrid = styled.div`
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   }
 `;
+
 const TrailerCardRowGrid = styled.div`
   display: grid;
   grid-gap: var(--spacing-04);

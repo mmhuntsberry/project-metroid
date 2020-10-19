@@ -1,0 +1,22 @@
+{
+  "name": "project-metroid",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "up": "docker-compose up -d --build",
+    "down": "docker-compose down",
+    "start:clean": "docker-compose down && docker system prune -a --volumes && docker-compose up --build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mmhuntsberry/project-metroid.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mmhuntsberry/project-metroid/issues"
+  },
+  "homepage": "https://github.com/mmhuntsberry/project-metroid#readme"
+}

@@ -1,23 +1,86 @@
+import { getUserId } from "../../utils/helpers";
+
 export const Query = {
-  games(parent, args, { db }, info) {
-    return db.games;
+  async games(parent, args, ctx, info) {
+    // uncomment this to require auth on specific queries
+    // const userId = getUserId(ctx);
+
+    const userId = "hello";
+
+    if (!userId) {
+      throw new Error("You are not Authenticated.");
+    } else {
+      return await ctx.prisma.games.findMany();
+    }
   },
-  users(parent, args, { db }, info) {
-    return db.users;
+  async game(parent, { id }, ctx, info) {
+    const game = await ctx.prisma.games.findOne({
+      where: {
+        id,
+      },
+    });
+    return game;
   },
-  reviews(parent, args, { db }, info) {
-    return db.reviews;
+  async user(parent, args, ctx, info) {
+    const userId = getUserId(ctx);
+
+    if (!userId) {
+      throw new Error("You are not Authenticated.");
+    }
+
+    return ctx.prisma.users.findOne({ where: { id: userId } });
   },
-  themes(parent, ctx, { db }, info) {
-    return db.themes;
+  async users(parent, args, ctx, info) {
+    return await ctx.prisma.users.findMany();
   },
-  platforms(parent, ctx, { db }, info) {
-    return db.platforms;
+  async review(parent, { id }, ctx, info) {
+    return await ctx.prisma.reviews.findOne({
+      where: {
+        id: Number(id),
+      },
+    });
   },
-  genres(parent, ctx, { db }, info) {
-    return db.genres;
+  async reviews(parent, args, ctx, info) {
+    return await ctx.prisma.reviews.findMany();
   },
-  ratings(parent, ctx, { db }, info) {
-    return db.ratings;
+  async theme(parent, { id }, ctx, info) {
+    return await ctx.prisma.themes.findOne({
+      where: {
+        id: Number(id),
+      },
+    });
+  },
+  async themes(parent, { id }, ctx, info) {
+    return await ctx.prisma.themes.findMany();
+  },
+  async platform(parent, { id }, ctx, info) {
+    return await ctx.prisma.platforms.findOne({
+      where: {
+        id: Number(id),
+      },
+    });
+  },
+  async platforms(parent, args, ctx, info) {
+    return await ctx.prisma.platforms.findMany();
+  },
+  async genre(parent, args, ctx, info) {
+    return await ctx.prisma.ratings.findOne({
+      where: {
+        id: Number(id),
+      },
+    });
+  },
+  async genres(parent, args, ctx, info) {
+    return await ctx.prisma.genres.findMany();
+  },
+  async ratings(parent, args, ctx, info) {
+    return await ctx.prisma.ratings.findMany();
+  },
+  async rating(parent, { id }, ctx, info) {
+    return await ctx.prisma.ratings.findOne({
+      where: {
+        id: Number(id),
+      },
+    });
   },
 };

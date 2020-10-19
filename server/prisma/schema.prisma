@@ -1,0 +1,164 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["linux-musl", "darwin"]
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model games {
+  id                     String                   @id
+  title                  String
+  release_year           Int
+  box_art                String
+  synopsis               String
+  description            String?
+  trailer                String?
+  hero                   String?
+  developer              String?
+  game_genre             game_genre[]
+  game_platform          game_platform[]
+  game_rating            game_rating[]
+  game_review            game_review[]
+  game_theme             game_theme[]
+  user_collection_detail user_collection_detail[]
+}
+
+model game_genre {
+  id       Int     @default(autoincrement()) @id
+  game_id  String?
+  genre_id Int?
+  games    games?  @relation(fields: [game_id], references: [id])
+  genres   genres? @relation(fields: [genre_id], references: [id])
+
+  @@index([game_id], name: "game_id")
+  @@index([genre_id], name: "genre_id")
+}
+
+model game_platform {
+  id          Int        @default(autoincrement()) @id
+  game_id     String?
+  platform_id Int?
+  games       games?     @relation(fields: [game_id], references: [id])
+  platforms   platforms? @relation(fields: [platform_id], references: [id])
+
+  @@index([game_id], name: "game_id")
+  @@index([platform_id], name: "platform_id")
+}
+
+model game_rating {
+  id        Int      @default(autoincrement()) @id
+  game_id   String?
+  rating_id Int?
+  games     games?   @relation(fields: [game_id], references: [id])
+  ratings   ratings? @relation(fields: [rating_id], references: [id])
+
+  @@index([game_id], name: "game_id")
+  @@index([rating_id], name: "rating_id")
+}
+
+model game_review {
+  id        Int      @default(autoincrement()) @id
+  game_id   String?
+  review_id Int?
+  games     games?   @relation(fields: [game_id], references: [id])
+  reviews   reviews? @relation(fields: [review_id], references: [id])
+
+  @@index([game_id], name: "game_id")
+  @@index([review_id], name: "review_id")
+}
+
+model game_theme {
+  id       Int     @default(autoincrement()) @id
+  game_id  String?
+  theme_id Int?
+  games    games?  @relation(fields: [game_id], references: [id])
+  themes   themes? @relation(fields: [theme_id], references: [id])
+
+  @@index([game_id], name: "game_id")
+  @@index([theme_id], name: "theme_id")
+}
+
+model genres {
+  id         Int          @default(autoincrement()) @id
+  genre      String?      @unique
+  game_genre game_genre[]
+}
+
+model platforms {
+  id            Int             @default(autoincrement()) @id
+  platform      String?         @unique
+  game_platform game_platform[]
+}
+
+model ratings {
+  id          Int           @default(autoincrement()) @id
+  rating      String        @unique
+  game_rating game_rating[]
+}
+
+model reviews {
+  id          Int           @default(autoincrement()) @id
+  created_at  DateTime      @default(now())
+  review      String
+  game_review game_review[]
+  user_review user_review[]
+}
+
+model themes {
+  id         Int          @default(autoincrement()) @id
+  theme      String?      @unique
+  game_theme game_theme[]
+}
+
+model users {
+  id              Int               @default(autoincrement()) @id
+  username        String            @unique
+  thumbnail       String?
+  first_name      String
+  last_name       String
+  email           String            @unique
+  user_role       String
+  password        String?
+  created_at      DateTime          @default(now())
+  user_collection user_collection[]
+  user_review     user_review[]
+}
+
+model user_collection {
+  id                     Int                      @default(autoincrement()) @id
+  user_id                Int?
+  users                  users?                   @relation(fields: [user_id], references: [id])
+  user_collection_detail user_collection_detail[]
+
+  @@index([user_id], name: "user_id")
+}
+
+model user_collection_detail {
+  id              Int              @default(autoincrement()) @id
+  game_id         String?
+  collection_id   Int?
+  rank            Int?
+  thumbnail       String?
+  created_at      DateTime         @default(now())
+  status          Boolean?
+  owned           Boolean?
+  user_collection user_collection? @relation(fields: [collection_id], references: [id])
+  games           games?           @relation(fields: [game_id], references: [id])
+
+  @@index([collection_id], name: "collection_id")
+  @@index([game_id], name: "game_id")
+}
+
+model user_review {
+  id        Int      @default(autoincrement()) @id
+  user_id   Int?
+  review_id Int?
+  reviews   reviews? @relation(fields: [review_id], references: [id])
+  users     users?   @relation(fields: [user_id], references: [id])
+
+  @@index([review_id], name: "review_id")
+  @@index([user_id], name: "user_id")
+}
