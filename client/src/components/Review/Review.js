@@ -1,6 +1,6 @@
-import React, { FunctionComponent } from "react";
-import { ReviewModel } from "../../models";
-import StarRatings from "react-star-ratings";
+import React from "react";
+// import { ReviewModel } from "../../models";
+// import StarRatings from "react-star-ratings";
 import {
   ReviewContainer,
   ReviewUserThumbnail,
@@ -22,7 +22,10 @@ import {
 // }
 
 const Review = (props) => {
-  const { userReview, created_at } = props;
+  const { 
+    userReview,
+    // created_at 
+  } = props;
 
   // const { username, thumbnail } = userReview.user;
 

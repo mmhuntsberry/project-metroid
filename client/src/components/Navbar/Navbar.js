@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./navbar.css";
 import {
   Nav,
@@ -59,7 +60,9 @@ const Navbar = () => {
 
   return (
     <Nav>
-      <AppTitle className="app-title"> Project Metroid </AppTitle>
+      <Link to="/">
+        <AppTitle className="app-title"> Project Metroid </AppTitle>
+      </Link>
       <NavButton
         searchToggle
         className="nav__button nav__button--search-toggle"
@@ -91,9 +94,6 @@ const Navbar = () => {
         </NavLink>
         <NavLink className="nav__link" to="/browse">
           Browse
-        </NavLink>
-        <NavLink className="nav__link" to="/collections">
-          Collections
         </NavLink>
       </NavLinkContainer>
       <LoginLinksContainer className="login__links-container">

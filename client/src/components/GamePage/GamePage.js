@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
 import {
   Hero,
@@ -27,7 +27,7 @@ import {
 } from "./GamePage.styles.js";
 import { CardRowGrid } from "../Dashboard/Dashboard.styles.js";
 import GameCard from "../GameCard/GameCard";
-import { GameModel } from "../../models";
+// import { GameModel } from "../../models";
 import { intersperse } from "../../utils/helpers.js";
 import { default as popularGameCardData } from "../Dashboard/popularGameCardData.json";
 import { useQuery, gql } from "@apollo/client";
@@ -45,7 +45,10 @@ import Review from "../Review/Review";
 const GamePage = (props) => {
   const { id: gameID } = useParams();
 
-  const { loading, error, data } = useQuery(GET_GAME, {
+  const { 
+    loading, 
+    // error,
+    data } = useQuery(GET_GAME, {
     variables: { id: gameID },
   });
 

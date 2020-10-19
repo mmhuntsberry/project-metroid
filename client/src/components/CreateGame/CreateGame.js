@@ -25,13 +25,19 @@ const initialState = {
 
 // TODO hook up functionality to  query genres, platforms, rating, etc...
 const CreateGame = () => {
-  const { loading, error, data: details } = useQuery(GET_DETAILS);
+  const { 
+    loading, 
+    // error, 
+    data: details } = useQuery(GET_DETAILS);
   const [state, dispatch] = useReducer(reducer, initialState);
   const [genre, setGenres] = useState([]);
   const [platform, setPlatforms] = useState([]);
   const [theme, setThemes] = useState([]);
 
-  const [addGame, { data }] = useMutation(CREATE_GAME);
+  const [
+    addGame, 
+    // { data }
+  ] = useMutation(CREATE_GAME);
 
   useEffect(() => {}, [state, genre, platform, theme]);
 
@@ -47,6 +53,7 @@ const CreateGame = () => {
 
   const handleGenre = (val) => {
     let name;
+    // eslint-disable-next-line
     let field;
     val.forEach((v) => {
       field = Object.keys(v);
@@ -57,6 +64,7 @@ const CreateGame = () => {
 
   const handleTheme = (val) => {
     let name;
+    // eslint-disable-next-line
     let field;
     val.forEach((v) => {
       field = Object.keys(v);
@@ -67,6 +75,7 @@ const CreateGame = () => {
 
   const handlePlatform = (val) => {
     let name;
+    // eslint-disable-next-line
     let field;
     val.forEach((v) => {
       field = Object.keys(v);
@@ -76,12 +85,12 @@ const CreateGame = () => {
   };
 
   const handleSubmit = (evt) => {
-    let newState = {
+    /* let newState = {
       ...state,
       themes: [...theme],
       genres: [...genre],
       platforms: [...platform],
-    };
+    }; */
 
     evt.preventDefault();
     addGame({
