@@ -1,7 +1,7 @@
-import jwt from "jsonwebtoken";
-export const APP_SECRET = "samusaran";
+const jwt =  require("jsonwebtoken");
+module.exports = APP_SECRET = "samusaran";
 
-export const getUserId = (context) => {
+module.exports = getUserId = (context) => {
   const Authorization = context.request.get("Authorization");
   if (Authorization) {
     const token = Authorization.replace("Bearer ", "");
@@ -13,7 +13,7 @@ export const getUserId = (context) => {
 };
 
 // no longer used but maybe helpful for the future
-export const reduceFilter = (parent, list) => {
+module.exports = reduceFilter = (parent, list) => {
   return parent.reduce((filtered, id) => {
     list.filter((item) => {
       if (item.id === id) {

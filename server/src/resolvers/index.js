@@ -1,11 +1,11 @@
-import { Game } from "./Game";
-import { Genre } from "./Genre";
-import { Mutation } from "./Mutation";
-import { Platform } from "./Platform";
-import { Query } from "./Query";
-import { Rating } from "./Rating";
-import { Review } from "./Review";
-import { Theme } from "./Theme";
-import { User } from "./User";
+const { Game } = require("./Game");
+const { Genre } = require("./Genre");
+const { Mutation } = require("./Mutation");
+const { Platform } = require("./Platform");
+const { Query } = require("./Query");
+const { Rating } = require("./Rating");
+const { Review } = require("./Review");
+const { Theme } = require("./Theme");
+const { User } = require("./User");
 
-export { Game, Genre, Mutation, Platform, Query, Rating, Review, Theme, User };
+module.exports = { Game, Genre, Mutation, Platform, Query, Rating, Review, Theme, User };
