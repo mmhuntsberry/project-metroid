@@ -5,8 +5,8 @@ import {
   CollectionListContainer,
 } from "./CollectionsList.styles"
 import CollectionListItem from "../CollectionListItem"
-// import collectionListData from "../Collections/collectionListData";
-// import Pagination from "../Pagination"
+import collectionListData from "../Collections/collectionListData";
+import Pagination from "../Pagination"
 
 const CollectionsList = (props) => {
   const populateModalData = (title, modalType) => {
@@ -42,7 +42,7 @@ const CollectionsList = (props) => {
               ) {
                 return collection;
               } else {
-                return collection;
+                return null;
               }
             })
             .map((collection) => {
@@ -55,13 +55,13 @@ const CollectionsList = (props) => {
               );
             })}
         </CollectionListContainer>
-        {/* <Pagination
+        <Pagination
           collectionsPerPage={props.collectionsPerPage}
           totalCollections={collectionListData.length}
           paginate={props.paginate}
           pageNumber={props.pageNumber}
           setPageNumber={props.setPageNumber}
-        /> */}
+        />
       </ContentWrapper>
     </PageWrapper>
   );
