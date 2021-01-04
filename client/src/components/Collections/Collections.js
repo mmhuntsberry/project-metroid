@@ -42,7 +42,7 @@ const collectionListTitles = collectionListData.map(
 );
 
 // our data for the other dropdown menus. these won't change.
-const itemsPerPage = ["10", "25", "50", "100"];
+const itemsPerPage = ["5", "10", "25", "50", "100"];
 const sortByOptions = ["Title", "Date Added", "Games", "Comments"];
 
 const Collections = () => {
@@ -51,7 +51,7 @@ const Collections = () => {
   const [modalContent, setModalContent] = useState({});
   const [collectionList, setCollectionList] = useState([]);
   // const [selectedCollection, setSelectedCollection] = useState("");
-  const [collectionsPerPage, setCollectionsPerPage] = useState(100);
+  const [collectionsPerPage, setCollectionsPerPage] = useState(5);
   const [pageNumber, setPageNumber] = useState(1);
   const [loading, setLoading] = useState(false);
   const [collectionSortBy, setCollectionSortBy] = useState("Date Added");
@@ -249,7 +249,7 @@ const Collections = () => {
           <DropdownMenu
             text={"Collections Per Page: "}
             options={itemsPerPage}
-            default={itemsPerPage[3]}
+            default={itemsPerPage[0]}
             spanMultiple={true}
             previousButton={previousButton}
             setPreviousButton={setPreviousButton}

@@ -92,6 +92,7 @@ const CollectionListItem = ({ collection, populateModalData }) => {
               className="button__collection-control"
               disabled={collection.isMain}
               onClick={(e) => populateModalData(collection.title, "edit")}
+              title={collection.isMain ? "This is a default list" : "Edit Collection"}
             >
               <CollectionControlIcon
                 width="20"
@@ -110,6 +111,7 @@ const CollectionListItem = ({ collection, populateModalData }) => {
             <CollectionControlContainer
               className="button__collection-control"
               disabled={collection.isMain}
+              title={collection.isMain ? "This is a default list" : "Merge With Another Collection"}
             >
               <CollectionControlIcon
                 width="21"
@@ -135,6 +137,7 @@ const CollectionListItem = ({ collection, populateModalData }) => {
               className="button__collection-control button__delete"
               disabled={collection.isMain}
               onClick={(e) => populateModalData(collection.title, "delete")}
+              title={collection.isMain ? "This is a default list" : "Delete Collection"}
             >
               <CollectionControlIcon
                 width="18"
