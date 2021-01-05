@@ -58,6 +58,16 @@ const Navbar = () => {
     searchContainer.classList.toggle("is-visible");
   };
 
+  // function to hide hamburger menu when a link is clicked
+  const handleMenuClick = () => {
+    const hamburgerMenu = document.querySelector(".nav__link-container");
+    const loginOptions = document.querySelector(".login__links-container");
+    const overlay = document.querySelector(".overlay");
+    hamburgerMenu.classList.remove("is-visible");
+    loginOptions.classList.remove("is-visible");
+    overlay.classList.remove("is-visible");
+  };
+
   return (
     <Nav>
       <Link to="/">
@@ -89,13 +99,13 @@ const Navbar = () => {
         />
       </SearchBarContainer>
       <NavLinkContainer className="nav__link-container">
-        <NavLink className="nav__link" to="/discover">
+        <NavLink className="nav__link" to="/discover" onClick={handleMenuClick}>
           Discover
         </NavLink>
-        <NavLink className="nav__link" to="/browse">
+        <NavLink className="nav__link" to="/browse" onClick={handleMenuClick}>
           Browse
         </NavLink>
-        <NavLink className="nav__link" to="/collections">
+        <NavLink className="nav__link" to="/collections" onClick={handleMenuClick}>
           Collections
         </NavLink>
       </NavLinkContainer>
