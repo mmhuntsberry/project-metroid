@@ -89,7 +89,7 @@ const AddCollectionInput = styled.input``;
 const AddCollectionButton = styled.button`
   position: relative;
   right: 0;
-  grid-area: 4 / 1 / 4 / 4;
+  grid-area: 5 / 1 / 6 / 3;
   width: auto;
   height: var(--toolbar-height);
   padding: var(--spacing-02);
@@ -104,6 +104,10 @@ const AddCollectionButton = styled.button`
   &:hover {
     background-color: var(--green);
     cursor: pointer;
+  }
+
+  ${mq[1]} {
+    grid-area: 4 / 1 / 4 / 4;
   }
 
   ${mq[2]} {

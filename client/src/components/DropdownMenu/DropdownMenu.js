@@ -82,7 +82,7 @@ const DropdownMenu = (props) => {
   };
 
   return (
-    <DropdownContainer spanMultiple={props.spanMultiple}>
+    <DropdownContainer spanMultiple={props.spanMultiple} menuType={props.menuType}>
       <SortByButton
         className="button__sort-by"
         onClick={function (e) {
