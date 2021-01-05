@@ -95,6 +95,9 @@ const Navbar = () => {
         <NavLink className="nav__link" to="/browse">
           Browse
         </NavLink>
+        <NavLink className="nav__link" to="/collections">
+          Collections
+        </NavLink>
       </NavLinkContainer>
       <LoginLinksContainer className="login__links-container">
         <SignUpButton className="sign-up">Sign Up</SignUpButton>

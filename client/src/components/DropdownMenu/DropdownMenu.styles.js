@@ -3,9 +3,10 @@ import { mq } from "../../styles/utilities/breakpoints.js";
 
 const DropdownContainer = styled.div`
   position: relative;
-  grid-column: ${props => props.spanMultiple === true ?  "span 2" : "unset" };
+  grid-area: ${props => props.menuType === "sortby" ? "4 / 1 / 5 / 2" : "3 / 1 / 4 / 3"};
 
   ${mq[1]} {
+    grid-area: unset;
     grid-column: span 1;
   }
 `

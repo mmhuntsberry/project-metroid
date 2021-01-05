@@ -248,6 +248,7 @@ const Collections = () => {
           </DropdownWithTitle>
           <DropdownMenu
             text={"Collections Per Page: "}
+            menuType={"perpage"}
             options={itemsPerPage}
             default={itemsPerPage[0]}
             spanMultiple={true}
@@ -257,6 +258,7 @@ const Collections = () => {
           />
           <DropdownMenu
             text={"Sort By: "}
+            menuType={"sortby"}
             options={sortByOptions}
             default={sortByOptions[1]}
             spanMultipleMQ2={true}

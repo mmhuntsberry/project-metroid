@@ -1,6 +1,8 @@
 import styled from "@emotion/styled";
+import { mq } from "../../styles/utilities/breakpoints.js";
 
 const SortOrderButtonStyles = styled.button`
+  grid-area: 4 / 2 / 5 / 3;
   height: var(--toolbar-height);
   padding: var(--spacing-02) var(--spacing-03);
   transform: ${(props) => props.sortOrder === "asc" ? "rotate(180deg)" : "rotate(0deg)"};
@@ -16,6 +18,10 @@ const SortOrderButtonStyles = styled.button`
   &:focus {
     border: 0;
     outline: 0;
+  }
+
+  ${mq[1]} {
+    grid-area: unset;
   }
 `;
 
