@@ -3,7 +3,8 @@
 # ---------------------------------------------
 
 # Choose a base image
-FROM node:12-alpine
+FROM node:14-alpine
+
 
 # remove .git file && install git
 RUN apk update && apk upgrade && \
@@ -22,7 +23,7 @@ WORKDIR /home/node/app
 COPY --chown=node:node yarn.lock package.json ./
 
 # installs dependencies
-RUN yarn install
+RUN npm install
 
 # copy over all other files
 COPY --chown=node:node . .
