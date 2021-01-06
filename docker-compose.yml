@@ -12,7 +12,8 @@ services:
       # we specify a context
       context: ./client
       # and the location of the file
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile.prod
+      # dockerfile: Dockerfile.dev
     # what port we want to make available
     ports:
       - "3000:3000"
@@ -46,7 +47,8 @@ services:
 
   api:
     build:
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile.prod
+      # dockerfile: Dockerfile.dev
       context: ./server
     ports:
       - "4000:4000"
