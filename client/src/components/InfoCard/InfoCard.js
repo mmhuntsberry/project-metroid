@@ -5,7 +5,6 @@ import "./infocard.css";
 const InfoCard = (props) => {
   return (
     <InfoCardContainer>
-      <i className={`info-card__icon ${props.icon}`}></i>
       <InfoCardText>{props.copy}</InfoCardText>
     </InfoCardContainer>
   );

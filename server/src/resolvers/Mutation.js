@@ -78,6 +78,7 @@ export const Mutation = {
   async createGame(parent, { data }, ctx, info) {
     const id = uuidv4();
 
+    console.log({ id });
     const newGame = await ctx.prisma.games.create({
       data: {
         id,

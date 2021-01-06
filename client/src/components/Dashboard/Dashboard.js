@@ -16,8 +16,12 @@ import { default as newestTrailersCardData } from "./newestTrailersCardData.json
 import GameCard from "../GameCard/GameCard";
 import TrailerCard from "../TrailerCard";
 import Carousel from "../Carousel";
+import { useQuery, gql } from "@apollo/client";
 
 const Dashboard = () => {
+  const { loading, error, data } = useQuery(GET_GAMES);
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error :(</p>;
   return (
     <PageWrapper className="page-wrapper">
       <Carousel />
@@ -25,14 +29,17 @@ const Dashboard = () => {
       <DashboardBoardBodyContainer>
         <RowTitle className="card-row__title">Popular</RowTitle>
         <CardRowGrid>
-          {popularGameCardData.map((card) => (
-            <GameCard
-              key={card.id}
-              img={card.img}
-              title={card.title}
-              developer={card.developer}
-            />
-          ))}
+          {data &&
+            data.games &&
+            data.games.map((game) => (
+              <GameCard
+                id={game.id}
+                key={game.id}
+                img={game.box_art}
+                title={game.title}
+                developer={game.developer}
+              />
+            ))}
         </CardRowGrid>
         <RowTitle className="card-row__title">
           Project Metroid Lets You
@@ -70,3 +77,19 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
+const GET_GAMES = gql`
+  query {
+    games {
+      id
+      title
+      release_year
+      box_art
+      synopsis
+      description
+      trailer
+      hero
+      developer
+    }
+  }
+`;
