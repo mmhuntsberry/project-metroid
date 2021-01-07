@@ -29,4 +29,4 @@ RUN npm install
 COPY --chown=node:node . .
 
 # run app
-CMD ["yarn", "build"]
+ENTRYPOINT ["npm", "run"]
