@@ -3,6 +3,7 @@ version: "3.7"
 services:
   # Client side React or Vue
   client:
+    command: build
     # since we are wanting to run our
     # containers using a file other than
     # that the default Dockerfile.
@@ -46,8 +47,9 @@ services:
       - "3306:3306"
 
   api:
+    command: start
     build:
-      dockerfile: Dockerfile.prod
+      dockerfile: Dockerfile
       # dockerfile: Dockerfile.dev
       context: ./server
     ports:
